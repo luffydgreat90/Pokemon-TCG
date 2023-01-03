@@ -16,6 +16,8 @@
 		8EA9B9F32964EB1C005E6080 /* PokemonFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA9B9F02964EB1C005E6080 /* PokemonFeed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8EA9B9F42964EB1C005E6080 /* PokemoniOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA9B9F12964EB1C005E6080 /* PokemoniOS.framework */; };
 		8EA9B9F52964EB1C005E6080 /* PokemoniOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA9B9F12964EB1C005E6080 /* PokemoniOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8EBEA6962964F0B8000F1FC8 /* BoosterSetsUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBEA6952964F0B8000F1FC8 /* BoosterSetsUIComposer.swift */; };
+		8EBEA69A2964F143000F1FC8 /* WeakRefVirtualProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBEA6992964F143000F1FC8 /* WeakRefVirtualProxy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		8EA9B9D62964EA86005E6080 /* PokemonTCGTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTCGTests.swift; sourceTree = "<group>"; };
 		8EA9B9F02964EB1C005E6080 /* PokemonFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PokemonFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B9F12964EB1C005E6080 /* PokemoniOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PokemoniOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EBEA6952964F0B8000F1FC8 /* BoosterSetsUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetsUIComposer.swift; sourceTree = "<group>"; };
+		8EBEA6992964F143000F1FC8 /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,9 @@
 		8EA9B9BE2964EA84005E6080 /* PokemonTCG */ = {
 			isa = PBXGroup;
 			children = (
+				8EBEA6982964F133000F1FC8 /* Helpers */,
+				8EBEA6972964F124000F1FC8 /* Shared */,
+				8EBEA6942964F097000F1FC8 /* BoosterSets */,
 				8EA9B9BF2964EA84005E6080 /* AppDelegate.swift */,
 				8EA9B9C12964EA84005E6080 /* SceneDelegate.swift */,
 				8EA9B9C82964EA86005E6080 /* Assets.xcassets */,
@@ -122,6 +129,29 @@
 				8EA9B9F12964EB1C005E6080 /* PokemoniOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8EBEA6942964F097000F1FC8 /* BoosterSets */ = {
+			isa = PBXGroup;
+			children = (
+				8EBEA6952964F0B8000F1FC8 /* BoosterSetsUIComposer.swift */,
+			);
+			path = BoosterSets;
+			sourceTree = "<group>";
+		};
+		8EBEA6972964F124000F1FC8 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				8EBEA6992964F143000F1FC8 /* WeakRefVirtualProxy.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		8EBEA6982964F133000F1FC8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,7 +255,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EBEA6962964F0B8000F1FC8 /* BoosterSetsUIComposer.swift in Sources */,
 				8EA9B9C02964EA84005E6080 /* AppDelegate.swift in Sources */,
+				8EBEA69A2964F143000F1FC8 /* WeakRefVirtualProxy.swift in Sources */,
 				8EA9B9C22964EA84005E6080 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
