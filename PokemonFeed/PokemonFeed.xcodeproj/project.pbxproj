@@ -28,6 +28,10 @@
 		8EA9B96F2964B8EE005E6080 /* BoosterSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B96E2964B8EE005E6080 /* BoosterSetsViewModel.swift */; };
 		8EA9B9722964B97B005E6080 /* BoosterSetsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9712964B97B005E6080 /* BoosterSetsPresenterTests.swift */; };
 		8EA9B9752964C2FD005E6080 /* BoosterSetsTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9742964C2FD005E6080 /* BoosterSetsTestHelpers.swift */; };
+		8EA9B9782964C796005E6080 /* LoadResourcePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9772964C796005E6080 /* LoadResourcePresenter.swift */; };
+		8EA9B97B2964C7DB005E6080 /* Shared.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EA9B97D2964C7DB005E6080 /* Shared.strings */; };
+		8EA9B9802964C869005E6080 /* ResourceLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B97F2964C869005E6080 /* ResourceLoadingView.swift */; };
+		8EA9B9822964CB50005E6080 /* ResourceErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9812964CB50005E6080 /* ResourceErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +76,11 @@
 		8EA9B96E2964B8EE005E6080 /* BoosterSetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetsViewModel.swift; sourceTree = "<group>"; };
 		8EA9B9712964B97B005E6080 /* BoosterSetsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetsPresenterTests.swift; sourceTree = "<group>"; };
 		8EA9B9742964C2FD005E6080 /* BoosterSetsTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetsTestHelpers.swift; sourceTree = "<group>"; };
+		8EA9B9772964C796005E6080 /* LoadResourcePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresenter.swift; sourceTree = "<group>"; };
+		8EA9B97C2964C7DB005E6080 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Shared.strings; sourceTree = "<group>"; };
+		8EA9B97E2964C7E1005E6080 /* fil */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fil; path = fil.lproj/Shared.strings; sourceTree = "<group>"; };
+		8EA9B97F2964C869005E6080 /* ResourceLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceLoadingView.swift; sourceTree = "<group>"; };
+		8EA9B9812964CB50005E6080 /* ResourceErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +179,7 @@
 		8EA9B924296492A3005E6080 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8EA9B9762964C77C005E6080 /* Presentation */,
 				8EA9B925296492AA005E6080 /* API */,
 			);
 			path = Shared;
@@ -295,6 +305,17 @@
 				8EA9B9742964C2FD005E6080 /* BoosterSetsTestHelpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8EA9B9762964C77C005E6080 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				8EA9B9772964C796005E6080 /* LoadResourcePresenter.swift */,
+				8EA9B9812964CB50005E6080 /* ResourceErrorView.swift */,
+				8EA9B97F2964C869005E6080 /* ResourceLoadingView.swift */,
+				8EA9B97D2964C7DB005E6080 /* Shared.strings */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EA9B96A2964B843005E6080 /* BoosterSets.strings in Resources */,
+				8EA9B97B2964C7DB005E6080 /* Shared.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,7 +500,10 @@
 				8EA9B9672964B7E4005E6080 /* BoosterSetsPresenter.swift in Sources */,
 				8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */,
 				8EA9B9462964B437005E6080 /* BoosterSetsMapper.swift in Sources */,
+				8EA9B9802964C869005E6080 /* ResourceLoadingView.swift in Sources */,
 				8EA9B93E2964A214005E6080 /* DateFormatter+Helpers.swift in Sources */,
+				8EA9B9822964CB50005E6080 /* ResourceErrorView.swift in Sources */,
+				8EA9B9782964C796005E6080 /* LoadResourcePresenter.swift in Sources */,
 				8EA9B9402964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift in Sources */,
 				8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */,
 				8EA9B96F2964B8EE005E6080 /* BoosterSetsViewModel.swift in Sources */,
@@ -538,6 +563,15 @@
 				8EA9B96D2964B847005E6080 /* fil */,
 			);
 			name = BoosterSets.strings;
+			sourceTree = "<group>";
+		};
+		8EA9B97D2964C7DB005E6080 /* Shared.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8EA9B97C2964C7DB005E6080 /* en */,
+				8EA9B97E2964C7E1005E6080 /* fil */,
+			);
+			name = Shared.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
