@@ -8,14 +8,14 @@
 import Foundation
 
 public struct BoosterSet: Hashable {
-    let id: String
-    let name: String
-    let series: String
-    let printedTotal: Int
-    let total: Int
-    let legalities: BoosterLegalities
-    let releaseDate: Date
-    let images: BoosterImage
+    public let id: String
+    public let name: String
+    public let series: String
+    public let printedTotal: Int
+    public let total: Int
+    public let legalities: BoosterLegalities
+    public let releaseDate: Date
+    public let images: BoosterImage
     
     public init(id: String, name: String, series: String, printedTotal: Int, total: Int, legalities: BoosterLegalities, releaseDate: Date, images: BoosterImage) {
         self.id = id
@@ -30,9 +30,9 @@ public struct BoosterSet: Hashable {
 }
 
 public struct BoosterLegalities: Hashable {
-    let isUnlimited: Bool
-    let isStandard: Bool
-    let isExpanded: Bool
+    public let isUnlimited: Bool
+    public let isStandard: Bool
+    public let isExpanded: Bool
     
     public init(isUnlimited: Bool, isStandard: Bool, isExpanded: Bool) {
         self.isUnlimited = isUnlimited
@@ -42,8 +42,8 @@ public struct BoosterLegalities: Hashable {
 }
 
 public struct BoosterImage: Hashable {
-    let symbol: URL
-    let logo: URL
+    public let symbol: URL
+    public let logo: URL
     
     public init(symbol: URL, logo: URL) {
         self.symbol = symbol

@@ -47,6 +47,7 @@
 		8EA9B9AA2964E241005E6080 /* ImageControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9A92964E241005E6080 /* ImageControllerDelegate.swift */; };
 		8EA9B9AC2964E2BA005E6080 /* BoosterSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AB2964E2BA005E6080 /* BoosterSetViewModel.swift */; };
 		8EA9B9AE2964E30A005E6080 /* BoosterSetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */; };
+		8EA9B9B02964E654005E6080 /* BoosterSetPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		8EA9B9A92964E241005E6080 /* ImageControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageControllerDelegate.swift; sourceTree = "<group>"; };
 		8EA9B9AB2964E2BA005E6080 /* BoosterSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetViewModel.swift; sourceTree = "<group>"; };
 		8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenter.swift; sourceTree = "<group>"; };
+		8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +335,7 @@
 			children = (
 				8EA9B9712964B97B005E6080 /* BoosterSetsPresenterTests.swift */,
 				8EA9B9882964CDCF005E6080 /* BoosterSetsLocalizationTests.swift */,
+				8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -669,6 +672,7 @@
 				8EA9B94A2964B5B5005E6080 /* BoosterSetsEndPointTests.swift in Sources */,
 				8EA9B9352964941E005E6080 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				8EA9B9892964CDCF005E6080 /* BoosterSetsLocalizationTests.swift in Sources */,
+				8EA9B9B02964E654005E6080 /* BoosterSetPresenterTests.swift in Sources */,
 				8EA9B9722964B97B005E6080 /* BoosterSetsPresenterTests.swift in Sources */,
 				8EA9B9852964CD0C005E6080 /* SharedLocalizationTests.swift in Sources */,
 				8EA9B9752964C2FD005E6080 /* BoosterSetsTestHelpers.swift in Sources */,
