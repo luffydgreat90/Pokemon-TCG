@@ -35,6 +35,26 @@ public final class ListViewController: UITableViewController {
         snapshot.appendItems(cellControllers, toSection: 0)
         dataSource.apply(snapshot)
     }
+    
+    private func controller(for indexPath: IndexPath) -> CellController? {
+        dataSource.itemIdentifier(for: indexPath)
+    }
+}
+
+extension ListViewController: UITableViewDataSourcePrefetching {
+    public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        indexPaths.forEach { indexPath in
+            let dsp = controller(for: indexPath)?.dataSourcePrefetching
+            dsp?.tableView(tableView, prefetchRowsAt: [indexPath])
+        }
+    }
+    
+    public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        indexPaths.forEach { indexPath in
+            let dsp = controller(for: indexPath)?.dataSourcePrefetching
+            dsp?.tableView?(tableView, cancelPrefetchingForRowsAt: [indexPath])
+        }
+    }
 }
 
 extension ListViewController: ResourceLoadingView {

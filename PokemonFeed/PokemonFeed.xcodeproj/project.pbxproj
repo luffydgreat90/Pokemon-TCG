@@ -48,6 +48,7 @@
 		8EA9B9AC2964E2BA005E6080 /* BoosterSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AB2964E2BA005E6080 /* BoosterSetViewModel.swift */; };
 		8EA9B9AE2964E30A005E6080 /* BoosterSetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */; };
 		8EA9B9B02964E654005E6080 /* BoosterSetPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */; };
+		8EA9B9B22964E8FC005E6080 /* UITableView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		8EA9B9AB2964E2BA005E6080 /* BoosterSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetViewModel.swift; sourceTree = "<group>"; };
 		8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenter.swift; sourceTree = "<group>"; };
 		8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenterTests.swift; sourceTree = "<group>"; };
+		8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeueing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,6 +400,7 @@
 			children = (
 				8EA9B99C2964D951005E6080 /* NSLayoutConstraint+Helpers.swift */,
 				8EA9B9A22964DA13005E6080 /* UIImage+TryMake.swift */,
+				8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 				8EA9B9A82964E048005E6080 /* BoosterSetController.swift in Sources */,
 				8EA9B9A02964D9E2005E6080 /* ListViewController.swift in Sources */,
 				8EA9B9A52964DAF1005E6080 /* CellController.swift in Sources */,
+				8EA9B9B22964E8FC005E6080 /* UITableView+Dequeueing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
