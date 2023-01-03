@@ -21,11 +21,14 @@ public struct BoosterSet {
 }
 
 public struct BoosterLegalities {
-    
+    let isUnlimited: Bool
+    let isStandard: Bool
+    let isExpanded: Bool
 }
 
 public struct BoosterImage {
-    
+    let symbol: URL
+    let logo: URL
 }
 
 public enum BoosterSetsMapper {
@@ -56,8 +59,34 @@ public enum BoosterSetsMapper {
         let symbol: URL
         let logo: URL
     }
+    
+    private enum Error: Swift.Error {
+        case invalidData
+    }
  
     public static func map(_ data: Data, from response: HTTPURLResponse) throws -> [BoosterSet] {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(.yearMonthDay)
+        
+        guard response.isOK, let root = try? decoder.decode(Root.self, from: data) else {
+            throw Error.invalidData
+        }
+        
         return []
+    }
+}
+
+final class BoosterSetsMapperTests: XCTestCase {
+    
+    func test_map_throwsErrorOnNon200HTTPResponse() throws {
+        let json = anyData()
+        let samples = [199, 201, 300, 400, 500]
+        
+        try samples.forEach { code in
+            XCTAssertThrowsError(
+                try BoosterSetsMapper.map(json, from: HTTPURLResponse(statusCode: code)),
+                "code is \(code)"
+            )
+        }
     }
 }
