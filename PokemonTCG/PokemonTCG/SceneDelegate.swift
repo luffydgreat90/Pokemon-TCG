@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func configureWindow() {
-        window?.rootViewController = navigationController
+        window?.rootViewController = UINavigationController(rootViewController: UIViewController())
         window?.makeKeyAndVisible()
         
     }

@@ -15,7 +15,7 @@ public final class BoosterSetController: NSObject {
     private let delegate: ImageControllerDelegate
     private var cell: BoosterSetCell?
     
-    init(viewModel: BoosterSetViewModel, delegate: ImageControllerDelegate) {
+    public init(viewModel: BoosterSetViewModel, delegate: ImageControllerDelegate) {
         self.viewModel = viewModel
         self.delegate = delegate
     }
