@@ -43,6 +43,10 @@
 		8EA9B9A02964D9E2005E6080 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B99F2964D9E2005E6080 /* ListViewController.swift */; };
 		8EA9B9A32964DA13005E6080 /* UIImage+TryMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9A22964DA13005E6080 /* UIImage+TryMake.swift */; };
 		8EA9B9A52964DAF1005E6080 /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9A42964DAF1005E6080 /* CellController.swift */; };
+		8EA9B9A82964E048005E6080 /* BoosterSetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9A72964E048005E6080 /* BoosterSetController.swift */; };
+		8EA9B9AA2964E241005E6080 /* ImageControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9A92964E241005E6080 /* ImageControllerDelegate.swift */; };
+		8EA9B9AC2964E2BA005E6080 /* BoosterSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AB2964E2BA005E6080 /* BoosterSetViewModel.swift */; };
+		8EA9B9AE2964E30A005E6080 /* BoosterSetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +107,10 @@
 		8EA9B99F2964D9E2005E6080 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		8EA9B9A22964DA13005E6080 /* UIImage+TryMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TryMake.swift"; sourceTree = "<group>"; };
 		8EA9B9A42964DAF1005E6080 /* CellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
+		8EA9B9A72964E048005E6080 /* BoosterSetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetController.swift; sourceTree = "<group>"; };
+		8EA9B9A92964E241005E6080 /* ImageControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageControllerDelegate.swift; sourceTree = "<group>"; };
+		8EA9B9AB2964E2BA005E6080 /* BoosterSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetViewModel.swift; sourceTree = "<group>"; };
+		8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +322,8 @@
 				8EA9B9662964B7E4005E6080 /* BoosterSetsPresenter.swift */,
 				8EA9B96E2964B8EE005E6080 /* BoosterSetsViewModel.swift */,
 				8EA9B96C2964B843005E6080 /* BoosterSets.strings */,
+				8EA9B9AB2964E2BA005E6080 /* BoosterSetViewModel.swift */,
+				8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -409,6 +419,7 @@
 		8EA9B9982964D44F005E6080 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8EA9B9A72964E048005E6080 /* BoosterSetController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -433,6 +444,7 @@
 			children = (
 				8EA9B99F2964D9E2005E6080 /* ListViewController.swift */,
 				8EA9B9A42964DAF1005E6080 /* CellController.swift */,
+				8EA9B9A92964E241005E6080 /* ImageControllerDelegate.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -625,8 +637,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EA9B9AE2964E30A005E6080 /* BoosterSetPresenter.swift in Sources */,
 				8EA9B9482964B4AF005E6080 /* BoosterSetsEndPoint.swift in Sources */,
 				8EA9B9432964B006005E6080 /* BoosterSet.swift in Sources */,
+				8EA9B9AC2964E2BA005E6080 /* BoosterSetViewModel.swift in Sources */,
 				8EA9B9672964B7E4005E6080 /* BoosterSetsPresenter.swift in Sources */,
 				8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */,
 				8EA9B9462964B437005E6080 /* BoosterSetsMapper.swift in Sources */,
@@ -668,6 +682,8 @@
 				8EA9B99D2964D951005E6080 /* NSLayoutConstraint+Helpers.swift in Sources */,
 				8EA9B9A32964DA13005E6080 /* UIImage+TryMake.swift in Sources */,
 				8EA9B99B2964D4BA005E6080 /* BoosterSetCell.swift in Sources */,
+				8EA9B9AA2964E241005E6080 /* ImageControllerDelegate.swift in Sources */,
+				8EA9B9A82964E048005E6080 /* BoosterSetController.swift in Sources */,
 				8EA9B9A02964D9E2005E6080 /* ListViewController.swift in Sources */,
 				8EA9B9A52964DAF1005E6080 /* CellController.swift in Sources */,
 			);
