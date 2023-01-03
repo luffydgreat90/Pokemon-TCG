@@ -19,6 +19,8 @@
 		8EA9B9402964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B93F2964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift */; };
 		8EA9B9432964B006005E6080 /* BoosterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9422964B006005E6080 /* BoosterSet.swift */; };
 		8EA9B9462964B437005E6080 /* BoosterSetsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9452964B437005E6080 /* BoosterSetsMapper.swift */; };
+		8EA9B9482964B4AF005E6080 /* BoosterSetsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9472964B4AF005E6080 /* BoosterSetsEndPoint.swift */; };
+		8EA9B94A2964B5B5005E6080 /* BoosterSetsEndPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9492964B5B5005E6080 /* BoosterSetsEndPointTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		8EA9B93F2964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
 		8EA9B9422964B006005E6080 /* BoosterSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSet.swift; sourceTree = "<group>"; };
 		8EA9B9452964B437005E6080 /* BoosterSetsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetsMapper.swift; sourceTree = "<group>"; };
+		8EA9B9472964B4AF005E6080 /* BoosterSetsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetsEndPoint.swift; sourceTree = "<group>"; };
+		8EA9B9492964B5B5005E6080 /* BoosterSetsEndPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetsEndPointTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				8EA9B9452964B437005E6080 /* BoosterSetsMapper.swift */,
+				8EA9B9472964B4AF005E6080 /* BoosterSetsEndPoint.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				8EA9B938296499B2005E6080 /* BoosterSetsMapperTests.swift */,
+				8EA9B9492964B5B5005E6080 /* BoosterSetsEndPointTests.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -314,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EA9B9482964B4AF005E6080 /* BoosterSetsEndPoint.swift in Sources */,
 				8EA9B9432964B006005E6080 /* BoosterSet.swift in Sources */,
 				8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */,
 				8EA9B9462964B437005E6080 /* BoosterSetsMapper.swift in Sources */,
@@ -331,6 +338,7 @@
 				8EA9B93029649372005E6080 /* URLSessionHTTPClientTests.swift in Sources */,
 				8EA9B92E29649359005E6080 /* URLProtocolStub.swift in Sources */,
 				8EA9B939296499B2005E6080 /* BoosterSetsMapperTests.swift in Sources */,
+				8EA9B94A2964B5B5005E6080 /* BoosterSetsEndPointTests.swift in Sources */,
 				8EA9B9352964941E005E6080 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
