@@ -17,6 +17,7 @@
 		8EA9B939296499B2005E6080 /* BoosterSetsMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B938296499B2005E6080 /* BoosterSetsMapperTests.swift */; };
 		8EA9B93E2964A214005E6080 /* DateFormatter+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B93D2964A214005E6080 /* DateFormatter+Helpers.swift */; };
 		8EA9B9402964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B93F2964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift */; };
+		8EA9B9432964B006005E6080 /* BoosterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9422964B006005E6080 /* BoosterSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		8EA9B938296499B2005E6080 /* BoosterSetsMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetsMapperTests.swift; sourceTree = "<group>"; };
 		8EA9B93D2964A214005E6080 /* DateFormatter+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Helpers.swift"; sourceTree = "<group>"; };
 		8EA9B93F2964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
+		8EA9B9422964B006005E6080 /* BoosterSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		8EA9B91F29648B64005E6080 /* BoosterSets */ = {
 			isa = PBXGroup;
 			children = (
+				8EA9B9412964AFFC005E6080 /* Domain */,
 				8EA9B92029649174005E6080 /* API */,
 			);
 			path = BoosterSets;
@@ -189,6 +192,14 @@
 				8EA9B93F2964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8EA9B9412964AFFC005E6080 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				8EA9B9422964B006005E6080 /* BoosterSet.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EA9B9432964B006005E6080 /* BoosterSet.swift in Sources */,
 				8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */,
 				8EA9B93E2964A214005E6080 /* DateFormatter+Helpers.swift in Sources */,
 				8EA9B9402964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift in Sources */,

@@ -8,28 +8,6 @@
 import PokemonFeed
 import XCTest
 
-public struct BoosterSet: Hashable {
-    let id: String
-    let name: String
-    let series: String
-    let printedTotal: Int
-    let total: Int
-    let legalities: BoosterLegalities
-    let releaseDate: Date
-    let images: BoosterImage
-}
-
-public struct BoosterLegalities: Hashable {
-    let isUnlimited: Bool
-    let isStandard: Bool
-    let isExpanded: Bool
-}
-
-public struct BoosterImage: Hashable {
-    let symbol: URL
-    let logo: URL
-}
-
 public enum BoosterSetsMapper {
     
     private struct Root: Decodable {
