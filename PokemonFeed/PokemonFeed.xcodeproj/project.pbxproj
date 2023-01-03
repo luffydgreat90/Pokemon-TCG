@@ -26,6 +26,8 @@
 		8EA9B9672964B7E4005E6080 /* BoosterSetsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9662964B7E4005E6080 /* BoosterSetsPresenter.swift */; };
 		8EA9B96A2964B843005E6080 /* BoosterSets.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EA9B96C2964B843005E6080 /* BoosterSets.strings */; };
 		8EA9B96F2964B8EE005E6080 /* BoosterSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B96E2964B8EE005E6080 /* BoosterSetsViewModel.swift */; };
+		8EA9B9722964B97B005E6080 /* BoosterSetsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9712964B97B005E6080 /* BoosterSetsPresenterTests.swift */; };
+		8EA9B9752964C2FD005E6080 /* BoosterSetsTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9742964C2FD005E6080 /* BoosterSetsTestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		8EA9B96B2964B843005E6080 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BoosterSets.strings; sourceTree = "<group>"; };
 		8EA9B96D2964B847005E6080 /* fil */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fil; path = fil.lproj/BoosterSets.strings; sourceTree = "<group>"; };
 		8EA9B96E2964B8EE005E6080 /* BoosterSetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetsViewModel.swift; sourceTree = "<group>"; };
+		8EA9B9712964B97B005E6080 /* BoosterSetsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetsPresenterTests.swift; sourceTree = "<group>"; };
+		8EA9B9742964C2FD005E6080 /* BoosterSetsTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetsTestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +223,8 @@
 		8EA9B93629649467005E6080 /* BoosterSets */ = {
 			isa = PBXGroup;
 			children = (
+				8EA9B9732964C2E1005E6080 /* Helpers */,
+				8EA9B9702964B935005E6080 /* Presentation */,
 				8EA9B9372964946D005E6080 /* API */,
 			);
 			path = BoosterSets;
@@ -273,6 +279,22 @@
 				8EA9B96C2964B843005E6080 /* BoosterSets.strings */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		8EA9B9702964B935005E6080 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				8EA9B9712964B97B005E6080 /* BoosterSetsPresenterTests.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		8EA9B9732964C2E1005E6080 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8EA9B9742964C2FD005E6080 /* BoosterSetsTestHelpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -473,6 +495,8 @@
 				8EA9B939296499B2005E6080 /* BoosterSetsMapperTests.swift in Sources */,
 				8EA9B94A2964B5B5005E6080 /* BoosterSetsEndPointTests.swift in Sources */,
 				8EA9B9352964941E005E6080 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				8EA9B9722964B97B005E6080 /* BoosterSetsPresenterTests.swift in Sources */,
+				8EA9B9752964C2FD005E6080 /* BoosterSetsTestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
