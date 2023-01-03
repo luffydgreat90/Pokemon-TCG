@@ -8,25 +8,24 @@
 import PokemonFeed
 import XCTest
 
-public struct BoosterSet {
+public struct BoosterSet: Hashable {
     let id: String
     let name: String
     let series: String
     let printedTotal: Int
     let total: Int
     let legalities: BoosterLegalities
-    let image: URL
     let releaseDate: Date
     let images: BoosterImage
 }
 
-public struct BoosterLegalities {
+public struct BoosterLegalities: Hashable {
     let isUnlimited: Bool
     let isStandard: Bool
     let isExpanded: Bool
 }
 
-public struct BoosterImage {
+public struct BoosterImage: Hashable {
     let symbol: URL
     let logo: URL
 }
@@ -44,7 +43,6 @@ public enum BoosterSetsMapper {
         let printedTotal: Int
         let total: Int
         let legalities: RemoteLegalities
-        let image: URL
         let releaseDate: Date
         let images: RemoteImages
     }
@@ -72,7 +70,24 @@ public enum BoosterSetsMapper {
             throw Error.invalidData
         }
         
-        return []
+        return root.data.map {
+            BoosterSet(id: $0.id,
+                       name: $0.name,
+                       series: $0.series,
+                       printedTotal: $0.printedTotal,
+                       total: $0.total,
+                       legalities: BoosterLegalities(isUnlimited: checkLegality(legality: $0.legalities.unlimited), isStandard: checkLegality(legality: $0.legalities.standard), isExpanded: checkLegality(legality: $0.legalities.expanded)),
+                       releaseDate: $0.releaseDate,
+                       images: BoosterImage(symbol: $0.images.symbol, logo: $0.images.logo))
+        }
+    }
+    
+    public static func checkLegality(legality:String?) -> Bool {
+        guard let legality = legality else {
+            return false
+        }
+        
+        return legality == "Legal"
     }
 }
 
@@ -88,5 +103,67 @@ final class BoosterSetsMapperTests: XCTestCase {
                 "code is \(code)"
             )
         }
+    }
+    
+    func test_map_throwsErrorOn200HTTPResponseWithInvalidJSON() {
+        let invalidJSON = Data("invalid json".utf8)
+        
+        XCTAssertThrowsError(
+            try BoosterSetsMapper.map(invalidJSON, from: HTTPURLResponse(statusCode: 200))
+        )
+    }
+    
+    func test_map_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() throws {
+        let emptyListJSON = makeItemsJSON([])
+        
+        let result = try BoosterSetsMapper.map(emptyListJSON, from: HTTPURLResponse(statusCode: 200))
+        
+        XCTAssertEqual(result, [])
+    }
+    
+    func test_map_deliversItemsOn200HTTPResponseWithJSONItems() throws {
+        let item1 = makeBoosterSet(id: "base1")
+        let item2 = makeBoosterSet(id: "base2", legalities: ["unlimited":"Legal", "standard":"Legal" , "expanded":"Legal"])
+        
+        let json = makeItemsJSON([item1.json, item2.json])
+        let result = try BoosterSetsMapper.map(json, from: HTTPURLResponse(statusCode: 200))
+        
+        XCTAssertEqual(result, [item1.model, item2.model])
+    }
+    
+    private func makeBoosterSet(id: String, legalities:[String:String] = ["unlimited":"Legal"]) -> (model: BoosterSet, json: [String: Any]) {
+        
+        let url = anyURL()
+        let format = DateFormatter.yearMonthDay
+        
+        let boosterSet:BoosterSet = BoosterSet(
+            id: id,
+            name: "Booster \(id)",
+            series: "Series \(id)",
+            printedTotal: 10,
+            total: 10,
+            legalities: BoosterLegalities(
+                isUnlimited: BoosterSetsMapper.checkLegality(legality: legalities["unlimited"]),
+                isStandard: BoosterSetsMapper.checkLegality(legality: legalities["standard"]),
+                isExpanded: BoosterSetsMapper.checkLegality(legality: legalities["expanded"])),
+            releaseDate: format.date(from: "2021/08/27")!,
+            images: BoosterImage(symbol: url, logo: url))
+        
+        let json = [
+            "id": id,
+            "name": "Booster \(id)",
+            "series": "Series \(id)",
+            "printedTotal": 10,
+            "total": 10,
+            "legalities": legalities,
+            "ptcgoCode": "ptcgoCode \(id)",
+            "releaseDate":"2021/08/27",
+            "images": [
+                "symbol": url.absoluteString,
+                "logo": url.absoluteString
+            ]
+        ].compactMapValues { $0 }
+        
+        return (boosterSet, json)
     }
 }
