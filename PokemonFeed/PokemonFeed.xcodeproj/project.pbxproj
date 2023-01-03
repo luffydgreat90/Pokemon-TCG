@@ -32,6 +32,9 @@
 		8EA9B97B2964C7DB005E6080 /* Shared.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EA9B97D2964C7DB005E6080 /* Shared.strings */; };
 		8EA9B9802964C869005E6080 /* ResourceLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B97F2964C869005E6080 /* ResourceLoadingView.swift */; };
 		8EA9B9822964CB50005E6080 /* ResourceErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9812964CB50005E6080 /* ResourceErrorView.swift */; };
+		8EA9B9852964CD0C005E6080 /* SharedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9842964CD0C005E6080 /* SharedLocalizationTests.swift */; };
+		8EA9B9872964CD64005E6080 /* SharedLocalizationTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9862964CD64005E6080 /* SharedLocalizationTestHelpers.swift */; };
+		8EA9B9892964CDCF005E6080 /* BoosterSetsLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9882964CDCF005E6080 /* BoosterSetsLocalizationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,9 @@
 		8EA9B97E2964C7E1005E6080 /* fil */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fil; path = fil.lproj/Shared.strings; sourceTree = "<group>"; };
 		8EA9B97F2964C869005E6080 /* ResourceLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceLoadingView.swift; sourceTree = "<group>"; };
 		8EA9B9812964CB50005E6080 /* ResourceErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceErrorView.swift; sourceTree = "<group>"; };
+		8EA9B9842964CD0C005E6080 /* SharedLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedLocalizationTests.swift; sourceTree = "<group>"; };
+		8EA9B9862964CD64005E6080 /* SharedLocalizationTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedLocalizationTestHelpers.swift; sourceTree = "<group>"; };
+		8EA9B9882964CDCF005E6080 /* BoosterSetsLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetsLocalizationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +204,7 @@
 		8EA9B92A29649337005E6080 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8EA9B9832964CCF0005E6080 /* Presentation */,
 				8EA9B931296493CC005E6080 /* Helpers */,
 				8EA9B92B2964933F005E6080 /* API */,
 			);
@@ -226,6 +233,7 @@
 			children = (
 				8EA9B932296493DF005E6080 /* SharedTestHelpers.swift */,
 				8EA9B9342964941E005E6080 /* XCTestCase+MemoryLeakTracking.swift */,
+				8EA9B9862964CD64005E6080 /* SharedLocalizationTestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -295,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				8EA9B9712964B97B005E6080 /* BoosterSetsPresenterTests.swift */,
+				8EA9B9882964CDCF005E6080 /* BoosterSetsLocalizationTests.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -314,6 +323,14 @@
 				8EA9B9812964CB50005E6080 /* ResourceErrorView.swift */,
 				8EA9B97F2964C869005E6080 /* ResourceLoadingView.swift */,
 				8EA9B97D2964C7DB005E6080 /* Shared.strings */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		8EA9B9832964CCF0005E6080 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				8EA9B9842964CD0C005E6080 /* SharedLocalizationTests.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -515,12 +532,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EA9B933296493DF005E6080 /* SharedTestHelpers.swift in Sources */,
+				8EA9B9872964CD64005E6080 /* SharedLocalizationTestHelpers.swift in Sources */,
 				8EA9B93029649372005E6080 /* URLSessionHTTPClientTests.swift in Sources */,
 				8EA9B92E29649359005E6080 /* URLProtocolStub.swift in Sources */,
 				8EA9B939296499B2005E6080 /* BoosterSetsMapperTests.swift in Sources */,
 				8EA9B94A2964B5B5005E6080 /* BoosterSetsEndPointTests.swift in Sources */,
 				8EA9B9352964941E005E6080 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				8EA9B9892964CDCF005E6080 /* BoosterSetsLocalizationTests.swift in Sources */,
 				8EA9B9722964B97B005E6080 /* BoosterSetsPresenterTests.swift in Sources */,
+				8EA9B9852964CD0C005E6080 /* SharedLocalizationTests.swift in Sources */,
 				8EA9B9752964C2FD005E6080 /* BoosterSetsTestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
