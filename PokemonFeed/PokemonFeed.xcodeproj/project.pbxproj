@@ -174,6 +174,7 @@
 		8EA9B91329648B36005E6080 /* PokemonFeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				8EA9B9A62964DFCA005E6080 /* Helpers */,
 				8EA9B9922964D35D005E6080 /* Image */,
 				8EA9B93629649467005E6080 /* BoosterSets */,
 				8EA9B92A29649337005E6080 /* Shared */,
@@ -250,8 +251,6 @@
 			isa = PBXGroup;
 			children = (
 				8EA9B932296493DF005E6080 /* SharedTestHelpers.swift */,
-				8EA9B9342964941E005E6080 /* XCTestCase+MemoryLeakTracking.swift */,
-				8EA9B9862964CD64005E6080 /* SharedLocalizationTestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -350,7 +349,6 @@
 		8EA9B9832964CCF0005E6080 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				8EA9B9842964CD0C005E6080 /* SharedLocalizationTests.swift */,
 				8EA9B98A2964CF8B005E6080 /* LoadResourcePresenterTests.swift */,
 			);
 			path = Presentation;
@@ -437,6 +435,16 @@
 				8EA9B9A42964DAF1005E6080 /* CellController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8EA9B9A62964DFCA005E6080 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8EA9B9342964941E005E6080 /* XCTestCase+MemoryLeakTracking.swift */,
+				8EA9B9862964CD64005E6080 /* SharedLocalizationTestHelpers.swift */,
+				8EA9B9842964CD0C005E6080 /* SharedLocalizationTests.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
