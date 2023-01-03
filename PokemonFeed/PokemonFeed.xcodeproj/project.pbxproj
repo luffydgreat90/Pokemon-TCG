@@ -35,6 +35,7 @@
 		8EA9B9852964CD0C005E6080 /* SharedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9842964CD0C005E6080 /* SharedLocalizationTests.swift */; };
 		8EA9B9872964CD64005E6080 /* SharedLocalizationTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9862964CD64005E6080 /* SharedLocalizationTestHelpers.swift */; };
 		8EA9B9892964CDCF005E6080 /* BoosterSetsLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9882964CDCF005E6080 /* BoosterSetsLocalizationTests.swift */; };
+		8EA9B98B2964CF8B005E6080 /* LoadResourcePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B98A2964CF8B005E6080 /* LoadResourcePresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		8EA9B9842964CD0C005E6080 /* SharedLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedLocalizationTests.swift; sourceTree = "<group>"; };
 		8EA9B9862964CD64005E6080 /* SharedLocalizationTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedLocalizationTestHelpers.swift; sourceTree = "<group>"; };
 		8EA9B9882964CDCF005E6080 /* BoosterSetsLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetsLocalizationTests.swift; sourceTree = "<group>"; };
+		8EA9B98A2964CF8B005E6080 /* LoadResourcePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				8EA9B9842964CD0C005E6080 /* SharedLocalizationTests.swift */,
+				8EA9B98A2964CF8B005E6080 /* LoadResourcePresenterTests.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EA9B98B2964CF8B005E6080 /* LoadResourcePresenterTests.swift in Sources */,
 				8EA9B933296493DF005E6080 /* SharedTestHelpers.swift in Sources */,
 				8EA9B9872964CD64005E6080 /* SharedLocalizationTestHelpers.swift in Sources */,
 				8EA9B93029649372005E6080 /* URLSessionHTTPClientTests.swift in Sources */,

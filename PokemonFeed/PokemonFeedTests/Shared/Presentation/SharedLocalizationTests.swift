@@ -8,7 +8,7 @@
 import XCTest
 import PokemonFeed
 
-class SharedLocalizationTests: XCTestCase {
+final class SharedLocalizationTests: XCTestCase {
     func test_localizedStrings_haveKeysAndValuesForAllSupportedLocalizations() {
         let table = "Shared"
         let bundle = Bundle(for: LoadResourcePresenter<Any, DummyView>.self)
