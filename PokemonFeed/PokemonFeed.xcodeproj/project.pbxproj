@@ -38,6 +38,8 @@
 		8EA9B98B2964CF8B005E6080 /* LoadResourcePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B98A2964CF8B005E6080 /* LoadResourcePresenterTests.swift */; };
 		8EA9B98E2964D19C005E6080 /* ImageDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B98D2964D19C005E6080 /* ImageDataMapper.swift */; };
 		8EA9B9942964D366005E6080 /* ImageDataMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9932964D366005E6080 /* ImageDataMapperTests.swift */; };
+		8EA9B99B2964D4BA005E6080 /* BoosterSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B99A2964D4BA005E6080 /* BoosterSetCell.swift */; };
+		8EA9B99D2964D951005E6080 /* NSLayoutConstraint+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B99C2964D951005E6080 /* NSLayoutConstraint+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,8 @@
 		8EA9B98A2964CF8B005E6080 /* LoadResourcePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresenterTests.swift; sourceTree = "<group>"; };
 		8EA9B98D2964D19C005E6080 /* ImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataMapper.swift; sourceTree = "<group>"; };
 		8EA9B9932964D366005E6080 /* ImageDataMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataMapperTests.swift; sourceTree = "<group>"; };
+		8EA9B99A2964D4BA005E6080 /* BoosterSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetCell.swift; sourceTree = "<group>"; };
+		8EA9B99C2964D951005E6080 /* NSLayoutConstraint+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +289,7 @@
 		8EA9B9512964B699005E6080 /* PokemoniOS */ = {
 			isa = PBXGroup;
 			children = (
+				8EA9B9972964D443005E6080 /* BoosterSets UI */,
 				8EA9B9902964D33A005E6080 /* Shared */,
 			);
 			path = PokemoniOS;
@@ -372,6 +377,7 @@
 		8EA9B9912964D33F005E6080 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8EA9B99C2964D951005E6080 /* NSLayoutConstraint+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -382,6 +388,30 @@
 				8EA9B9932964D366005E6080 /* ImageDataMapperTests.swift */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		8EA9B9972964D443005E6080 /* BoosterSets UI */ = {
+			isa = PBXGroup;
+			children = (
+				8EA9B9992964D458005E6080 /* Views */,
+				8EA9B9982964D44F005E6080 /* ViewControllers */,
+			);
+			path = "BoosterSets UI";
+			sourceTree = "<group>";
+		};
+		8EA9B9982964D44F005E6080 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8EA9B9992964D458005E6080 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8EA9B99A2964D4BA005E6080 /* BoosterSetCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -495,6 +525,7 @@
 					};
 					8EA9B94F2964B699005E6080 = {
 						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1410;
 					};
 					8EA9B9562964B699005E6080 = {
 						CreatedOnToolsVersion = 14.1;
@@ -601,6 +632,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EA9B99D2964D951005E6080 /* NSLayoutConstraint+Helpers.swift in Sources */,
+				8EA9B99B2964D4BA005E6080 /* BoosterSetCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -865,6 +898,7 @@
 		8EA9B9602964B69A005E6080 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -885,6 +919,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -893,6 +928,7 @@
 		8EA9B9612964B69A005E6080 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -921,6 +957,7 @@
 		8EA9B9632964B69A005E6080 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -937,6 +974,7 @@
 		8EA9B9642964B69A005E6080 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
