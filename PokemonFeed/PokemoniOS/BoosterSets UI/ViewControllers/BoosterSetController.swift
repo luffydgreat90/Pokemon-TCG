@@ -38,6 +38,9 @@ extension BoosterSetController: UITableViewDataSource{
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         cell = tableView.dequeueReusableCell()
         cell?.titleLabel.text = viewModel.title
+        cell?.boosterSetImageView.image = nil
+        requestImage()
+        
         return cell!
     }
     
@@ -49,7 +52,7 @@ extension BoosterSetController: UITableViewDataSource{
 
 extension BoosterSetController: UITableViewDataSourcePrefetching {
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        requestImage()
+        //requestImage()
     }
     
     public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
@@ -60,7 +63,7 @@ extension BoosterSetController: UITableViewDataSourcePrefetching {
 
 extension BoosterSetController: ResourceView, ResourceLoadingView, ResourceErrorView {
     public func display(_ viewModel: UIImage) {
-        cell?.boosterSetImageView.image = viewModel
+        cell?.boosterSetImageView.setImageAnimated(viewModel)
     }
     
     public func display(_ viewModel: ResourceLoadingViewModel) {

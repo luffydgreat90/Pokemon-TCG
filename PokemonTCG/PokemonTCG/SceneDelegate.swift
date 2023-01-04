@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import CoreData
 import PokemonFeed
 import PokemoniOS
 
@@ -18,6 +19,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private lazy var httpClient: HTTPClient = {
         URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+    }()
+    
+    private lazy var store: BoosterSetStore & ImageDataStore = {
+        try! CoreDataBoosterSetStore(
+            storeURL: NSPersistentContainer
+                .defaultDirectoryURL()
+                .appendingPathComponent("booster-set-store.sqlite"))
     }()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -49,10 +57,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func makeLImageLoader(url: URL) -> AnyPublisher<Data, Error> {
-        return httpClient
-            .getPublisher(url: url)
-            .tryMap(ImageDataMapper.map)
-            .eraseToAnyPublisher()
+        let localImageLoader = LocalBoosterSetImageDataLoader(store: store)
+        
+        return localImageLoader
+            .loadImageDataPublisher(from: url)
+            .fallback(to: { [httpClient] in
+                httpClient
+                    .getPublisher(url: url)
+                    .tryMap(ImageDataMapper.map)
+                    .caching(to: localImageLoader, using: url)
+            })
     }
 }
 

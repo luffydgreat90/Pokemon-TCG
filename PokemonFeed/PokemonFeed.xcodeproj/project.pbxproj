@@ -30,6 +30,7 @@
 		8E0A6CF32965DDBB00F79B35 /* LocalBoosterSetImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CF22965DDBB00F79B35 /* LocalBoosterSetImageDataLoader.swift */; };
 		8E0A6CF52965DE2E00F79B35 /* ImageDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CF42965DE2E00F79B35 /* ImageDataCache.swift */; };
 		8E0A6CF82965DEB100F79B35 /* ImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CF72965DEB100F79B35 /* ImageDataLoader.swift */; };
+		8E0A6CFB2965E68500F79B35 /* UIImageView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CFA2965E68500F79B35 /* UIImageView+Animations.swift */; };
 		8EA9B91029648B36005E6080 /* PokemonFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA9B90729648B36005E6080 /* PokemonFeed.framework */; };
 		8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B926296492BC005E6080 /* HTTPClient.swift */; };
 		8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B92829649315005E6080 /* URLSessionHTTPClient.swift */; };
@@ -115,6 +116,7 @@
 		8E0A6CF22965DDBB00F79B35 /* LocalBoosterSetImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalBoosterSetImageDataLoader.swift; sourceTree = "<group>"; };
 		8E0A6CF42965DE2E00F79B35 /* ImageDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataCache.swift; sourceTree = "<group>"; };
 		8E0A6CF72965DEB100F79B35 /* ImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataLoader.swift; sourceTree = "<group>"; };
+		8E0A6CFA2965E68500F79B35 /* UIImageView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animations.swift"; sourceTree = "<group>"; };
 		8EA9B90729648B36005E6080 /* PokemonFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PokemonFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B90F29648B36005E6080 /* PokemonFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B926296492BC005E6080 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -288,6 +290,14 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
+		8E0A6CF92965E67100F79B35 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8E0A6CFA2965E68500F79B35 /* UIImageView+Animations.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		8EA9B8FD29648B36005E6080 = {
 			isa = PBXGroup;
 			children = (
@@ -450,6 +460,7 @@
 		8EA9B9512964B699005E6080 /* PokemoniOS */ = {
 			isa = PBXGroup;
 			children = (
+				8E0A6CF92965E67100F79B35 /* Helpers */,
 				8EA9B9972964D443005E6080 /* BoosterSets UI */,
 				8EA9B9902964D33A005E6080 /* Shared */,
 			);
@@ -877,6 +888,7 @@
 				8EA9B99D2964D951005E6080 /* NSLayoutConstraint+Helpers.swift in Sources */,
 				8EA9B9A32964DA13005E6080 /* UIImage+TryMake.swift in Sources */,
 				8EA9B99B2964D4BA005E6080 /* BoosterSetCell.swift in Sources */,
+				8E0A6CFB2965E68500F79B35 /* UIImageView+Animations.swift in Sources */,
 				8EA9B9AA2964E241005E6080 /* ImageControllerDelegate.swift in Sources */,
 				8EA9B9A82964E048005E6080 /* BoosterSetController.swift in Sources */,
 				8EA9B9A02964D9E2005E6080 /* ListViewController.swift in Sources */,
