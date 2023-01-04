@@ -9,10 +9,8 @@ import Foundation
 
 public protocol ResourceView {
     associatedtype ResourceViewModel
-
     func display(_ viewModel: ResourceViewModel)
 }
-
 
 public final class LoadResourcePresenter<Resource, View: ResourceView> {
     public typealias Mapper = (Resource) throws -> View.ResourceViewModel
@@ -30,7 +28,11 @@ public final class LoadResourcePresenter<Resource, View: ResourceView> {
             comment: "Error message displayed when we can't load the resource from the server")
     }
     
-    public init(resourceView: View, loadingView: ResourceLoadingView, errorView: ResourceErrorView, mapper: @escaping Mapper) {
+    public init(
+        resourceView: View,
+        loadingView: ResourceLoadingView,
+        errorView: ResourceErrorView,
+        mapper: @escaping Mapper) {
         self.resourceView = resourceView
         self.loadingView = loadingView
         self.errorView = errorView
