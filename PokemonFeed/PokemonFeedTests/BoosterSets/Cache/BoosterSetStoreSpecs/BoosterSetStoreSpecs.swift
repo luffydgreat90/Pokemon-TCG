@@ -24,3 +24,20 @@ protocol BoosterSetStoreSpecs {
 
     func test_storeSideEffects_runSerially()
 }
+
+protocol FailableRetrieveBoosterSetStoreSpecs: BoosterSetStoreSpecs {
+    func test_retrieve_deliversFailureOnRetrievalError()
+    func test_retrieve_hasNoSideEffectsOnFailure()
+}
+
+protocol FailableInsertBoosterSetStoreSpecs: BoosterSetStoreSpecs {
+    func test_insert_deliversErrorOnInsertionError()
+    func test_insert_hasNoSideEffectsOnInsertionError()
+}
+
+protocol FailableDeleteBoosterSetStoreSpecs: BoosterSetStoreSpecs {
+    func test_delete_deliversErrorOnDeletionError()
+    func test_delete_hasNoSideEffectsOnDeletionError()
+}
+
+typealias FailableBoosterSetStoreSpecs = FailableRetrieveBoosterSetStoreSpecs & FailableInsertBoosterSetStoreSpecs & FailableDeleteBoosterSetStoreSpecs
