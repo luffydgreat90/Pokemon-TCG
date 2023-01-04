@@ -7,7 +7,7 @@
 
 import Foundation
 
-public typealias CachedBoosterSet = (feed: [LocalBoosterSet], timestamp: Date)
+public typealias CachedBoosterSet = (boosterSets: [LocalBoosterSet], timestamp: Date)
 
 public protocol BoosterSetStore {
     typealias DeletionResult = Result<Void, Error>
@@ -25,7 +25,7 @@ public protocol BoosterSetStore {
 
     /// The completion handler can be invoked in any thread.
     /// Clients are responsible to dispatch to appropriate threads, if needed.
-    func insert(_ feed: [LocalBoosterSet], timestamp: Date, completion: @escaping InsertionCompletion)
+    func insert(_ boosterSets: [LocalBoosterSet], timestamp: Date, completion: @escaping InsertionCompletion)
 
     /// The completion handler can be invoked in any thread.
     /// Clients are responsible to dispatch to appropriate threads, if needed.

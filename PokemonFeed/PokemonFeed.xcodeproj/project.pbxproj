@@ -17,6 +17,7 @@
 		8E0A6CD32965BA0300F79B35 /* ManagedBoosterSetCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CD22965BA0300F79B35 /* ManagedBoosterSetCache.swift */; };
 		8E0A6CD52965BAF300F79B35 /* ManagedBoosterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CD42965BAF300F79B35 /* ManagedBoosterSet.swift */; };
 		8E0A6CD82965C27500F79B35 /* CoreData+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CD72965C27500F79B35 /* CoreData+Helpers.swift */; };
+		8E0A6CDA2965C3A700F79B35 /* CoreDataBoosterSetStore+BoosterSetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CD92965C3A700F79B35 /* CoreDataBoosterSetStore+BoosterSetStore.swift */; };
 		8EA9B91029648B36005E6080 /* PokemonFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA9B90729648B36005E6080 /* PokemonFeed.framework */; };
 		8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B926296492BC005E6080 /* HTTPClient.swift */; };
 		8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B92829649315005E6080 /* URLSessionHTTPClient.swift */; };
@@ -89,6 +90,7 @@
 		8E0A6CD22965BA0300F79B35 /* ManagedBoosterSetCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedBoosterSetCache.swift; sourceTree = "<group>"; };
 		8E0A6CD42965BAF300F79B35 /* ManagedBoosterSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedBoosterSet.swift; sourceTree = "<group>"; };
 		8E0A6CD72965C27500F79B35 /* CoreData+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Helpers.swift"; sourceTree = "<group>"; };
+		8E0A6CD92965C3A700F79B35 /* CoreDataBoosterSetStore+BoosterSetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataBoosterSetStore+BoosterSetStore.swift"; sourceTree = "<group>"; };
 		8EA9B90729648B36005E6080 /* PokemonFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PokemonFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B90F29648B36005E6080 /* PokemonFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B926296492BC005E6080 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				8E0A6CD62965C26900F79B35 /* Helpers */,
 				8E0A6CC12965B05900F79B35 /* BoosterSetStore.xcdatamodeld */,
 				8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */,
+				8E0A6CD92965C3A700F79B35 /* CoreDataBoosterSetStore+BoosterSetStore.swift */,
 				8E0A6CD22965BA0300F79B35 /* ManagedBoosterSetCache.swift */,
 				8E0A6CD42965BAF300F79B35 /* ManagedBoosterSet.swift */,
 			);
@@ -736,6 +739,7 @@
 				8EA9B93E2964A214005E6080 /* DateFormatter+Helpers.swift in Sources */,
 				8EA9B9822964CB50005E6080 /* ResourceErrorView.swift in Sources */,
 				8EA9B9782964C796005E6080 /* LoadResourcePresenter.swift in Sources */,
+				8E0A6CDA2965C3A700F79B35 /* CoreDataBoosterSetStore+BoosterSetStore.swift in Sources */,
 				8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */,
 				8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */,
 				8E0A6CCD2965B50300F79B35 /* LocalBoosterSetLoader.swift in Sources */,
