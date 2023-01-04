@@ -35,6 +35,8 @@
 		8E0A6D0229660DD100F79B35 /* Legalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D0129660DD100F79B35 /* Legalities.swift */; };
 		8E0A6D0629662BE200F79B35 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D0529662BE200F79B35 /* Card.swift */; };
 		8E0A6D0829662D0B00F79B35 /* CardMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D0729662D0B00F79B35 /* CardMapper.swift */; };
+		8E0A6D0A29662DCC00F79B35 /* CardEndPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D0929662DCC00F79B35 /* CardEndPointTests.swift */; };
+		8E0A6D0C2966351100F79B35 /* CardEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D0B2966351100F79B35 /* CardEndPoint.swift */; };
 		8EA9B91029648B36005E6080 /* PokemonFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA9B90729648B36005E6080 /* PokemonFeed.framework */; };
 		8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B926296492BC005E6080 /* HTTPClient.swift */; };
 		8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B92829649315005E6080 /* URLSessionHTTPClient.swift */; };
@@ -125,6 +127,8 @@
 		8E0A6D0129660DD100F79B35 /* Legalities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Legalities.swift; sourceTree = "<group>"; };
 		8E0A6D0529662BE200F79B35 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		8E0A6D0729662D0B00F79B35 /* CardMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMapper.swift; sourceTree = "<group>"; };
+		8E0A6D0929662DCC00F79B35 /* CardEndPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEndPointTests.swift; sourceTree = "<group>"; };
+		8E0A6D0B2966351100F79B35 /* CardEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEndPoint.swift; sourceTree = "<group>"; };
 		8EA9B90729648B36005E6080 /* PokemonFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PokemonFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B90F29648B36005E6080 /* PokemonFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B926296492BC005E6080 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -313,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				8E0A6D0729662D0B00F79B35 /* CardMapper.swift */,
+				8E0A6D0B2966351100F79B35 /* CardEndPoint.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				8E0A6CFF2966093700F79B35 /* CardMapperTests.swift */,
+				8E0A6D0929662DCC00F79B35 /* CardEndPointTests.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -876,6 +882,7 @@
 				8EA9B9782964C796005E6080 /* LoadResourcePresenter.swift in Sources */,
 				8E0A6CDA2965C3A700F79B35 /* CoreDataBoosterSetStore+BoosterSetStore.swift in Sources */,
 				8E0A6D0829662D0B00F79B35 /* CardMapper.swift in Sources */,
+				8E0A6D0C2966351100F79B35 /* CardEndPoint.swift in Sources */,
 				8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */,
 				8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */,
 				8E0A6CCD2965B50300F79B35 /* LocalBoosterSetLoader.swift in Sources */,
@@ -914,6 +921,7 @@
 				8EA9B94A2964B5B5005E6080 /* BoosterSetsEndPointTests.swift in Sources */,
 				8EA9B9352964941E005E6080 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				8EA9B9892964CDCF005E6080 /* BoosterSetsLocalizationTests.swift in Sources */,
+				8E0A6D0A29662DCC00F79B35 /* CardEndPointTests.swift in Sources */,
 				8EA9B9B02964E654005E6080 /* BoosterSetPresenterTests.swift in Sources */,
 				8EA9B9722964B97B005E6080 /* BoosterSetsPresenterTests.swift in Sources */,
 				8EA9B9852964CD0C005E6080 /* SharedLocalizationTests.swift in Sources */,
