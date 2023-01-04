@@ -11,6 +11,8 @@
 		8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */; };
 		8E0A6CC92965B1C300F79B35 /* BoosterSetStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */; };
 		8E0A6CCB2965B2F900F79B35 /* LocalBoosterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CCA2965B2F900F79B35 /* LocalBoosterSet.swift */; };
+		8E0A6CCD2965B50300F79B35 /* LocalBoosterSetLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CCC2965B50300F79B35 /* LocalBoosterSetLoader.swift */; };
+		8E0A6CCF2965B54000F79B35 /* BoosterSetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CCE2965B54000F79B35 /* BoosterSetStore.swift */; };
 		8EA9B91029648B36005E6080 /* PokemonFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA9B90729648B36005E6080 /* PokemonFeed.framework */; };
 		8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B926296492BC005E6080 /* HTTPClient.swift */; };
 		8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B92829649315005E6080 /* URLSessionHTTPClient.swift */; };
@@ -77,6 +79,8 @@
 		8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBoosterSetStore.swift; sourceTree = "<group>"; };
 		8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetStoreSpecs.swift; sourceTree = "<group>"; };
 		8E0A6CCA2965B2F900F79B35 /* LocalBoosterSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalBoosterSet.swift; sourceTree = "<group>"; };
+		8E0A6CCC2965B50300F79B35 /* LocalBoosterSetLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalBoosterSetLoader.swift; sourceTree = "<group>"; };
+		8E0A6CCE2965B54000F79B35 /* BoosterSetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetStore.swift; sourceTree = "<group>"; };
 		8EA9B90729648B36005E6080 /* PokemonFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PokemonFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B90F29648B36005E6080 /* PokemonFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B926296492BC005E6080 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -505,6 +509,8 @@
 			children = (
 				8EBEA6A02965860A000F1FC8 /* Infrastructure */,
 				8E0A6CCA2965B2F900F79B35 /* LocalBoosterSet.swift */,
+				8E0A6CCC2965B50300F79B35 /* LocalBoosterSetLoader.swift */,
+				8E0A6CCE2965B54000F79B35 /* BoosterSetStore.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -702,6 +708,7 @@
 				8EA9B9AC2964E2BA005E6080 /* BoosterSetViewModel.swift in Sources */,
 				8EA9B9672964B7E4005E6080 /* BoosterSetsPresenter.swift in Sources */,
 				8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */,
+				8E0A6CCF2965B54000F79B35 /* BoosterSetStore.swift in Sources */,
 				8EA9B9462964B437005E6080 /* BoosterSetsMapper.swift in Sources */,
 				8EA9B9802964C869005E6080 /* ResourceLoadingView.swift in Sources */,
 				8EA9B93E2964A214005E6080 /* DateFormatter+Helpers.swift in Sources */,
@@ -709,6 +716,7 @@
 				8EA9B9782964C796005E6080 /* LoadResourcePresenter.swift in Sources */,
 				8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */,
 				8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */,
+				8E0A6CCD2965B50300F79B35 /* LocalBoosterSetLoader.swift in Sources */,
 				8EA9B9402964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift in Sources */,
 				8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */,
 				8EA9B96F2964B8EE005E6080 /* BoosterSetsViewModel.swift in Sources */,
