@@ -8,7 +8,7 @@
 import XCTest
 import PokemonFeed
 
-class ValidateBoosterSetsCacheUseCaseTests: XCTestCase {
+class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
         
