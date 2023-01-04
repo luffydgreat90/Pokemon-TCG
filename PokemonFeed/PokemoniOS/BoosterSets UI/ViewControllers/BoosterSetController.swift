@@ -52,7 +52,7 @@ extension BoosterSetController: UITableViewDataSource{
 
 extension BoosterSetController: UITableViewDataSourcePrefetching {
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        //requestImage()
+        
     }
     
     public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {

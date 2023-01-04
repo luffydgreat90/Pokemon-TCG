@@ -63,7 +63,7 @@ extension LocalBoosterSetImageDataLoader: ImageDataLoader {
         let task = LoadImageDataTask(completion)
         store.retrieve(dataForURL: url) { [weak self] result in
             guard self != nil else { return }
-
+            
             task.complete(with: result
                 .mapError { _ in LoadError.failed }
                 .flatMap { data in
@@ -72,6 +72,4 @@ extension LocalBoosterSetImageDataLoader: ImageDataLoader {
         }
         return task
     }
-    
-    
 }

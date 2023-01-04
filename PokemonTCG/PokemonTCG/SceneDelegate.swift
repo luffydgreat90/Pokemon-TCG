@@ -28,11 +28,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 .appendingPathComponent("booster-set-store.sqlite"))
     }()
     
+    private lazy var localBoosterSetLoader: LocalBoosterSetLoader = {
+        LocalBoosterSetLoader(store: store, currentDate: Date.init)
+    }()
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
     
         window = UIWindow(windowScene: scene)
         configureWindow()
+    }
+    
+    func sceneWillResignActive(_ scene: UIScene) {
+        localBoosterSetLoader.validateCache { _ in }
     }
 
     func configureWindow() {
@@ -40,7 +48,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         
     }
-
+    
+    
     private func makeBoosterSetsViewController() -> ListViewController {
         return BoosterSetsUIComposer.boosterSetsComposedWith(
             boosterSetsLoader: makeRemoteBoosterSetsLoader,
@@ -53,19 +62,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return httpClient
             .getPublisher(url: url)
             .tryMap(BoosterSetsMapper.map)
-            .eraseToAnyPublisher()
+            .caching(to: localBoosterSetLoader)
+            .fallback(to: localBoosterSetLoader.loadPublisher)
     }
     
     private func makeLImageLoader(url: URL) -> AnyPublisher<Data, Error> {
         let localImageLoader = LocalBoosterSetImageDataLoader(store: store)
-        
+     
         return localImageLoader
             .loadImageDataPublisher(from: url)
             .fallback(to: { [httpClient] in
-                httpClient
+                
+                return httpClient
                     .getPublisher(url: url)
                     .tryMap(ImageDataMapper.map)
                     .caching(to: localImageLoader, using: url)
+                
             })
     }
 }

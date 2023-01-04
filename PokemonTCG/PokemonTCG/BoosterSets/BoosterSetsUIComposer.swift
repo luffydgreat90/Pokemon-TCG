@@ -60,7 +60,7 @@ final class BoosterSetsViewAdapter: ResourceView {
     func display(_ viewModel: BoosterSetsViewModel) {
         controller?.display(viewModel.sets.map({ model in
             let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in
-                imageLoader(model.images.logo)
+                imageLoader(model.images.symbol)
             })
             
             let controller = BoosterSetController(viewModel: BoosterSetPresenter.map(model),

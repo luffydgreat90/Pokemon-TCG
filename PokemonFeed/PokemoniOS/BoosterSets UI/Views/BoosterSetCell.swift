@@ -9,13 +9,23 @@ import UIKit
 
 public final class BoosterSetCell: UITableViewCell {
     
+    private var containerImageView: UIView = {
+        let containerImageView = UIView()
+        containerImageView.translatesAutoresizingMaskIntoConstraints = false
+        containerImageView.layer.cornerRadius = 24
+        containerImageView.layer.masksToBounds = true
+        containerImageView.clipsToBounds = true
+        containerImageView.backgroundColor = .lightGray
+        return containerImageView
+    }()
+    
     public private(set) var boosterSetImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 24
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .lightGray
+        imageView.layer.masksToBounds = true
+       
         return imageView
     }()
     
@@ -56,8 +66,10 @@ public final class BoosterSetCell: UITableViewCell {
         selectionStyle = .none
         
         addSubview(containerStack)
-        containerStack.addArrangedSubview(boosterSetImageView)
+        containerStack.addArrangedSubview(containerImageView)
         containerStack.addArrangedSubview(titleLabel)
+        
+        containerImageView.addSubview(boosterSetImageView)
         
     }
     
@@ -67,7 +79,14 @@ public final class BoosterSetCell: UITableViewCell {
             containerStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             containerStack.topAnchor.constraint(equalTo: topAnchor, constant: 8).withPriority(999),
             containerStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).withPriority(999),
-            boosterSetImageView.widthAnchor.constraint(equalToConstant: 100.0),
-            boosterSetImageView.heightAnchor.constraint(equalToConstant: 100.0),        ])
+            
+            containerImageView.widthAnchor.constraint(equalToConstant: 80.0),
+            containerImageView.heightAnchor.constraint(equalToConstant: 80.0),
+            
+            boosterSetImageView.leadingAnchor.constraint(equalTo: containerImageView.leadingAnchor, constant: 8),
+            boosterSetImageView.trailingAnchor.constraint(equalTo: containerImageView.trailingAnchor, constant: -8),
+            boosterSetImageView.topAnchor.constraint(equalTo: containerImageView.topAnchor, constant: 8),
+            boosterSetImageView.bottomAnchor.constraint(equalTo: containerImageView.bottomAnchor, constant: -8),
+        ])
     }
 }

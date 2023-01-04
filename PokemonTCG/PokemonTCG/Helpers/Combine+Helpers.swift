@@ -45,6 +45,29 @@ extension Publisher where Output == Data {
     }
 }
 
+extension Publisher where Output == [BoosterSet] {
+    func caching(to cache: BoosterSetCache) -> AnyPublisher<Output, Failure> {
+        handleEvents(receiveOutput: cache.saveIgnoringResult).eraseToAnyPublisher()
+    }
+}
+
+private extension BoosterSetCache {
+    func saveIgnoringResult(_ feed: [BoosterSet]) {
+        save(feed) { _ in }
+    }
+}
+
+public extension LocalBoosterSetLoader {
+    typealias Publisher = AnyPublisher<[BoosterSet], Error>
+
+    func loadPublisher() -> Publisher {
+        Deferred {
+            Future(self.load)
+        }
+        .eraseToAnyPublisher()
+    }
+}
+
 private extension ImageDataCache {
     func saveIgnoringResult(_ data: Data, for url: URL) {
         save(data, for: url) { _ in }
