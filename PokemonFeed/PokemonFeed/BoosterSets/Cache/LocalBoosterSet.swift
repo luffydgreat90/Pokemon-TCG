@@ -30,14 +30,14 @@ public struct LocalBoosterSet: Equatable {
 }
 
 public struct LocalLegalities: Equatable {
-    public let unlimited: Bool
-    public let standard: Bool
-    public let expanded: Bool
+    public let isUnlimited: Bool
+    public let isStandard: Bool
+    public let isExpanded: Bool
     
-    init(unlimited: Bool, standard: Bool, expanded: Bool) {
-        self.unlimited = unlimited
-        self.standard = standard
-        self.expanded = expanded
+    init(isUnlimited: Bool, isStandard: Bool, isExpanded: Bool) {
+        self.isUnlimited = isUnlimited
+        self.isStandard = isStandard
+        self.isExpanded = isExpanded
     }
 }
 
