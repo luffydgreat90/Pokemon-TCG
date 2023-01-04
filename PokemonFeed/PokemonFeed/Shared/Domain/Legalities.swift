@@ -17,4 +17,12 @@ public struct Legalities: Hashable {
         self.isStandard = isStandard
         self.isExpanded = isExpanded
     }
+    
+    public static func checkLegality(legality:String?) -> Bool {
+        guard let legality = legality else {
+            return false
+        }
+        
+        return legality == "Legal"
+    }
 }

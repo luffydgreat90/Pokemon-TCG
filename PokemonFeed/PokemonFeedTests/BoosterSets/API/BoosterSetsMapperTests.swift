@@ -60,9 +60,9 @@ final class BoosterSetsMapperTests: XCTestCase {
             printedTotal: 10,
             total: 10,
             legalities: Legalities(
-                isUnlimited: BoosterSetsMapper.checkLegality(legality: legalities["unlimited"]),
-                isStandard: BoosterSetsMapper.checkLegality(legality: legalities["standard"]),
-                isExpanded: BoosterSetsMapper.checkLegality(legality: legalities["expanded"])),
+                isUnlimited: Legalities.checkLegality(legality: legalities["unlimited"]),
+                isStandard: Legalities.checkLegality(legality: legalities["standard"]),
+                isExpanded: Legalities.checkLegality(legality: legalities["expanded"])),
             releaseDate: format.date(from: "2021/08/27")!,
             images: BoosterImage(symbol: url, logo: url))
         
