@@ -109,7 +109,7 @@ public extension Array where Element == LocalBoosterSet {
             series: $0.series,
             printedTotal: $0.printedTotal,
             total: $0.total,
-            legalities: BoosterLegalities(isUnlimited: $0.legalities.isUnlimited, isStandard: $0.legalities.isStandard, isExpanded: $0.legalities.isExpanded),
+            legalities: Legalities(isUnlimited: $0.legalities.isUnlimited, isStandard: $0.legalities.isStandard, isExpanded: $0.legalities.isExpanded),
             releaseDate: $0.releaseDate,
             images: BoosterImage(symbol: $0.images.symbol, logo: $0.images.logo))            
         }

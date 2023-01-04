@@ -31,6 +31,8 @@
 		8E0A6CF52965DE2E00F79B35 /* ImageDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CF42965DE2E00F79B35 /* ImageDataCache.swift */; };
 		8E0A6CF82965DEB100F79B35 /* ImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CF72965DEB100F79B35 /* ImageDataLoader.swift */; };
 		8E0A6CFB2965E68500F79B35 /* UIImageView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CFA2965E68500F79B35 /* UIImageView+Animations.swift */; };
+		8E0A6D002966093700F79B35 /* CardsMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CFF2966093700F79B35 /* CardsMapperTests.swift */; };
+		8E0A6D0229660DD100F79B35 /* Legalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D0129660DD100F79B35 /* Legalities.swift */; };
 		8EA9B91029648B36005E6080 /* PokemonFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA9B90729648B36005E6080 /* PokemonFeed.framework */; };
 		8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B926296492BC005E6080 /* HTTPClient.swift */; };
 		8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B92829649315005E6080 /* URLSessionHTTPClient.swift */; };
@@ -117,6 +119,8 @@
 		8E0A6CF42965DE2E00F79B35 /* ImageDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataCache.swift; sourceTree = "<group>"; };
 		8E0A6CF72965DEB100F79B35 /* ImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataLoader.swift; sourceTree = "<group>"; };
 		8E0A6CFA2965E68500F79B35 /* UIImageView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animations.swift"; sourceTree = "<group>"; };
+		8E0A6CFF2966093700F79B35 /* CardsMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsMapperTests.swift; sourceTree = "<group>"; };
+		8E0A6D0129660DD100F79B35 /* Legalities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Legalities.swift; sourceTree = "<group>"; };
 		8EA9B90729648B36005E6080 /* PokemonFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PokemonFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B90F29648B36005E6080 /* PokemonFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B926296492BC005E6080 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -261,6 +265,7 @@
 		8E0A6CE92965D76000F79B35 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				8E0A6CFC2966090600F79B35 /* API */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 			children = (
 				8E0A6CF42965DE2E00F79B35 /* ImageDataCache.swift */,
 				8E0A6CF72965DEB100F79B35 /* ImageDataLoader.swift */,
+				8E0A6D0129660DD100F79B35 /* Legalities.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -296,6 +302,29 @@
 				8E0A6CFA2965E68500F79B35 /* UIImageView+Animations.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8E0A6CFC2966090600F79B35 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		8E0A6CFD2966091900F79B35 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				8E0A6CFE2966091F00F79B35 /* API */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		8E0A6CFE2966091F00F79B35 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				8E0A6CFF2966093700F79B35 /* CardsMapperTests.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		8EA9B8FD29648B36005E6080 = {
@@ -334,6 +363,7 @@
 		8EA9B91329648B36005E6080 /* PokemonFeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				8E0A6CFD2966091900F79B35 /* Cards */,
 				8EA9B9A62964DFCA005E6080 /* Helpers */,
 				8EA9B9922964D35D005E6080 /* Image */,
 				8EA9B93629649467005E6080 /* BoosterSets */,
@@ -388,7 +418,6 @@
 			children = (
 				8E0A6CEC2965DB6800F79B35 /* Cache */,
 				8EA9B9832964CCF0005E6080 /* Presentation */,
-				8EA9B931296493CC005E6080 /* Helpers */,
 				8EA9B92B2964933F005E6080 /* API */,
 			);
 			path = Shared;
@@ -407,14 +436,6 @@
 			isa = PBXGroup;
 			children = (
 				8EA9B92D29649358005E6080 /* URLProtocolStub.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		8EA9B931296493CC005E6080 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				8EA9B932296493DF005E6080 /* SharedTestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -613,6 +634,7 @@
 		8EA9B9A62964DFCA005E6080 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8EA9B932296493DF005E6080 /* SharedTestHelpers.swift */,
 				8EA9B9342964941E005E6080 /* XCTestCase+MemoryLeakTracking.swift */,
 				8EA9B9862964CD64005E6080 /* SharedLocalizationTestHelpers.swift */,
 				8EA9B9842964CD0C005E6080 /* SharedLocalizationTests.swift */,
@@ -833,6 +855,7 @@
 				8E0A6CE12965CA6800F79B35 /* BoosterSetCachePolicy.swift in Sources */,
 				8EA9B9462964B437005E6080 /* BoosterSetsMapper.swift in Sources */,
 				8EA9B9802964C869005E6080 /* ResourceLoadingView.swift in Sources */,
+				8E0A6D0229660DD100F79B35 /* Legalities.swift in Sources */,
 				8EA9B93E2964A214005E6080 /* DateFormatter+Helpers.swift in Sources */,
 				8EA9B9822964CB50005E6080 /* ResourceErrorView.swift in Sources */,
 				8EA9B9782964C796005E6080 /* LoadResourcePresenter.swift in Sources */,
@@ -871,6 +894,7 @@
 				8E0A6CF12965DD4C00F79B35 /* LoadBoosterSetImageDataFromCacheUseCaseTests.swift in Sources */,
 				8E0A6CDF2965C87B00F79B35 /* LoadBoosterSetFromCacheUseCaseTests.swift in Sources */,
 				8EA9B939296499B2005E6080 /* BoosterSetsMapperTests.swift in Sources */,
+				8E0A6D002966093700F79B35 /* CardsMapperTests.swift in Sources */,
 				8EA9B94A2964B5B5005E6080 /* BoosterSetsEndPointTests.swift in Sources */,
 				8EA9B9352964941E005E6080 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				8EA9B9892964CDCF005E6080 /* BoosterSetsLocalizationTests.swift in Sources */,

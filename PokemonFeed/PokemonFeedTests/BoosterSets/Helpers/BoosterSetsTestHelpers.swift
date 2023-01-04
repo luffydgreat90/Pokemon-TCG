@@ -16,7 +16,7 @@ func uniqueBoosterSet() -> BoosterSet {
         series: "Series \(id)",
         printedTotal: 1,
         total: 1,
-        legalities: BoosterLegalities(isUnlimited: true, isStandard: true, isExpanded: true),
+        legalities: Legalities(isUnlimited: true, isStandard: true, isExpanded: true),
         releaseDate: Date(),
         images: BoosterImage(symbol: anyURL(), logo: anyURL()))
 }

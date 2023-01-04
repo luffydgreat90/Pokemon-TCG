@@ -13,11 +13,11 @@ public struct BoosterSet: Hashable {
     public let series: String
     public let printedTotal: Int
     public let total: Int
-    public let legalities: BoosterLegalities
+    public let legalities: Legalities
     public let releaseDate: Date
     public let images: BoosterImage
     
-    public init(id: String, name: String, series: String, printedTotal: Int, total: Int, legalities: BoosterLegalities, releaseDate: Date, images: BoosterImage) {
+    public init(id: String, name: String, series: String, printedTotal: Int, total: Int, legalities: Legalities, releaseDate: Date, images: BoosterImage) {
         self.id = id
         self.name = name
         self.series = series
@@ -29,17 +29,7 @@ public struct BoosterSet: Hashable {
     }
 }
 
-public struct BoosterLegalities: Hashable {
-    public let isUnlimited: Bool
-    public let isStandard: Bool
-    public let isExpanded: Bool
-    
-    public init(isUnlimited: Bool, isStandard: Bool, isExpanded: Bool) {
-        self.isUnlimited = isUnlimited
-        self.isStandard = isStandard
-        self.isExpanded = isExpanded
-    }
-}
+
 
 public struct BoosterImage: Hashable {
     public let symbol: URL

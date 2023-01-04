@@ -53,7 +53,7 @@ public enum BoosterSetsMapper {
                        series: $0.series,
                        printedTotal: $0.printedTotal,
                        total: $0.total,
-                       legalities: BoosterLegalities(isUnlimited: checkLegality(legality: $0.legalities.unlimited), isStandard: checkLegality(legality: $0.legalities.standard), isExpanded: checkLegality(legality: $0.legalities.expanded)),
+                       legalities: Legalities(isUnlimited: checkLegality(legality: $0.legalities.unlimited), isStandard: checkLegality(legality: $0.legalities.standard), isExpanded: checkLegality(legality: $0.legalities.expanded)),
                        releaseDate: $0.releaseDate,
                        images: BoosterImage(symbol: $0.images.symbol, logo: $0.images.logo))
         }

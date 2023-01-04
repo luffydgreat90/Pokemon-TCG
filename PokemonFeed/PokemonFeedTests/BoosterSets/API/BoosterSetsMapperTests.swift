@@ -59,7 +59,7 @@ final class BoosterSetsMapperTests: XCTestCase {
             series: "Series \(id)",
             printedTotal: 10,
             total: 10,
-            legalities: BoosterLegalities(
+            legalities: Legalities(
                 isUnlimited: BoosterSetsMapper.checkLegality(legality: legalities["unlimited"]),
                 isStandard: BoosterSetsMapper.checkLegality(legality: legalities["standard"]),
                 isExpanded: BoosterSetsMapper.checkLegality(legality: legalities["expanded"])),
