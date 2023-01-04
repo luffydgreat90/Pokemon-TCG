@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC12965B05900F79B35 /* BoosterSetStore.xcdatamodeld */; };
+		8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */; };
+		8E0A6CC92965B1C300F79B35 /* BoosterSetStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */; };
+		8E0A6CCB2965B2F900F79B35 /* LocalBoosterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CCA2965B2F900F79B35 /* LocalBoosterSet.swift */; };
 		8EA9B91029648B36005E6080 /* PokemonFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA9B90729648B36005E6080 /* PokemonFeed.framework */; };
 		8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B926296492BC005E6080 /* HTTPClient.swift */; };
 		8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B92829649315005E6080 /* URLSessionHTTPClient.swift */; };
@@ -49,7 +53,6 @@
 		8EA9B9AE2964E30A005E6080 /* BoosterSetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */; };
 		8EA9B9B02964E654005E6080 /* BoosterSetPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */; };
 		8EA9B9B22964E8FC005E6080 /* UITableView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */; };
-		8EBEA6A32965865F000F1FC8 /* BoosterSetStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8EBEA6A12965865F000F1FC8 /* BoosterSetStore.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E0A6CC22965B05A00F79B35 /* BoosterSetStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoosterSetStore.xcdatamodel; sourceTree = "<group>"; };
+		8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBoosterSetStore.swift; sourceTree = "<group>"; };
+		8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetStoreSpecs.swift; sourceTree = "<group>"; };
+		8E0A6CCA2965B2F900F79B35 /* LocalBoosterSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalBoosterSet.swift; sourceTree = "<group>"; };
 		8EA9B90729648B36005E6080 /* PokemonFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PokemonFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B90F29648B36005E6080 /* PokemonFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B926296492BC005E6080 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -116,7 +123,6 @@
 		8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenter.swift; sourceTree = "<group>"; };
 		8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenterTests.swift; sourceTree = "<group>"; };
 		8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeueing.swift"; sourceTree = "<group>"; };
-		8EBEA6A22965865F000F1FC8 /* BoosterSetStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoosterSetStore.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +159,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E0A6CC02965B02500F79B35 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				8E0A6CC12965B05900F79B35 /* BoosterSetStore.xcdatamodeld */,
+				8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		8E0A6CC62965B18C00F79B35 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				8E0A6CC72965B1A100F79B35 /* Helpers */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		8E0A6CC72965B1A100F79B35 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		8EA9B8FD29648B36005E6080 = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +304,7 @@
 		8EA9B93629649467005E6080 /* BoosterSets */ = {
 			isa = PBXGroup;
 			children = (
+				8E0A6CC62965B18C00F79B35 /* Cache */,
 				8EA9B9732964C2E1005E6080 /* Helpers */,
 				8EA9B9702964B935005E6080 /* Presentation */,
 				8EA9B9372964946D005E6080 /* API */,
@@ -472,6 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				8EBEA6A02965860A000F1FC8 /* Infrastructure */,
+				8E0A6CCA2965B2F900F79B35 /* LocalBoosterSet.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -479,7 +512,7 @@
 		8EBEA6A02965860A000F1FC8 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				8EBEA6A12965865F000F1FC8 /* BoosterSetStore.xcdatamodeld */,
+				8E0A6CC02965B02500F79B35 /* CoreData */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -665,6 +698,7 @@
 				8EA9B9AE2964E30A005E6080 /* BoosterSetPresenter.swift in Sources */,
 				8EA9B9482964B4AF005E6080 /* BoosterSetsEndPoint.swift in Sources */,
 				8EA9B9432964B006005E6080 /* BoosterSet.swift in Sources */,
+				8E0A6CCB2965B2F900F79B35 /* LocalBoosterSet.swift in Sources */,
 				8EA9B9AC2964E2BA005E6080 /* BoosterSetViewModel.swift in Sources */,
 				8EA9B9672964B7E4005E6080 /* BoosterSetsPresenter.swift in Sources */,
 				8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */,
@@ -673,7 +707,8 @@
 				8EA9B93E2964A214005E6080 /* DateFormatter+Helpers.swift in Sources */,
 				8EA9B9822964CB50005E6080 /* ResourceErrorView.swift in Sources */,
 				8EA9B9782964C796005E6080 /* LoadResourcePresenter.swift in Sources */,
-				8EBEA6A32965865F000F1FC8 /* BoosterSetStore.xcdatamodeld in Sources */,
+				8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */,
+				8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */,
 				8EA9B9402964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift in Sources */,
 				8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */,
 				8EA9B96F2964B8EE005E6080 /* BoosterSetsViewModel.swift in Sources */,
@@ -690,6 +725,7 @@
 				8EA9B9872964CD64005E6080 /* SharedLocalizationTestHelpers.swift in Sources */,
 				8EA9B93029649372005E6080 /* URLSessionHTTPClientTests.swift in Sources */,
 				8EA9B9942964D366005E6080 /* ImageDataMapperTests.swift in Sources */,
+				8E0A6CC92965B1C300F79B35 /* BoosterSetStoreSpecs.swift in Sources */,
 				8EA9B92E29649359005E6080 /* URLProtocolStub.swift in Sources */,
 				8EA9B939296499B2005E6080 /* BoosterSetsMapperTests.swift in Sources */,
 				8EA9B94A2964B5B5005E6080 /* BoosterSetsEndPointTests.swift in Sources */,
@@ -1119,12 +1155,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8EBEA6A12965865F000F1FC8 /* BoosterSetStore.xcdatamodeld */ = {
+		8E0A6CC12965B05900F79B35 /* BoosterSetStore.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8EBEA6A22965865F000F1FC8 /* BoosterSetStore.xcdatamodel */,
+				8E0A6CC22965B05A00F79B35 /* BoosterSetStore.xcdatamodel */,
 			);
-			currentVersion = 8EBEA6A22965865F000F1FC8 /* BoosterSetStore.xcdatamodel */;
+			currentVersion = 8E0A6CC22965B05A00F79B35 /* BoosterSetStore.xcdatamodel */;
 			path = BoosterSetStore.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
