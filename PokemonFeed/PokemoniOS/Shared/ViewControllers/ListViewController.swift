@@ -28,6 +28,7 @@ public final class ListViewController: UITableViewController {
     private func setupUI(){
         dataSource.defaultRowAnimation = .fade
         tableView.dataSource = dataSource
+        configureTableView?(tableView)
     }
     
     public func display(_ cellControllers: [CellController]) {

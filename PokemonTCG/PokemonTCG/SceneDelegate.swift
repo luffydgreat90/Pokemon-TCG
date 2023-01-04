@@ -28,11 +28,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func configureWindow() {
-        window?.rootViewController = UINavigationController(rootViewController: UIViewController())
+        window?.rootViewController = UINavigationController(rootViewController: makeBoosterSetsViewController())
         window?.makeKeyAndVisible()
         
     }
 
+    private func makeBoosterSetsViewController() -> ListViewController {
+        return BoosterSetsUIComposer.boosterSetsComposedWith(
+            boosterSetsLoader: makeRemoteBoosterSetsLoader,
+            imageLoader: makeLImageLoader)
+    }
+    
+    private func makeRemoteBoosterSetsLoader() -> AnyPublisher<[BoosterSet], Error> {
+        let url = BoosterSetsEndPoint.get.url(baseURL: baseURL)
 
+        return httpClient
+            .getPublisher(url: url)
+            .tryMap(BoosterSetsMapper.map)
+            .eraseToAnyPublisher()
+    }
+    
+    private func makeLImageLoader(url: URL) -> AnyPublisher<Data, Error> {
+        return httpClient
+            .getPublisher(url: url)
+            .tryMap(ImageDataMapper.map)
+            .eraseToAnyPublisher()
+    }
 }
 

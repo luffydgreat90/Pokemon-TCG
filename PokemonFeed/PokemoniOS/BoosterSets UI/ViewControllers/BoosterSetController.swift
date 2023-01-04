@@ -37,7 +37,7 @@ public final class BoosterSetController: NSObject {
 extension BoosterSetController: UITableViewDataSource{
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         cell = tableView.dequeueReusableCell()
-        
+        cell?.titleLabel.text = viewModel.title
         return cell!
     }
     

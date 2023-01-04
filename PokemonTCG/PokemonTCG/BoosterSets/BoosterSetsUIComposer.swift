@@ -21,9 +21,13 @@ public enum BoosterSetsUIComposer {
             let presentationAdapter = BoosterSetsPresentationAdapter(loader: boosterSetsLoader)
             
             let listViewController = ListViewController()
-            listViewController.title = BoosterSetsPresenter.title
-            listViewController.onRefresh = presentationAdapter.loadResource
             
+            listViewController.configureTableView = { tableView in
+                tableView.register(BoosterSetCell.self)
+            }
+            
+            listViewController.title = BoosterSetsPresenter.title
+        
             presentationAdapter.presenter = LoadResourcePresenter(
                 resourceView: BoosterSetsViewAdapter(
                     controller: listViewController,
@@ -31,6 +35,10 @@ public enum BoosterSetsUIComposer {
                 loadingView: WeakRefVirtualProxy(listViewController),
                 errorView: WeakRefVirtualProxy(listViewController),
                 mapper: BoosterSetsPresenter.map)
+            
+           
+            
+            listViewController.onRefresh = presentationAdapter.loadResource
             
             return listViewController
     }
@@ -57,6 +65,7 @@ final class BoosterSetsViewAdapter: ResourceView {
             
             let controller = BoosterSetController(viewModel: BoosterSetPresenter.map(model),
                                                   delegate: adapter)
+
             
             adapter.presenter = LoadResourcePresenter(
                 resourceView: WeakRefVirtualProxy(controller),

@@ -66,9 +66,7 @@ public final class BoosterSetCell: UITableViewCell {
             containerStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             containerStack.topAnchor.constraint(equalTo: topAnchor, constant: 8).withPriority(999),
             containerStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).withPriority(999),
-            containerStack.centerYAnchor.constraint(equalTo: centerYAnchor),
-            boosterSetImageView.widthAnchor.constraint(equalToConstant: 50.0),
-            titleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 35.0)
-        ])
+            boosterSetImageView.widthAnchor.constraint(equalToConstant: 100.0),
+            boosterSetImageView.heightAnchor.constraint(equalToConstant: 100.0),        ])
     }
 }
