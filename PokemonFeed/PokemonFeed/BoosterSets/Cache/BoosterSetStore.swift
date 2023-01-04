@@ -21,7 +21,7 @@ public protocol BoosterSetStore {
     
     /// The completion handler can be invoked in any thread.
     /// Clients are responsible to dispatch to appropriate threads, if needed.
-    func deleteCachedFeed(completion: @escaping DeletionCompletion)
+    func deleteCachedBoosterSet(completion: @escaping DeletionCompletion)
 
     /// The completion handler can be invoked in any thread.
     /// Clients are responsible to dispatch to appropriate threads, if needed.

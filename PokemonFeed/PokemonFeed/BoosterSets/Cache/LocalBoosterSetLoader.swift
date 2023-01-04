@@ -21,11 +21,25 @@ extension LocalBoosterSetLoader: BoosterSetCache {
     public typealias SaveResult = BoosterSetCache.Result
     
     public func save(_ feed: [BoosterSet], completion: @escaping (SaveResult) -> Void) {
-        
+        store.deleteCachedBoosterSet { [weak self] deletionResult in
+            guard let self = self else { return }
+
+            switch deletionResult {
+            case .success:
+                self.cache(feed, with: completion)
+
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
     }
     
-    private func cache(_ feed: [BoosterSet], with completion: @escaping (SaveResult) -> Void) {
-        
+    private func cache(_ boosterSets: [BoosterSet], with completion: @escaping (SaveResult) -> Void) {
+        store.insert(boosterSets.toLocal(), timestamp: currentDate()) { [weak self] insertionResult in
+            guard self != nil else { return }
+
+            completion(insertionResult)
+        }
     }
 }
 
@@ -51,7 +65,23 @@ extension LocalBoosterSetLoader {
     
 }
 
-private extension Array where Element == LocalBoosterSet {
+public extension Array where Element == BoosterSet {
+    func toLocal() -> [LocalBoosterSet] {
+        return map {
+            LocalBoosterSet(
+                id: $0.id,
+                name: $0.name,
+                series: $0.series,
+                printedTotal: $0.printedTotal,
+                total: $0.total,
+                legalities: LocalLegalities(isUnlimited: $0.legalities.isUnlimited, isStandard: $0.legalities.isStandard, isExpanded: $0.legalities.isExpanded),
+                releaseDate: $0.releaseDate,
+                images: LocalImages(symbol: $0.images.symbol, logo: $0.images.logo))
+        }
+    }
+}
+
+public extension Array where Element == LocalBoosterSet {
     func toModels() -> [BoosterSet] {
         return map { BoosterSet(
             id: $0.id,

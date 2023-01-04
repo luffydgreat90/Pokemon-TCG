@@ -18,7 +18,7 @@ extension CoreDataBoosterSetStore: BoosterSetStore {
         }
     }
     
-    public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
+    public func deleteCachedBoosterSet(completion: @escaping DeletionCompletion) {
         perform { context in
             completion(Result {
                 try ManagedBoosterSetCache.find(in: context).map(context.delete).map(context.save)

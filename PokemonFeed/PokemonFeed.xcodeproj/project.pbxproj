@@ -21,6 +21,7 @@
 		8E0A6CDD2965C79600F79B35 /* BoosterSetStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CDC2965C79600F79B35 /* BoosterSetStoreSpy.swift */; };
 		8E0A6CDF2965C87B00F79B35 /* LoadBoosterSetFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CDE2965C87B00F79B35 /* LoadBoosterSetFromCacheUseCaseTests.swift */; };
 		8E0A6CE12965CA6800F79B35 /* BoosterSetCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CE02965CA6800F79B35 /* BoosterSetCachePolicy.swift */; };
+		8E0A6CE32965CE9200F79B35 /* BoosterSetCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CE22965CE9200F79B35 /* BoosterSetCacheTestHelpers.swift */; };
 		8EA9B91029648B36005E6080 /* PokemonFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA9B90729648B36005E6080 /* PokemonFeed.framework */; };
 		8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B926296492BC005E6080 /* HTTPClient.swift */; };
 		8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B92829649315005E6080 /* URLSessionHTTPClient.swift */; };
@@ -97,6 +98,7 @@
 		8E0A6CDC2965C79600F79B35 /* BoosterSetStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetStoreSpy.swift; sourceTree = "<group>"; };
 		8E0A6CDE2965C87B00F79B35 /* LoadBoosterSetFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBoosterSetFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		8E0A6CE02965CA6800F79B35 /* BoosterSetCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetCachePolicy.swift; sourceTree = "<group>"; };
+		8E0A6CE22965CE9200F79B35 /* BoosterSetCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetCacheTestHelpers.swift; sourceTree = "<group>"; };
 		8EA9B90729648B36005E6080 /* PokemonFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PokemonFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B90F29648B36005E6080 /* PokemonFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B926296492BC005E6080 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				8E0A6CDC2965C79600F79B35 /* BoosterSetStoreSpy.swift */,
+				8E0A6CE22965CE9200F79B35 /* BoosterSetCacheTestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -780,6 +783,7 @@
 				8EA9B93029649372005E6080 /* URLSessionHTTPClientTests.swift in Sources */,
 				8EA9B9942964D366005E6080 /* ImageDataMapperTests.swift in Sources */,
 				8E0A6CC92965B1C300F79B35 /* BoosterSetStoreSpecs.swift in Sources */,
+				8E0A6CE32965CE9200F79B35 /* BoosterSetCacheTestHelpers.swift in Sources */,
 				8E0A6CDD2965C79600F79B35 /* BoosterSetStoreSpy.swift in Sources */,
 				8EA9B92E29649359005E6080 /* URLProtocolStub.swift in Sources */,
 				8E0A6CDF2965C87B00F79B35 /* LoadBoosterSetFromCacheUseCaseTests.swift in Sources */,
