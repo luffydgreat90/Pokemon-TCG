@@ -23,6 +23,8 @@
 		8E0A6CE12965CA6800F79B35 /* BoosterSetCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CE02965CA6800F79B35 /* BoosterSetCachePolicy.swift */; };
 		8E0A6CE32965CE9200F79B35 /* BoosterSetCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CE22965CE9200F79B35 /* BoosterSetCacheTestHelpers.swift */; };
 		8E0A6CE52965D21000F79B35 /* ValidateBoosterSetsCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CE42965D21000F79B35 /* ValidateBoosterSetsCacheUseCaseTests.swift */; };
+		8E0A6CE82965D73400F79B35 /* ImageDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CE72965D73400F79B35 /* ImageDataStore.swift */; };
+		8E0A6CEB2965D80100F79B35 /* CoreDataBoosterSetStore+ImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CEA2965D80100F79B35 /* CoreDataBoosterSetStore+ImageDataLoader.swift */; };
 		8EA9B91029648B36005E6080 /* PokemonFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA9B90729648B36005E6080 /* PokemonFeed.framework */; };
 		8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B926296492BC005E6080 /* HTTPClient.swift */; };
 		8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B92829649315005E6080 /* URLSessionHTTPClient.swift */; };
@@ -101,6 +103,8 @@
 		8E0A6CE02965CA6800F79B35 /* BoosterSetCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetCachePolicy.swift; sourceTree = "<group>"; };
 		8E0A6CE22965CE9200F79B35 /* BoosterSetCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetCacheTestHelpers.swift; sourceTree = "<group>"; };
 		8E0A6CE42965D21000F79B35 /* ValidateBoosterSetsCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateBoosterSetsCacheUseCaseTests.swift; sourceTree = "<group>"; };
+		8E0A6CE72965D73400F79B35 /* ImageDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataStore.swift; sourceTree = "<group>"; };
+		8E0A6CEA2965D80100F79B35 /* CoreDataBoosterSetStore+ImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataBoosterSetStore+ImageDataLoader.swift"; sourceTree = "<group>"; };
 		8EA9B90729648B36005E6080 /* PokemonFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PokemonFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B90F29648B36005E6080 /* PokemonFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B926296492BC005E6080 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				8E0A6CD92965C3A700F79B35 /* CoreDataBoosterSetStore+BoosterSetStore.swift */,
 				8E0A6CD22965BA0300F79B35 /* ManagedBoosterSetCache.swift */,
 				8E0A6CD42965BAF300F79B35 /* ManagedBoosterSet.swift */,
+				8E0A6CEA2965D80100F79B35 /* CoreDataBoosterSetStore+ImageDataLoader.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -232,6 +237,21 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		8E0A6CE62965D6D100F79B35 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				8E0A6CE72965D73400F79B35 /* ImageDataStore.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		8E0A6CE92965D76000F79B35 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
 		8EA9B8FD29648B36005E6080 = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +277,7 @@
 		8EA9B90929648B36005E6080 /* PokemonFeed */ = {
 			isa = PBXGroup;
 			children = (
+				8E0A6CE92965D76000F79B35 /* Cards */,
 				8EA9B98C2964D185005E6080 /* Image */,
 				8EA9B924296492A3005E6080 /* Shared */,
 				8EA9B91F29648B64005E6080 /* BoosterSets */,
@@ -298,6 +319,7 @@
 		8EA9B924296492A3005E6080 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8E0A6CE62965D6D100F79B35 /* Cache */,
 				8EA9B9762964C77C005E6080 /* Presentation */,
 				8EA9B925296492AA005E6080 /* API */,
 			);
@@ -772,7 +794,9 @@
 				8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */,
 				8EA9B96F2964B8EE005E6080 /* BoosterSetsViewModel.swift in Sources */,
 				8E0A6CD32965BA0300F79B35 /* ManagedBoosterSetCache.swift in Sources */,
+				8E0A6CEB2965D80100F79B35 /* CoreDataBoosterSetStore+ImageDataLoader.swift in Sources */,
 				8EA9B98E2964D19C005E6080 /* ImageDataMapper.swift in Sources */,
+				8E0A6CE82965D73400F79B35 /* ImageDataStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

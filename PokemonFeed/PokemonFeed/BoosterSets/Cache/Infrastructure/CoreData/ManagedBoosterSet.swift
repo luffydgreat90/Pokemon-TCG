@@ -44,6 +44,14 @@ extension ManagedBoosterSet {
         })
     }
     
+    static func first(with url: URL, in context: NSManagedObjectContext) throws -> ManagedBoosterSet? {
+        let request = NSFetchRequest<ManagedBoosterSet>(entityName: entity().name!)
+        request.predicate = NSPredicate(format: "%K = %@", argumentArray: [#keyPath(ManagedBoosterSet.logo), url])
+        request.returnsObjectsAsFaults = false
+        request.fetchLimit = 1
+        return try context.fetch(request).first
+    }
+    
     var local: LocalBoosterSet {
         return LocalBoosterSet(
             id: id,
