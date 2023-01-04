@@ -16,6 +16,7 @@
 		8E0A6CD12965B7EE00F79B35 /* BoosterSetCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CD02965B7EE00F79B35 /* BoosterSetCache.swift */; };
 		8E0A6CD32965BA0300F79B35 /* ManagedBoosterSetCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CD22965BA0300F79B35 /* ManagedBoosterSetCache.swift */; };
 		8E0A6CD52965BAF300F79B35 /* ManagedBoosterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CD42965BAF300F79B35 /* ManagedBoosterSet.swift */; };
+		8E0A6CD82965C27500F79B35 /* CoreData+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CD72965C27500F79B35 /* CoreData+Helpers.swift */; };
 		8EA9B91029648B36005E6080 /* PokemonFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA9B90729648B36005E6080 /* PokemonFeed.framework */; };
 		8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B926296492BC005E6080 /* HTTPClient.swift */; };
 		8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B92829649315005E6080 /* URLSessionHTTPClient.swift */; };
@@ -87,6 +88,7 @@
 		8E0A6CD02965B7EE00F79B35 /* BoosterSetCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetCache.swift; sourceTree = "<group>"; };
 		8E0A6CD22965BA0300F79B35 /* ManagedBoosterSetCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedBoosterSetCache.swift; sourceTree = "<group>"; };
 		8E0A6CD42965BAF300F79B35 /* ManagedBoosterSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedBoosterSet.swift; sourceTree = "<group>"; };
+		8E0A6CD72965C27500F79B35 /* CoreData+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Helpers.swift"; sourceTree = "<group>"; };
 		8EA9B90729648B36005E6080 /* PokemonFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PokemonFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B90F29648B36005E6080 /* PokemonFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B926296492BC005E6080 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		8E0A6CC02965B02500F79B35 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				8E0A6CD62965C26900F79B35 /* Helpers */,
 				8E0A6CC12965B05900F79B35 /* BoosterSetStore.xcdatamodeld */,
 				8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */,
 				8E0A6CD22965BA0300F79B35 /* ManagedBoosterSetCache.swift */,
@@ -192,6 +195,14 @@
 			isa = PBXGroup;
 			children = (
 				8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8E0A6CD62965C26900F79B35 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8E0A6CD72965C27500F79B35 /* CoreData+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -712,6 +723,7 @@
 			files = (
 				8EA9B9AE2964E30A005E6080 /* BoosterSetPresenter.swift in Sources */,
 				8EA9B9482964B4AF005E6080 /* BoosterSetsEndPoint.swift in Sources */,
+				8E0A6CD82965C27500F79B35 /* CoreData+Helpers.swift in Sources */,
 				8EA9B9432964B006005E6080 /* BoosterSet.swift in Sources */,
 				8E0A6CCB2965B2F900F79B35 /* LocalBoosterSet.swift in Sources */,
 				8EA9B9AC2964E2BA005E6080 /* BoosterSetViewModel.swift in Sources */,
