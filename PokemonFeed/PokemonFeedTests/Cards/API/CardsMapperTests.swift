@@ -8,7 +8,7 @@
 import PokemonFeed
 import XCTest
 
-public enum CardsMapper{
+public enum CardsMapper {
     private struct Root: Decodable {
         let data: [RemoteCard]
     }
@@ -56,9 +56,36 @@ public enum CardsMapper{
         let avg7: Double
         let avg30: Double
     }
+    
+    private enum Error: Swift.Error {
+        case invalidData
+    }
+    
+    public static func map(_ data: Data, from response: HTTPURLResponse) throws -> [BoosterSet] {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(.yearMonthDay)
+        
+        guard response.isOK, let root = try? decoder.decode(Root.self, from: data) else {
+            throw Error.invalidData
+        }
+        
+        return []
+    }
 }
 
 
-public enum CardsMapperTests {
-    
+public class CardsMapperTests: XCTestCase {
+    func test_map_throws_error() throws {
+        
+        let json = anyData()
+        let samples = [199, 201, 300, 400, 500]
+        
+        try samples.forEach { code in
+            XCTAssertThrowsError(
+                try CardsMapper.map(json, from: HTTPURLResponse(statusCode: code)),
+                "code is \(code)"
+            )
+        }
+        
+    }
 }
