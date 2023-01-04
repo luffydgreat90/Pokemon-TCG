@@ -26,8 +26,10 @@ public final class ListViewController: UITableViewController {
     }
     
     private func setupUI(){
+        refreshControl = UIRefreshControl(frame: .zero)
         dataSource.defaultRowAnimation = .fade
         tableView.dataSource = dataSource
+        tableView.prefetchDataSource = self
         configureTableView?(tableView)
     }
     

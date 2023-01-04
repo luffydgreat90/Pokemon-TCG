@@ -35,6 +35,7 @@ public final class BoosterSetCell: UITableViewCell {
     public private(set) var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textColor = .black
+        titleLabel.numberOfLines = 0
         titleLabel.font = .systemFont(ofSize: 16.0, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel

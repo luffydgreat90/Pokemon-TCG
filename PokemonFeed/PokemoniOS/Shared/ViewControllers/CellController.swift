@@ -18,6 +18,7 @@ public struct CellController {
         self.dataSource = dataSource
         delegate = dataSource as? UITableViewDelegate
         dataSourcePrefetching = dataSource as? UITableViewDataSourcePrefetching
+      
     }
 }
 
