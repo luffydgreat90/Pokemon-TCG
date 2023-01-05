@@ -11,11 +11,7 @@ class CardCollectionCell: UICollectionViewCell {
     
     public private(set) var containerStack: UIStackView = {
         let containerStack = UIStackView()
-        containerStack.layer.masksToBounds = true
-        containerStack.layer.cornerRadius = 8.0
-        containerStack.spacing = 8
         containerStack.axis = .vertical
-        containerStack.clipsToBounds = true
         containerStack.translatesAutoresizingMaskIntoConstraints = false
         containerStack.alignment = .center
         return containerStack
@@ -27,6 +23,7 @@ class CardCollectionCell: UICollectionViewCell {
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
     
@@ -37,6 +34,15 @@ class CardCollectionCell: UICollectionViewCell {
         titleLabel.font = .systemFont(ofSize: 16.0, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
+    }()
+    
+    public private(set) var priceLabel: UILabel = {
+        let priceLabel = UILabel()
+        priceLabel.textColor = .black
+        priceLabel.numberOfLines = 0
+        priceLabel.font = .systemFont(ofSize: 14.0, weight: .light)
+        priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        return priceLabel
     }()
     
     override init(frame: CGRect) {
@@ -53,6 +59,7 @@ class CardCollectionCell: UICollectionViewCell {
         addSubview(containerStack)
         containerStack.addArrangedSubview(cardImageView)
         containerStack.addArrangedSubview(titleLabel)
+        containerStack.addArrangedSubview(priceLabel)
     }
     
     private func setupAutoLayout() {

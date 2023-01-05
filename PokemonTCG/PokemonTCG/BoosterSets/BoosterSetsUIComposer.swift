@@ -16,7 +16,8 @@ public enum BoosterSetsUIComposer {
     
     public static func boosterSetsComposedWith(
         boosterSetsLoader: @escaping () -> AnyPublisher<[BoosterSet], Error>,
-        imageLoader: @escaping (URL) -> AnyPublisher<Data, Error>) -> ListViewController {
+        imageLoader: @escaping (URL) -> AnyPublisher<Data, Error>,
+        selection: @escaping (BoosterSet) -> Void) -> ListViewController {
             
             let presentationAdapter = BoosterSetsPresentationAdapter(loader: boosterSetsLoader)
             
@@ -31,7 +32,8 @@ public enum BoosterSetsUIComposer {
             presentationAdapter.presenter = LoadResourcePresenter(
                 resourceView: BoosterSetsViewAdapter(
                     controller: listViewController,
-                    imageLoader: imageLoader),
+                    imageLoader: imageLoader,
+                    selection: selection),
                 loadingView: WeakRefVirtualProxy(listViewController),
                 errorView: WeakRefVirtualProxy(listViewController),
                 mapper: BoosterSetsPresenter.map)
@@ -50,11 +52,14 @@ final class BoosterSetsViewAdapter: ResourceView {
     
     private weak var controller: ListViewController?
     private let imageLoader: (URL) -> AnyPublisher<Data, Error>
+    private let selection: (BoosterSet) -> Void
     
     init(controller: ListViewController? = nil,
-         imageLoader: @escaping (URL) -> AnyPublisher<Data, Error>) {
+         imageLoader: @escaping (URL) -> AnyPublisher<Data, Error>,
+         selection: @escaping (BoosterSet) -> Void) {
         self.controller = controller
         self.imageLoader = imageLoader
+        self.selection = selection
     }
     
     func display(_ viewModel: BoosterSetsViewModel) {
@@ -66,8 +71,12 @@ final class BoosterSetsViewAdapter: ResourceView {
                 imageLoader(model.images.symbol)
             })
             
-            let controller = BoosterSetController(viewModel: BoosterSetPresenter.map(model,dateFormat: dateFormatter),
-                                                  delegate: adapter)
+            let controller = BoosterSetController(
+                viewModel: BoosterSetPresenter.map(
+                    model,dateFormat: dateFormatter),
+                    delegate: adapter) { [selection] in
+                        selection(model)
+                    }
             
             adapter.presenter = LoadResourcePresenter(
                 resourceView: WeakRefVirtualProxy(controller),

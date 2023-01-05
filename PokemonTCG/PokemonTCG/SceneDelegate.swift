@@ -53,7 +53,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func makeBoosterSetsViewController() -> ListViewController {
         return BoosterSetsUIComposer.boosterSetsComposedWith(
             boosterSetsLoader: makeRemoteBoosterSetsLoader,
-            imageLoader: makeLImageLoader)
+            imageLoader: makeLImageLoader,
+            selection: showCard(for:))
     }
     
     private func makeRemoteBoosterSetsLoader() -> AnyPublisher<[BoosterSet], Error> {
@@ -79,6 +80,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     .caching(to: localImageLoader, using: url)
                 
             })
+    }
+    
+    private func showCard(for boosterSet: BoosterSet) {
+        let url = CardEndPoint.get(boosterSet.id).url(baseURL: baseURL)
+    }
+    
+    private func makeRemoteCardsLoader(url: URL) -> () -> AnyPublisher<[Card], Error> {
+        return { [httpClient] in
+            return httpClient
+                .getPublisher(url: url)
+                .tryMap(CardMapper.map)
+                .eraseToAnyPublisher()
+        }
     }
 }
 

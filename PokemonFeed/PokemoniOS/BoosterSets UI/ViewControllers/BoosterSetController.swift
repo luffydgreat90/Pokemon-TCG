@@ -14,10 +14,15 @@ public final class BoosterSetController: NSObject {
     private let viewModel: BoosterSetViewModel
     private let delegate: ImageControllerDelegate
     private var cell: BoosterSetCell?
+    private let selection: () -> Void
     
-    public init(viewModel: BoosterSetViewModel, delegate: ImageControllerDelegate) {
-        self.viewModel = viewModel
-        self.delegate = delegate
+    public init(
+        viewModel: BoosterSetViewModel,
+        delegate: ImageControllerDelegate,
+        selection: @escaping () -> Void) {
+            self.viewModel = viewModel
+            self.delegate = delegate
+            self.selection = selection
     }
     
     private func requestImage() {
@@ -59,6 +64,12 @@ extension BoosterSetController: UITableViewDataSourcePrefetching {
     
     public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         cancel()
+    }
+}
+
+extension BoosterSetController: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selection()
     }
 }
 
