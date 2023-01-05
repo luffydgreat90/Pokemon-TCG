@@ -59,7 +59,7 @@ final class BoosterSetsViewAdapter: ResourceView {
     
     func display(_ viewModel: BoosterSetsViewModel) {
         
-        let dateFormatter = DateFormatter.yearMonthDay
+        let dateFormatter = DateFormatter.monthDayYear
         
         controller?.display(viewModel.sets.map({ model in
             let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in

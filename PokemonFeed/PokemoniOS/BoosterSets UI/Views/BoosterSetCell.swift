@@ -42,13 +42,10 @@ public final class BoosterSetCell: UITableViewCell {
         return containerStack
     }()
     
-    public private(set) var containerVerticalStack: UIStackView = {
-        let containerVerticalStack = UIStackView()
-        containerVerticalStack.translatesAutoresizingMaskIntoConstraints = false
-        containerVerticalStack.axis = .vertical
-        containerVerticalStack.distribution = .fillProportionally
-        containerVerticalStack.alignment = .top
-        return containerVerticalStack
+    private var containerDetailsView: UIView = {
+        let containerDetailsView = UIView()
+        containerDetailsView.translatesAutoresizingMaskIntoConstraints = false
+        return containerDetailsView
     }()
     
     public private(set) var titleLabel: UILabel = {
@@ -69,6 +66,15 @@ public final class BoosterSetCell: UITableViewCell {
         return numberLabel
     }()
     
+    public private(set) var releaseDateLabel: UILabel = {
+        let releaseDateLabel = UILabel()
+        releaseDateLabel.textColor = .black
+        releaseDateLabel.numberOfLines = 0
+        releaseDateLabel.font = .systemFont(ofSize: 14.0, weight: .regular)
+        releaseDateLabel.translatesAutoresizingMaskIntoConstraints = false
+        return releaseDateLabel
+    }()
+    
     private override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         self.accessibilityIdentifier = reuseIdentifier
@@ -83,11 +89,11 @@ public final class BoosterSetCell: UITableViewCell {
     private func setupUI() {
         addSubview(containerStack)
         containerStack.addArrangedSubview(containerImageView)
-        containerStack.addArrangedSubview(containerVerticalStack)
-        containerImageView.addSubview(boosterSetImageView)
+        containerStack.addArrangedSubview(containerDetailsView)
         
-        containerVerticalStack.addArrangedSubview(titleLabel)
-        containerVerticalStack.addArrangedSubview(numberLabel)
+        containerImageView.addSubview(boosterSetImageView)
+        containerDetailsView.addSubviews(views: [titleLabel,numberLabel, releaseDateLabel])
+
     }
     
     private func setupAutoLayout() {
@@ -104,6 +110,20 @@ public final class BoosterSetCell: UITableViewCell {
             boosterSetImageView.trailingAnchor.constraint(equalTo: containerImageView.trailingAnchor, constant: -8),
             boosterSetImageView.topAnchor.constraint(equalTo: containerImageView.topAnchor, constant: 8),
             boosterSetImageView.bottomAnchor.constraint(equalTo: containerImageView.bottomAnchor, constant: -8),
+            
+            titleLabel.topAnchor.constraint(equalTo: containerDetailsView.topAnchor, constant: 8),
+            titleLabel.leadingAnchor.constraint(equalTo: containerDetailsView.leadingAnchor, constant: 8),
+            titleLabel.trailingAnchor.constraint(equalTo: containerDetailsView.trailingAnchor, constant: -8),
+            
+            numberLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
+            numberLabel.leadingAnchor.constraint(equalTo: containerDetailsView.leadingAnchor, constant: 8),
+            numberLabel.trailingAnchor.constraint(equalTo: containerDetailsView.trailingAnchor, constant: -8),
+            
+            releaseDateLabel.topAnchor.constraint(equalTo: numberLabel.bottomAnchor, constant: 4),
+            releaseDateLabel.leadingAnchor.constraint(equalTo: containerDetailsView.leadingAnchor, constant: 8),
+            releaseDateLabel.trailingAnchor.constraint(equalTo: containerDetailsView.trailingAnchor, constant: -8),
+            
+            
         ])
     }
 }

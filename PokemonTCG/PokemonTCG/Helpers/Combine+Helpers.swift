@@ -37,6 +37,7 @@ extension Publisher {
     }
 }
 
+
 extension Publisher where Output == Data {
     func caching(to cache: ImageDataCache, using url: URL) -> AnyPublisher<Output, Failure> {
         handleEvents(receiveOutput: { data in

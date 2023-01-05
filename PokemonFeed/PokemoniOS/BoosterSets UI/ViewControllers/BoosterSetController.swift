@@ -39,6 +39,7 @@ extension BoosterSetController: UITableViewDataSource{
         cell = tableView.dequeueReusableCell()
         cell?.titleLabel.text = viewModel.title
         cell?.numberLabel.text = viewModel.totalCards
+        cell?.releaseDateLabel.text = viewModel.releaseDate
         cell?.boosterSetImageView.image = nil
         requestImage()
         
@@ -68,7 +69,7 @@ extension BoosterSetController: ResourceView, ResourceLoadingView, ResourceError
     }
     
     public func display(_ viewModel: ResourceLoadingViewModel) {
-        
+        cell?.imageView?.isShimmering = viewModel.isLoading
     }
     
     public func display(_ viewModel: ResourceErrorViewModel) {
