@@ -39,6 +39,10 @@
 		8E0A6D0C2966351100F79B35 /* CardEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D0B2966351100F79B35 /* CardEndPoint.swift */; };
 		8E0A6D0E2966369100F79B35 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D0D2966369100F79B35 /* CollectionViewController.swift */; };
 		8E0A6D12296636D600F79B35 /* CollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D11296636D600F79B35 /* CollectionController.swift */; };
+		8E0A6D1729663F5100F79B35 /* CardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D1629663F5100F79B35 /* CardCollectionCell.swift */; };
+		8E0A6D1929663F6D00F79B35 /* CardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D1829663F6D00F79B35 /* CardController.swift */; };
+		8E0A6D1C296640C400F79B35 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D1B296640C400F79B35 /* CardViewModel.swift */; };
+		8E0A6D1E2966423C00F79B35 /* UICollectionView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D1D2966423C00F79B35 /* UICollectionView+Dequeueing.swift */; };
 		8EA9B91029648B36005E6080 /* PokemonFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA9B90729648B36005E6080 /* PokemonFeed.framework */; };
 		8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B926296492BC005E6080 /* HTTPClient.swift */; };
 		8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B92829649315005E6080 /* URLSessionHTTPClient.swift */; };
@@ -133,6 +137,10 @@
 		8E0A6D0B2966351100F79B35 /* CardEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEndPoint.swift; sourceTree = "<group>"; };
 		8E0A6D0D2966369100F79B35 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		8E0A6D11296636D600F79B35 /* CollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionController.swift; sourceTree = "<group>"; };
+		8E0A6D1629663F5100F79B35 /* CardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionCell.swift; sourceTree = "<group>"; };
+		8E0A6D1829663F6D00F79B35 /* CardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardController.swift; sourceTree = "<group>"; };
+		8E0A6D1B296640C400F79B35 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		8E0A6D1D2966423C00F79B35 /* UICollectionView+Dequeueing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Dequeueing.swift"; sourceTree = "<group>"; };
 		8EA9B90729648B36005E6080 /* PokemonFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PokemonFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B90F29648B36005E6080 /* PokemonFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B926296492BC005E6080 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -277,6 +285,7 @@
 		8E0A6CE92965D76000F79B35 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				8E0A6D1A29663F9700F79B35 /* Presentation */,
 				8E0A6D0429662BC600F79B35 /* Domain */,
 				8E0A6CFC2966090600F79B35 /* API */,
 			);
@@ -367,6 +376,39 @@
 				8E0A6D11296636D600F79B35 /* CollectionController.swift */,
 			);
 			path = Collection;
+			sourceTree = "<group>";
+		};
+		8E0A6D1329663CAA00F79B35 /* Cards UI */ = {
+			isa = PBXGroup;
+			children = (
+				8E0A6D1529663CC300F79B35 /* ViewControllers */,
+				8E0A6D1429663CBE00F79B35 /* Views */,
+			);
+			path = "Cards UI";
+			sourceTree = "<group>";
+		};
+		8E0A6D1429663CBE00F79B35 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8E0A6D1629663F5100F79B35 /* CardCollectionCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8E0A6D1529663CC300F79B35 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8E0A6D1829663F6D00F79B35 /* CardController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8E0A6D1A29663F9700F79B35 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				8E0A6D1B296640C400F79B35 /* CardViewModel.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		8EA9B8FD29648B36005E6080 = {
@@ -523,6 +565,7 @@
 		8EA9B9512964B699005E6080 /* PokemoniOS */ = {
 			isa = PBXGroup;
 			children = (
+				8E0A6D1329663CAA00F79B35 /* Cards UI */,
 				8E0A6CF92965E67100F79B35 /* Helpers */,
 				8EA9B9972964D443005E6080 /* BoosterSets UI */,
 				8EA9B9902964D33A005E6080 /* Shared */,
@@ -619,6 +662,7 @@
 				8EA9B99C2964D951005E6080 /* NSLayoutConstraint+Helpers.swift */,
 				8EA9B9A22964DA13005E6080 /* UIImage+TryMake.swift */,
 				8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */,
+				8E0A6D1D2966423C00F79B35 /* UICollectionView+Dequeueing.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -891,6 +935,7 @@
 				8E0A6CF32965DDBB00F79B35 /* LocalBoosterSetImageDataLoader.swift in Sources */,
 				8EA9B9AC2964E2BA005E6080 /* BoosterSetViewModel.swift in Sources */,
 				8E0A6CD12965B7EE00F79B35 /* BoosterSetCache.swift in Sources */,
+				8E0A6D1C296640C400F79B35 /* CardViewModel.swift in Sources */,
 				8EA9B9672964B7E4005E6080 /* BoosterSetsPresenter.swift in Sources */,
 				8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */,
 				8E0A6D0629662BE200F79B35 /* Card.swift in Sources */,
@@ -956,6 +1001,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EA9B99D2964D951005E6080 /* NSLayoutConstraint+Helpers.swift in Sources */,
+				8E0A6D1929663F6D00F79B35 /* CardController.swift in Sources */,
+				8E0A6D1E2966423C00F79B35 /* UICollectionView+Dequeueing.swift in Sources */,
+				8E0A6D1729663F5100F79B35 /* CardCollectionCell.swift in Sources */,
 				8EA9B9A32964DA13005E6080 /* UIImage+TryMake.swift in Sources */,
 				8EA9B99B2964D4BA005E6080 /* BoosterSetCell.swift in Sources */,
 				8E0A6CFB2965E68500F79B35 /* UIImageView+Animations.swift in Sources */,

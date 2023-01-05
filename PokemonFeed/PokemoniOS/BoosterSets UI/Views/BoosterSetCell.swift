@@ -63,14 +63,10 @@ public final class BoosterSetCell: UITableViewCell {
     }
     
     private func setupUI() {
-        selectionStyle = .none
-        
         addSubview(containerStack)
         containerStack.addArrangedSubview(containerImageView)
         containerStack.addArrangedSubview(titleLabel)
-        
         containerImageView.addSubview(boosterSetImageView)
-        
     }
     
     private func setupAutoLayout() {
