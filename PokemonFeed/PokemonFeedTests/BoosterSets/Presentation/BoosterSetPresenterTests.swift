@@ -12,7 +12,8 @@ final class BoosterSetPresenterTests: XCTestCase {
     func test_map_createsViewModel() {
         let booster = uniqueBoosterSet()
 
-        let viewModel = BoosterSetPresenter.map(booster)
+        
+        let viewModel = BoosterSetPresenter.map(booster, dateFormat: DateFormatter.monthDayYear)
         XCTAssertEqual(viewModel.image, booster.images.logo)
         XCTAssertEqual(viewModel.title, booster.name)
     }
