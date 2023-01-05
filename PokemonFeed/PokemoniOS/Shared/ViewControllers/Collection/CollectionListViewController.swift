@@ -1,15 +1,13 @@
 //
-//  CollectionViewController.swift
+//  CollectionListViewController.swift
 //  PokemoniOS
 //
-//  Created by Marlon Ansale on 1/4/23.
+//  Created by Marlon Ansale on 1/5/23.
 //
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
-class CollectionViewController: UICollectionViewController {
+class CollectionListViewController: UICollectionViewController {
 
     private lazy var dataSource: UICollectionViewDiffableDataSource<Int, CollectionController> = {
         .init(collectionView: collectionView) { (collectionView, index, controller) in
@@ -20,14 +18,14 @@ class CollectionViewController: UICollectionViewController {
     public var onRefresh: (() -> Void)?
     
     /// Configure Cell and Layout.s
-    public var configureTableView: ((UICollectionView) -> Void)?
+    public var configureCollectionView: ((UICollectionView) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     private func setupUI(){
-        configureTableView?(collectionView)
+        configureCollectionView?(collectionView)
     }
 
     public func display(_ cellControllers: [CollectionController]) {
