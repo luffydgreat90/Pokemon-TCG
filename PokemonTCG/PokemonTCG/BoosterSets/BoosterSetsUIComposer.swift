@@ -58,14 +58,16 @@ final class BoosterSetsViewAdapter: ResourceView {
     }
     
     func display(_ viewModel: BoosterSetsViewModel) {
+        
+        let dateFormatter = DateFormatter.yearMonthDay
+        
         controller?.display(viewModel.sets.map({ model in
             let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in
                 imageLoader(model.images.symbol)
             })
             
-            let controller = BoosterSetController(viewModel: BoosterSetPresenter.map(model),
+            let controller = BoosterSetController(viewModel: BoosterSetPresenter.map(model,dateFormat: dateFormatter),
                                                   delegate: adapter)
-
             
             adapter.presenter = LoadResourcePresenter(
                 resourceView: WeakRefVirtualProxy(controller),

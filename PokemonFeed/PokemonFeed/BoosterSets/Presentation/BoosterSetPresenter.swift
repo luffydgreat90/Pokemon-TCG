@@ -8,9 +8,11 @@
 import Foundation
 
 public enum BoosterSetPresenter {
-    public static func map(_ boosterSet: BoosterSet) -> BoosterSetViewModel {
+    public static func map(_ boosterSet: BoosterSet, dateFormat:DateFormatter) -> BoosterSetViewModel {
         BoosterSetViewModel(
-            image: boosterSet.images.logo,
-            title: boosterSet.name)
+            image: boosterSet.images.symbol,
+            title: boosterSet.name,
+            totalCards: "Number of Cards: \(boosterSet.printedTotal)",
+            releaseDate: dateFormat.string(from: boosterSet.releaseDate))
     }
 }

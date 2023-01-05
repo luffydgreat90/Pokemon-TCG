@@ -45,7 +45,6 @@ class CardCollectionCell: UICollectionViewCell {
         setupAutoLayout()
     }
 
-    
     public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -67,4 +66,3 @@ class CardCollectionCell: UICollectionViewCell {
         ])
     }
 }
-

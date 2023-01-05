@@ -42,6 +42,15 @@ public final class BoosterSetCell: UITableViewCell {
         return containerStack
     }()
     
+    public private(set) var containerVerticalStack: UIStackView = {
+        let containerVerticalStack = UIStackView()
+        containerVerticalStack.translatesAutoresizingMaskIntoConstraints = false
+        containerVerticalStack.axis = .vertical
+        containerVerticalStack.distribution = .fillProportionally
+        containerVerticalStack.alignment = .top
+        return containerVerticalStack
+    }()
+    
     public private(set) var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textColor = .black
@@ -49,6 +58,15 @@ public final class BoosterSetCell: UITableViewCell {
         titleLabel.font = .systemFont(ofSize: 16.0, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
+    }()
+    
+    public private(set) var numberLabel: UILabel = {
+        let numberLabel = UILabel()
+        numberLabel.textColor = .black
+        numberLabel.numberOfLines = 0
+        numberLabel.font = .systemFont(ofSize: 14.0, weight: .regular)
+        numberLabel.translatesAutoresizingMaskIntoConstraints = false
+        return numberLabel
     }()
     
     private override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -65,8 +83,11 @@ public final class BoosterSetCell: UITableViewCell {
     private func setupUI() {
         addSubview(containerStack)
         containerStack.addArrangedSubview(containerImageView)
-        containerStack.addArrangedSubview(titleLabel)
+        containerStack.addArrangedSubview(containerVerticalStack)
         containerImageView.addSubview(boosterSetImageView)
+        
+        containerVerticalStack.addArrangedSubview(titleLabel)
+        containerVerticalStack.addArrangedSubview(numberLabel)
     }
     
     private func setupAutoLayout() {

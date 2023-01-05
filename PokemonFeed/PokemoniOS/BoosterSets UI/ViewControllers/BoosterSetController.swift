@@ -38,6 +38,7 @@ extension BoosterSetController: UITableViewDataSource{
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         cell = tableView.dequeueReusableCell()
         cell?.titleLabel.text = viewModel.title
+        cell?.numberLabel.text = viewModel.totalCards
         cell?.boosterSetImageView.image = nil
         requestImage()
         
