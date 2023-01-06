@@ -17,11 +17,11 @@ public struct Card: Hashable {
     public let flavorText: String?
     public let nationalPokedexNumbers: [Int]?
     public let legalities: Legalities
-    public let artist: String
+    public let artist: String?
     public let cardmarket: CardMarket
-    public let images: CardImages
+    public let images: CardImages?
     
-    public init(id: String, name: String, supertype: SuperType, types: [String]?, number: String, rarity: String?, flavorText: String?, nationalPokedexNumbers: [Int]?, legalities: Legalities, artist: String, cardmarket: CardMarket, images: CardImages) {
+    public init(id: String, name: String, supertype: SuperType, types: [String]?, number: String, rarity: String?, flavorText: String?, nationalPokedexNumbers: [Int]?, legalities: Legalities, artist: String?, cardmarket: CardMarket, images: CardImages?) {
         self.id = id
         self.name = name
         self.supertype = supertype

@@ -22,9 +22,9 @@ public enum CardMapper {
         let flavorText: String?
         let nationalPokedexNumbers: [Int]?
         let legalities: RemoteLegalities
-        let artist: String
+        let artist: String?
         let cardmarket: RemoteCardMarket
-        let images: RemoteImages
+        let images: RemoteImages?
     }
     
     private struct RemoteImages: Decodable {
@@ -68,7 +68,14 @@ public enum CardMapper {
         }
         
         return root.data.map {
-            Card(
+            
+            var cardImages:CardImages? = nil
+            
+            if let images = $0.images {
+                cardImages = CardImages(small: images.small, large: images.large)
+            }
+            
+            return Card(
                 id: $0.id,
                 name: $0.name,
                 supertype: SuperType.checkSupertype($0.supertype),
@@ -90,7 +97,7 @@ public enum CardMapper {
                                         avg1: $0.cardmarket.prices.avg1,
                                         avg7: $0.cardmarket.prices.avg7,
                                         avg30: $0.cardmarket.prices.avg30)),
-                images: CardImages(small: $0.images.small, large: $0.images.large))
+                images: cardImages)
         }
     }
 }

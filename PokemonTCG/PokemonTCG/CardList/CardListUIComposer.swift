@@ -60,8 +60,9 @@ final class CardListViewAdapter: ResourceView {
         
         let viewControllers = viewModel.cards.map({ model in
             
+            
             let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in
-                imageLoader(model.images.small)
+                imageLoader(model.images!.small)
             })
             
             let controller = CardController(
