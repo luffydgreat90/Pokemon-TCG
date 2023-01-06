@@ -32,6 +32,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         LocalBoosterSetLoader(store: store, currentDate: Date.init)
     }()
     
+    private lazy var navigationController: UINavigationController = {
+        UINavigationController(rootViewController: makeBoosterSetsViewController())
+    }()
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
     
@@ -44,7 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func configureWindow() {
-        window?.rootViewController = UINavigationController(rootViewController: makeBoosterSetsViewController())
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
     }
@@ -83,7 +87,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func showCard(for boosterSet: BoosterSet) {
-        //let url = CardEndPoint.get(boosterSet.id).url(baseURL: baseURL)
+        let url = CardEndPoint.get(boosterSet.id).url(baseURL: baseURL)
+        
+        let viewController = CardListUIComposer.cardListComposedWith(
+            cardList: makeRemoteCardsLoader(url: url),
+            imageLoader: makeLImageLoader(url:))
+        
+        navigationController.pushViewController(viewController, animated: true)
+    
     }
     
     private func makeRemoteCardsLoader(url: URL) -> () -> AnyPublisher<[Card], Error> {
