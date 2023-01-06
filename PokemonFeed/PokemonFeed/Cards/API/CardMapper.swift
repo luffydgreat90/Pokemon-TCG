@@ -60,7 +60,6 @@ public enum CardMapper {
     }
     
     public static func map(_ data: Data, from response: HTTPURLResponse) throws -> [Card] {
-        debugPrint("CardMapper \(data) \(response.statusCode)")
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(.yearMonthDay)
         

@@ -20,7 +20,6 @@ final class LoadResourcePresentationAdapter<Resource, View: ResourceView> {
     }
     
     func loadResource() {
-        debugPrint("loadResource")
         presenter?.didStartLoading()
         cancellable = loader()
             .dispatchOnMainQueue()

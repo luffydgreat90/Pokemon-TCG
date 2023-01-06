@@ -72,13 +72,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     private func showCard(for boosterSet: BoosterSet) {
         let url = CardEndPoint.get(boosterSet.id).url(baseURL: baseURL)
-        debugPrint("url \(url)")
         let viewController = CardListUIComposer.cardListComposedWith(
             cardList: makeRemoteCardsLoader(url: url),
             imageLoader: makeImageLoader(url:))
         
         navigationController.pushViewController(viewController, animated: true)
-    
     }
     
     private func makeImageLoader(url: URL) -> AnyPublisher<Data, Error> {

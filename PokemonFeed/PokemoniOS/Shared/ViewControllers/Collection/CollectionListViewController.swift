@@ -14,12 +14,14 @@ public final class CollectionListViewController: UICollectionViewController {
     
     public init(
         collectionViewLayout layout: UICollectionViewLayout,
-        onRefresh:(() -> Void)?) {
+        onRefresh:(() -> Void)?,
+        configureCollectionView: ((UICollectionView) -> Void)?
+    ) {
             self.onRefresh = onRefresh
             super.init(collectionViewLayout: layout)
             self.collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: layout)
-            self.collectionView.backgroundColor = .red
-            self.configureCollectionView?(self.collectionView)
+            configureCollectionView?(collectionView)
+            self.collectionView.dataSource = dataSource
     }
     
     required init?(coder: NSCoder) {
@@ -32,8 +34,6 @@ public final class CollectionListViewController: UICollectionViewController {
         }
     }()
     
-    /// Configure Cell and Layout.s
-    public var configureCollectionView: ((UICollectionView) -> Void)?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,6 @@ public final class CollectionListViewController: UICollectionViewController {
     }
     
     private func setupUI(){
-        collectionView.dataSource = dataSource
         onRefresh?()
     }
 

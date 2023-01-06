@@ -17,19 +17,17 @@ public enum CardListUIComposer {
     public static func cardListComposedWith(
         cardList: @escaping () -> AnyPublisher<[Card], Error>,
         imageLoader: @escaping (URL) -> AnyPublisher<Data, Error>) -> CollectionListViewController{
-            
             let adapter = CardListPresentationAdapter(loader: cardList)
+            let flowLayout = UICollectionViewFlowLayout()
+            flowLayout.itemSize = CGSize(width: 150, height: 150)
             
             let collectionViewController = CollectionListViewController(
-                collectionViewLayout: UICollectionViewFlowLayout(),
+                collectionViewLayout: flowLayout,
                 onRefresh: { [adapter] in
                     adapter.loadResource()
-            })
-
-            collectionViewController.configureCollectionView = { collectionView in
-                
-                collectionView.register(CardCollectionCell.self)
-            }
+                }) { collectionView in
+                    collectionView.register(CardCollectionCell.self)
+                }
             
             adapter.presenter = LoadResourcePresenter(
                 resourceView: CardListViewAdapter(
@@ -40,8 +38,6 @@ public enum CardListUIComposer {
                 mapper: CardsPresenter.map)
             
             adapter.loadResource()
-        
-            
 
             return collectionViewController
         }
