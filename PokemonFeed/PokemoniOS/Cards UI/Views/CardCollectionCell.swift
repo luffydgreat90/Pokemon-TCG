@@ -20,10 +20,11 @@ public final class CardCollectionCell: UICollectionViewCell {
     public private(set) var cardImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
-        imageView.backgroundColor = .lightGray
+        imageView.backgroundColor = .gray
         return imageView
     }()
     
@@ -31,7 +32,8 @@ public final class CardCollectionCell: UICollectionViewCell {
         let titleLabel = UILabel()
         titleLabel.textColor = .black
         titleLabel.numberOfLines = 0
-        titleLabel.font = .systemFont(ofSize: 16.0, weight: .bold)
+        titleLabel.textAlignment = .center
+        titleLabel.font = .systemFont(ofSize: 14.0, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
     }()
@@ -40,7 +42,8 @@ public final class CardCollectionCell: UICollectionViewCell {
         let priceLabel = UILabel()
         priceLabel.textColor = .black
         priceLabel.numberOfLines = 0
-        priceLabel.font = .systemFont(ofSize: 14.0, weight: .light)
+        priceLabel.textAlignment = .center
+        priceLabel.font = .systemFont(ofSize: 12.0, weight: .light)
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         return priceLabel
     }()
@@ -69,7 +72,9 @@ public final class CardCollectionCell: UICollectionViewCell {
             containerStack.topAnchor.constraint(equalTo: topAnchor, constant: 4).withPriority(999),
             containerStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4).withPriority(999),
             
-            cardImageView.heightAnchor.constraint(equalToConstant: 100)
+            cardImageView.heightAnchor.constraint(equalToConstant: 150),
+            cardImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
+            cardImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4)
         ])
     }
 }

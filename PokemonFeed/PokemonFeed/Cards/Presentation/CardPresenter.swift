@@ -9,7 +9,8 @@ import Foundation
 
 public enum CardPresenter {
     public static func map(_ card: Card) -> CardViewModel {
-        CardViewModel(name: card.name, price: "$\(String(describing: card.cardmarket.prices.trendPrice))")
+        let price = card.cardmarket.prices.trendPrice ?? 0.0
+        return CardViewModel(name: card.name, price: "$\(price)")
     }
     
 }

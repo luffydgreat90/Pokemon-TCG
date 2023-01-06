@@ -19,7 +19,8 @@ public enum CardListUIComposer {
         imageLoader: @escaping (URL) -> AnyPublisher<Data, Error>) -> CollectionListViewController{
             let adapter = CardListPresentationAdapter(loader: cardList)
             let flowLayout = UICollectionViewFlowLayout()
-            flowLayout.itemSize = CGSize(width: 150, height: 150)
+            flowLayout.itemSize = CGSize(width:110, height: 200)
+            flowLayout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
             
             let collectionViewController = CollectionListViewController(
                 collectionViewLayout: flowLayout,
