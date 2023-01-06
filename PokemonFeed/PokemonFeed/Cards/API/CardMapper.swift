@@ -25,6 +25,7 @@ public enum CardMapper {
         let artist: String?
         let cardmarket: RemoteCardMarket
         let images: RemoteImages?
+        let set: RemoteSet
     }
     
     private struct RemoteImages: Decodable {
@@ -53,6 +54,12 @@ public enum CardMapper {
         let avg1: Double?
         let avg7: Double?
         let avg30: Double?
+    }
+    
+    private struct RemoteSet: Decodable {
+        let id: String
+        let name: String
+        let series: String
     }
     
     private enum Error: Swift.Error {
@@ -97,7 +104,11 @@ public enum CardMapper {
                                         avg1: $0.cardmarket.prices.avg1,
                                         avg7: $0.cardmarket.prices.avg7,
                                         avg30: $0.cardmarket.prices.avg30)),
-                images: cardImages)
+                images: cardImages,
+                cardSet: CardSet(
+                    id: $0.set.id,
+                    name: $0.set.name,
+                    series: $0.set.series))
         }
     }
 }

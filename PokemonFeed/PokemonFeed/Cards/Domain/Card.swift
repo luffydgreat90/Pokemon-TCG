@@ -20,8 +20,9 @@ public struct Card: Hashable {
     public let artist: String?
     public let cardmarket: CardMarket
     public let images: CardImages?
+    public let cardSet: CardSet
     
-    public init(id: String, name: String, supertype: SuperType, types: [String]?, number: String, rarity: String?, flavorText: String?, nationalPokedexNumbers: [Int]?, legalities: Legalities, artist: String?, cardmarket: CardMarket, images: CardImages?) {
+    public init(id: String, name: String, supertype: SuperType, types: [String]?, number: String, rarity: String?, flavorText: String?, nationalPokedexNumbers: [Int]?, legalities: Legalities, artist: String?, cardmarket: CardMarket, images: CardImages?, cardSet: CardSet) {
         self.id = id
         self.name = name
         self.supertype = supertype
@@ -34,6 +35,7 @@ public struct Card: Hashable {
         self.artist = artist
         self.cardmarket = cardmarket
         self.images = images
+        self.cardSet = cardSet
     }
 }
 
@@ -92,4 +94,10 @@ public enum SuperType {
             default: return .unknown
         }
     }
+}
+
+public struct CardSet: Hashable {
+    let id: String
+    let name: String
+    let series: String
 }
