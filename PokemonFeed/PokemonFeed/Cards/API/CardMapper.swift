@@ -16,11 +16,9 @@ public enum CardMapper {
         let id: String
         let name: String
         let supertype: String
-        let types: [String]?
         let number: String
-        let rarity: String?
+        let rarity: String
         let flavorText: String?
-        let nationalPokedexNumbers: [Int]?
         let legalities: RemoteLegalities
         let artist: String?
         let cardmarket: RemoteCardMarket
@@ -50,10 +48,6 @@ public enum CardMapper {
         let lowPrice: Double?
         let trendPrice: Double?
         let reverseHoloTrend: Double?
-        let lowPriceExPlus: Double?
-        let avg1: Double?
-        let avg7: Double?
-        let avg30: Double?
     }
     
     private struct RemoteSet: Decodable {
@@ -86,11 +80,9 @@ public enum CardMapper {
                 id: $0.id,
                 name: $0.name,
                 supertype: SuperType.checkSupertype($0.supertype),
-                types: $0.types,
                 number: $0.number,
                 rarity: $0.rarity,
                 flavorText: $0.flavorText,
-                nationalPokedexNumbers: $0.nationalPokedexNumbers,
                 legalities: Legalities(isUnlimited: Legalities.checkLegality(legality: $0.legalities.unlimited), isStandard: Legalities.checkLegality(legality: $0.legalities.standard), isExpanded: Legalities.checkLegality(legality: $0.legalities.expanded)),
                 artist: $0.artist,
                 cardmarket: CardMarket(url: $0.cardmarket.url,
@@ -99,11 +91,7 @@ public enum CardMapper {
                                         averageSellPrice: $0.cardmarket.prices.averageSellPrice,
                                         lowPrice: $0.cardmarket.prices.lowPrice,
                                         trendPrice: $0.cardmarket.prices.trendPrice,
-                                        reverseHoloTrend: $0.cardmarket.prices.reverseHoloTrend,
-                                        lowPriceExPlus: $0.cardmarket.prices.lowPriceExPlus,
-                                        avg1: $0.cardmarket.prices.avg1,
-                                        avg7: $0.cardmarket.prices.avg7,
-                                        avg30: $0.cardmarket.prices.avg30)),
+                                        reverseHoloTrend: $0.cardmarket.prices.reverseHoloTrend)),
                 images: cardImages,
                 cardSet: CardSet(
                     id: $0.set.id,
