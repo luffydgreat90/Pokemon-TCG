@@ -45,6 +45,8 @@
 		8E0A6D222967837F00F79B35 /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D212967837F00F79B35 /* UIView+Shimmering.swift */; };
 		8E1AA7DC2968D07F001E05A9 /* CardStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7DA2968D07F001E05A9 /* CardStore.xcdatamodeld */; };
 		8E1AA7DE2968D40E001E05A9 /* SuperType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7DD2968D40E001E05A9 /* SuperType.swift */; };
+		8E1AA7E02968D8D0001E05A9 /* CoreDataCardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7DF2968D8D0001E05A9 /* CoreDataCardStore.swift */; };
+		8E1AA7E32968DA6D001E05A9 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7E22968DA6D001E05A9 /* CoreDataStore.swift */; };
 		8E4F6A4F29679EBE0022403A /* CardsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4F6A4E29679EBE0022403A /* CardsPresenter.swift */; };
 		8E4F6A5129679EF30022403A /* CardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4F6A5029679EF30022403A /* CardsViewModel.swift */; };
 		8E4F6A532967A2180022403A /* CardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4F6A522967A2180022403A /* CardController.swift */; };
@@ -150,6 +152,8 @@
 		8E0A6D212967837F00F79B35 /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmering.swift"; sourceTree = "<group>"; };
 		8E1AA7DB2968D07F001E05A9 /* CardStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CardStore.xcdatamodel; sourceTree = "<group>"; };
 		8E1AA7DD2968D40E001E05A9 /* SuperType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperType.swift; sourceTree = "<group>"; };
+		8E1AA7DF2968D8D0001E05A9 /* CoreDataCardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCardStore.swift; sourceTree = "<group>"; };
+		8E1AA7E22968DA6D001E05A9 /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		8E4F6A4E29679EBE0022403A /* CardsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsPresenter.swift; sourceTree = "<group>"; };
 		8E4F6A5029679EF30022403A /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
 		8E4F6A522967A2180022403A /* CardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardController.swift; sourceTree = "<group>"; };
@@ -282,7 +286,7 @@
 		8E0A6CE62965D6D100F79B35 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
-				8E1AA7D82968CF37001E05A9 /* CoreData */,
+				8E1AA7E12968DA05001E05A9 /* Infrastructure */,
 				8E0A6CE72965D73400F79B35 /* ImageDataStore.swift */,
 			);
 			path = Cache;
@@ -444,6 +448,7 @@
 			isa = PBXGroup;
 			children = (
 				8E1AA7DA2968D07F001E05A9 /* CardStore.xcdatamodeld */,
+				8E1AA7DF2968D8D0001E05A9 /* CoreDataCardStore.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -452,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				8E1AA7D92968CF4B001E05A9 /* Helpers */,
+				8E1AA7E22968DA6D001E05A9 /* CoreDataStore.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -462,6 +468,14 @@
 				8E0A6CD72965C27500F79B35 /* CoreData+Helpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8E1AA7E12968DA05001E05A9 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				8E1AA7D82968CF37001E05A9 /* CoreData */,
+			);
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 		8EA9B8FD29648B36005E6080 = {
@@ -983,6 +997,7 @@
 				8EA9B9AE2964E30A005E6080 /* BoosterSetPresenter.swift in Sources */,
 				8EA9B9482964B4AF005E6080 /* BoosterSetsEndPoint.swift in Sources */,
 				8E0A6CD82965C27500F79B35 /* CoreData+Helpers.swift in Sources */,
+				8E1AA7E32968DA6D001E05A9 /* CoreDataStore.swift in Sources */,
 				8EA9B9432964B006005E6080 /* BoosterSet.swift in Sources */,
 				8E0A6CCB2965B2F900F79B35 /* LocalBoosterSet.swift in Sources */,
 				8E0A6CF32965DDBB00F79B35 /* LocalBoosterSetImageDataLoader.swift in Sources */,
@@ -1014,6 +1029,7 @@
 				8E0A6CD52965BAF300F79B35 /* ManagedBoosterSet.swift in Sources */,
 				8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */,
 				8EA9B96F2964B8EE005E6080 /* BoosterSetsViewModel.swift in Sources */,
+				8E1AA7E02968D8D0001E05A9 /* CoreDataCardStore.swift in Sources */,
 				8E0A6CF82965DEB100F79B35 /* ImageDataLoader.swift in Sources */,
 				8E1AA7DE2968D40E001E05A9 /* SuperType.swift in Sources */,
 				8E0A6CD32965BA0300F79B35 /* ManagedBoosterSetCache.swift in Sources */,

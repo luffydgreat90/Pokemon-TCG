@@ -1,31 +1,30 @@
 //
-//  CoreDataBoosterSetStore.swift
+//  CoreDataStore.swift
 //  PokemonFeed
 //
-//  Created by Marlon Ansale on 1/4/23.
+//  Created by Marlon Ansale on 1/6/23.
 //
 
 import CoreData
 
-public final class CoreDataBoosterSetStore: DataStore {
-    private static let modelName = "BoosterSetStore"
-    private static let model = NSManagedObjectModel.with(name: modelName, in: Bundle(for: CoreDataBoosterSetStore.self))
-    
+public protocol DataStore:AnyObject {}
+
+public final class CoreDataStore<Store:DataStore>{
     private let container: NSPersistentContainer
     private let context: NSManagedObjectContext
-
+        
     enum StoreError: Error {
         case modelNotFound
         case failedToLoadPersistentContainer(Error)
     }
     
-    public init(storeURL: URL) throws {
-        guard let model = CoreDataBoosterSetStore.model else {
+    init(storeURL: URL, modelName:String , store: Store.Type) throws {
+        guard let model = NSManagedObjectModel.with(name: modelName, in: Bundle(for: store.self)) else {
             throw StoreError.modelNotFound
         }
-
+        
         do {
-            container = try NSPersistentContainer.load(name: CoreDataBoosterSetStore.modelName, model: model, url: storeURL)
+            container = try NSPersistentContainer.load(name: modelName, model: model, url: storeURL)
             context = container.newBackgroundContext()
         } catch {
             throw StoreError.failedToLoadPersistentContainer(error)
