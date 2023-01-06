@@ -15,7 +15,7 @@ public final class CardController: NSObject {
     private let delegate: ImageControllerDelegate
     private var cell: CardCollectionCell?
     
-    init(viewModel: CardViewModel, delegate: ImageControllerDelegate, cell: CardCollectionCell? = nil) {
+    public init(viewModel: CardViewModel, delegate: ImageControllerDelegate, cell: CardCollectionCell? = nil) {
         self.viewModel = viewModel
         self.delegate = delegate
         self.cell = cell

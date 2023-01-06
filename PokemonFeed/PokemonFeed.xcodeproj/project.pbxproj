@@ -46,6 +46,7 @@
 		8E4F6A4F29679EBE0022403A /* CardsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4F6A4E29679EBE0022403A /* CardsPresenter.swift */; };
 		8E4F6A5129679EF30022403A /* CardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4F6A5029679EF30022403A /* CardsViewModel.swift */; };
 		8E4F6A532967A2180022403A /* CardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4F6A522967A2180022403A /* CardController.swift */; };
+		8E4F6A552967A5270022403A /* CardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4F6A542967A5270022403A /* CardPresenter.swift */; };
 		8E56CE8129679B1A00FFCD15 /* CollectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56CE8029679B1A00FFCD15 /* CollectionListViewController.swift */; };
 		8EA9B91029648B36005E6080 /* PokemonFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA9B90729648B36005E6080 /* PokemonFeed.framework */; };
 		8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B926296492BC005E6080 /* HTTPClient.swift */; };
@@ -148,6 +149,7 @@
 		8E4F6A4E29679EBE0022403A /* CardsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsPresenter.swift; sourceTree = "<group>"; };
 		8E4F6A5029679EF30022403A /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
 		8E4F6A522967A2180022403A /* CardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardController.swift; sourceTree = "<group>"; };
+		8E4F6A542967A5270022403A /* CardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPresenter.swift; sourceTree = "<group>"; };
 		8E56CE8029679B1A00FFCD15 /* CollectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListViewController.swift; sourceTree = "<group>"; };
 		8EA9B90729648B36005E6080 /* PokemonFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PokemonFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B90F29648B36005E6080 /* PokemonFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -419,6 +421,7 @@
 				8E0A6D1B296640C400F79B35 /* CardViewModel.swift */,
 				8E4F6A4E29679EBE0022403A /* CardsPresenter.swift */,
 				8E4F6A5029679EF30022403A /* CardsViewModel.swift */,
+				8E4F6A542967A5270022403A /* CardPresenter.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -961,6 +964,7 @@
 				8EA9B9822964CB50005E6080 /* ResourceErrorView.swift in Sources */,
 				8EA9B9782964C796005E6080 /* LoadResourcePresenter.swift in Sources */,
 				8E0A6CDA2965C3A700F79B35 /* CoreDataBoosterSetStore+BoosterSetStore.swift in Sources */,
+				8E4F6A552967A5270022403A /* CardPresenter.swift in Sources */,
 				8E0A6D0829662D0B00F79B35 /* CardMapper.swift in Sources */,
 				8E0A6D0C2966351100F79B35 /* CardEndPoint.swift in Sources */,
 				8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */,

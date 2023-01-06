@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Card: Equatable {
+public struct Card: Hashable {
     public let id: String
     public let name: String
     public let supertype: SuperType
@@ -37,7 +37,7 @@ public struct Card: Equatable {
     }
 }
 
-public struct CardMarket: Equatable {
+public struct CardMarket: Hashable {
     public let url: URL
     public let updatedAt: Date
     public let prices: CardPrice
@@ -49,7 +49,7 @@ public struct CardMarket: Equatable {
     }
 }
 
-public struct CardImages: Equatable {
+public struct CardImages: Hashable {
     public let small: URL
     public let large: URL
     
@@ -59,7 +59,7 @@ public struct CardImages: Equatable {
     }
 }
 
-public struct CardPrice: Equatable {
+public struct CardPrice: Hashable {
     public let averageSellPrice: Double
     public let lowPrice: Double
     public let trendPrice: Double

@@ -13,7 +13,7 @@ public struct CollectionController {
     let delegate: UICollectionViewDelegate?
     let dataSourcePrefetching: UICollectionViewDataSourcePrefetching?
     
-    public init(id: AnyHashable, dataSource: UICollectionViewDataSource, delegate: UICollectionViewDelegate?, dataSourcePrefetching: UICollectionViewDataSourcePrefetching?) {
+    public init(id: AnyHashable, dataSource: UICollectionViewDataSource, delegate: UICollectionViewDelegate? = nil, dataSourcePrefetching: UICollectionViewDataSourcePrefetching? = nil) {
         self.id = id
         self.dataSource = dataSource
         self.delegate = delegate

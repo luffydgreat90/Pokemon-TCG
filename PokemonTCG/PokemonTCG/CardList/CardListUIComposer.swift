@@ -31,6 +31,7 @@ public enum CardListUIComposer {
             
             collectionViewController.configureCollectionView = { collectionView in
                 collectionView.register(CardCollectionCell.self)
+                collectionView.collectionViewLayout = UICollectionViewFlowLayout()
             }
 
             return collectionViewController
@@ -38,6 +39,8 @@ public enum CardListUIComposer {
 }
 
 final class CardListViewAdapter: ResourceView {
+    
+    private typealias ImageDataPresentationAdapter = LoadResourcePresentationAdapter<Data, WeakRefVirtualProxy<CardController>>
     
     private weak var controller: CollectionListViewController?
     private let imageLoader: (URL) -> AnyPublisher<Data, Error>
@@ -48,7 +51,27 @@ final class CardListViewAdapter: ResourceView {
     }
     
     func display(_ viewModel: CardsViewModel) {
+    
+        let viewControllers = viewModel.cards.map({ model in
+            
+            let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in
+                imageLoader(model.images.small)
+            })
+            
+            let controller = CardController(
+                viewModel: CardPresenter.map(model),
+                delegate: adapter)
+            
+            adapter.presenter = LoadResourcePresenter(
+                resourceView: WeakRefVirtualProxy(controller),
+                loadingView: WeakRefVirtualProxy(controller),
+                errorView: WeakRefVirtualProxy(controller),
+                mapper: UIImage.tryMake(data:))
+            
+            return CollectionController(id: model, dataSource: controller)
+        })
         
+        controller?.display(viewControllers)
         
     }
 }
