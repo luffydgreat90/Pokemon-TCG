@@ -83,7 +83,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func showCard(for boosterSet: BoosterSet) {
-        let url = CardEndPoint.get(boosterSet.id).url(baseURL: baseURL)
+        //let url = CardEndPoint.get(boosterSet.id).url(baseURL: baseURL)
     }
     
     private func makeRemoteCardsLoader(url: URL) -> () -> AnyPublisher<[Card], Error> {

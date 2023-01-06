@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8E0A6D2529678EF300F79B35 /* CardListUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D2429678EF300F79B35 /* CardListUIComposer.swift */; };
+		8E56CE8429679BD000FFCD15 /* CardListUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */; };
 		8EA9B9C02964EA84005E6080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9BF2964EA84005E6080 /* AppDelegate.swift */; };
 		8EA9B9C22964EA84005E6080 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9C12964EA84005E6080 /* SceneDelegate.swift */; };
 		8EA9B9C92964EA86005E6080 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EA9B9C82964EA86005E6080 /* Assets.xcassets */; };
@@ -49,7 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8E0A6D2429678EF300F79B35 /* CardListUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListUIComposer.swift; sourceTree = "<group>"; };
+		8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListUIComposer.swift; sourceTree = "<group>"; };
 		8EA9B9BC2964EA84005E6080 /* PokemonTCG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonTCG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B9BF2964EA84005E6080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EA9B9C12964EA84005E6080 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,12 +86,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8E0A6D2329678ECD00F79B35 /* Card */ = {
+		8E56CE8229679BBC00FFCD15 /* CardList */ = {
 			isa = PBXGroup;
 			children = (
-				8E0A6D2429678EF300F79B35 /* CardListUIComposer.swift */,
+				8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */,
 			);
-			path = Card;
+			path = CardList;
 			sourceTree = "<group>";
 		};
 		8EA9B9B32964EA83005E6080 = {
@@ -116,7 +116,7 @@
 		8EA9B9BE2964EA84005E6080 /* PokemonTCG */ = {
 			isa = PBXGroup;
 			children = (
-				8E0A6D2329678ECD00F79B35 /* Card */,
+				8E56CE8229679BBC00FFCD15 /* CardList */,
 				8EBEA6982964F133000F1FC8 /* Helpers */,
 				8EBEA6972964F124000F1FC8 /* Shared */,
 				8EBEA6942964F097000F1FC8 /* BoosterSets */,
@@ -273,12 +273,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EBEA69C2964F1F9000F1FC8 /* LoadResourcePresentationAdapter.swift in Sources */,
+				8E56CE8429679BD000FFCD15 /* CardListUIComposer.swift in Sources */,
 				8EBEA69E2964F23D000F1FC8 /* Combine+Helpers.swift in Sources */,
 				8EBEA6962964F0B8000F1FC8 /* BoosterSetsUIComposer.swift in Sources */,
 				8EA9B9C02964EA84005E6080 /* AppDelegate.swift in Sources */,
 				8EBEA69A2964F143000F1FC8 /* WeakRefVirtualProxy.swift in Sources */,
 				8EA9B9C22964EA84005E6080 /* SceneDelegate.swift in Sources */,
-				8E0A6D2529678EF300F79B35 /* CardListUIComposer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
