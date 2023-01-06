@@ -17,9 +17,19 @@ public enum CardListUIComposer {
     public static func cardListComposedWith(
         cardList: @escaping () -> AnyPublisher<[Card], Error>,
         imageLoader: @escaping (URL) -> AnyPublisher<Data, Error>) -> CollectionListViewController{
-            let collectionViewController = CollectionListViewController()
-
+            
             let adapter = CardListPresentationAdapter(loader: cardList)
+            
+            let collectionViewController = CollectionListViewController(
+                collectionViewLayout: UICollectionViewFlowLayout(),
+                onRefresh: { [adapter] in
+                    adapter.loadResource()
+            })
+
+            collectionViewController.configureCollectionView = { collectionView in
+                
+                collectionView.register(CardCollectionCell.self)
+            }
             
             adapter.presenter = LoadResourcePresenter(
                 resourceView: CardListViewAdapter(
@@ -29,10 +39,9 @@ public enum CardListUIComposer {
                 errorView: WeakRefVirtualProxy(collectionViewController),
                 mapper: CardsPresenter.map)
             
-            collectionViewController.configureCollectionView = { collectionView in
-                collectionView.register(CardCollectionCell.self)
-                collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-            }
+            adapter.loadResource()
+        
+            
 
             return collectionViewController
         }
@@ -51,7 +60,7 @@ final class CardListViewAdapter: ResourceView {
     }
     
     func display(_ viewModel: CardsViewModel) {
-    
+        
         let viewControllers = viewModel.cards.map({ model in
             
             let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in

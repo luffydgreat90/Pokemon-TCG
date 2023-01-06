@@ -10,23 +10,39 @@ import PokemonFeed
 
 public final class CollectionListViewController: UICollectionViewController {
 
+    public let onRefresh: (() -> Void)?
+    
+    public init(
+        collectionViewLayout layout: UICollectionViewLayout,
+        onRefresh:(() -> Void)?) {
+            self.onRefresh = onRefresh
+            super.init(collectionViewLayout: layout)
+            self.collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: layout)
+            self.collectionView.backgroundColor = .red
+            self.configureCollectionView?(self.collectionView)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private lazy var dataSource: UICollectionViewDiffableDataSource<Int, CollectionController> = {
         .init(collectionView: collectionView) { (collectionView, index, controller) in
             controller.dataSource.collectionView(collectionView, cellForItemAt: index)
         }
     }()
     
-    public var onRefresh: (() -> Void)?
-    
     /// Configure Cell and Layout.s
     public var configureCollectionView: ((UICollectionView) -> Void)?
-
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupUI()
     }
     
     private func setupUI(){
-        configureCollectionView?(collectionView)
+        collectionView.dataSource = dataSource
+        onRefresh?()
     }
 
     public func display(_ cellControllers: [CollectionController]) {
@@ -35,16 +51,21 @@ public final class CollectionListViewController: UICollectionViewController {
         snapshot.appendItems(cellControllers, toSection: 0)
         dataSource.apply(snapshot)
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize.init(width: 150, height: 150)
+        }
 }
 
 extension CollectionListViewController: ResourceLoadingView {
     public func display(_ viewModel: ResourceLoadingViewModel) {
-        
+       
     }
 }
 
 extension CollectionListViewController: ResourceErrorView {
     public func display(_ viewModel: ResourceErrorViewModel) {
-        
+    
     }
 }

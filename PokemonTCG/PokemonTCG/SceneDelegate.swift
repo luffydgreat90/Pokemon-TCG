@@ -53,11 +53,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
     }
     
-    
     private func makeBoosterSetsViewController() -> ListViewController {
         return BoosterSetsUIComposer.boosterSetsComposedWith(
             boosterSetsLoader: makeRemoteBoosterSetsLoader,
-            imageLoader: makeLImageLoader,
+            imageLoader: makeImageLoader,
             selection: showCard(for:))
     }
     
@@ -70,8 +69,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .caching(to: localBoosterSetLoader)
             .fallback(to: localBoosterSetLoader.loadPublisher)
     }
+
+    private func showCard(for boosterSet: BoosterSet) {
+        let url = CardEndPoint.get(boosterSet.id).url(baseURL: baseURL)
+        debugPrint("url \(url)")
+        let viewController = CardListUIComposer.cardListComposedWith(
+            cardList: makeRemoteCardsLoader(url: url),
+            imageLoader: makeImageLoader(url:))
+        
+        navigationController.pushViewController(viewController, animated: true)
     
-    private func makeLImageLoader(url: URL) -> AnyPublisher<Data, Error> {
+    }
+    
+    private func makeImageLoader(url: URL) -> AnyPublisher<Data, Error> {
         let localImageLoader = LocalBoosterSetImageDataLoader(store: store)
      
         return localImageLoader
@@ -84,17 +94,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     .caching(to: localImageLoader, using: url)
                 
             })
-    }
-    
-    private func showCard(for boosterSet: BoosterSet) {
-        let url = CardEndPoint.get(boosterSet.id).url(baseURL: baseURL)
-        
-        let viewController = CardListUIComposer.cardListComposedWith(
-            cardList: makeRemoteCardsLoader(url: url),
-            imageLoader: makeLImageLoader(url:))
-        
-        navigationController.pushViewController(viewController, animated: true)
-    
     }
     
     private func makeRemoteCardsLoader(url: URL) -> () -> AnyPublisher<[Card], Error> {

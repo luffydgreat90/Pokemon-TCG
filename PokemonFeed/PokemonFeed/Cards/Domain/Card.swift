@@ -13,15 +13,15 @@ public struct Card: Hashable {
     public let supertype: SuperType
     public let types: [String]?
     public let number: String
-    public let rarity: String
+    public let rarity: String?
     public let flavorText: String?
-    public let nationalPokedexNumbers: [Int]
+    public let nationalPokedexNumbers: [Int]?
     public let legalities: Legalities
     public let artist: String
     public let cardmarket: CardMarket
     public let images: CardImages
     
-    public init(id: String, name: String, supertype: SuperType, types: [String]?, number: String, rarity: String, flavorText: String?, nationalPokedexNumbers: [Int], legalities: Legalities, artist: String, cardmarket: CardMarket, images: CardImages) {
+    public init(id: String, name: String, supertype: SuperType, types: [String]?, number: String, rarity: String?, flavorText: String?, nationalPokedexNumbers: [Int]?, legalities: Legalities, artist: String, cardmarket: CardMarket, images: CardImages) {
         self.id = id
         self.name = name
         self.supertype = supertype
@@ -60,16 +60,16 @@ public struct CardImages: Hashable {
 }
 
 public struct CardPrice: Hashable {
-    public let averageSellPrice: Double
-    public let lowPrice: Double
-    public let trendPrice: Double
-    public let reverseHoloTrend: Double
-    public let lowPriceExPlus: Double
-    public let avg1: Double
-    public let avg7: Double
-    public let avg30: Double
-    
-    public init(averageSellPrice: Double, lowPrice: Double, trendPrice: Double, reverseHoloTrend: Double, lowPriceExPlus: Double, avg1: Double, avg7: Double, avg30: Double) {
+    public let averageSellPrice: Double?
+    public let lowPrice: Double?
+    public let trendPrice: Double?
+    public let reverseHoloTrend: Double?
+    public let lowPriceExPlus: Double?
+    public let avg1: Double?
+    public let avg7: Double?
+    public let avg30: Double?
+
+    init(averageSellPrice: Double?, lowPrice: Double?, trendPrice: Double?, reverseHoloTrend: Double?, lowPriceExPlus: Double?, avg1: Double?, avg7: Double?, avg30: Double?) {
         self.averageSellPrice = averageSellPrice
         self.lowPrice = lowPrice
         self.trendPrice = trendPrice

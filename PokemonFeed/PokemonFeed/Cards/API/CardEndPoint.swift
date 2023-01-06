@@ -13,7 +13,7 @@ public enum CardEndPoint {
     public func url(baseURL: URL) -> URL {
         switch self {
         case let .get(id):
-            return URL(string: "\(baseURL.absoluteString)/cards?q=set.id:\(id)")!
+            return URL(string: "\(baseURL.absoluteString)cards?q=set.id:\(id)")!
         }
     }
 }

@@ -28,6 +28,7 @@ extension CardController: UICollectionViewDataSource {
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        debugPrint(viewModel.name)
         cell = collectionView.dequeueReusableCell(indexPath: indexPath)
         cell?.titleLabel.text = viewModel.name
         cell?.priceLabel.text = viewModel.price

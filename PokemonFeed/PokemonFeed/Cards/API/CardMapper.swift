@@ -18,9 +18,9 @@ public enum CardMapper {
         let supertype: String
         let types: [String]?
         let number: String
-        let rarity: String
+        let rarity: String?
         let flavorText: String?
-        let nationalPokedexNumbers: [Int]
+        let nationalPokedexNumbers: [Int]?
         let legalities: RemoteLegalities
         let artist: String
         let cardmarket: RemoteCardMarket
@@ -45,14 +45,14 @@ public enum CardMapper {
     }
     
     private struct RemotePrice: Decodable {
-        let averageSellPrice: Double
-        let lowPrice: Double
-        let trendPrice: Double
-        let reverseHoloTrend: Double
-        let lowPriceExPlus: Double
-        let avg1: Double
-        let avg7: Double
-        let avg30: Double
+        let averageSellPrice: Double?
+        let lowPrice: Double?
+        let trendPrice: Double?
+        let reverseHoloTrend: Double?
+        let lowPriceExPlus: Double?
+        let avg1: Double?
+        let avg7: Double?
+        let avg30: Double?
     }
     
     private enum Error: Swift.Error {
@@ -60,6 +60,7 @@ public enum CardMapper {
     }
     
     public static func map(_ data: Data, from response: HTTPURLResponse) throws -> [Card] {
+        debugPrint("CardMapper \(data) \(response.statusCode)")
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(.yearMonthDay)
         

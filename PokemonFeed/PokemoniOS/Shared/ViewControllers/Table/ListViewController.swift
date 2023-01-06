@@ -43,6 +43,11 @@ public final class ListViewController: UITableViewController {
     private func controller(for indexPath: IndexPath) -> CellController? {
         dataSource.itemIdentifier(for: indexPath)
     }
+    
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let dsp = controller(for: indexPath)?.delegate
+        dsp?.tableView?(tableView, didSelectRowAt: indexPath)
+    }
 }
 
 extension ListViewController: UITableViewDataSourcePrefetching {
