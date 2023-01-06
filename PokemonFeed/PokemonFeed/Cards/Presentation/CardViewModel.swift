@@ -8,12 +8,14 @@
 import Foundation
 
 public struct CardViewModel {
-    let image:URL
-    let name:String
+    public let image:URL
+    public let name:String
+    public let price:String
     
-    public init(image: URL, name: String) {
+    public init(image: URL, name: String, price:String) {
         self.image = image
         self.name = name
+        self.price = price
     }
 }
 

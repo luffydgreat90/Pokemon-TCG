@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import PokemonFeed
 
-class CollectionListViewController: UICollectionViewController {
+public final class CollectionListViewController: UICollectionViewController {
 
     private lazy var dataSource: UICollectionViewDiffableDataSource<Int, CollectionController> = {
         .init(collectionView: collectionView) { (collectionView, index, controller) in
@@ -20,7 +21,7 @@ class CollectionListViewController: UICollectionViewController {
     /// Configure Cell and Layout.s
     public var configureCollectionView: ((UICollectionView) -> Void)?
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
     }
     
@@ -34,6 +35,16 @@ class CollectionListViewController: UICollectionViewController {
         snapshot.appendItems(cellControllers, toSection: 0)
         dataSource.apply(snapshot)
     }
+}
 
+extension CollectionListViewController: ResourceLoadingView {
+    public func display(_ viewModel: ResourceLoadingViewModel) {
+        
+    }
+}
 
+extension CollectionListViewController: ResourceErrorView {
+    public func display(_ viewModel: ResourceErrorViewModel) {
+        
+    }
 }

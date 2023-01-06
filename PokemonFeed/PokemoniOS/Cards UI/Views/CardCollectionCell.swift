@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CardCollectionCell: UICollectionViewCell {
+public final class CardCollectionCell: UICollectionViewCell {
     
     public private(set) var containerStack: UIStackView = {
         let containerStack = UIStackView()
