@@ -95,6 +95,8 @@
 		8EA9B9B02964E654005E6080 /* BoosterSetPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */; };
 		8EA9B9B22964E8FC005E6080 /* UITableView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */; };
 		8EFE7B872969D1C3003AF320 /* ManagedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B862969D1C3003AF320 /* ManagedCard.swift */; };
+		8EFE7B892969D8B7003AF320 /* LocalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B882969D8B7003AF320 /* LocalCard.swift */; };
+		8EFE7B8B2969E103003AF320 /* LocalLegalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B8A2969E103003AF320 /* LocalLegalities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +209,8 @@
 		8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenterTests.swift; sourceTree = "<group>"; };
 		8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeueing.swift"; sourceTree = "<group>"; };
 		8EFE7B862969D1C3003AF320 /* ManagedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCard.swift; sourceTree = "<group>"; };
+		8EFE7B882969D8B7003AF320 /* LocalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCard.swift; sourceTree = "<group>"; };
+		8EFE7B8A2969E103003AF320 /* LocalLegalities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLegalities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +293,7 @@
 			children = (
 				8E1AA7E12968DA05001E05A9 /* Infrastructure */,
 				8E0A6CE72965D73400F79B35 /* ImageDataStore.swift */,
+				8EFE7B8A2969E103003AF320 /* LocalLegalities.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				8E1AA7D62968C6CD001E05A9 /* Infrastructure */,
+				8EFE7B882969D8B7003AF320 /* LocalCard.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -1015,11 +1021,13 @@
 				8E4F6A5129679EF30022403A /* CardsViewModel.swift in Sources */,
 				8EA9B9462964B437005E6080 /* BoosterSetsMapper.swift in Sources */,
 				8EA9B9802964C869005E6080 /* ResourceLoadingView.swift in Sources */,
+				8EFE7B8B2969E103003AF320 /* LocalLegalities.swift in Sources */,
 				8E0A6D0229660DD100F79B35 /* Legalities.swift in Sources */,
 				8EA9B93E2964A214005E6080 /* DateFormatter+Helpers.swift in Sources */,
 				8EA9B9822964CB50005E6080 /* ResourceErrorView.swift in Sources */,
 				8EA9B9782964C796005E6080 /* LoadResourcePresenter.swift in Sources */,
 				8E4F6A552967A5270022403A /* CardPresenter.swift in Sources */,
+				8EFE7B892969D8B7003AF320 /* LocalCard.swift in Sources */,
 				8E0A6D0829662D0B00F79B35 /* CardMapper.swift in Sources */,
 				8E0A6D0C2966351100F79B35 /* CardEndPoint.swift in Sources */,
 				8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */,

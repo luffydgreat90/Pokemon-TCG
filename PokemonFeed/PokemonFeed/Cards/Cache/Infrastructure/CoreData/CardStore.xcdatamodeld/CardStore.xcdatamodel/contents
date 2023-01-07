@@ -9,14 +9,14 @@
         <attribute name="isStandard" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isUnlimited" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="largeData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <attribute name="largeUrl" attributeType="URI"/>
+        <attribute name="largeUrl" optional="YES" attributeType="URI"/>
         <attribute name="lowPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="number" attributeType="String"/>
         <attribute name="rarity" attributeType="String"/>
         <attribute name="reverseHoloTrend" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="smallData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <attribute name="smallUrl" attributeType="URI"/>
+        <attribute name="smallUrl" optional="YES" attributeType="URI"/>
         <attribute name="supertype" optional="YES" attributeType="String"/>
         <attribute name="trendPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>

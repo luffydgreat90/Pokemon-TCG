@@ -29,18 +29,6 @@ public struct LocalBoosterSet: Equatable {
     }
 }
 
-public struct LocalLegalities: Equatable {
-    public let isUnlimited: Bool
-    public let isStandard: Bool
-    public let isExpanded: Bool
-    
-    init(isUnlimited: Bool, isStandard: Bool, isExpanded: Bool) {
-        self.isUnlimited = isUnlimited
-        self.isStandard = isStandard
-        self.isExpanded = isExpanded
-    }
-}
-
 public struct LocalImages: Equatable {
     public let symbol: URL
     public let logo: URL
