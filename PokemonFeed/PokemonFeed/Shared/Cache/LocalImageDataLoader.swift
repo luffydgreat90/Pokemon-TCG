@@ -1,13 +1,13 @@
 //
-//  LocalBoosterSetImageDataLoader.swift
+//  ImageDataLoader.swift
 //  PokemonFeed
 //
-//  Created by Marlon Ansale on 1/4/23.
+//  Created by Marlon Ansale on 1/7/23.
 //
 
 import Foundation
 
-public final class LocalBoosterSetImageDataLoader {
+public final class LocalImageDataLoader {
     private let store: ImageDataStore
 
     public init(store: ImageDataStore) {
@@ -15,7 +15,7 @@ public final class LocalBoosterSetImageDataLoader {
     }
 }
 
-extension LocalBoosterSetImageDataLoader: ImageDataCache {
+extension LocalImageDataLoader: ImageDataCache {
     public typealias SaveResult = ImageDataCache.Result
 
     public enum SaveError: Error {
@@ -30,7 +30,7 @@ extension LocalBoosterSetImageDataLoader: ImageDataCache {
     }
 }
 
-extension LocalBoosterSetImageDataLoader: ImageDataLoader {
+extension LocalImageDataLoader: ImageDataLoader {
     public typealias LoadResult = ImageDataLoader.Result
 
     public enum LoadError: Error {

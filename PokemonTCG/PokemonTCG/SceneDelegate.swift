@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     }()
     
-    private lazy var store: BoosterSetStore & ImageDataStore = {
+    private lazy var boosterSetStore: BoosterSetStore & ImageDataStore = {
         try! CoreDataStore(
             storeURL: NSPersistentContainer
                 .defaultDirectoryURL()
@@ -30,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }()
     
     private lazy var localBoosterSetLoader: LocalBoosterSetLoader = {
-        LocalBoosterSetLoader(store: store, currentDate: Date.init)
+        LocalBoosterSetLoader(store: boosterSetStore, currentDate: Date.init)
     }()
     
     private lazy var navigationController: UINavigationController = {
@@ -57,7 +57,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func makeBoosterSetsViewController() -> ListViewController {
         return BoosterSetsUIComposer.boosterSetsComposedWith(
             boosterSetsLoader: makeRemoteBoosterSetsLoader,
-            imageLoader: makeImageLoader,
+            imageLoader: makeBoosterSetImageLoader,
             selection: showCard(for:))
     }
     
@@ -75,13 +75,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let url = CardEndPoint.get(boosterSet.id).url(baseURL: baseURL)
         let viewController = CardListUIComposer.cardListComposedWith(
             cardList: makeRemoteCardsLoader(url: url),
-            imageLoader: makeImageLoader(url:))
+            imageLoader: makeBoosterSetImageLoader(url:))
         
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    private func makeImageLoader(url: URL) -> AnyPublisher<Data, Error> {
-        let localImageLoader = LocalBoosterSetImageDataLoader(store: store)
+    private func makeBoosterSetImageLoader(url: URL) -> AnyPublisher<Data, Error> {
+        let localImageLoader = LocalImageDataLoader(store: boosterSetStore)
      
         return localImageLoader
             .loadImageDataPublisher(from: url)

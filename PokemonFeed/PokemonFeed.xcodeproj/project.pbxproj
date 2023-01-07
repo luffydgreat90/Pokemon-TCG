@@ -25,7 +25,6 @@
 		8E0A6CE82965D73400F79B35 /* ImageDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CE72965D73400F79B35 /* ImageDataStore.swift */; };
 		8E0A6CEF2965DB7B00F79B35 /* ImageDataStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CEE2965DB7B00F79B35 /* ImageDataStoreSpy.swift */; };
 		8E0A6CF12965DD4C00F79B35 /* LoadBoosterSetImageDataFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CF02965DD4C00F79B35 /* LoadBoosterSetImageDataFromCacheUseCaseTests.swift */; };
-		8E0A6CF32965DDBB00F79B35 /* LocalBoosterSetImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CF22965DDBB00F79B35 /* LocalBoosterSetImageDataLoader.swift */; };
 		8E0A6CF52965DE2E00F79B35 /* ImageDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CF42965DE2E00F79B35 /* ImageDataCache.swift */; };
 		8E0A6CF82965DEB100F79B35 /* ImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CF72965DEB100F79B35 /* ImageDataLoader.swift */; };
 		8E0A6CFB2965E68500F79B35 /* UIImageView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CFA2965E68500F79B35 /* UIImageView+Animations.swift */; };
@@ -98,6 +97,7 @@
 		8EFE7B892969D8B7003AF320 /* LocalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B882969D8B7003AF320 /* LocalCard.swift */; };
 		8EFE7B8B2969E103003AF320 /* LocalLegalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B8A2969E103003AF320 /* LocalLegalities.swift */; };
 		8EFE7B8D2969E308003AF320 /* CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B8C2969E308003AF320 /* CardStore.swift */; };
+		8EFE7B91296A0E17003AF320 /* LocalImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B90296A0E17003AF320 /* LocalImageDataLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,7 +136,6 @@
 		8E0A6CE72965D73400F79B35 /* ImageDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataStore.swift; sourceTree = "<group>"; };
 		8E0A6CEE2965DB7B00F79B35 /* ImageDataStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataStoreSpy.swift; sourceTree = "<group>"; };
 		8E0A6CF02965DD4C00F79B35 /* LoadBoosterSetImageDataFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBoosterSetImageDataFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
-		8E0A6CF22965DDBB00F79B35 /* LocalBoosterSetImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalBoosterSetImageDataLoader.swift; sourceTree = "<group>"; };
 		8E0A6CF42965DE2E00F79B35 /* ImageDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataCache.swift; sourceTree = "<group>"; };
 		8E0A6CF72965DEB100F79B35 /* ImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataLoader.swift; sourceTree = "<group>"; };
 		8E0A6CFA2965E68500F79B35 /* UIImageView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animations.swift"; sourceTree = "<group>"; };
@@ -213,6 +212,7 @@
 		8EFE7B882969D8B7003AF320 /* LocalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCard.swift; sourceTree = "<group>"; };
 		8EFE7B8A2969E103003AF320 /* LocalLegalities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLegalities.swift; sourceTree = "<group>"; };
 		8EFE7B8C2969E308003AF320 /* CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStore.swift; sourceTree = "<group>"; };
+		8EFE7B90296A0E17003AF320 /* LocalImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalImageDataLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +296,7 @@
 				8E1AA7E12968DA05001E05A9 /* Infrastructure */,
 				8E0A6CE72965D73400F79B35 /* ImageDataStore.swift */,
 				8EFE7B8A2969E103003AF320 /* LocalLegalities.swift */,
+				8EFE7B90296A0E17003AF320 /* LocalImageDataLoader.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -815,7 +816,6 @@
 				8E0A6CCC2965B50300F79B35 /* LocalBoosterSetLoader.swift */,
 				8E0A6CCE2965B54000F79B35 /* BoosterSetStore.swift */,
 				8E0A6CE02965CA6800F79B35 /* BoosterSetCachePolicy.swift */,
-				8E0A6CF22965DDBB00F79B35 /* LocalBoosterSetImageDataLoader.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -1013,7 +1013,6 @@
 				8E1AA7E32968DA6D001E05A9 /* CoreDataStore.swift in Sources */,
 				8EA9B9432964B006005E6080 /* BoosterSet.swift in Sources */,
 				8E0A6CCB2965B2F900F79B35 /* LocalBoosterSet.swift in Sources */,
-				8E0A6CF32965DDBB00F79B35 /* LocalBoosterSetImageDataLoader.swift in Sources */,
 				8EA9B9AC2964E2BA005E6080 /* BoosterSetViewModel.swift in Sources */,
 				8E0A6CD12965B7EE00F79B35 /* BoosterSetCache.swift in Sources */,
 				8E0A6D1C296640C400F79B35 /* CardViewModel.swift in Sources */,
@@ -1042,6 +1041,7 @@
 				8EA9B9402964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift in Sources */,
 				8E0A6CD52965BAF300F79B35 /* ManagedBoosterSet.swift in Sources */,
 				8E1AA7E529698ED7001E05A9 /* CoreDataBoosterSetStore+BoosterStore.swift in Sources */,
+				8EFE7B91296A0E17003AF320 /* LocalImageDataLoader.swift in Sources */,
 				8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */,
 				8EA9B96F2964B8EE005E6080 /* BoosterSetsViewModel.swift in Sources */,
 				8E1AA7E02968D8D0001E05A9 /* CoreDataCardStore.swift in Sources */,
