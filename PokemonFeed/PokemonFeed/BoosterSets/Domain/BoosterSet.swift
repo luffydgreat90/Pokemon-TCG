@@ -29,8 +29,6 @@ public struct BoosterSet: Hashable {
     }
 }
 
-
-
 public struct BoosterImage: Hashable {
     public let symbol: URL
     public let logo: URL

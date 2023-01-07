@@ -98,6 +98,9 @@
 		8EFE7B8B2969E103003AF320 /* LocalLegalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B8A2969E103003AF320 /* LocalLegalities.swift */; };
 		8EFE7B8D2969E308003AF320 /* CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B8C2969E308003AF320 /* CardStore.swift */; };
 		8EFE7B91296A0E17003AF320 /* LocalImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B90296A0E17003AF320 /* LocalImageDataLoader.swift */; };
+		8EFE7B93296A103B003AF320 /* LocalCardLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B92296A103B003AF320 /* LocalCardLoader.swift */; };
+		8EFE7B95296A10C6003AF320 /* CardCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B94296A10C6003AF320 /* CardCache.swift */; };
+		8EFE7B98296A13EF003AF320 /* SuperTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B97296A13EF003AF320 /* SuperTypeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,6 +216,9 @@
 		8EFE7B8A2969E103003AF320 /* LocalLegalities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLegalities.swift; sourceTree = "<group>"; };
 		8EFE7B8C2969E308003AF320 /* CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStore.swift; sourceTree = "<group>"; };
 		8EFE7B90296A0E17003AF320 /* LocalImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalImageDataLoader.swift; sourceTree = "<group>"; };
+		8EFE7B92296A103B003AF320 /* LocalCardLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCardLoader.swift; sourceTree = "<group>"; };
+		8EFE7B94296A10C6003AF320 /* CardCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCache.swift; sourceTree = "<group>"; };
+		8EFE7B97296A13EF003AF320 /* SuperTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperTypeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,6 +385,7 @@
 			children = (
 				8E0A6D0529662BE200F79B35 /* Card.swift */,
 				8E1AA7DD2968D40E001E05A9 /* SuperType.swift */,
+				8EFE7B94296A10C6003AF320 /* CardCache.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -443,6 +450,7 @@
 				8E1AA7D62968C6CD001E05A9 /* Infrastructure */,
 				8EFE7B882969D8B7003AF320 /* LocalCard.swift */,
 				8EFE7B8C2969E308003AF320 /* CardStore.swift */,
+				8EFE7B92296A103B003AF320 /* LocalCardLoader.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -580,6 +588,7 @@
 		8EA9B92A29649337005E6080 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8EFE7B96296A13E4003AF320 /* Domain */,
 				8E0A6CEC2965DB6800F79B35 /* Cache */,
 				8EA9B9832964CCF0005E6080 /* Presentation */,
 				8EA9B92B2964933F005E6080 /* API */,
@@ -828,6 +837,14 @@
 			path = Infrastructure;
 			sourceTree = "<group>";
 		};
+		8EFE7B96296A13E4003AF320 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				8EFE7B97296A13EF003AF320 /* SuperTypeTests.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1044,12 +1061,14 @@
 				8EFE7B91296A0E17003AF320 /* LocalImageDataLoader.swift in Sources */,
 				8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */,
 				8EA9B96F2964B8EE005E6080 /* BoosterSetsViewModel.swift in Sources */,
+				8EFE7B95296A10C6003AF320 /* CardCache.swift in Sources */,
 				8E1AA7E02968D8D0001E05A9 /* CoreDataCardStore.swift in Sources */,
 				8E0A6CF82965DEB100F79B35 /* ImageDataLoader.swift in Sources */,
 				8E1AA7DE2968D40E001E05A9 /* SuperType.swift in Sources */,
 				8E0A6CD32965BA0300F79B35 /* ManagedBoosterSetCache.swift in Sources */,
 				8EA9B98E2964D19C005E6080 /* ImageDataMapper.swift in Sources */,
 				8E0A6CF52965DE2E00F79B35 /* ImageDataCache.swift in Sources */,
+				8EFE7B93296A103B003AF320 /* LocalCardLoader.swift in Sources */,
 				8E1AA7E72969D06F001E05A9 /* ManagedCardCache.swift in Sources */,
 				8E0A6CE82965D73400F79B35 /* ImageDataStore.swift in Sources */,
 				8EFE7B872969D1C3003AF320 /* ManagedCard.swift in Sources */,
@@ -1063,6 +1082,7 @@
 				8EA9B98B2964CF8B005E6080 /* LoadResourcePresenterTests.swift in Sources */,
 				8EA9B933296493DF005E6080 /* SharedTestHelpers.swift in Sources */,
 				8EA9B9872964CD64005E6080 /* SharedLocalizationTestHelpers.swift in Sources */,
+				8EFE7B98296A13EF003AF320 /* SuperTypeTests.swift in Sources */,
 				8EA9B93029649372005E6080 /* URLSessionHTTPClientTests.swift in Sources */,
 				8E0A6CEF2965DB7B00F79B35 /* ImageDataStoreSpy.swift in Sources */,
 				8EA9B9942964D366005E6080 /* ImageDataMapperTests.swift in Sources */,
