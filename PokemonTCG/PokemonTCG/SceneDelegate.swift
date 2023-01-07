@@ -29,6 +29,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             store: CoreDataBoosterSetStore.self)
     }()
     
+    private lazy var cardStore: CardStore & ImageDataStore = {
+        try! CoreDataStore(
+            storeURL: NSPersistentContainer
+                .defaultDirectoryURL()
+                .appendingPathComponent("booster-set-store.sqlite"),
+            store: CoreDataCardStore.self)
+    }()
+    
     private lazy var localBoosterSetLoader: LocalBoosterSetLoader = {
         LocalBoosterSetLoader(store: boosterSetStore, currentDate: Date.init)
     }()

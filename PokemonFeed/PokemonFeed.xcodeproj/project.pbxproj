@@ -102,6 +102,7 @@
 		8EFE7B98296A13EF003AF320 /* SuperTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B97296A13EF003AF320 /* SuperTypeTests.swift */; };
 		8EFE7B9A296A1631003AF320 /* LoadImageDataFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B99296A1631003AF320 /* LoadImageDataFromCacheUseCaseTests.swift */; };
 		8EFE7B9C296A193E003AF320 /* CardCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B9B296A193E003AF320 /* CardCachePolicy.swift */; };
+		8EFE7B9E296A1E57003AF320 /* CoreDataCardStore+CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B9D296A1E57003AF320 /* CoreDataCardStore+CardStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -221,6 +222,7 @@
 		8EFE7B97296A13EF003AF320 /* SuperTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperTypeTests.swift; sourceTree = "<group>"; };
 		8EFE7B99296A1631003AF320 /* LoadImageDataFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageDataFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		8EFE7B9B296A193E003AF320 /* CardCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCachePolicy.swift; sourceTree = "<group>"; };
+		8EFE7B9D296A1E57003AF320 /* CoreDataCardStore+CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataCardStore+CardStore.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,6 +475,7 @@
 				8E1AA7DF2968D8D0001E05A9 /* CoreDataCardStore.swift */,
 				8E1AA7E62969D06F001E05A9 /* ManagedCardCache.swift */,
 				8EFE7B862969D1C3003AF320 /* ManagedCard.swift */,
+				8EFE7B9D296A1E57003AF320 /* CoreDataCardStore+CardStore.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -1057,6 +1060,7 @@
 				8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */,
 				8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */,
 				8E0A6CCD2965B50300F79B35 /* LocalBoosterSetLoader.swift in Sources */,
+				8EFE7B9E296A1E57003AF320 /* CoreDataCardStore+CardStore.swift in Sources */,
 				8E4F6A4F29679EBE0022403A /* CardsPresenter.swift in Sources */,
 				8E1AA7DC2968D07F001E05A9 /* CardStore.xcdatamodeld in Sources */,
 				8EA9B9402964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift in Sources */,

@@ -8,7 +8,7 @@
 import CoreData
 
 extension CoreDataStore: BoosterSetStore where Store: CoreDataBoosterSetStore {
-    public func retrieve(completion: @escaping RetrievalCompletion) {
+    public func retrieve(completion: @escaping BoosterSetStore.RetrievalCompletion) {
         perform { context in
             completion(Result {
                 try ManagedBoosterSetCache.find(in: context).map {
@@ -18,7 +18,7 @@ extension CoreDataStore: BoosterSetStore where Store: CoreDataBoosterSetStore {
         }
     }
     
-    public func deleteCachedBoosterSet(completion: @escaping DeletionCompletion) {
+    public func deleteCachedBoosterSet(completion: @escaping BoosterSetStore.DeletionCompletion) {
         perform { context in
             completion(Result {
                 try ManagedBoosterSetCache.find(in: context).map(context.delete).map(context.save)
@@ -26,7 +26,7 @@ extension CoreDataStore: BoosterSetStore where Store: CoreDataBoosterSetStore {
         }
     }
     
-    public func insert(_ boosterSets: [LocalBoosterSet], timestamp: Date, completion: @escaping InsertionCompletion) {
+    public func insert(_ boosterSets: [LocalBoosterSet], timestamp: Date, completion: @escaping BoosterSetStore.InsertionCompletion) {
         perform { context in
             completion(Result {
                 let managedCache = try ManagedBoosterSetCache.newUniqueInstance(in: context)
