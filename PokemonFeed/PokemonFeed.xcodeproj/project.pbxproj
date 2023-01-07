@@ -24,7 +24,6 @@
 		8E0A6CE52965D21000F79B35 /* ValidateBoosterSetCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CE42965D21000F79B35 /* ValidateBoosterSetCacheUseCaseTests.swift */; };
 		8E0A6CE82965D73400F79B35 /* ImageDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CE72965D73400F79B35 /* ImageDataStore.swift */; };
 		8E0A6CEF2965DB7B00F79B35 /* ImageDataStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CEE2965DB7B00F79B35 /* ImageDataStoreSpy.swift */; };
-		8E0A6CF12965DD4C00F79B35 /* LoadBoosterSetImageDataFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CF02965DD4C00F79B35 /* LoadBoosterSetImageDataFromCacheUseCaseTests.swift */; };
 		8E0A6CF52965DE2E00F79B35 /* ImageDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CF42965DE2E00F79B35 /* ImageDataCache.swift */; };
 		8E0A6CF82965DEB100F79B35 /* ImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CF72965DEB100F79B35 /* ImageDataLoader.swift */; };
 		8E0A6CFB2965E68500F79B35 /* UIImageView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CFA2965E68500F79B35 /* UIImageView+Animations.swift */; };
@@ -101,6 +100,7 @@
 		8EFE7B93296A103B003AF320 /* LocalCardLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B92296A103B003AF320 /* LocalCardLoader.swift */; };
 		8EFE7B95296A10C6003AF320 /* CardCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B94296A10C6003AF320 /* CardCache.swift */; };
 		8EFE7B98296A13EF003AF320 /* SuperTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B97296A13EF003AF320 /* SuperTypeTests.swift */; };
+		8EFE7B9A296A1631003AF320 /* LoadImageDataFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B99296A1631003AF320 /* LoadImageDataFromCacheUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,7 +138,6 @@
 		8E0A6CE42965D21000F79B35 /* ValidateBoosterSetCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateBoosterSetCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		8E0A6CE72965D73400F79B35 /* ImageDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataStore.swift; sourceTree = "<group>"; };
 		8E0A6CEE2965DB7B00F79B35 /* ImageDataStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataStoreSpy.swift; sourceTree = "<group>"; };
-		8E0A6CF02965DD4C00F79B35 /* LoadBoosterSetImageDataFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBoosterSetImageDataFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		8E0A6CF42965DE2E00F79B35 /* ImageDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataCache.swift; sourceTree = "<group>"; };
 		8E0A6CF72965DEB100F79B35 /* ImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataLoader.swift; sourceTree = "<group>"; };
 		8E0A6CFA2965E68500F79B35 /* UIImageView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animations.swift"; sourceTree = "<group>"; };
@@ -219,6 +218,7 @@
 		8EFE7B92296A103B003AF320 /* LocalCardLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCardLoader.swift; sourceTree = "<group>"; };
 		8EFE7B94296A10C6003AF320 /* CardCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCache.swift; sourceTree = "<group>"; };
 		8EFE7B97296A13EF003AF320 /* SuperTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperTypeTests.swift; sourceTree = "<group>"; };
+		8EFE7B99296A1631003AF320 /* LoadImageDataFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageDataFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,7 +274,6 @@
 				8E0A6CC72965B1A100F79B35 /* BoosterSetStoreSpecs */,
 				8E0A6CDE2965C87B00F79B35 /* LoadBoosterSetFromCacheUseCaseTests.swift */,
 				8E0A6CE42965D21000F79B35 /* ValidateBoosterSetCacheUseCaseTests.swift */,
-				8E0A6CF02965DD4C00F79B35 /* LoadBoosterSetImageDataFromCacheUseCaseTests.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -322,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				8E0A6CED2965DB6E00F79B35 /* Helpers */,
+				8EFE7B99296A1631003AF320 /* LoadImageDataFromCacheUseCaseTests.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -1091,13 +1091,13 @@
 				8E0A6CE52965D21000F79B35 /* ValidateBoosterSetCacheUseCaseTests.swift in Sources */,
 				8E0A6CDD2965C79600F79B35 /* BoosterSetStoreSpy.swift in Sources */,
 				8EA9B92E29649359005E6080 /* URLProtocolStub.swift in Sources */,
-				8E0A6CF12965DD4C00F79B35 /* LoadBoosterSetImageDataFromCacheUseCaseTests.swift in Sources */,
 				8E0A6CDF2965C87B00F79B35 /* LoadBoosterSetFromCacheUseCaseTests.swift in Sources */,
 				8EA9B939296499B2005E6080 /* BoosterSetsMapperTests.swift in Sources */,
 				8E0A6D002966093700F79B35 /* CardMapperTests.swift in Sources */,
 				8EA9B94A2964B5B5005E6080 /* BoosterSetsEndPointTests.swift in Sources */,
 				8EA9B9352964941E005E6080 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				8EA9B9892964CDCF005E6080 /* BoosterSetsLocalizationTests.swift in Sources */,
+				8EFE7B9A296A1631003AF320 /* LoadImageDataFromCacheUseCaseTests.swift in Sources */,
 				8E0A6D0A29662DCC00F79B35 /* CardEndPointTests.swift in Sources */,
 				8EA9B9B02964E654005E6080 /* BoosterSetPresenterTests.swift in Sources */,
 				8EA9B9722964B97B005E6080 /* BoosterSetsPresenterTests.swift in Sources */,
