@@ -8,9 +8,11 @@
 import CoreData
 
 public final class CoreDataBoosterSetStore: DataStoreImage {
+    
     public static var model: NSManagedObjectModel =  NSManagedObjectModel.with(name: CoreDataBoosterSetStore.modelName, in: Bundle(for: CoreDataBoosterSetStore.self))!
     
     public static var modelName: String =  "BoosterSetStore"
+    
     
     public static func resultImageRetrieve(dataForURL url: URL, context: NSManagedObjectContext) -> Result<Data?, Error> {
         return Result {

@@ -18,4 +18,13 @@ public enum SuperType {
             default: return .unknown
         }
     }
+
+    public var rawValue:String {
+        switch self {
+            case .trainer: return "Trainer"
+            case .pokemon: return "Pokémon"
+            case .energy: return "Energy"
+            default: return ""
+        }
+    }
 }
