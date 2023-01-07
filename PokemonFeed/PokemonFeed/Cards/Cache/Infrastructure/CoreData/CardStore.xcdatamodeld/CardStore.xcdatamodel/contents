@@ -21,13 +21,13 @@
         <attribute name="trendPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="url" attributeType="URI"/>
-        <relationship name="cache" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedCard" inverseName="cache" inverseEntity="ManagedCard"/>
+        <relationship name="cache" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedCardCache" inverseName="cards" inverseEntity="ManagedCardCache"/>
     </entity>
     <entity name="ManagedCardCache" representedClassName="ManagedCardCache" syncable="YES">
         <attribute name="name" attributeType="String"/>
         <attribute name="series" attributeType="String"/>
         <attribute name="setId" attributeType="String"/>
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ManagedCard"/>
+        <relationship name="cards" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ManagedCard" inverseName="cache" inverseEntity="ManagedCard"/>
     </entity>
 </model>
