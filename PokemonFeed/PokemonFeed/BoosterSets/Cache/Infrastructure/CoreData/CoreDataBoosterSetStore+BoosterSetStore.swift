@@ -36,6 +36,4 @@ extension CoreDataBoosterSetStore: BoosterSetStore {
             })
         }
     }
-    
-    
 }

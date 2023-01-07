@@ -9,7 +9,7 @@ import CoreData
 
 @objc(ManagedBoosterSet)
 class ManagedBoosterSet: NSManagedObject {
-    @NSManaged var data: Data
+    @NSManaged var data: Data?
     @NSManaged var id: String
     @NSManaged var isExpanded: Bool
     @NSManaged var isStandard: Bool
@@ -45,10 +45,12 @@ extension ManagedBoosterSet {
     }
     
     static func first(with url: URL, in context: NSManagedObjectContext) throws -> ManagedBoosterSet? {
+        
         let request = NSFetchRequest<ManagedBoosterSet>(entityName: entity().name!)
-        request.predicate = NSPredicate(format: "%K = %@", argumentArray: [#keyPath(ManagedBoosterSet.logo), url])
+        request.predicate = NSPredicate(format: "%K = %@", argumentArray: [#keyPath(ManagedBoosterSet.symbol), url])
         request.returnsObjectsAsFaults = false
         request.fetchLimit = 1
+        
         return try context.fetch(request).first
     }
     

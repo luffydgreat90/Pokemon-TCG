@@ -22,10 +22,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }()
     
     private lazy var store: BoosterSetStore & ImageDataStore = {
-        try! CoreDataBoosterSetStore(
+        try! CoreDataStore(
             storeURL: NSPersistentContainer
                 .defaultDirectoryURL()
-                .appendingPathComponent("booster-set-store.sqlite"))
+                .appendingPathComponent("booster-set-store.sqlite"),
+            store: CoreDataBoosterSetStore.self)
     }()
     
     private lazy var localBoosterSetLoader: LocalBoosterSetLoader = {
@@ -85,12 +86,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return localImageLoader
             .loadImageDataPublisher(from: url)
             .fallback(to: { [httpClient] in
-                
                 return httpClient
                     .getPublisher(url: url)
                     .tryMap(ImageDataMapper.map)
                     .caching(to: localImageLoader, using: url)
-                
             })
     }
     
