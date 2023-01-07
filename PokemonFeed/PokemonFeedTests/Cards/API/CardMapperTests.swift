@@ -59,25 +59,22 @@ public class CardsMapperTests: XCTestCase {
             id: id,
             name: name,
             supertype: SuperType.checkSupertype(supertype),
-            types: types,
             number: number,
             rarity: rarity,
             flavorText: "Test",
-            nationalPokedexNumbers: [1],
             legalities: Legalities(isUnlimited: Legalities.checkLegality(legality: legalities["unlimited"]), isStandard: Legalities.checkLegality(legality: legalities["standard"]), isExpanded: Legalities.checkLegality(legality: legalities["expanded"])),
             artist: artist,
             cardmarket: CardMarket(url: url, updatedAt: format.date(from: "2021/08/27")!, prices: CardPrice(averageSellPrice: 1.0, lowPrice: 1.0, trendPrice: 1.0, reverseHoloTrend: 1.0, lowPriceExPlus: 1.0, avg1: 1.0, avg7: 1.0, avg30: 1.0)),
-            images: CardImages(small: url, large: url))
+            images: CardImages(small: url, large: url),
+            cardSet: CardSet(id: "123", name: "Base", series: "Base"))
         
         let json = [
             "id": id,
             "name": name,
             "supertype": supertype,
-            "types": types!,
             "number": number,
             "rarity": rarity,
             "flavorText":"Test",
-            "nationalPokedexNumbers": [1],
             "legalities": legalities,
             "artist": artist,
             "cardmarket": [

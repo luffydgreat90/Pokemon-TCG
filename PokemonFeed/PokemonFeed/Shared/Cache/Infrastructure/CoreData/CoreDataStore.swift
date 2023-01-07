@@ -12,6 +12,11 @@ public protocol DataStore {
     static var model: NSManagedObjectModel { get }
 }
 
+public protocol DataStoreImage: DataStore {
+    static func resultImageRetrieve(dataForURL url: URL, context: NSManagedObjectContext) -> Result<Data?, Error>
+    static func resultSaveRetrieve(data: Data, for url: URL, context: NSManagedObjectContext) -> Result<Void, Error>
+}
+
 public final class CoreDataStore<Store:DataStore>{
     private let container: NSPersistentContainer
     private let context: NSManagedObjectContext
@@ -46,54 +51,16 @@ public final class CoreDataStore<Store:DataStore>{
     }
 }
 
-extension CoreDataStore: BoosterSetStore {
-    public func retrieve(completion: @escaping RetrievalCompletion) {
-        perform { context in
-            completion(Result {
-                try ManagedBoosterSetCache.find(in: context).map {
-                    CachedBoosterSet(boosterSets: $0.localBoosterSets, timestamp: $0.timestamp)
-                }
-            })
-        }
-    }
-    
-    public func deleteCachedBoosterSet(completion: @escaping DeletionCompletion) {
-        perform { context in
-            completion(Result {
-                try ManagedBoosterSetCache.find(in: context).map(context.delete).map(context.save)
-            })
-        }
-    }
-    
-    public func insert(_ boosterSets: [LocalBoosterSet], timestamp: Date, completion: @escaping InsertionCompletion) {
-        perform { context in
-            completion(Result {
-                let managedCache = try ManagedBoosterSetCache.newUniqueInstance(in: context)
-                managedCache.timestamp = timestamp
-                managedCache.boosterSets = ManagedBoosterSet.boosterSets(from: boosterSets, in: context)
-                try context.save()
-            })
-        }
-    }
-}
- 
-extension CoreDataStore: ImageDataStore {
+extension CoreDataStore: ImageDataStore where Store: DataStoreImage {
     public func insert(_ data: Data, for url: URL, completion: @escaping (ImageDataStore.InsertionResult) -> Void) {
         perform { context in
-            completion(Result {
-                try ManagedBoosterSet.first(with: url, in: context)
-                    .map { $0.data = data }
-                    .map(context.save)
-            })
+            completion(Store.resultSaveRetrieve(data: data, for: url, context: context))
         }
     }
     
     public func retrieve(dataForURL url: URL, completion: @escaping (ImageDataStore.RetrievalResult) -> Void) {
         perform { context in
-            completion(Result {
-                try ManagedBoosterSet.first(with: url, in: context)?.data
-            })
+            completion(Store.resultImageRetrieve(dataForURL: url, context: context))
         }
     }
-
 }

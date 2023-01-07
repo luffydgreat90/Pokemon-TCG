@@ -71,10 +71,14 @@ public struct CardPrice: Hashable {
     }
 }
 
-
-
 public struct CardSet: Hashable {
-    let id: String
-    let name: String
-    let series: String
+    public let id: String
+    public let name: String
+    public let series: String
+    
+    public init(id: String, name: String, series: String) {
+        self.id = id
+        self.name = name
+        self.series = series
+    }
 }

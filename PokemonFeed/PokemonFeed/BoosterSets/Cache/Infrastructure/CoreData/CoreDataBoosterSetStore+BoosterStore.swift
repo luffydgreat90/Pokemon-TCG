@@ -7,7 +7,7 @@
 
 import CoreData
 
-extension CoreDataBoosterSetStore: BoosterSetStore {
+extension CoreDataStore: BoosterSetStore where Store: CoreDataBoosterSetStore {
     public func retrieve(completion: @escaping RetrievalCompletion) {
         perform { context in
             completion(Result {

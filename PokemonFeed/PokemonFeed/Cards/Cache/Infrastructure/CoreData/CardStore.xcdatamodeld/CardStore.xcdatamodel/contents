@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ManagedCard" representedClassName="ManagedCard" syncable="YES" codeGenerationType="class">
+    <entity name="ManagedCard" representedClassName="ManagedCard" syncable="YES">
         <attribute name="artist" optional="YES" attributeType="String"/>
         <attribute name="averageSellPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="flavorText" optional="YES" attributeType="String"/>
         <attribute name="id" attributeType="String"/>
-        <attribute name="isExpanded" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isStandard" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isUnlimited" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="largeData" optional="YES" attributeType="Binary"/>
-        <attribute name="largeUrl" optional="YES" attributeType="URI"/>
+        <attribute name="isExpanded" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isStandard" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isUnlimited" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="largeData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="largeUrl" attributeType="URI"/>
         <attribute name="lowPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="number" attributeType="String"/>
-        <attribute name="rarity" optional="YES" attributeType="String"/>
+        <attribute name="rarity" attributeType="String"/>
         <attribute name="reverseHoloTrend" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="smallData" optional="YES" attributeType="Binary"/>
-        <attribute name="smallUrl" optional="YES" attributeType="URI"/>
-        <attribute name="supertype" attributeType="String"/>
+        <attribute name="smallData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="smallUrl" attributeType="URI"/>
+        <attribute name="supertype" optional="YES" attributeType="String"/>
         <attribute name="trendPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="url" optional="YES" attributeType="URI"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="url" attributeType="URI"/>
+        <relationship name="cache" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedCard" inverseName="cache" inverseEntity="ManagedCard"/>
     </entity>
     <entity name="ManagedCardCache" representedClassName="ManagedCardCache" syncable="YES">
         <attribute name="name" attributeType="String"/>
         <attribute name="series" attributeType="String"/>
         <attribute name="setId" attributeType="String"/>
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ManagedCard"/>
     </entity>
 </model>

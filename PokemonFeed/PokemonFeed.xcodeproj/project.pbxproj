@@ -45,6 +45,8 @@
 		8E1AA7DE2968D40E001E05A9 /* SuperType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7DD2968D40E001E05A9 /* SuperType.swift */; };
 		8E1AA7E02968D8D0001E05A9 /* CoreDataCardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7DF2968D8D0001E05A9 /* CoreDataCardStore.swift */; };
 		8E1AA7E32968DA6D001E05A9 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7E22968DA6D001E05A9 /* CoreDataStore.swift */; };
+		8E1AA7E529698ED7001E05A9 /* CoreDataBoosterSetStore+BoosterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7E429698ED7001E05A9 /* CoreDataBoosterSetStore+BoosterStore.swift */; };
+		8E1AA7E72969D06F001E05A9 /* ManagedCardCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7E62969D06F001E05A9 /* ManagedCardCache.swift */; };
 		8E4F6A4F29679EBE0022403A /* CardsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4F6A4E29679EBE0022403A /* CardsPresenter.swift */; };
 		8E4F6A5129679EF30022403A /* CardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4F6A5029679EF30022403A /* CardsViewModel.swift */; };
 		8E4F6A532967A2180022403A /* CardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4F6A522967A2180022403A /* CardController.swift */; };
@@ -92,6 +94,7 @@
 		8EA9B9AE2964E30A005E6080 /* BoosterSetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */; };
 		8EA9B9B02964E654005E6080 /* BoosterSetPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */; };
 		8EA9B9B22964E8FC005E6080 /* UITableView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */; };
+		8EFE7B872969D1C3003AF320 /* ManagedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B862969D1C3003AF320 /* ManagedCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +153,8 @@
 		8E1AA7DD2968D40E001E05A9 /* SuperType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperType.swift; sourceTree = "<group>"; };
 		8E1AA7DF2968D8D0001E05A9 /* CoreDataCardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCardStore.swift; sourceTree = "<group>"; };
 		8E1AA7E22968DA6D001E05A9 /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		8E1AA7E429698ED7001E05A9 /* CoreDataBoosterSetStore+BoosterStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreDataBoosterSetStore+BoosterStore.swift"; sourceTree = "<group>"; };
+		8E1AA7E62969D06F001E05A9 /* ManagedCardCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCardCache.swift; sourceTree = "<group>"; };
 		8E4F6A4E29679EBE0022403A /* CardsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsPresenter.swift; sourceTree = "<group>"; };
 		8E4F6A5029679EF30022403A /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
 		8E4F6A522967A2180022403A /* CardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardController.swift; sourceTree = "<group>"; };
@@ -201,6 +206,7 @@
 		8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenter.swift; sourceTree = "<group>"; };
 		8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenterTests.swift; sourceTree = "<group>"; };
 		8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeueing.swift"; sourceTree = "<group>"; };
+		8EFE7B862969D1C3003AF320 /* ManagedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +246,7 @@
 		8E0A6CC02965B02500F79B35 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				8E1AA7E429698ED7001E05A9 /* CoreDataBoosterSetStore+BoosterStore.swift */,
 				8E0A6CC12965B05900F79B35 /* BoosterSetStore.xcdatamodeld */,
 				8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */,
 				8E0A6CD22965BA0300F79B35 /* ManagedBoosterSetCache.swift */,
@@ -443,6 +450,8 @@
 			children = (
 				8E1AA7DA2968D07F001E05A9 /* CardStore.xcdatamodeld */,
 				8E1AA7DF2968D8D0001E05A9 /* CoreDataCardStore.swift */,
+				8E1AA7E62969D06F001E05A9 /* ManagedCardCache.swift */,
+				8EFE7B862969D1C3003AF320 /* ManagedCard.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -1020,6 +1029,7 @@
 				8E1AA7DC2968D07F001E05A9 /* CardStore.xcdatamodeld in Sources */,
 				8EA9B9402964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift in Sources */,
 				8E0A6CD52965BAF300F79B35 /* ManagedBoosterSet.swift in Sources */,
+				8E1AA7E529698ED7001E05A9 /* CoreDataBoosterSetStore+BoosterStore.swift in Sources */,
 				8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */,
 				8EA9B96F2964B8EE005E6080 /* BoosterSetsViewModel.swift in Sources */,
 				8E1AA7E02968D8D0001E05A9 /* CoreDataCardStore.swift in Sources */,
@@ -1028,7 +1038,9 @@
 				8E0A6CD32965BA0300F79B35 /* ManagedBoosterSetCache.swift in Sources */,
 				8EA9B98E2964D19C005E6080 /* ImageDataMapper.swift in Sources */,
 				8E0A6CF52965DE2E00F79B35 /* ImageDataCache.swift in Sources */,
+				8E1AA7E72969D06F001E05A9 /* ManagedCardCache.swift in Sources */,
 				8E0A6CE82965D73400F79B35 /* ImageDataStore.swift in Sources */,
+				8EFE7B872969D1C3003AF320 /* ManagedCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
