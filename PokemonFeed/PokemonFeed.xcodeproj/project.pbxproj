@@ -101,6 +101,7 @@
 		8EFE7B95296A10C6003AF320 /* CardCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B94296A10C6003AF320 /* CardCache.swift */; };
 		8EFE7B98296A13EF003AF320 /* SuperTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B97296A13EF003AF320 /* SuperTypeTests.swift */; };
 		8EFE7B9A296A1631003AF320 /* LoadImageDataFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B99296A1631003AF320 /* LoadImageDataFromCacheUseCaseTests.swift */; };
+		8EFE7B9C296A193E003AF320 /* CardCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B9B296A193E003AF320 /* CardCachePolicy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,6 +220,7 @@
 		8EFE7B94296A10C6003AF320 /* CardCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCache.swift; sourceTree = "<group>"; };
 		8EFE7B97296A13EF003AF320 /* SuperTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperTypeTests.swift; sourceTree = "<group>"; };
 		8EFE7B99296A1631003AF320 /* LoadImageDataFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageDataFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
+		8EFE7B9B296A193E003AF320 /* CardCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCachePolicy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -451,6 +453,7 @@
 				8EFE7B882969D8B7003AF320 /* LocalCard.swift */,
 				8EFE7B8C2969E308003AF320 /* CardStore.swift */,
 				8EFE7B92296A103B003AF320 /* LocalCardLoader.swift */,
+				8EFE7B9B296A193E003AF320 /* CardCachePolicy.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -1031,6 +1034,7 @@
 				8EA9B9432964B006005E6080 /* BoosterSet.swift in Sources */,
 				8E0A6CCB2965B2F900F79B35 /* LocalBoosterSet.swift in Sources */,
 				8EA9B9AC2964E2BA005E6080 /* BoosterSetViewModel.swift in Sources */,
+				8EFE7B9C296A193E003AF320 /* CardCachePolicy.swift in Sources */,
 				8E0A6CD12965B7EE00F79B35 /* BoosterSetCache.swift in Sources */,
 				8E0A6D1C296640C400F79B35 /* CardViewModel.swift in Sources */,
 				8EA9B9672964B7E4005E6080 /* BoosterSetsPresenter.swift in Sources */,

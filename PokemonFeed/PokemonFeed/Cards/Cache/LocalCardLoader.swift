@@ -43,6 +43,48 @@ extension LocalCardLoader: CardCache {
     }
 }
 
+extension LocalCardLoader {
+    public typealias LoadResult = Swift.Result<[Card], Error>
+    
+    public func load(completion: @escaping (LoadResult) -> Void) {
+        store.retrieve { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+            case let .failure(error):
+                completion(.failure(error))
+
+            case let .success(.some(cache)) where CardCachePolicy.validate(cache.timestamp, against: self.currentDate()):
+                completion(.success(cache.cards.toModels()))
+
+            case .success:
+                completion(.success([]))
+            }
+        }
+    }
+}
+
+extension LocalCardLoader {
+    public typealias ValidationResult = Result<Void, Error>
+
+    public func validateCache(completion: @escaping (ValidationResult) -> Void) {
+        store.retrieve { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+            case .failure:
+                self.store.deleteCachedCards(completion: completion)
+
+            case let .success(.some(cache)) where !CardCachePolicy.validate(cache.timestamp, against: self.currentDate()):
+                self.store.deleteCachedCards(completion: completion)
+
+            case .success:
+                completion(.success(()))
+            }
+        }
+    }
+}
+
 public extension Array where Element == Card {
     func toLocal() -> [LocalCard] {
         return map {
@@ -60,6 +102,27 @@ public extension Array where Element == Card {
                 cardmarket: LocalCardMarket(url: $0.cardmarket.url, updatedAt: $0.cardmarket.updatedAt, prices: LocalCardPrice(averageSellPrice: $0.cardmarket.prices.averageSellPrice, lowPrice: $0.cardmarket.prices.lowPrice, trendPrice: $0.cardmarket.prices.trendPrice, reverseHoloTrend: $0.cardmarket.prices.reverseHoloTrend)),
                 images: images,
                 cardSet: LocalCardSet(id: $0.cardSet.id, name: $0.cardSet.name, series: $0.cardSet.series))
+        }
+    }
+}
+
+public extension Array where Element == LocalCard {
+    func toModels() -> [Card] {
+        return map {
+            let images: CardImages? = $0.images != nil ? CardImages(small: $0.images!.small, large: $0.images!.large) : nil
+            
+            return Card(
+                id: $0.id,
+                name: $0.name,
+                supertype: $0.supertype,
+                number: $0.number,
+                rarity: $0.rarity,
+                flavorText: $0.flavorText,
+                legalities: Legalities(isUnlimited: $0.legalities.isUnlimited, isStandard: $0.legalities.isStandard, isExpanded: $0.legalities.isExpanded),
+                artist: $0.artist,
+                cardmarket: CardMarket(url: $0.cardmarket.url, updatedAt: $0.cardmarket.updatedAt, prices: CardPrice(averageSellPrice: $0.cardmarket.prices.averageSellPrice, lowPrice: $0.cardmarket.prices.lowPrice, trendPrice: $0.cardmarket.prices.trendPrice, reverseHoloTrend: $0.cardmarket.prices.reverseHoloTrend)),
+                images: images,
+                cardSet: CardSet(id: $0.cardSet.id, name: $0.cardSet.name, series: $0.cardSet.series))
         }
     }
 }
