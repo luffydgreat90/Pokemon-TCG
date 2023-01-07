@@ -63,7 +63,7 @@ public struct CardPrice: Hashable {
     public let trendPrice: Double?
     public let reverseHoloTrend: Double?
 
-    init(averageSellPrice: Double?, lowPrice: Double?, trendPrice: Double?, reverseHoloTrend: Double?) {
+    public init(averageSellPrice: Double?, lowPrice: Double?, trendPrice: Double?, reverseHoloTrend: Double?) {
         self.averageSellPrice = averageSellPrice
         self.lowPrice = lowPrice
         self.trendPrice = trendPrice

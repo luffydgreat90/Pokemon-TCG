@@ -12,6 +12,7 @@ class ManagedCard: NSManagedObject {
     @NSManaged var artist: String?
     @NSManaged var averageSellPrice: Double
     @NSManaged var flavorText: String?
+    @NSManaged var id: String
 }
 
 

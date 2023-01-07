@@ -40,8 +40,8 @@ public class CardsMapperTests: XCTestCase {
     }
     
     func test_map_deliversItemsOn200HTTPResponseWithJSONItems() throws {
-        let item1 = makeCard(id: "id1", name:"Charmander", types: ["Fire"])
-        let item2 = makeCard(id: "id2", name:"Alakazam", types: ["Psychic"])
+        let item1 = makeCard(id: "id1", name:"Charmander")
+        let item2 = makeCard(id: "id2", name:"Alakazam")
         
         let json = makeItemsJSON([item1.json, item2.json])
         
@@ -50,7 +50,7 @@ public class CardsMapperTests: XCTestCase {
         XCTAssertEqual(result, [item1.model, item2.model])
     }
     
-    private func makeCard(id: String,name:String, supertype:String = "Pokémon",rarity:String = "Rare", types:[String]? = nil, number:String = "1", legalities:[String:String] = ["unlimited":"Legal"], artist:String = "John Doe") -> (model: Card, json: [String: Any]) {
+    private func makeCard(id: String,name:String, supertype:String = "Pokémon",rarity:String = "Rare", number:String = "1", legalities:[String:String] = ["unlimited":"Legal"], artist:String = "John Doe") -> (model: Card, json: [String: Any]) {
         
         let url = anyURL()
         let format = DateFormatter.yearMonthDay
@@ -64,7 +64,10 @@ public class CardsMapperTests: XCTestCase {
             flavorText: "Test",
             legalities: Legalities(isUnlimited: Legalities.checkLegality(legality: legalities["unlimited"]), isStandard: Legalities.checkLegality(legality: legalities["standard"]), isExpanded: Legalities.checkLegality(legality: legalities["expanded"])),
             artist: artist,
-            cardmarket: CardMarket(url: url, updatedAt: format.date(from: "2021/08/27")!, prices: CardPrice(averageSellPrice: 1.0, lowPrice: 1.0, trendPrice: 1.0, reverseHoloTrend: 1.0, lowPriceExPlus: 1.0, avg1: 1.0, avg7: 1.0, avg30: 1.0)),
+            cardmarket: CardMarket(
+                url: url,
+                updatedAt: format.date(from: "2021/08/27")!,
+                prices: CardPrice(averageSellPrice: 1.0, lowPrice: 1.0, trendPrice: 1.0, reverseHoloTrend: 1.0)),
             images: CardImages(small: url, large: url),
             cardSet: CardSet(id: "123", name: "Base", series: "Base"))
         
@@ -84,16 +87,17 @@ public class CardsMapperTests: XCTestCase {
                     "averageSellPrice": 1.0,
                     "lowPrice": 1.0,
                     "trendPrice": 1.0,
-                    "reverseHoloTrend": 1.0,
-                    "lowPriceExPlus": 1.0,
-                    "avg1": 1.0,
-                    "avg7": 1.0,
-                    "avg30": 1.0
+                    "reverseHoloTrend": 1.0
                 ]
             ],
             "images": [
                 "small": url.absoluteString,
                 "large": url.absoluteString
+            ],
+            "set": [
+                "id": "123",
+                "name": "Base",
+                "series": "Base"
             ]
         ].compactMapValues { $0 }
         
