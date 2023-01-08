@@ -35,7 +35,7 @@ public final class CoreDataStore<Store:DataStore>{
         }
     }
     
-    func perform(_ action: @escaping (NSManagedObjectContext) -> Void) {
+    public func perform(_ action: @escaping (NSManagedObjectContext) -> Void) {
         context.perform { [context] in action(context) }
     }
 

@@ -12,7 +12,7 @@ public struct LocalLegalities: Equatable {
     public let isStandard: Bool
     public let isExpanded: Bool
     
-    init(isUnlimited: Bool, isStandard: Bool, isExpanded: Bool) {
+    public init(isUnlimited: Bool, isStandard: Bool, isExpanded: Bool) {
         self.isUnlimited = isUnlimited
         self.isStandard = isStandard
         self.isExpanded = isExpanded

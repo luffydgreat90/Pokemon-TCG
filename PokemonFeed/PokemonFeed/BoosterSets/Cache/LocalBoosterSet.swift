@@ -17,7 +17,7 @@ public struct LocalBoosterSet: Equatable {
     public let releaseDate: Date
     public let images: LocalImages
     
-    init(id: String, name: String, series: String, printedTotal: Int, total: Int, legalities: LocalLegalities, releaseDate: Date, images: LocalImages) {
+    public init(id: String, name: String, series: String, printedTotal: Int, total: Int, legalities: LocalLegalities, releaseDate: Date, images: LocalImages) {
         self.id = id
         self.name = name
         self.series = series
@@ -33,7 +33,7 @@ public struct LocalImages: Equatable {
     public let symbol: URL
     public let logo: URL
     
-    init(symbol: URL, logo: URL) {
+    public init(symbol: URL, logo: URL) {
         self.symbol = symbol
         self.logo = logo
     }
