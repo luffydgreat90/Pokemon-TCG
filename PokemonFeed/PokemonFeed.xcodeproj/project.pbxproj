@@ -65,7 +65,6 @@
 		8EA9B9482964B4AF005E6080 /* BoosterSetsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9472964B4AF005E6080 /* BoosterSetsEndPoint.swift */; };
 		8EA9B94A2964B5B5005E6080 /* BoosterSetsEndPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9492964B5B5005E6080 /* BoosterSetsEndPointTests.swift */; };
 		8EA9B9582964B69A005E6080 /* PokemoniOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA9B9502964B699005E6080 /* PokemoniOS.framework */; };
-		8EA9B95D2964B69A005E6080 /* PokemoniOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B95C2964B69A005E6080 /* PokemoniOSTests.swift */; };
 		8EA9B9672964B7E4005E6080 /* BoosterSetsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9662964B7E4005E6080 /* BoosterSetsPresenter.swift */; };
 		8EA9B96A2964B843005E6080 /* BoosterSets.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EA9B96C2964B843005E6080 /* BoosterSets.strings */; };
 		8EA9B96F2964B8EE005E6080 /* BoosterSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B96E2964B8EE005E6080 /* BoosterSetsViewModel.swift */; };
@@ -188,7 +187,6 @@
 		8EA9B9492964B5B5005E6080 /* BoosterSetsEndPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetsEndPointTests.swift; sourceTree = "<group>"; };
 		8EA9B9502964B699005E6080 /* PokemoniOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PokemoniOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B9572964B699005E6080 /* PokemoniOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemoniOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8EA9B95C2964B69A005E6080 /* PokemoniOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemoniOSTests.swift; sourceTree = "<group>"; };
 		8EA9B9662964B7E4005E6080 /* BoosterSetsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetsPresenter.swift; sourceTree = "<group>"; };
 		8EA9B96B2964B843005E6080 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BoosterSets.strings; sourceTree = "<group>"; };
 		8EA9B96D2964B847005E6080 /* fil */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fil; path = fil.lproj/BoosterSets.strings; sourceTree = "<group>"; };
@@ -687,7 +685,6 @@
 		8EA9B95B2964B69A005E6080 /* PokemoniOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				8EA9B95C2964B69A005E6080 /* PokemoniOSTests.swift */,
 			);
 			path = PokemoniOSTests;
 			sourceTree = "<group>";
@@ -1161,7 +1158,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EA9B95D2964B69A005E6080 /* PokemoniOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

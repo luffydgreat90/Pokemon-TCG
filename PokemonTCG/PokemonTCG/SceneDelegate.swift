@@ -97,7 +97,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return makeImageLoader(withURL: url, localImageLoader: localImageLoader)
     }
     
-    private func makeCardImageLoader(url:URL) -> AnyPublisher<Data, Error> {
+    private func makeCardImageLoader(url:URL?) -> AnyPublisher<Data, Error> {
+        struct InvalidUrl: Error {}
+        
+        guard let url = url else{
+            return Deferred {
+                Future { promise in
+                    promise(.failure(InvalidUrl()))
+                }
+            }.eraseToAnyPublisher()
+        }
+        
         let localImageLoader = LocalImageDataLoader(store: cardStore)
         return makeImageLoader(withURL: url, localImageLoader: localImageLoader)
     }

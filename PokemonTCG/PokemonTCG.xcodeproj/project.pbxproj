@@ -21,6 +21,7 @@
 		8EBEA69A2964F143000F1FC8 /* WeakRefVirtualProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBEA6992964F143000F1FC8 /* WeakRefVirtualProxy.swift */; };
 		8EBEA69C2964F1F9000F1FC8 /* LoadResourcePresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBEA69B2964F1F9000F1FC8 /* LoadResourcePresentationAdapter.swift */; };
 		8EBEA69E2964F23D000F1FC8 /* Combine+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBEA69D2964F23D000F1FC8 /* Combine+Helpers.swift */; };
+		8EFE7BAF296B8CB4003AF320 /* DispatchQueue+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BAE296B8CB4003AF320 /* DispatchQueue+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		8EBEA6992964F143000F1FC8 /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
 		8EBEA69B2964F1F9000F1FC8 /* LoadResourcePresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresentationAdapter.swift; sourceTree = "<group>"; };
 		8EBEA69D2964F23D000F1FC8 /* Combine+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Helpers.swift"; sourceTree = "<group>"; };
+		8EFE7BAE296B8CB4003AF320 /* DispatchQueue+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				8EBEA69D2964F23D000F1FC8 /* Combine+Helpers.swift */,
+				8EFE7BAE296B8CB4003AF320 /* DispatchQueue+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EBEA69C2964F1F9000F1FC8 /* LoadResourcePresentationAdapter.swift in Sources */,
+				8EFE7BAF296B8CB4003AF320 /* DispatchQueue+Helpers.swift in Sources */,
 				8E56CE8429679BD000FFCD15 /* CardListUIComposer.swift in Sources */,
 				8EBEA69E2964F23D000F1FC8 /* Combine+Helpers.swift in Sources */,
 				8EBEA6962964F0B8000F1FC8 /* BoosterSetsUIComposer.swift in Sources */,

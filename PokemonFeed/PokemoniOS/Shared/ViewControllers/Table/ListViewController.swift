@@ -24,24 +24,12 @@ public final class ListViewController: UITableViewController {
         setupUI()
         onRefresh?()
     }
-    
-    private func setupUI(){
-        refreshControl = UIRefreshControl(frame: .zero)
-        dataSource.defaultRowAnimation = .fade
-        tableView.dataSource = dataSource
-        tableView.prefetchDataSource = self
-        configureTableView?(tableView)
-    }
-    
+
     public func display(_ cellControllers: [CellController]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, CellController>()
         snapshot.appendSections([0])
         snapshot.appendItems(cellControllers, toSection: 0)
         dataSource.apply(snapshot)
-    }
-    
-    private func controller(for indexPath: IndexPath) -> CellController? {
-        dataSource.itemIdentifier(for: indexPath)
     }
     
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -80,5 +68,19 @@ extension ListViewController: ResourceLoadingView {
 extension ListViewController: ResourceErrorView {
     public func display(_ viewModel: ResourceErrorViewModel) {
         
+    }
+}
+
+private extension ListViewController {
+    func setupUI(){
+        refreshControl = UIRefreshControl(frame: .zero)
+        dataSource.defaultRowAnimation = .fade
+        tableView.dataSource = dataSource
+        tableView.prefetchDataSource = self
+        configureTableView?(tableView)
+    }
+    
+    func controller(for indexPath: IndexPath) -> CellController? {
+        dataSource.itemIdentifier(for: indexPath)
     }
 }
