@@ -107,6 +107,9 @@
 		8EFE7BA6296B7194003AF320 /* CardsTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BA5296B7194003AF320 /* CardsTestHelpers.swift */; };
 		8EFE7BA8296B7B46003AF320 /* CacheImageDataUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BA7296B7B46003AF320 /* CacheImageDataUseCaseTests.swift */; };
 		8EFE7BAD296B811D003AF320 /* CoreDataBoosterSetImageDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BAC296B811D003AF320 /* CoreDataBoosterSetImageDataStoreTests.swift */; };
+		8EFE7BB5296B8F99003AF320 /* XCTestCase+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BB4296B8F99003AF320 /* XCTestCase+Snapshot.swift */; };
+		8EFE7BB7296B8FE0003AF320 /* UIViewController+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BB6296B8FE0003AF320 /* UIViewController+Snapshot.swift */; };
+		8EFE7BB9296B9007003AF320 /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BB8296B9007003AF320 /* UIImage+TestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +234,9 @@
 		8EFE7BA5296B7194003AF320 /* CardsTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsTestHelpers.swift; sourceTree = "<group>"; };
 		8EFE7BA7296B7B46003AF320 /* CacheImageDataUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageDataUseCaseTests.swift; sourceTree = "<group>"; };
 		8EFE7BAC296B811D003AF320 /* CoreDataBoosterSetImageDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBoosterSetImageDataStoreTests.swift; sourceTree = "<group>"; };
+		8EFE7BB4296B8F99003AF320 /* XCTestCase+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Snapshot.swift"; sourceTree = "<group>"; };
+		8EFE7BB6296B8FE0003AF320 /* UIViewController+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Snapshot.swift"; sourceTree = "<group>"; };
+		8EFE7BB8296B9007003AF320 /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -867,6 +873,9 @@
 		8EFE7BB1296B8E7C003AF320 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8EFE7BB4296B8F99003AF320 /* XCTestCase+Snapshot.swift */,
+				8EFE7BB6296B8FE0003AF320 /* UIViewController+Snapshot.swift */,
+				8EFE7BB8296B9007003AF320 /* UIImage+TestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1002,6 +1011,7 @@
 					};
 					8EA9B9562964B699005E6080 = {
 						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1410;
 					};
 				};
 			};
@@ -1182,6 +1192,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EFE7BB7296B8FE0003AF320 /* UIViewController+Snapshot.swift in Sources */,
+				8EFE7BB5296B8F99003AF320 /* XCTestCase+Snapshot.swift in Sources */,
+				8EFE7BB9296B9007003AF320 /* UIImage+TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1498,14 +1511,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.PokemoniOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1515,10 +1535,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.PokemoniOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
