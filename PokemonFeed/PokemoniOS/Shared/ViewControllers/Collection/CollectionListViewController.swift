@@ -20,6 +20,7 @@ public final class CollectionListViewController: UICollectionViewController {
             self.onRefresh = onRefresh
             super.init(collectionViewLayout: layout)
             self.collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: layout)
+            self.collectionView.refreshControl = UIRefreshControl()
             configureCollectionView?(collectionView)
             self.collectionView.dataSource = dataSource
     }
@@ -59,7 +60,7 @@ public final class CollectionListViewController: UICollectionViewController {
 
 extension CollectionListViewController: ResourceLoadingView {
     public func display(_ viewModel: ResourceLoadingViewModel) {
-       
+        self.collectionView.refreshControl?.update(isRefreshing: viewModel.isLoading)
     }
 }
 
