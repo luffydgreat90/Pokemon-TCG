@@ -87,14 +87,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let url = CardEndPoint.get(boosterSet.id).url(baseURL: baseURL)
         let viewController = CardListUIComposer.cardListComposedWith(
             cardList: makeRemoteCardsLoader(url: url, setId: boosterSet.id),
-            imageLoader: makeBoosterSetImageLoader(url:))
+            imageLoader: makeCardImageLoader(url:))
         
         navigationController.pushViewController(viewController, animated: true)
     }
     
     private func makeBoosterSetImageLoader(url: URL) -> AnyPublisher<Data, Error> {
         let localImageLoader = LocalImageDataLoader(store: boosterSetStore)
-     
+        return makeImageLoader(withURL: url, localImageLoader: localImageLoader)
+    }
+    
+    private func makeCardImageLoader(url:URL) -> AnyPublisher<Data, Error> {
+        let localImageLoader = LocalImageDataLoader(store: cardStore)
+        return makeImageLoader(withURL: url, localImageLoader: localImageLoader)
+    }
+    
+    private func makeImageLoader(withURL url:URL, localImageLoader: LocalImageDataLoader) -> AnyPublisher<Data, Error> {
         return localImageLoader
             .loadImageDataPublisher(from: url)
             .fallback(to: { [httpClient] in
@@ -104,6 +112,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     .caching(to: localImageLoader, using: url)
             })
     }
+    
     
     private func makeRemoteCardsLoader(url: URL, setId:String) -> () -> AnyPublisher<[Card], Error> {
         return {  [httpClient, localCardLoader] in
