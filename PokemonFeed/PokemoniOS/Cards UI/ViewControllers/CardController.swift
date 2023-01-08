@@ -27,7 +27,6 @@ public final class CardController: NSObject {
     }
     
     private func releaseCellForReuse() {
-        cell?.cardImageView.image = nil
         cell = nil
     }
 }
@@ -45,7 +44,13 @@ extension CardController: UICollectionViewDataSource {
         delegate.didRequestImage()
         return cell!
     }
-    
+
+}
+
+extension CardController: UICollectionViewDelegate {
+    public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cancel()
+    }
 }
 
 extension CardController: UICollectionViewDataSourcePrefetching {

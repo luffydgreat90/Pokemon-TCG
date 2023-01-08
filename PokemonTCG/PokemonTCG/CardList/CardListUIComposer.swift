@@ -73,7 +73,7 @@ final class CardListViewAdapter: ResourceView {
                 errorView: WeakRefVirtualProxy(controller),
                 mapper: UIImage.tryMake(data:))
             
-            return CollectionController(id: model, dataSource: controller)
+            return CollectionController(id: model, dataSource: controller, delegate: controller, dataSourcePrefetching: controller)
         })
         
         controller?.display(viewControllers)

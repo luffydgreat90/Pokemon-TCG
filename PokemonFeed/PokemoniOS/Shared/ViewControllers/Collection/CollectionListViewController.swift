@@ -17,12 +17,13 @@ public final class CollectionListViewController: UICollectionViewController {
         onRefresh:(() -> Void)?,
         configureCollectionView: ((UICollectionView) -> Void)?
     ) {
-            self.onRefresh = onRefresh
-            super.init(collectionViewLayout: layout)
-            self.collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: layout)
-            self.collectionView.refreshControl = UIRefreshControl()
-            configureCollectionView?(collectionView)
-            self.collectionView.dataSource = dataSource
+        self.onRefresh = onRefresh
+        super.init(collectionViewLayout: layout)
+        self.collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: layout)
+        self.collectionView.refreshControl = UIRefreshControl()
+        configureCollectionView?(collectionView)
+        self.collectionView.dataSource = dataSource
+        self.collectionView.prefetchDataSource = self
     }
     
     required init?(coder: NSCoder) {
@@ -52,10 +53,22 @@ public final class CollectionListViewController: UICollectionViewController {
         dataSource.apply(snapshot)
     }
     
+    public override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let dsp = controller(for: indexPath)?.delegate
+        dsp?.collectionView?(collectionView, didEndDisplaying: cell, forItemAt: indexPath)
+    }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize.init(width: 150, height: 150)
-        }
+    
+    private func controller(for indexPath: IndexPath) -> CollectionController? {
+        dataSource.itemIdentifier(for: indexPath)
+    }
+}
+
+extension CollectionListViewController: UICollectionViewDataSourcePrefetching {
+    public func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        
+    }
+    
 }
 
 extension CollectionListViewController: ResourceLoadingView {
