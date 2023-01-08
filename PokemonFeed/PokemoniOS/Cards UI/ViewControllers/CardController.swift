@@ -29,6 +29,10 @@ public final class CardController: NSObject {
     private func releaseCellForReuse() {
         cell = nil
     }
+    
+    private func requestImage(){
+        delegate.didRequestImage()
+    }
 }
 
 extension CardController: UICollectionViewDataSource {
@@ -41,7 +45,7 @@ extension CardController: UICollectionViewDataSource {
         cell?.titleLabel.text = viewModel.name
         cell?.priceLabel.text = viewModel.price
         cell?.cardImageView.image = nil
-        delegate.didRequestImage()
+        requestImage()
         return cell!
     }
 
@@ -53,15 +57,6 @@ extension CardController: UICollectionViewDelegate {
     }
 }
 
-extension CardController: UICollectionViewDataSourcePrefetching {
-    public func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        
-    }
-    
-    public func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-        cancel()
-    }
-}
 
 extension CardController: ResourceView, ResourceLoadingView, ResourceErrorView {
     public func display(_ viewModel: UIImage) {

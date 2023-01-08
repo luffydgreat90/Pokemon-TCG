@@ -66,9 +66,18 @@ public final class CollectionListViewController: UICollectionViewController {
 
 extension CollectionListViewController: UICollectionViewDataSourcePrefetching {
     public func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        
+        indexPaths.forEach { indexPath in
+            let dsp = controller(for: indexPath)?.dataSourcePrefetching
+            dsp?.collectionView?(collectionView, cancelPrefetchingForItemsAt: indexPaths)
+        }
     }
     
+    public func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        indexPaths.forEach { indexPath in
+            let dsp = controller(for: indexPath)?.dataSourcePrefetching
+            dsp?.collectionView?(collectionView, cancelPrefetchingForItemsAt: indexPaths)
+        }
+    }
 }
 
 extension CollectionListViewController: ResourceLoadingView {
