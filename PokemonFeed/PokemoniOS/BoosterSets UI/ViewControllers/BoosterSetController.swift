@@ -54,6 +54,10 @@ extension BoosterSetController: UITableViewDataSource{
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
+    
+    public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cancel()
+    }
 
 }
 
@@ -80,7 +84,7 @@ extension BoosterSetController: ResourceView, ResourceLoadingView, ResourceError
     }
     
     public func display(_ viewModel: ResourceLoadingViewModel) {
-        cell?.imageView?.isShimmering = viewModel.isLoading
+        cell?.boosterSetImageView.isShimmering = viewModel.isLoading
     }
     
     public func display(_ viewModel: ResourceErrorViewModel) {

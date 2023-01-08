@@ -27,6 +27,7 @@ public final class CardController: NSObject {
     }
     
     private func releaseCellForReuse() {
+        cell?.cardImageView.image = nil
         cell = nil
     }
 }
@@ -59,7 +60,7 @@ extension CardController: UICollectionViewDataSourcePrefetching {
 
 extension CardController: ResourceView, ResourceLoadingView, ResourceErrorView {
     public func display(_ viewModel: UIImage) {
-        cell?.cardImageView.image = viewModel
+        cell?.cardImageView.setImageAnimated(viewModel)
     }
     
     public func display(_ viewModel: ResourceLoadingViewModel) {
