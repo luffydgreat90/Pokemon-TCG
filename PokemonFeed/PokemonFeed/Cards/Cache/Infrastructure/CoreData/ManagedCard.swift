@@ -21,7 +21,7 @@ class ManagedCard: NSManagedObject {
     @NSManaged var lowPrice: Double
     @NSManaged var name: String
     @NSManaged var number: String
-    @NSManaged var rarity: String
+    @NSManaged var rarity: String?
     @NSManaged var reverseHoloTrend: Double
     @NSManaged var smallData: Data?
     @NSManaged var largeData: Data?

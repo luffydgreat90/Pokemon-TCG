@@ -17,7 +17,7 @@ public enum CardMapper {
         let name: String
         let supertype: String
         let number: String
-        let rarity: String
+        let rarity: String?
         let flavorText: String?
         let legalities: RemoteLegalities
         let artist: String?
