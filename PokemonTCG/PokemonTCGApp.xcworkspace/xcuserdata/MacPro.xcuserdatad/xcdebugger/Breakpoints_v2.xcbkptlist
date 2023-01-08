@@ -3,4 +3,54 @@
    uuid = "00CE71C8-8371-4CCE-8BF8-D6B3B470949A"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FC3A5CCD-412F-4566-89F2-0A37719290C1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../PokemonFeed/PokemonFeed/Cards/Cache/LocalCardLoader.swift"
+            startingColumnNumber = "20"
+            endingColumnNumber = "29"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "toLocal()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FC3A5CCD-412F-4566-89F2-0A37719290C1 - 5995388666ef86e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PokemonFeed.Card) -&gt; PokemonFeed.LocalCard in Swift.Array&lt;&#x3c4;_0_0 where &#x3c4;_0_0 == PokemonFeed.Card&gt;.toLocal() -&gt; Swift.Array&lt;PokemonFeed.LocalCard&gt;"
+                  moduleName = "PokemonFeed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MacPro/Documents/github_bobzki/Pokemon-TCG/PokemonFeed/PokemonFeed/Cards/Cache/LocalCardLoader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "1508">
+               </Location>
+               <Location
+                  uuid = "FC3A5CCD-412F-4566-89F2-0A37719290C1 - 5995388666ef86e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PokemonFeed.Card) -&gt; PokemonFeed.LocalCard in Swift.Array&lt;&#x3c4;_0_0 where &#x3c4;_0_0 == PokemonFeed.Card&gt;.toLocal() -&gt; Swift.Array&lt;PokemonFeed.LocalCard&gt;"
+                  moduleName = "PokemonFeed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MacPro/Documents/github_bobzki/Pokemon-TCG/PokemonFeed/PokemonFeed/Cards/Cache/LocalCardLoader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "4016">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
