@@ -106,6 +106,7 @@
 		8EFE7BA0296B1C13003AF320 /* UIRefreshControl+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B9F296B1C13003AF320 /* UIRefreshControl+Helpers.swift */; };
 		8EFE7BA3296B70E8003AF320 /* CardPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BA2296B70E8003AF320 /* CardPresenterTests.swift */; };
 		8EFE7BA6296B7194003AF320 /* CardsTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BA5296B7194003AF320 /* CardsTestHelpers.swift */; };
+		8EFE7BA8296B7B46003AF320 /* CacheImageDataUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BA7296B7B46003AF320 /* CacheImageDataUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +230,7 @@
 		8EFE7B9F296B1C13003AF320 /* UIRefreshControl+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+Helpers.swift"; sourceTree = "<group>"; };
 		8EFE7BA2296B70E8003AF320 /* CardPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPresenterTests.swift; sourceTree = "<group>"; };
 		8EFE7BA5296B7194003AF320 /* CardsTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsTestHelpers.swift; sourceTree = "<group>"; };
+		8EFE7BA7296B7B46003AF320 /* CacheImageDataUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageDataUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,6 +334,7 @@
 			children = (
 				8E0A6CED2965DB6E00F79B35 /* Helpers */,
 				8EFE7B99296A1631003AF320 /* LoadImageDataFromCacheUseCaseTests.swift */,
+				8EFE7BA7296B7B46003AF320 /* CacheImageDataUseCaseTests.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -540,7 +543,6 @@
 			isa = PBXGroup;
 			children = (
 				8E0A6CE92965D76000F79B35 /* Cards */,
-				8EA9B98C2964D185005E6080 /* Image */,
 				8EA9B924296492A3005E6080 /* Shared */,
 				8EA9B91F29648B64005E6080 /* BoosterSets */,
 			);
@@ -552,7 +554,6 @@
 			children = (
 				8E0A6CFD2966091900F79B35 /* Cards */,
 				8EA9B9A62964DFCA005E6080 /* Helpers */,
-				8EA9B9922964D35D005E6080 /* Image */,
 				8EA9B93629649467005E6080 /* BoosterSets */,
 				8EA9B92A29649337005E6080 /* Shared */,
 			);
@@ -595,6 +596,7 @@
 			children = (
 				8EA9B93C2964A20B005E6080 /* Helpers */,
 				8EA9B926296492BC005E6080 /* HTTPClient.swift */,
+				8EA9B98D2964D19C005E6080 /* ImageDataMapper.swift */,
 				8EA9B92829649315005E6080 /* URLSessionHTTPClient.swift */,
 			);
 			path = API;
@@ -616,6 +618,7 @@
 			children = (
 				8EA9B92C2964934D005E6080 /* Helpers */,
 				8EA9B92F29649372005E6080 /* URLSessionHTTPClientTests.swift */,
+				8EA9B9932964D366005E6080 /* ImageDataMapperTests.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -734,22 +737,6 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		8EA9B98C2964D185005E6080 /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				8EA9B98F2964D1BD005E6080 /* API */,
-			);
-			path = Image;
-			sourceTree = "<group>";
-		};
-		8EA9B98F2964D1BD005E6080 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				8EA9B98D2964D19C005E6080 /* ImageDataMapper.swift */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
 		8EA9B9902964D33A005E6080 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -769,14 +756,6 @@
 				8E0A6D1D2966423C00F79B35 /* UICollectionView+Dequeueing.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		8EA9B9922964D35D005E6080 /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				8EA9B9932964D366005E6080 /* ImageDataMapperTests.swift */,
-			);
-			path = Image;
 			sourceTree = "<group>";
 		};
 		8EA9B9972964D443005E6080 /* BoosterSets UI */ = {
@@ -1134,6 +1113,7 @@
 				8EFE7B9A296A1631003AF320 /* LoadImageDataFromCacheUseCaseTests.swift in Sources */,
 				8E0A6D0A29662DCC00F79B35 /* CardEndPointTests.swift in Sources */,
 				8EA9B9B02964E654005E6080 /* BoosterSetPresenterTests.swift in Sources */,
+				8EFE7BA8296B7B46003AF320 /* CacheImageDataUseCaseTests.swift in Sources */,
 				8EA9B9722964B97B005E6080 /* BoosterSetsPresenterTests.swift in Sources */,
 				8EFE7BA6296B7194003AF320 /* CardsTestHelpers.swift in Sources */,
 				8EA9B9852964CD0C005E6080 /* SharedLocalizationTests.swift in Sources */,
