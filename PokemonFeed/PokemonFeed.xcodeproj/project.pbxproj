@@ -104,6 +104,8 @@
 		8EFE7B9C296A193E003AF320 /* CardCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B9B296A193E003AF320 /* CardCachePolicy.swift */; };
 		8EFE7B9E296A1E57003AF320 /* CoreDataCardStore+CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B9D296A1E57003AF320 /* CoreDataCardStore+CardStore.swift */; };
 		8EFE7BA0296B1C13003AF320 /* UIRefreshControl+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B9F296B1C13003AF320 /* UIRefreshControl+Helpers.swift */; };
+		8EFE7BA3296B70E8003AF320 /* CardPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BA2296B70E8003AF320 /* CardPresenterTests.swift */; };
+		8EFE7BA6296B7194003AF320 /* CardsTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BA5296B7194003AF320 /* CardsTestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +227,8 @@
 		8EFE7B9B296A193E003AF320 /* CardCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCachePolicy.swift; sourceTree = "<group>"; };
 		8EFE7B9D296A1E57003AF320 /* CoreDataCardStore+CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataCardStore+CardStore.swift"; sourceTree = "<group>"; };
 		8EFE7B9F296B1C13003AF320 /* UIRefreshControl+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+Helpers.swift"; sourceTree = "<group>"; };
+		8EFE7BA2296B70E8003AF320 /* CardPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPresenterTests.swift; sourceTree = "<group>"; };
+		8EFE7BA5296B7194003AF320 /* CardsTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsTestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,6 +377,8 @@
 		8E0A6CFD2966091900F79B35 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				8EFE7BA4296B7177003AF320 /* Helpers */,
+				8EFE7BA1296B6FDD003AF320 /* Presentation */,
 				8E0A6CFE2966091F00F79B35 /* API */,
 			);
 			path = Cards;
@@ -854,6 +860,22 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
+		8EFE7BA1296B6FDD003AF320 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				8EFE7BA2296B70E8003AF320 /* CardPresenterTests.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		8EFE7BA4296B7177003AF320 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8EFE7BA5296B7194003AF320 /* CardsTestHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1101,6 +1123,7 @@
 				8E0A6CE32965CE9200F79B35 /* BoosterSetCacheTestHelpers.swift in Sources */,
 				8E0A6CE52965D21000F79B35 /* ValidateBoosterSetCacheUseCaseTests.swift in Sources */,
 				8E0A6CDD2965C79600F79B35 /* BoosterSetStoreSpy.swift in Sources */,
+				8EFE7BA3296B70E8003AF320 /* CardPresenterTests.swift in Sources */,
 				8EA9B92E29649359005E6080 /* URLProtocolStub.swift in Sources */,
 				8E0A6CDF2965C87B00F79B35 /* LoadBoosterSetFromCacheUseCaseTests.swift in Sources */,
 				8EA9B939296499B2005E6080 /* BoosterSetsMapperTests.swift in Sources */,
@@ -1112,6 +1135,7 @@
 				8E0A6D0A29662DCC00F79B35 /* CardEndPointTests.swift in Sources */,
 				8EA9B9B02964E654005E6080 /* BoosterSetPresenterTests.swift in Sources */,
 				8EA9B9722964B97B005E6080 /* BoosterSetsPresenterTests.swift in Sources */,
+				8EFE7BA6296B7194003AF320 /* CardsTestHelpers.swift in Sources */,
 				8EA9B9852964CD0C005E6080 /* SharedLocalizationTests.swift in Sources */,
 				8EA9B9752964C2FD005E6080 /* BoosterSetsTestHelpers.swift in Sources */,
 			);

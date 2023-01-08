@@ -23,9 +23,7 @@ func uniqueBoosterSet() -> BoosterSet {
 
 func uniqueBoosterSets() -> (models: [BoosterSet], local: [LocalBoosterSet]) {
     let models = [uniqueBoosterSet(), uniqueBoosterSet()]
-    
     let locals = models.toLocal()
-    
     return (models, locals)
 }
 
