@@ -677,7 +677,7 @@
 				8E0A6D1329663CAA00F79B35 /* Cards UI */,
 				8E0A6CF92965E67100F79B35 /* Helpers */,
 				8EA9B9972964D443005E6080 /* BoosterSets UI */,
-				8EA9B9902964D33A005E6080 /* Shared */,
+				8EA9B9902964D33A005E6080 /* Shared UI */,
 			);
 			path = PokemoniOS;
 			sourceTree = "<group>";
@@ -685,6 +685,8 @@
 		8EA9B95B2964B69A005E6080 /* PokemoniOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				8EFE7BB1296B8E7C003AF320 /* Helpers */,
+				8EFE7BB0296B8E6D003AF320 /* Shared UI */,
 			);
 			path = PokemoniOSTests;
 			sourceTree = "<group>";
@@ -738,14 +740,14 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		8EA9B9902964D33A005E6080 /* Shared */ = {
+		8EA9B9902964D33A005E6080 /* Shared UI */ = {
 			isa = PBXGroup;
 			children = (
 				8EA9B9A12964D9E8005E6080 /* ViewControllers */,
 				8EA9B99E2964D9D1005E6080 /* Views */,
 				8EA9B9912964D33F005E6080 /* Helpers */,
 			);
-			path = Shared;
+			path = "Shared UI";
 			sourceTree = "<group>";
 		};
 		8EA9B9912964D33F005E6080 /* Helpers */ = {
@@ -861,6 +863,20 @@
 			children = (
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		8EFE7BB0296B8E6D003AF320 /* Shared UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Shared UI";
+			sourceTree = "<group>";
+		};
+		8EFE7BB1296B8E7C003AF320 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
