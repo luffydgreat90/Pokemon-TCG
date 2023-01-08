@@ -33,12 +33,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         try! CoreDataStore(
             storeURL: NSPersistentContainer
                 .defaultDirectoryURL()
-                .appendingPathComponent("booster-set-store.sqlite"),
+                .appendingPathComponent("card-set-store.sqlite"),
             store: CoreDataCardStore.self)
     }()
     
     private lazy var localBoosterSetLoader: LocalBoosterSetLoader = {
         LocalBoosterSetLoader(store: boosterSetStore, currentDate: Date.init)
+    }()
+    
+    private lazy var localCardLoader: LocalCardLoader = {
+        LocalCardLoader(store: cardStore, currentDate: Date.init)
     }()
     
     private lazy var navigationController: UINavigationController = {
@@ -82,7 +86,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func showCard(for boosterSet: BoosterSet) {
         let url = CardEndPoint.get(boosterSet.id).url(baseURL: baseURL)
         let viewController = CardListUIComposer.cardListComposedWith(
-            cardList: makeRemoteCardsLoader(url: url),
+            cardList: makeRemoteCardsLoader(url: url, setId: boosterSet.id),
             imageLoader: makeBoosterSetImageLoader(url:))
         
         navigationController.pushViewController(viewController, animated: true)
@@ -101,12 +105,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             })
     }
     
-    private func makeRemoteCardsLoader(url: URL) -> () -> AnyPublisher<[Card], Error> {
-        return { [httpClient] in
-            return httpClient
-                .getPublisher(url: url)
-                .tryMap(CardMapper.map)
-                .eraseToAnyPublisher()
+    private func makeRemoteCardsLoader(url: URL, setId:String) -> () -> AnyPublisher<[Card], Error> {
+        return {  [httpClient, localCardLoader] in
+            httpClient
+            .getPublisher(url: url)
+            .tryMap(CardMapper.map)
+            .caching(to: localCardLoader, setId: setId)
+            .fallback(to: {
+                return localCardLoader.loadPublisher(setId: setId)
+            })
         }
     }
 }

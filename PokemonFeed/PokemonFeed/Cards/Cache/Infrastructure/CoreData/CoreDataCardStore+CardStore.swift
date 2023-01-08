@@ -8,29 +8,30 @@
 import CoreData
 
 extension CoreDataStore: CardStore where Store: CoreDataCardStore {
-    public func deleteCachedCards(completion: @escaping CardStore.DeletionCompletion) {
+    public func deleteCachedCards(setId: String, completion: @escaping CardStore.DeletionCompletion) {
         perform { context in
             completion(Result {
-                try ManagedCardCache.find(in: context).map(context.delete).map(context.save)
+                try ManagedCardCache.find(setId: setId,in: context).map(context.delete).map(context.save)
             })
         }
     }
     
-    public func insert(_ cards: [LocalCard], timestamp: Date, completion: @escaping CardStore.InsertionCompletion) {
+    public func insert(_ cards: [LocalCard], setId: String,timestamp: Date, completion: @escaping CardStore.InsertionCompletion) {
         perform { context in
             completion(Result {
-                let managedCache = try ManagedCardCache.newUniqueInstance(in: context)
+                let managedCache = try ManagedCardCache.newUniqueInstance(setId: setId,in: context)
                 managedCache.timestamp = timestamp
+                managedCache.setId = setId
                 managedCache.cards = ManagedCard.cards(from: cards, in: context)
                 try context.save()
             })
         }
     }
     
-    public func retrieve(completion: @escaping CardStore.RetrievalCompletion) {
+    public func retrieve(setId: String, completion: @escaping CardStore.RetrievalCompletion) {
         perform { context in
             completion(Result {
-                try ManagedCardCache.find(in: context).map {
+                try ManagedCardCache.find(setId: setId, in: context).map {
                     CachedCard(cards: $0.localCards, timestamp: $0.timestamp)
                 }
             })

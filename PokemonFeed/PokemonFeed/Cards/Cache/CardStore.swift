@@ -21,13 +21,13 @@ public protocol CardStore {
     
     /// The completion handler can be invoked in any thread.
     /// Clients are responsible to dispatch to appropriate threads, if needed.
-    func deleteCachedCards(completion: @escaping DeletionCompletion)
+    func deleteCachedCards(setId: String, completion: @escaping DeletionCompletion)
 
     /// The completion handler can be invoked in any thread.
     /// Clients are responsible to dispatch to appropriate threads, if needed.
-    func insert(_ cards: [LocalCard], timestamp: Date, completion: @escaping InsertionCompletion)
+    func insert(_ cards: [LocalCard], setId: String, timestamp: Date, completion: @escaping InsertionCompletion)
 
     /// The completion handler can be invoked in any thread.
     /// Clients are responsible to dispatch to appropriate threads, if needed.
-    func retrieve(completion: @escaping RetrievalCompletion)
+    func retrieve(setId: String, completion: @escaping RetrievalCompletion)
 }

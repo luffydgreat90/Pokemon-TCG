@@ -58,12 +58,42 @@ private extension BoosterSetCache {
     }
 }
 
+extension Publisher where Output == [Card] {
+    func caching(to cache: CardCache, setId: String) -> AnyPublisher<Output, Failure> {
+        handleEvents(receiveOutput: { cards in
+            cache.saveIgnoringResult(cards, setId: setId)
+        }).eraseToAnyPublisher()
+    }
+}
+
+private extension CardCache {
+    func saveIgnoringResult(_ cards: [Card], setId: String) {
+        save(cards, setId: setId) { _ in }
+    }
+}
+
+
 public extension LocalBoosterSetLoader {
     typealias Publisher = AnyPublisher<[BoosterSet], Error>
 
     func loadPublisher() -> Publisher {
         Deferred {
             Future(self.load)
+        }
+        .eraseToAnyPublisher()
+    }
+}
+
+public extension LocalCardLoader {
+    typealias Publisher = AnyPublisher<[Card], Error>
+
+    func loadPublisher(setId: String) -> Publisher {
+        return Deferred {
+            Future { promise in
+                self.load(setId: setId) { result in
+                    promise(result)
+                }
+            }
         }
         .eraseToAnyPublisher()
     }

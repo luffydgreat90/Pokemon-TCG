@@ -20,13 +20,13 @@ public final class LocalCardLoader {
 extension LocalCardLoader: CardCache {
     public typealias SaveResult = CardCache.Result
     
-    public func save(_ cards: [Card], completion: @escaping (SaveResult) -> Void) {
-        store.deleteCachedCards { [weak self] deletionResult in
+    public func save(_ cards: [Card],setId: String, completion: @escaping (SaveResult) -> Void) {
+        store.deleteCachedCards(setId: setId) { [weak self] deletionResult in
             guard let self = self else { return }
 
             switch deletionResult {
             case .success:
-                self.cache(cards, with: completion)
+                self.cache(cards,setId: setId, with: completion)
 
             case let .failure(error):
                 completion(.failure(error))
@@ -34,8 +34,8 @@ extension LocalCardLoader: CardCache {
         }
     }
     
-    private func cache(_ cards: [Card], with completion: @escaping (SaveResult) -> Void) {
-        store.insert(cards.toLocal(), timestamp: currentDate()) { [weak self] insertionResult in
+    private func cache(_ cards: [Card], setId: String, with completion: @escaping (SaveResult) -> Void) {
+        store.insert(cards.toLocal(), setId: setId, timestamp: currentDate()) { [weak self] insertionResult in
             guard self != nil else { return }
 
             completion(insertionResult)
@@ -46,8 +46,8 @@ extension LocalCardLoader: CardCache {
 extension LocalCardLoader {
     public typealias LoadResult = Swift.Result<[Card], Error>
     
-    public func load(completion: @escaping (LoadResult) -> Void) {
-        store.retrieve { [weak self] result in
+    public func load(setId: String, completion: @escaping (LoadResult) -> Void) {
+        store.retrieve(setId: setId) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
@@ -67,16 +67,16 @@ extension LocalCardLoader {
 extension LocalCardLoader {
     public typealias ValidationResult = Result<Void, Error>
 
-    public func validateCache(completion: @escaping (ValidationResult) -> Void) {
-        store.retrieve { [weak self] result in
+    public func validateCache(setId: String, completion: @escaping (ValidationResult) -> Void) {
+        store.retrieve(setId: setId) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
             case .failure:
-                self.store.deleteCachedCards(completion: completion)
+                self.store.deleteCachedCards(setId: setId, completion: completion)
 
             case let .success(.some(cache)) where !CardCachePolicy.validate(cache.timestamp, against: self.currentDate()):
-                self.store.deleteCachedCards(completion: completion)
+                self.store.deleteCachedCards(setId: setId, completion: completion)
 
             case .success:
                 completion(.success(()))

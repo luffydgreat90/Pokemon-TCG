@@ -11,20 +11,19 @@ import CoreData
 class ManagedCardCache: NSManagedObject {
     @NSManaged var timestamp: Date
     @NSManaged var cards: NSOrderedSet
-    @NSManaged var name: String
-    @NSManaged var series: String
     @NSManaged var setId: String
 }
 
 extension ManagedCardCache {
-    static func find(in context: NSManagedObjectContext) throws -> ManagedCardCache? {
+    static func find(setId: String, in context: NSManagedObjectContext) throws -> ManagedCardCache? {
         let request = NSFetchRequest<ManagedCardCache>(entityName: entity().name!)
+        request.predicate = NSPredicate(format: "%K = %@", argumentArray: [#keyPath(ManagedCardCache.setId), setId])
         request.returnsObjectsAsFaults = false
         return try context.fetch(request).first
     }
     
-    static func newUniqueInstance(in context: NSManagedObjectContext) throws -> ManagedCardCache {
-        try find(in: context).map(context.delete)
+    static func newUniqueInstance(setId: String, in context: NSManagedObjectContext) throws -> ManagedCardCache {
+        try find(setId: setId, in: context).map(context.delete)
         return ManagedCardCache(context: context)
     }
     

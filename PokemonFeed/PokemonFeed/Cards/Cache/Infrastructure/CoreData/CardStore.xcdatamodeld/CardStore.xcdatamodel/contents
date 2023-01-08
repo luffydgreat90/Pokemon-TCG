@@ -27,8 +27,6 @@
         <relationship name="cache" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedCardCache" inverseName="cards" inverseEntity="ManagedCardCache"/>
     </entity>
     <entity name="ManagedCardCache" representedClassName="ManagedCardCache" syncable="YES">
-        <attribute name="name" attributeType="String"/>
-        <attribute name="series" attributeType="String"/>
         <attribute name="setId" attributeType="String"/>
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="cards" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ManagedCard" inverseName="cache" inverseEntity="ManagedCard"/>
