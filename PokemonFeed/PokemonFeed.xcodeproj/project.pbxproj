@@ -362,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				8E0A6CFA2965E68500F79B35 /* UIImageView+Animations.swift */,
+				8EA9B99C2964D951005E6080 /* NSLayoutConstraint+Helpers.swift */,
 				8E0A6D1F2967808200F79B35 /* UIView+Helpers.swift */,
 				8E0A6D212967837F00F79B35 /* UIView+Shimmering.swift */,
 				8EFE7B9F296B1C13003AF320 /* UIRefreshControl+Helpers.swift */,
@@ -411,6 +412,7 @@
 		8E0A6D0F296636A900F79B35 /* Table */ = {
 			isa = PBXGroup;
 			children = (
+				8EFE7BB2296B8ECF003AF320 /* Helpers */,
 				8EA9B99F2964D9E2005E6080 /* ListViewController.swift */,
 				8EA9B9A42964DAF1005E6080 /* CellController.swift */,
 			);
@@ -420,6 +422,7 @@
 		8E0A6D10296636B500F79B35 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
+				8EFE7BB3296B8EDB003AF320 /* Helpers */,
 				8E0A6D11296636D600F79B35 /* CollectionController.swift */,
 				8E56CE8029679B1A00FFCD15 /* CollectionListViewController.swift */,
 			);
@@ -744,7 +747,6 @@
 			isa = PBXGroup;
 			children = (
 				8EA9B9A12964D9E8005E6080 /* ViewControllers */,
-				8EA9B99E2964D9D1005E6080 /* Views */,
 				8EA9B9912964D33F005E6080 /* Helpers */,
 			);
 			path = "Shared UI";
@@ -753,10 +755,7 @@
 		8EA9B9912964D33F005E6080 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				8EA9B99C2964D951005E6080 /* NSLayoutConstraint+Helpers.swift */,
 				8EA9B9A22964DA13005E6080 /* UIImage+TryMake.swift */,
-				8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */,
-				8E0A6D1D2966423C00F79B35 /* UICollectionView+Dequeueing.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -782,13 +781,6 @@
 			isa = PBXGroup;
 			children = (
 				8EA9B99A2964D4BA005E6080 /* BoosterSetCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		8EA9B99E2964D9D1005E6080 /* Views */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -875,6 +867,22 @@
 		8EFE7BB1296B8E7C003AF320 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8EFE7BB2296B8ECF003AF320 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8EFE7BB3296B8EDB003AF320 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8E0A6D1D2966423C00F79B35 /* UICollectionView+Dequeueing.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
