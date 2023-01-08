@@ -12,16 +12,30 @@ public final class CoreDataCardStore: DataStoreImage {
     public static var model: NSManagedObjectModel = NSManagedObjectModel.with(name: CoreDataCardStore.modelName, in: Bundle(for: CoreDataCardStore.self))!
     
     public static func resultImageRetrieve(dataForURL url: URL, context: NSManagedObjectContext) -> Result<Data?, Error> {
-        return Result {
-            try ManagedCard.first(with: url, argumentArray: [#keyPath(ManagedCard.smallUrl),url], in: context)?.smallData
+        if url.absoluteString.contains("hires") {
+            return Result {
+                try ManagedCard.first(with: url, argumentArray: [#keyPath(ManagedCard.largeUrl),url], in: context)?.largeData
+            }
+        }else{
+            return Result {
+                try ManagedCard.first(with: url, argumentArray: [#keyPath(ManagedCard.smallUrl),url], in: context)?.smallData
+            }
         }
     }
     
     public static func resultSaveRetrieve(data: Data, for url: URL, context: NSManagedObjectContext) -> Result<Void, Error> {
-        return Result {
-            try ManagedCard.first(with: url, argumentArray: [#keyPath(ManagedCard.smallUrl),url], in: context)
-                .map { $0.smallData = data }
-                .map(context.save)
+        if url.absoluteString.contains("hires") {
+            return Result {
+                try ManagedCard.first(with: url, argumentArray: [#keyPath(ManagedCard.largeUrl),url], in: context)
+                    .map { $0.largeData = data }
+                    .map(context.save)
+            }
+        }else{
+            return Result {
+                try ManagedCard.first(with: url, argumentArray: [#keyPath(ManagedCard.smallUrl),url], in: context)
+                    .map { $0.smallData = data }
+                    .map(context.save)
+            }
         }
     }
     
