@@ -15,6 +15,7 @@ public final class ListViewController: UITableViewController {
         }
     }()
     
+    private(set) public var errorView = ErrorView()
     public var onRefresh: (() -> Void)?
     public var configureTableView: ((UITableView) -> Void)?
     
@@ -66,7 +67,7 @@ extension ListViewController: ResourceLoadingView {
 
 extension ListViewController: ResourceErrorView {
     public func display(_ viewModel: ResourceErrorViewModel) {
-        
+        errorView.message = viewModel.message
     }
 }
 
@@ -77,6 +78,13 @@ private extension ListViewController {
         tableView.dataSource = dataSource
         tableView.prefetchDataSource = self
         configureTableView?(tableView)
+        tableView.tableHeaderView = errorView.makeContainer()
+        
+        errorView.onHide = { [weak self] in
+            self?.tableView.beginUpdates()
+            self?.tableView.sizeTableHeaderToFit()
+            self?.tableView.endUpdates()
+        }
     }
     
     func controller(for indexPath: IndexPath) -> CellController? {

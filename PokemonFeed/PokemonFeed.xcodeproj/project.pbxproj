@@ -110,6 +110,9 @@
 		8EFE7BB5296B8F99003AF320 /* XCTestCase+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BB4296B8F99003AF320 /* XCTestCase+Snapshot.swift */; };
 		8EFE7BB7296B8FE0003AF320 /* UIViewController+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BB6296B8FE0003AF320 /* UIViewController+Snapshot.swift */; };
 		8EFE7BB9296B9007003AF320 /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BB8296B9007003AF320 /* UIImage+TestHelpers.swift */; };
+		8EFE7BBD296B9571003AF320 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BBC296B9571003AF320 /* ErrorView.swift */; };
+		8EFE7BC0296C2132003AF320 /* UIView+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BBF296C2132003AF320 /* UIView+Container.swift */; };
+		8EFE7BC2296C22DB003AF320 /* UITableView+HeaderSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BC1296C22DB003AF320 /* UITableView+HeaderSizing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +240,9 @@
 		8EFE7BB4296B8F99003AF320 /* XCTestCase+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Snapshot.swift"; sourceTree = "<group>"; };
 		8EFE7BB6296B8FE0003AF320 /* UIViewController+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Snapshot.swift"; sourceTree = "<group>"; };
 		8EFE7BB8296B9007003AF320 /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
+		8EFE7BBC296B9571003AF320 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		8EFE7BBF296C2132003AF320 /* UIView+Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Container.swift"; sourceTree = "<group>"; };
+		8EFE7BC1296C22DB003AF320 /* UITableView+HeaderSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+HeaderSizing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -884,6 +890,8 @@
 			isa = PBXGroup;
 			children = (
 				8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */,
+				8EFE7BBF296C2132003AF320 /* UIView+Container.swift */,
+				8EFE7BC1296C22DB003AF320 /* UITableView+HeaderSizing.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -907,6 +915,7 @@
 		8EFE7BBB296B9094003AF320 /* Table */ = {
 			isa = PBXGroup;
 			children = (
+				8EFE7BBC296B9571003AF320 /* ErrorView.swift */,
 				8EFE7BB2296B8ECF003AF320 /* Helpers */,
 			);
 			path = Table;
@@ -1191,6 +1200,7 @@
 				8EFE7BA0296B1C13003AF320 /* UIRefreshControl+Helpers.swift in Sources */,
 				8E56CE8129679B1A00FFCD15 /* CollectionListViewController.swift in Sources */,
 				8EA9B99B2964D4BA005E6080 /* BoosterSetCell.swift in Sources */,
+				8EFE7BBD296B9571003AF320 /* ErrorView.swift in Sources */,
 				8E0A6CFB2965E68500F79B35 /* UIImageView+Animations.swift in Sources */,
 				8EA9B9AA2964E241005E6080 /* ImageControllerDelegate.swift in Sources */,
 				8E0A6D222967837F00F79B35 /* UIView+Shimmering.swift in Sources */,
@@ -1201,6 +1211,8 @@
 				8EA9B9A52964DAF1005E6080 /* CellController.swift in Sources */,
 				8EA9B9B22964E8FC005E6080 /* UITableView+Dequeueing.swift in Sources */,
 				8E0A6D12296636D600F79B35 /* CollectionController.swift in Sources */,
+				8EFE7BC2296C22DB003AF320 /* UITableView+HeaderSizing.swift in Sources */,
+				8EFE7BC0296C2132003AF320 /* UIView+Container.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

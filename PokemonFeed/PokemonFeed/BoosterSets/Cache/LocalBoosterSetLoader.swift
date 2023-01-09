@@ -50,6 +50,7 @@ extension LocalBoosterSetLoader {
         store.retrieve { [weak self] result in
             guard let self = self else { return }
 
+            debugPrint("result \(result)")
             switch result {
             case let .failure(error):
                 completion(.failure(error))

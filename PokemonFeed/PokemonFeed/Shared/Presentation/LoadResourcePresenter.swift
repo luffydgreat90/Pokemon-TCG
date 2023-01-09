@@ -14,7 +14,6 @@ public protocol ResourceView {
 
 public final class LoadResourcePresenter<Resource, View: ResourceView> {
     public typealias Mapper = (Resource) throws -> View.ResourceViewModel
-    
     private let resourceView: View
     private let loadingView: ResourceLoadingView
     private let errorView: ResourceErrorView

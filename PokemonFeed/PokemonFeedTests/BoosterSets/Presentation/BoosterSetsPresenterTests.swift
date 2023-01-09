@@ -16,9 +16,7 @@ final class BoosterSetsPresenterTests: XCTestCase {
     
     func test_map_createsViewModel() {
         let sets = uniqueBoosterSets()
-
         let viewModel = BoosterSetsPresenter.map(sets.models)
-
         XCTAssertEqual(viewModel.sets, sets.models)
     }
     
