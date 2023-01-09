@@ -119,6 +119,7 @@
 		8EFE7BCD296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE7BCA296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png */; };
 		8EFE7BCE296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE7BCB296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_light.png */; };
 		8EFE7BCF296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE7BCC296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_dark.png */; };
+		8EFE7BD3296CC178003AF320 /* BoosterSetSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BD2296CC178003AF320 /* BoosterSetSnapshotTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,6 +256,7 @@
 		8EFE7BCA296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png; sourceTree = "<group>"; };
 		8EFE7BCB296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LIST_WITH_ERROR_MESSAGE_light.png; sourceTree = "<group>"; };
 		8EFE7BCC296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LIST_WITH_ERROR_MESSAGE_dark.png; sourceTree = "<group>"; };
+		8EFE7BD2296CC178003AF320 /* BoosterSetSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetSnapshotTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -711,6 +713,7 @@
 		8EA9B95B2964B69A005E6080 /* PokemoniOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				8EFE7BD0296CC138003AF320 /* BoosterSet UI */,
 				8EFE7BB1296B8E7C003AF320 /* Helpers */,
 				8EFE7BB0296B8E6D003AF320 /* Shared UI */,
 			);
@@ -943,6 +946,22 @@
 				8EFE7BCB296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_light.png */,
 				8EFE7BC7296CB1AA003AF320 /* EMPTY_LIST_dark.png */,
 				8EFE7BC6296CB1AA003AF320 /* EMPTY_LIST_light.png */,
+			);
+			path = snapshots;
+			sourceTree = "<group>";
+		};
+		8EFE7BD0296CC138003AF320 /* BoosterSet UI */ = {
+			isa = PBXGroup;
+			children = (
+				8EFE7BD1296CC14C003AF320 /* snapshots */,
+				8EFE7BD2296CC178003AF320 /* BoosterSetSnapshotTests.swift */,
+			);
+			path = "BoosterSet UI";
+			sourceTree = "<group>";
+		};
+		8EFE7BD1296CC14C003AF320 /* snapshots */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = snapshots;
 			sourceTree = "<group>";
@@ -1252,6 +1271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EFE7BB7296B8FE0003AF320 /* UIViewController+Snapshot.swift in Sources */,
+				8EFE7BD3296CC178003AF320 /* BoosterSetSnapshotTests.swift in Sources */,
 				8EFE7BC5296CB019003AF320 /* ListSnapshotTests.swift in Sources */,
 				8EFE7BB5296B8F99003AF320 /* XCTestCase+Snapshot.swift in Sources */,
 				8EFE7BB9296B9007003AF320 /* UIImage+TestHelpers.swift in Sources */,

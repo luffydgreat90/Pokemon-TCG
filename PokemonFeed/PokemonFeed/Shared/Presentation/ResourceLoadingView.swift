@@ -14,11 +14,11 @@ public protocol ResourceLoadingView {
 public struct ResourceLoadingViewModel {
     public let isLoading: Bool
     
-    static var notLoading: ResourceLoadingViewModel {
+    public static var notLoading: ResourceLoadingViewModel {
         return ResourceLoadingViewModel(isLoading: false)
     }
     
-    static var loading: ResourceLoadingViewModel {
+    public static var loading: ResourceLoadingViewModel {
         return ResourceLoadingViewModel(isLoading: true)
     }
 }
