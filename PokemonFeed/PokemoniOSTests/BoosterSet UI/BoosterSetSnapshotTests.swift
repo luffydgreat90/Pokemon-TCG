@@ -10,19 +10,35 @@ import PokemoniOS
 @testable import PokemonFeed
 
 final class BoosterSetSnapshotTests: XCTestCase {
-    func test_listWithContent() {
-        
+    func test_boosterSetsWithContent() {
+        let sut = makeSUT()
+
+        sut.display(boosterSetsWithContent())
+
+        record(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "BOOSTER_SETS_WITH_CONTENT_light")
+        record(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "BOOSTER_SETS_WITH_CONTENT_dark")
+        record(snapshot: sut.snapshot(for: .iPhone13(style: .light, contentSize: .extraExtraExtraLarge)), named: "BOOSTER_SETS_WITH_CONTENT_light_extraExtraExtraLarge")
     }
     
     // MARK: - Helpers
 
     private func makeSUT() -> ListViewController {
         let controller = ListViewController()
+        controller.configureTableView = { tableView in
+            tableView.register(BoosterSetCell.self)
+        }
         controller.loadViewIfNeeded()
         controller.tableView.separatorStyle = .none
         controller.tableView.showsVerticalScrollIndicator = false
         controller.tableView.showsHorizontalScrollIndicator = false
         return controller
+    }
+    
+    private func boosterSetsWithContent() -> [ImageStub] {
+        return [
+            ImageStub(title: "Base", totalCards: "Number of Cards: 102", releaseDate: "Jan 09 1999", image: UIImage.make(withColor: .red)),
+            ImageStub(title: "Jungle", totalCards: "Number of Cards: 64", releaseDate: "Jun 16 1999", image: UIImage.make(withColor: .green))
+        ]
     }
     
 }
@@ -45,10 +61,9 @@ private class ImageStub: ImageControllerDelegate {
     let image: UIImage?
     weak var controller: BoosterSetController?
     
-    init(viewModel: BoosterSetViewModel, image: UIImage?, controller: BoosterSetController? = nil) {
-        self.viewModel = viewModel
+    init(title: String, totalCards: String, releaseDate: String, image: UIImage?) {
+        self.viewModel = BoosterSetViewModel(title: title, totalCards: totalCards, releaseDate: releaseDate)
         self.image = image
-        self.controller = controller
     }
     
     func didRequestImage() {

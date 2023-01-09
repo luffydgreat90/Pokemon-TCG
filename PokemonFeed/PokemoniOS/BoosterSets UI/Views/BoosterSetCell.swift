@@ -15,13 +15,15 @@ public final class BoosterSetCell: UITableViewCell {
         containerImageView.layer.cornerRadius = 24
         containerImageView.layer.masksToBounds = true
         containerImageView.clipsToBounds = true
-        containerImageView.backgroundColor = .lightGray
+        containerImageView.backgroundColor = .boosterSetImageViewBackgroundColor
         return containerImageView
     }()
     
     public private(set) var boosterSetImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 24
+        imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
@@ -50,7 +52,7 @@ public final class BoosterSetCell: UITableViewCell {
     
     public private(set) var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.textColor = .black
+        titleLabel.textColor = .label
         titleLabel.numberOfLines = 0
         titleLabel.font = .systemFont(ofSize: 16.0, weight: .bold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -59,7 +61,7 @@ public final class BoosterSetCell: UITableViewCell {
     
     public private(set) var numberLabel: UILabel = {
         let numberLabel = UILabel()
-        numberLabel.textColor = .black
+        numberLabel.textColor = .label
         numberLabel.numberOfLines = 0
         numberLabel.font = .systemFont(ofSize: 14.0, weight: .regular)
         numberLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -68,7 +70,7 @@ public final class BoosterSetCell: UITableViewCell {
     
     public private(set) var releaseDateLabel: UILabel = {
         let releaseDateLabel = UILabel()
-        releaseDateLabel.textColor = .black
+        releaseDateLabel.textColor = .label
         releaseDateLabel.numberOfLines = 0
         releaseDateLabel.font = .systemFont(ofSize: 14.0, weight: .regular)
         releaseDateLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -121,9 +123,13 @@ public final class BoosterSetCell: UITableViewCell {
             
             releaseDateLabel.topAnchor.constraint(equalTo: numberLabel.bottomAnchor, constant: 4),
             releaseDateLabel.leadingAnchor.constraint(equalTo: containerDetailsView.leadingAnchor, constant: 8),
-            releaseDateLabel.trailingAnchor.constraint(equalTo: containerDetailsView.trailingAnchor, constant: -8),
-            
-            
+            releaseDateLabel.trailingAnchor.constraint(equalTo: containerDetailsView.trailingAnchor, constant: -8)
         ])
+    }
+}
+
+extension UIColor {
+    static var boosterSetImageViewBackgroundColor: UIColor {
+        UIColor(rgb: 0xD0CFCD)
     }
 }

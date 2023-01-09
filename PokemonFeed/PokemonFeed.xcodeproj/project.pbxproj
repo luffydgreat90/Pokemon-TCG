@@ -120,6 +120,10 @@
 		8EFE7BCE296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE7BCB296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_light.png */; };
 		8EFE7BCF296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE7BCC296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_dark.png */; };
 		8EFE7BD3296CC178003AF320 /* BoosterSetSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BD2296CC178003AF320 /* BoosterSetSnapshotTests.swift */; };
+		8EFE7BD5296CDA41003AF320 /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BD4296CDA41003AF320 /* UIColor+Helpers.swift */; };
+		8EFE7BD9296CDB78003AF320 /* BOOSTER_SETS_WITH_CONTENT_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE7BD6296CDB77003AF320 /* BOOSTER_SETS_WITH_CONTENT_light.png */; };
+		8EFE7BDA296CDB78003AF320 /* BOOSTER_SETS_WITH_CONTENT_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE7BD7296CDB77003AF320 /* BOOSTER_SETS_WITH_CONTENT_dark.png */; };
+		8EFE7BDB296CDB78003AF320 /* BOOSTER_SETS_WITH_CONTENT_light_extraExtraExtraLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE7BD8296CDB78003AF320 /* BOOSTER_SETS_WITH_CONTENT_light_extraExtraExtraLarge.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,6 +261,10 @@
 		8EFE7BCB296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LIST_WITH_ERROR_MESSAGE_light.png; sourceTree = "<group>"; };
 		8EFE7BCC296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LIST_WITH_ERROR_MESSAGE_dark.png; sourceTree = "<group>"; };
 		8EFE7BD2296CC178003AF320 /* BoosterSetSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetSnapshotTests.swift; sourceTree = "<group>"; };
+		8EFE7BD4296CDA41003AF320 /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
+		8EFE7BD6296CDB77003AF320 /* BOOSTER_SETS_WITH_CONTENT_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BOOSTER_SETS_WITH_CONTENT_light.png; sourceTree = "<group>"; };
+		8EFE7BD7296CDB77003AF320 /* BOOSTER_SETS_WITH_CONTENT_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BOOSTER_SETS_WITH_CONTENT_dark.png; sourceTree = "<group>"; };
+		8EFE7BD8296CDB78003AF320 /* BOOSTER_SETS_WITH_CONTENT_light_extraExtraExtraLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BOOSTER_SETS_WITH_CONTENT_light_extraExtraExtraLarge.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,6 +400,7 @@
 				8E0A6D1F2967808200F79B35 /* UIView+Helpers.swift */,
 				8E0A6D212967837F00F79B35 /* UIView+Shimmering.swift */,
 				8EFE7B9F296B1C13003AF320 /* UIRefreshControl+Helpers.swift */,
+				8EFE7BD4296CDA41003AF320 /* UIColor+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -962,6 +971,9 @@
 		8EFE7BD1296CC14C003AF320 /* snapshots */ = {
 			isa = PBXGroup;
 			children = (
+				8EFE7BD7296CDB77003AF320 /* BOOSTER_SETS_WITH_CONTENT_dark.png */,
+				8EFE7BD8296CDB78003AF320 /* BOOSTER_SETS_WITH_CONTENT_light_extraExtraExtraLarge.png */,
+				8EFE7BD6296CDB77003AF320 /* BOOSTER_SETS_WITH_CONTENT_light.png */,
 			);
 			path = snapshots;
 			sourceTree = "<group>";
@@ -1135,6 +1147,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EFE7BD9296CDB78003AF320 /* BOOSTER_SETS_WITH_CONTENT_light.png in Resources */,
+				8EFE7BDB296CDB78003AF320 /* BOOSTER_SETS_WITH_CONTENT_light_extraExtraExtraLarge.png in Resources */,
+				8EFE7BDA296CDB78003AF320 /* BOOSTER_SETS_WITH_CONTENT_dark.png in Resources */,
 				8EFE7BC8296CB1AB003AF320 /* EMPTY_LIST_light.png in Resources */,
 				8EFE7BCE296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_light.png in Resources */,
 				8EFE7BCF296CC0F0003AF320 /* LIST_WITH_ERROR_MESSAGE_dark.png in Resources */,
@@ -1259,6 +1274,7 @@
 				8EA9B9A02964D9E2005E6080 /* ListViewController.swift in Sources */,
 				8E4F6A532967A2180022403A /* CardController.swift in Sources */,
 				8EA9B9A52964DAF1005E6080 /* CellController.swift in Sources */,
+				8EFE7BD5296CDA41003AF320 /* UIColor+Helpers.swift in Sources */,
 				8EA9B9B22964E8FC005E6080 /* UITableView+Dequeueing.swift in Sources */,
 				8E0A6D12296636D600F79B35 /* CollectionController.swift in Sources */,
 				8EFE7BC2296C22DB003AF320 /* UITableView+HeaderSizing.swift in Sources */,
