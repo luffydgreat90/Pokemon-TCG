@@ -88,6 +88,6 @@ extension CollectionListViewController: ResourceLoadingView {
 
 extension CollectionListViewController: ResourceErrorView {
     public func display(_ viewModel: ResourceErrorViewModel) {
-    
+        
     }
 }
