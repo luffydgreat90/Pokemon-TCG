@@ -18,10 +18,9 @@ extension ManagedBoosterSetCache {
     private struct EmptyCache: Error {}
     
     static func find(in context: NSManagedObjectContext) throws -> ManagedBoosterSetCache? {
-        try ManagedBoosterSetCache.find(in: context).map {
-            CachedBoosterSet(boosterSets: $0.localBoosterSets, timestamp: $0.timestamp)
-        }
-        
+        let request = NSFetchRequest<ManagedBoosterSetCache>(entityName: entity().name!)
+        request.returnsObjectsAsFaults = false
+        return try context.fetch(request).first
     }
     
     static func newUniqueInstance(in context: NSManagedObjectContext) throws -> ManagedBoosterSetCache {
