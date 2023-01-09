@@ -10,7 +10,6 @@ import UIKit.UIView
 extension UIView {
     public func makeContainer() -> UIView {
         let container = UIView()
-        container.backgroundColor = .clear
         container.addSubview(self)
 
         translatesAutoresizingMaskIntoConstraints = false
