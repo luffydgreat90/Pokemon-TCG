@@ -418,7 +418,6 @@
 		8E0A6D0F296636A900F79B35 /* Table */ = {
 			isa = PBXGroup;
 			children = (
-				8EFE7BB2296B8ECF003AF320 /* Helpers */,
 				8EA9B99F2964D9E2005E6080 /* ListViewController.swift */,
 				8EA9B9A42964DAF1005E6080 /* CellController.swift */,
 			);
@@ -752,7 +751,8 @@
 		8EA9B9902964D33A005E6080 /* Shared UI */ = {
 			isa = PBXGroup;
 			children = (
-				8EA9B9A12964D9E8005E6080 /* ViewControllers */,
+				8EFE7BBA296B907B003AF320 /* Views */,
+				8EA9B9A12964D9E8005E6080 /* Controllers */,
 				8EA9B9912964D33F005E6080 /* Helpers */,
 			);
 			path = "Shared UI";
@@ -791,14 +791,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		8EA9B9A12964D9E8005E6080 /* ViewControllers */ = {
+		8EA9B9A12964D9E8005E6080 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				8E0A6D10296636B500F79B35 /* Collection */,
 				8E0A6D0F296636A900F79B35 /* Table */,
 				8EA9B9A92964E241005E6080 /* ImageControllerDelegate.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		8EA9B9A62964DFCA005E6080 /* Helpers */ = {
@@ -894,6 +894,22 @@
 				8E0A6D1D2966423C00F79B35 /* UICollectionView+Dequeueing.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8EFE7BBA296B907B003AF320 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8EFE7BBB296B9094003AF320 /* Table */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8EFE7BBB296B9094003AF320 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				8EFE7BB2296B8ECF003AF320 /* Helpers */,
+			);
+			path = Table;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

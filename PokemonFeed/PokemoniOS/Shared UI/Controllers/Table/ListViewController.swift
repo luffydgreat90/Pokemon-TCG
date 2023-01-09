@@ -9,7 +9,6 @@ import UIKit
 import PokemonFeed
 
 public final class ListViewController: UITableViewController {
-    
     private lazy var dataSource: UITableViewDiffableDataSource<Int, CellController> = {
         .init(tableView: tableView) { (tableView, index, controller) in
             controller.dataSource.tableView(tableView, cellForRowAt: index)
