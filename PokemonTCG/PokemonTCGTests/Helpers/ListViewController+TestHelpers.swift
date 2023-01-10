@@ -9,6 +9,12 @@ import UIKit
 import PokemoniOS
 
 extension ListViewController {
+    public override func loadViewIfNeeded() {
+        super.loadViewIfNeeded()
+
+        tableView.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
+    }
+    
     func simulateTapOnFeedImage(at row: Int) {
         let delegate = tableView.delegate
         let index = IndexPath(row: row, section: boosterSetsSection)
@@ -62,12 +68,23 @@ extension ListViewController {
     }
     
     @discardableResult
-    func simulateFeedImageViewNotVisible(at row: Int) -> BoosterSetCell? {
+    func simulateBoosterSetViewNotVisible(at row: Int) -> BoosterSetCell? {
         let view = simulateBoosterSetViewVisible(at: row)
 
         let delegate = tableView.delegate
         let index = IndexPath(row: row, section: boosterSetsSection)
         delegate?.tableView?(tableView, didEndDisplaying: view!, forRowAt: index)
+
+        return view
+    }
+    
+    @discardableResult
+    func simulateBoosterSetViewBecomingVisibleAgain(at row: Int) -> BoosterSetCell? {
+        let view = simulateBoosterSetViewNotVisible(at: row)
+
+        let delegate = tableView.delegate
+        let index = IndexPath(row: row, section: boosterSetsSection)
+        delegate?.tableView?(tableView, willDisplay: view!, forRowAt: index)
 
         return view
     }

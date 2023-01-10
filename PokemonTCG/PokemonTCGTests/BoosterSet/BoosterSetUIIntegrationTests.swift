@@ -179,12 +179,30 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         loader.completeBoosterSetLoading(with: [boosterSet0, boosterSet1])
         XCTAssertEqual(loader.cancelledImageURLs, [], "Expected no cancelled image URL requests until image is not visible")
         
-        sut.simulateFeedImageViewNotVisible(at: 0)
+        sut.simulateBoosterSetViewNotVisible(at: 0)
         XCTAssertEqual(loader.cancelledImageURLs, [boosterSet0.images.symbol], "Expected one cancelled image URL request once first image is not visible anymore")
         
-        sut.simulateFeedImageViewNotVisible(at: 1)
+        sut.simulateBoosterSetViewNotVisible(at: 1)
         XCTAssertEqual(loader.cancelledImageURLs, [boosterSet0.images.symbol, boosterSet1.images.symbol], "Expected two cancelled image URL requests once second image is also not visible anymore")
 
+    }
+    
+    
+    func test_feedImageView_reloadsImageURLWhenBecomingVisibleAgain() {
+        let boosterSet0 = makeBoosterSet(symbol: URL(string: "http://url-0.com")!)
+        let boosterSet1 = makeBoosterSet(symbol: URL(string: "http://url-1.com")!)
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading(with: [boosterSet0, boosterSet1])
+
+        sut.simulateBoosterSetViewBecomingVisibleAgain(at: 0)
+        
+        XCTAssertEqual(loader.loadedImageURLs, [boosterSet0.images.symbol, boosterSet0.images.symbol], "Expected two image URL request after first view becomes visible again")
+
+        sut.simulateBoosterSetViewBecomingVisibleAgain(at: 1)
+
+        XCTAssertEqual(loader.loadedImageURLs, [boosterSet0.images.symbol, boosterSet0.images.symbol, boosterSet1.images.symbol, boosterSet1.images.symbol], "Expected two new image URL request after second view becomes visible again")
     }
     
     // MARK: - Helpers

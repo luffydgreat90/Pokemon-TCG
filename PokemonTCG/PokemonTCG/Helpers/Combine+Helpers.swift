@@ -109,7 +109,7 @@ public extension ImageDataLoader {
 
     func loadImageDataPublisher(from url: URL) -> Publisher {
         var task: ImageDataLoaderTask?
-
+        
         return Deferred {
             Future { completion in
                 task = self.loadImageData(from: url, completion: completion)

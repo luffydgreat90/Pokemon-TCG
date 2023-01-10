@@ -25,10 +25,6 @@ extension BoosterSetUIIntegrationTests {
             return publisher.eraseToAnyPublisher()
         }
         
-        func loadImageData(from url: URL, completion: @escaping (ImageDataLoader.Result) -> Void) -> ImageDataLoaderTask {
-            imageRequests.append((url, completion))
-            return TaskSpy { [weak self] in self?.cancelledImageURLs.append(url) }
-        }
         
         func completeBoosterSetLoading(with boosterSets: [BoosterSet] = [], at index: Int = 0) {
             boosterSetRequests[index].send(boosterSets)
@@ -52,6 +48,20 @@ extension BoosterSetUIIntegrationTests {
 
         var loadedImageURLs: [URL] {
             return imageRequests.map { $0.url }
+        }
+        
+        func loadImageData(from url: URL, completion: @escaping (ImageDataLoader.Result) -> Void) -> ImageDataLoaderTask {
+            imageRequests.append((url, completion))
+            return TaskSpy { [weak self] in self?.cancelledImageURLs.append(url) }
+        }
+        
+        func completeImageLoading(with imageData: Data = Data(), at index: Int = 0) {
+            imageRequests[index].completion(.success(imageData))
+        }
+
+        func completeImageLoadingWithError(at index: Int = 0) {
+            let error = NSError(domain: "an error", code: 0)
+            imageRequests[index].completion(.failure(error))
         }
         
         private(set) var cancelledImageURLs = [URL]()

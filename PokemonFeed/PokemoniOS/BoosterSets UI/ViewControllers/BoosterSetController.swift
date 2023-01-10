@@ -55,6 +55,11 @@ extension BoosterSetController: UITableViewDataSource{
         1
     }
     
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.cell = cell as? BoosterSetCell
+        requestImage()
+    }
+    
     public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cancel()
     }
@@ -74,6 +79,7 @@ extension BoosterSetController: UITableViewDataSourcePrefetching {
 extension BoosterSetController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selection()
+        
     }
 }
 
