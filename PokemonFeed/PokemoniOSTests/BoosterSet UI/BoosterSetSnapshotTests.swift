@@ -55,7 +55,7 @@ private extension ListViewController {
     }
 }
 
-private class ImageStub: ImageControllerDelegate {
+fileprivate class ImageStub: ImageControllerDelegate {
     
     let viewModel: BoosterSetViewModel
     let image: UIImage?
