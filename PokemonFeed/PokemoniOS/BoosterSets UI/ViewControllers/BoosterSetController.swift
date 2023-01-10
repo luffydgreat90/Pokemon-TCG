@@ -78,15 +78,19 @@ extension BoosterSetController: UITableViewDelegate {
 }
 
 
-extension BoosterSetController: ResourceView, ResourceLoadingView, ResourceErrorView {
+extension BoosterSetController: ResourceView {
     public func display(_ viewModel: UIImage) {
         cell?.boosterSetImageView.setImageAnimated(viewModel)
     }
-    
+}
+
+extension BoosterSetController: ResourceLoadingView {
     public func display(_ viewModel: ResourceLoadingViewModel) {
         cell?.boosterSetImageView.isShimmering = viewModel.isLoading
     }
-    
+}
+
+extension BoosterSetController: ResourceErrorView{
     public func display(_ viewModel: ResourceErrorViewModel) {
         
     }

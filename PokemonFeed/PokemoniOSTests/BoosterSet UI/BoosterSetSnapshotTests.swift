@@ -77,9 +77,7 @@ private class ImageStub: ImageControllerDelegate {
         }
     }
     
-    func didCancelImageRequest() {
-        
-    }
+    func didCancelImageRequest() {}
     
     
 }

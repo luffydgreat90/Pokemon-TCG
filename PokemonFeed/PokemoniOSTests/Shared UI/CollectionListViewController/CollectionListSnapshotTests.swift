@@ -7,7 +7,7 @@
 
 import XCTest
 import PokemoniOS
-@testable import PokemonTCG
+@testable import PokemonFeed
 
 final class CollectionListSnapshotTests: XCTestCase {
     
@@ -16,8 +16,8 @@ final class CollectionListSnapshotTests: XCTestCase {
 
         sut.display(emptyList())
 
-        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "EMPTY_LIST_light")
-        assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "EMPTY_LIST_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "EMPTY_COLLECTION_LIST_light")
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "EMPTY_COLLECTION_LIST_dark")
     }
     
     // MARK: - Helpers
