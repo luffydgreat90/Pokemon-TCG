@@ -124,10 +124,10 @@
 		8EFE7BD9296CDB78003AF320 /* BOOSTER_SETS_WITH_CONTENT_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE7BD6296CDB77003AF320 /* BOOSTER_SETS_WITH_CONTENT_light.png */; };
 		8EFE7BDA296CDB78003AF320 /* BOOSTER_SETS_WITH_CONTENT_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE7BD7296CDB77003AF320 /* BOOSTER_SETS_WITH_CONTENT_dark.png */; };
 		8EFE7BDB296CDB78003AF320 /* BOOSTER_SETS_WITH_CONTENT_light_extraExtraExtraLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE7BD8296CDB78003AF320 /* BOOSTER_SETS_WITH_CONTENT_light_extraExtraExtraLarge.png */; };
-		8EFE7BDF296D7EDF003AF320 /* CardSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BDE296D7EDF003AF320 /* CardSnapshotTests.swift */; };
 		8EFE7BE3296D7FDE003AF320 /* CollectionListSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BE2296D7FDE003AF320 /* CollectionListSnapshotTests.swift */; };
 		8EFE7BE8296D84F7003AF320 /* EMPTY_LIST_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE7BE6296D84F6003AF320 /* EMPTY_LIST_dark.png */; };
 		8EFE7BE9296D84F7003AF320 /* EMPTY_LIST_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFE7BE7296D84F6003AF320 /* EMPTY_LIST_light.png */; };
+		8EFE7BEB296DB53E003AF320 /* CardCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BEA296DB53E003AF320 /* CardCollectionLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -269,10 +269,10 @@
 		8EFE7BD6296CDB77003AF320 /* BOOSTER_SETS_WITH_CONTENT_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BOOSTER_SETS_WITH_CONTENT_light.png; sourceTree = "<group>"; };
 		8EFE7BD7296CDB77003AF320 /* BOOSTER_SETS_WITH_CONTENT_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BOOSTER_SETS_WITH_CONTENT_dark.png; sourceTree = "<group>"; };
 		8EFE7BD8296CDB78003AF320 /* BOOSTER_SETS_WITH_CONTENT_light_extraExtraExtraLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BOOSTER_SETS_WITH_CONTENT_light_extraExtraExtraLarge.png; sourceTree = "<group>"; };
-		8EFE7BDE296D7EDF003AF320 /* CardSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSnapshotTests.swift; sourceTree = "<group>"; };
 		8EFE7BE2296D7FDE003AF320 /* CollectionListSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListSnapshotTests.swift; sourceTree = "<group>"; };
 		8EFE7BE6296D84F6003AF320 /* EMPTY_LIST_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EMPTY_LIST_dark.png; sourceTree = "<group>"; };
 		8EFE7BE7296D84F6003AF320 /* EMPTY_LIST_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EMPTY_LIST_light.png; sourceTree = "<group>"; };
+		8EFE7BEA296DB53E003AF320 /* CardCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -484,6 +484,7 @@
 			isa = PBXGroup;
 			children = (
 				8E0A6D1629663F5100F79B35 /* CardCollectionCell.swift */,
+				8EFE7BEA296DB53E003AF320 /* CardCollectionLayout.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -991,7 +992,6 @@
 			isa = PBXGroup;
 			children = (
 				8EFE7BDD296D774B003AF320 /* snapshots */,
-				8EFE7BDE296D7EDF003AF320 /* CardSnapshotTests.swift */,
 			);
 			path = "Card UI";
 			sourceTree = "<group>";
@@ -1315,6 +1315,7 @@
 				8EA9B99D2964D951005E6080 /* NSLayoutConstraint+Helpers.swift in Sources */,
 				8E0A6D1E2966423C00F79B35 /* UICollectionView+Dequeueing.swift in Sources */,
 				8E0A6D1729663F5100F79B35 /* CardCollectionCell.swift in Sources */,
+				8EFE7BEB296DB53E003AF320 /* CardCollectionLayout.swift in Sources */,
 				8EA9B9A32964DA13005E6080 /* UIImage+TryMake.swift in Sources */,
 				8EFE7BA0296B1C13003AF320 /* UIRefreshControl+Helpers.swift in Sources */,
 				8E56CE8129679B1A00FFCD15 /* CollectionListViewController.swift in Sources */,
@@ -1343,7 +1344,6 @@
 				8EFE7BB7296B8FE0003AF320 /* UIViewController+Snapshot.swift in Sources */,
 				8EFE7BD3296CC178003AF320 /* BoosterSetSnapshotTests.swift in Sources */,
 				8EFE7BC5296CB019003AF320 /* ListSnapshotTests.swift in Sources */,
-				8EFE7BDF296D7EDF003AF320 /* CardSnapshotTests.swift in Sources */,
 				8EFE7BE3296D7FDE003AF320 /* CollectionListSnapshotTests.swift in Sources */,
 				8EFE7BB5296B8F99003AF320 /* XCTestCase+Snapshot.swift in Sources */,
 				8EFE7BB9296B9007003AF320 /* UIImage+TestHelpers.swift in Sources */,
