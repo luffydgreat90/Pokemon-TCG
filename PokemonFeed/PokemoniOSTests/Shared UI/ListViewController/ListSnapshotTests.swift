@@ -44,6 +44,4 @@ final class ListSnapshotTests: XCTestCase {
     private func emptyList() -> [CellController] {
         return []
     }
-    
 }
-

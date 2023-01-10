@@ -8,7 +8,7 @@
 import Foundation
 import PokemonFeed
 
-func uniqueCard(name:String = "Charmander", supertype:SuperType = .pokemon, number:String = "1", rarity:String? = "Common", flavorText:String? = nil, artist:String? = "John Doe") -> Card {
+func uniqueCard(name:String = "Charmander", supertype:SuperType = .pokemon, number:String = "1", rarity:String? = "Common", flavorText:String? = nil, artist:String? = "John Doe", trendPrice:Double = 1.0) -> Card {
     let id = UUID().uuidString
     
     return Card(
@@ -23,7 +23,7 @@ func uniqueCard(name:String = "Charmander", supertype:SuperType = .pokemon, numb
         cardmarket: CardMarket(
             url: anyURL(),
             updatedAt: Date(),
-            prices: CardPrice(averageSellPrice: 5.0, lowPrice: 1.0, trendPrice: 3.0, reverseHoloTrend: 5.0)),
+            prices: CardPrice(averageSellPrice: 5.0, lowPrice: 1.0, trendPrice: trendPrice, reverseHoloTrend: 5.0)),
         images: CardImages(small: anyURL(), large: anyURL()),
         cardSet: CardSet(id: id, name: "Base \(id)", series: "Series \(id)"))
 }

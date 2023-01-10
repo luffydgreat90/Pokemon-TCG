@@ -55,13 +55,17 @@ final class CardListViewAdapter: ResourceView {
     
     func display(_ viewModel: CardsViewModel) {
         
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.locale =  Locale(identifier: "en_US_POSIX")
+        
         let viewControllers = viewModel.cards.map({ model in
             let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in
                 imageLoader(model.images?.small)
             })
             
             let controller = CardController(
-                viewModel: CardPresenter.map(model),
+                viewModel: CardPresenter.map(model, currencyFormatter: currencyFormatter),
                 delegate: adapter)
             
             adapter.presenter = LoadResourcePresenter(
