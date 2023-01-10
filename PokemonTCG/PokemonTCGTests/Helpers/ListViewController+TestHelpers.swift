@@ -44,11 +44,6 @@ extension ListViewController {
 }
 
 extension ListViewController {
-    @discardableResult
-    func simulateBoosterSetViewVisible(at index: Int) -> BoosterSetCell? {
-        return boosterSetView(at: index) as? BoosterSetCell
-    }
-    
     func numberOfRows(in section: Int) -> Int {
         tableView.numberOfSections > section ? tableView.numberOfRows(inSection: section) : 0
     }
@@ -60,4 +55,21 @@ extension ListViewController {
     func boosterSetView(at row: Int) -> UITableViewCell? {
         cell(row: row, section: boosterSetsSection)
     }
+    
+    @discardableResult
+    func simulateBoosterSetViewVisible(at index: Int) -> BoosterSetCell? {
+        return boosterSetView(at: index) as? BoosterSetCell
+    }
+    
+    @discardableResult
+    func simulateFeedImageViewNotVisible(at row: Int) -> BoosterSetCell? {
+        let view = simulateBoosterSetViewVisible(at: row)
+
+        let delegate = tableView.delegate
+        let index = IndexPath(row: row, section: boosterSetsSection)
+        delegate?.tableView?(tableView, didEndDisplaying: view!, forRowAt: index)
+
+        return view
+    }
+    
 }

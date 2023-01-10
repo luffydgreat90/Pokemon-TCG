@@ -14,8 +14,7 @@ extension BoosterSetUIIntegrationTests {
     class LoaderSpy: ImageDataLoader {
         
         private var boosterSetRequests = [PassthroughSubject<[BoosterSet], Error>]()
-        private(set) var cancelledImageURLs = [URL]()
-        
+    
         var loadBoosterSetCallCount: Int {
             return boosterSetRequests.count
         }
@@ -54,5 +53,7 @@ extension BoosterSetUIIntegrationTests {
         var loadedImageURLs: [URL] {
             return imageRequests.map { $0.url }
         }
+        
+        private(set) var cancelledImageURLs = [URL]()
     }
 }

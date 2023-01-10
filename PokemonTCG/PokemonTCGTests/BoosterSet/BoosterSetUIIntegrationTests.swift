@@ -170,6 +170,23 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         XCTAssertEqual(loader.loadedImageURLs, [boosterSet0.images.symbol, boosterSet1.images.symbol], "Expected second image URL request once second view also becomes visible")
     }
     
+    func test_boosterSetImageView_cancelsImageLoadingWhenNotVisibleAnymore() {
+        let boosterSet0 = makeBoosterSet(symbol: URL(string: "http://url-0.com")!)
+        let boosterSet1 = makeBoosterSet(symbol: URL(string: "http://url-1.com")!)
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading(with: [boosterSet0, boosterSet1])
+        XCTAssertEqual(loader.cancelledImageURLs, [], "Expected no cancelled image URL requests until image is not visible")
+        
+        sut.simulateFeedImageViewNotVisible(at: 0)
+        XCTAssertEqual(loader.cancelledImageURLs, [boosterSet0.images.symbol], "Expected one cancelled image URL request once first image is not visible anymore")
+        
+        sut.simulateFeedImageViewNotVisible(at: 1)
+        XCTAssertEqual(loader.cancelledImageURLs, [boosterSet0.images.symbol, boosterSet1.images.symbol], "Expected two cancelled image URL requests once second image is also not visible anymore")
+
+    }
+    
     // MARK: - Helpers
 
     private func makeSUT(
