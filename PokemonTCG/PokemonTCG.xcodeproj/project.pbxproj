@@ -14,6 +14,9 @@
 		8E067876296E069000E71A2B /* ListViewController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E067875296E069000E71A2B /* ListViewController+TestHelpers.swift */; };
 		8E067878296E09CD00E71A2B /* UIRefreshControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E067877296E09CD00E71A2B /* UIRefreshControl+TestHelpers.swift */; };
 		8E06787A296E09EA00E71A2B /* UIControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E067879296E09EA00E71A2B /* UIControl+TestHelpers.swift */; };
+		8E06787C296E10DD00E71A2B /* BoosterSetUIIntegrationTests+Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06787B296E10DD00E71A2B /* BoosterSetUIIntegrationTests+Assertions.swift */; };
+		8E06787E296E11EC00E71A2B /* UIView+LayoutCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06787D296E11EC00E71A2B /* UIView+LayoutCycle.swift */; };
+		8E067882296E143900E71A2B /* BoosterSetCell+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E067881296E143900E71A2B /* BoosterSetCell+TestHelpers.swift */; };
 		8E56CE8429679BD000FFCD15 /* CardListUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */; };
 		8EA9B9C02964EA84005E6080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9BF2964EA84005E6080 /* AppDelegate.swift */; };
 		8EA9B9C22964EA84005E6080 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9C12964EA84005E6080 /* SceneDelegate.swift */; };
@@ -64,6 +67,9 @@
 		8E067875296E069000E71A2B /* ListViewController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListViewController+TestHelpers.swift"; sourceTree = "<group>"; };
 		8E067877296E09CD00E71A2B /* UIRefreshControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+TestHelpers.swift"; sourceTree = "<group>"; };
 		8E067879296E09EA00E71A2B /* UIControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+TestHelpers.swift"; sourceTree = "<group>"; };
+		8E06787B296E10DD00E71A2B /* BoosterSetUIIntegrationTests+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoosterSetUIIntegrationTests+Assertions.swift"; sourceTree = "<group>"; };
+		8E06787D296E11EC00E71A2B /* UIView+LayoutCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LayoutCycle.swift"; sourceTree = "<group>"; };
+		8E067881296E143900E71A2B /* BoosterSetCell+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoosterSetCell+TestHelpers.swift"; sourceTree = "<group>"; };
 		8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListUIComposer.swift; sourceTree = "<group>"; };
 		8EA9B9BC2964EA84005E6080 /* PokemonTCG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonTCG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B9BF2964EA84005E6080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,12 +111,31 @@
 		8E06786E296DFCCA00E71A2B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				8E06786F296DFD7700E71A2B /* BoosterSetUIIntegrationTests+LoaderSpy.swift */,
 				8E067871296E01DF00E71A2B /* SharedTestHelpers.swift */,
 				8E067873296E024C00E71A2B /* XCTestCase+MemoryLeakTracking.swift */,
 				8E067875296E069000E71A2B /* ListViewController+TestHelpers.swift */,
 				8E067877296E09CD00E71A2B /* UIRefreshControl+TestHelpers.swift */,
 				8E067879296E09EA00E71A2B /* UIControl+TestHelpers.swift */,
+				8E06787D296E11EC00E71A2B /* UIView+LayoutCycle.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8E06787F296E13DE00E71A2B /* BoosterSet */ = {
+			isa = PBXGroup;
+			children = (
+				8E067880296E13FE00E71A2B /* Helpers */,
+				8E06786C296DFBC700E71A2B /* BoosterSetUIIntegrationTests.swift */,
+			);
+			path = BoosterSet;
+			sourceTree = "<group>";
+		};
+		8E067880296E13FE00E71A2B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8E06787B296E10DD00E71A2B /* BoosterSetUIIntegrationTests+Assertions.swift */,
+				8E06786F296DFD7700E71A2B /* BoosterSetUIIntegrationTests+LoaderSpy.swift */,
+				8E067881296E143900E71A2B /* BoosterSetCell+TestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -161,9 +186,9 @@
 		8EA9B9D52964EA86005E6080 /* PokemonTCGTests */ = {
 			isa = PBXGroup;
 			children = (
+				8E06787F296E13DE00E71A2B /* BoosterSet */,
 				8E06786E296DFCCA00E71A2B /* Helpers */,
 				8EA9B9D62964EA86005E6080 /* SceneDelegateTests.swift */,
-				8E06786C296DFBC700E71A2B /* BoosterSetUIIntegrationTests.swift */,
 			);
 			path = PokemonTCGTests;
 			sourceTree = "<group>";
@@ -319,12 +344,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E06787C296E10DD00E71A2B /* BoosterSetUIIntegrationTests+Assertions.swift in Sources */,
 				8E067876296E069000E71A2B /* ListViewController+TestHelpers.swift in Sources */,
 				8E067872296E01DF00E71A2B /* SharedTestHelpers.swift in Sources */,
 				8E06786D296DFBC700E71A2B /* BoosterSetUIIntegrationTests.swift in Sources */,
 				8E06787A296E09EA00E71A2B /* UIControl+TestHelpers.swift in Sources */,
+				8E067882296E143900E71A2B /* BoosterSetCell+TestHelpers.swift in Sources */,
 				8EA9B9D72964EA86005E6080 /* SceneDelegateTests.swift in Sources */,
 				8E067878296E09CD00E71A2B /* UIRefreshControl+TestHelpers.swift in Sources */,
+				8E06787E296E11EC00E71A2B /* UIView+LayoutCycle.swift in Sources */,
 				8E067870296DFD7700E71A2B /* BoosterSetUIIntegrationTests+LoaderSpy.swift in Sources */,
 				8E067874296E024C00E71A2B /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);

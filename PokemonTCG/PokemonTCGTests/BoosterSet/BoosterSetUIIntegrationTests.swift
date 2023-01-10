@@ -47,6 +47,43 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         
         sut.simulateUserInitiatedReload()
         XCTAssertEqual(loader.loadBoosterSetCallCount, 2, "Expected another loading request once user initiates a reload")
+        
+        sut.simulateUserInitiatedReload()
+        XCTAssertEqual(loader.loadBoosterSetCallCount, 3, "Expected yet another loading request once user initiates another reload")
+    }
+    
+    func test_loadingListIndicator_isVisibleWhileLoadingBoosterSet() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once view is loaded")
+        
+        loader.completeFeedLoading(at: 0)
+        XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once loading completes successfully")
+        
+        sut.simulateUserInitiatedReload()
+        XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once user initiates a reload")
+
+        loader.completeFeedLoadingWithError(at: 1)
+        XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading completes with error")
+    }
+    
+    func test_loadBoosterSetCompletion_rendersSuccessfullyLoadedBoosterSet() {
+        let boosterSet0 = makeBoosterSet()
+        let boosterSet1 = makeBoosterSet()
+        let boosterSet2 = makeBoosterSet()
+        let boosterSet3 = makeBoosterSet()
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        assertThat(sut, isRendering: [])
+        
+        loader.completeFeedLoading(with: [boosterSet0], at: 0)
+        assertThat(sut, isRendering: [boosterSet0])
+        
+        sut.simulateUserInitiatedReload()
+        loader.completeFeedLoading(with: [boosterSet0, boosterSet1, boosterSet2, boosterSet3], at: 1)
+        assertThat(sut, isRendering: [boosterSet0, boosterSet1, boosterSet2, boosterSet3])
     }
     
     // MARK: - Helpers
