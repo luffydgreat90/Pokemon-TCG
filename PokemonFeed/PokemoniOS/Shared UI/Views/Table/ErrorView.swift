@@ -9,7 +9,7 @@ import UIKit
 
 public final class ErrorView: UIButton {
     public var message: String? {
-        get { return isVisible ? "Error" : nil }
+        get { return isVisible ? self.titleLabel?.text : nil }
         set { setMessageAnimated(newValue) }
     }
 

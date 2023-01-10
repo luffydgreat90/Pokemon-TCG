@@ -23,3 +23,11 @@ func anyData() -> Data {
 var boosterSetsTitle: String {
     BoosterSetsPresenter.title
 }
+
+private class DummyView: ResourceView {
+    func display(_ viewModel: Any) {}
+}
+
+var loadError: String {
+    LoadResourcePresenter<Any, DummyView>.loadError
+}

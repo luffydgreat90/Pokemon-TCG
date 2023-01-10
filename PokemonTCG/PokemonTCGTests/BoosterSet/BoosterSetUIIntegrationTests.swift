@@ -29,7 +29,7 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         let (sut, loader) = makeSUT(selection: { selectedImages.append($0) })
 
         sut.loadViewIfNeeded()
-        loader.completeFeedLoading(with: [boosterSet1, boosterSet2], at: 0)
+        loader.completeBoosterSetLoading(with: [boosterSet1, boosterSet2], at: 0)
 
         sut.simulateTapOnFeedImage(at: 0)
         XCTAssertEqual(selectedImages, [boosterSet1])
@@ -58,13 +58,13 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         sut.loadViewIfNeeded()
         XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once view is loaded")
         
-        loader.completeFeedLoading(at: 0)
+        loader.completeBoosterSetLoading(at: 0)
         XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once loading completes successfully")
         
         sut.simulateUserInitiatedReload()
         XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once user initiates a reload")
 
-        loader.completeFeedLoadingWithError(at: 1)
+        loader.completeBoosterSetLoadingWithError(at: 1)
         XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading completes with error")
     }
     
@@ -78,12 +78,64 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         sut.loadViewIfNeeded()
         assertThat(sut, isRendering: [])
         
-        loader.completeFeedLoading(with: [boosterSet0], at: 0)
+        loader.completeBoosterSetLoading(with: [boosterSet0], at: 0)
         assertThat(sut, isRendering: [boosterSet0])
         
         sut.simulateUserInitiatedReload()
-        loader.completeFeedLoading(with: [boosterSet0, boosterSet1, boosterSet2, boosterSet3], at: 1)
+        loader.completeBoosterSetLoading(with: [boosterSet0, boosterSet1, boosterSet2, boosterSet3], at: 1)
         assertThat(sut, isRendering: [boosterSet0, boosterSet1, boosterSet2, boosterSet3])
+    }
+    
+    func test_loadFeedCompletion_rendersSuccessfullyLoadedEmptyBoosterSetAfterNonEmptyBoosterSet() {
+        let boosterSet0 = makeBoosterSet()
+        let boosterSet1 = makeBoosterSet()
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading(with: [boosterSet0, boosterSet1], at: 0)
+        assertThat(sut, isRendering: [boosterSet0, boosterSet1])
+
+        sut.simulateUserInitiatedReload()
+        loader.completeBoosterSetLoading(with: [], at: 1)
+        assertThat(sut, isRendering: [])
+    }
+    
+    func test_loadBoosterSetCompletion_doesNotAlterCurrentRenderingStateOnError() {
+        let boosterSet0 = makeBoosterSet()
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading(with: [boosterSet0], at: 0)
+        assertThat(sut, isRendering: [boosterSet0])
+
+        sut.simulateUserInitiatedReload()
+        loader.completeBoosterSetLoadingWithError(at: 1)
+        assertThat(sut, isRendering: [boosterSet0])
+    }
+    
+    func test_loadBoosterSetCompletion_dispatchesFromBackgroundToMainThread() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+
+        let exp = expectation(description: "Wait for background queue")
+        DispatchQueue.global().async {
+            loader.completeBoosterSetLoading(at: 0)
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    func test_loadBoosterSetCompletion_rendersErrorMessageOnErrorUntilNextReload() {
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.errorMessage, nil)
+
+        loader.completeBoosterSetLoadingWithError(at: 0)
+        XCTAssertEqual(sut.errorMessage, loadError)
+
+        sut.simulateUserInitiatedReload()
+        XCTAssertEqual(sut.errorMessage, nil)
     }
     
     // MARK: - Helpers

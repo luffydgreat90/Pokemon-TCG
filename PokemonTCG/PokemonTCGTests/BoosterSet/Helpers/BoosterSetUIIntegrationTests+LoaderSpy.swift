@@ -32,11 +32,11 @@ extension BoosterSetUIIntegrationTests {
             return TaskSpy { [weak self] in self?.cancelledImageURLs.append(url) }
         }
         
-        func completeFeedLoading(with feed: [BoosterSet] = [], at index: Int = 0) {
-            boosterSetRequests[index].send(feed)
+        func completeBoosterSetLoading(with boosterSets: [BoosterSet] = [], at index: Int = 0) {
+            boosterSetRequests[index].send(boosterSets)
         }
 
-        func completeFeedLoadingWithError(at index: Int = 0) {
+        func completeBoosterSetLoadingWithError(at index: Int = 0) {
             let error = NSError(domain: "an error", code: 0)
             boosterSetRequests[index].send(completion: .failure(error))
         }
