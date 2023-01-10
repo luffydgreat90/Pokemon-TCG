@@ -16,4 +16,8 @@ extension UIColor {
             alpha: CGFloat(1.0)
         )
     }
+    
+    static var cellImageViewBackground: UIColor {
+        UIColor(rgb: 0xD0CFCD)
+    }
 }

@@ -10,18 +10,18 @@ import PokemoniOS
 @testable import PokemonFeed
 
 final class CardSnapshotTests: XCTestCase {
-    func test_cardsWithContent() {
+    func test_CardsWithContent() {
         let sut = makeSUT()
 
-        sut.display(cards())
+        sut.display(cardsWithContent())
 
-        record(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "CARDS_WITH_CONTENT_light")
-        record(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "CARDS_WITH_CONTENT_dark")
-//        record(snapshot: sut.snapshot(for: .iPhone13(style: .light, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_CONTENT_light_extraExtraExtraLarge")
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "CARDS_WITH_CONTENT_light")
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "CARDS_WITH_CONTENT_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light, contentSize: .extraExtraExtraLarge)), named: "CARDS_WITH_CONTENT_light_extraExtraExtraLarge")
     }
-    
-    // MARK: - Helpers
 
+    // MARK: - Helpers
+    
     private func makeSUT() -> CollectionListViewController {
         let controller = CollectionListViewController(
             collectionViewLayout: CardCollectionLayout(),
@@ -35,13 +35,12 @@ final class CardSnapshotTests: XCTestCase {
         return controller
     }
     
-    private func cards() -> [ImageStub] {
+    private func cardsWithContent() -> [ImageStub] {
         return [
-            ImageStub(name: "Charmander", price: "$2.00", image: UIImage.make(withColor: .red)),
-            ImageStub(name: "Alakazam", price: "$35.00", image: UIImage.make(withColor: .green))
+            ImageStub(name: "Base", price: "Number of Cards: 102", image: UIImage.make(withColor: .red)),
+            ImageStub(name: "Jungle", price: "Number of Cards: 64", image: UIImage.make(withColor: .green))
         ]
     }
-    
 }
 
 private extension CollectionListViewController {
@@ -56,16 +55,16 @@ private extension CollectionListViewController {
     }
 }
 
-private class ImageStub: ImageControllerDelegate {
+fileprivate class ImageStub: ImageControllerDelegate {
     let viewModel: CardViewModel
     let image: UIImage?
     weak var controller: CardController?
 
-    init(name: String, price: String, image: UIImage?) {
-        self.viewModel = CardViewModel(name: name, price: price)
+    init(name: String, price: String, image: UIImage?){
+        self.viewModel =  CardViewModel(name: name, price: price)
         self.image = image
     }
-
+    
     func didRequestImage() {
         controller?.display(ResourceLoadingViewModel(isLoading: false))
 
@@ -76,6 +75,8 @@ private class ImageStub: ImageControllerDelegate {
             controller?.display(ResourceErrorViewModel(message: "any"))
         }
     }
-
-    func didCancelImageRequest() {}
+    
+    func didCancelImageRequest() {
+        
+    }
 }

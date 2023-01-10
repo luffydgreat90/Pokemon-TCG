@@ -15,7 +15,7 @@ public final class BoosterSetCell: UITableViewCell {
         containerImageView.layer.cornerRadius = 24
         containerImageView.layer.masksToBounds = true
         containerImageView.clipsToBounds = true
-        containerImageView.backgroundColor = .boosterSetImageViewBackgroundColor
+        containerImageView.backgroundColor = .cellImageViewBackground
         return containerImageView
     }()
     
@@ -128,8 +128,4 @@ public final class BoosterSetCell: UITableViewCell {
     }
 }
 
-extension UIColor {
-    static var boosterSetImageViewBackgroundColor: UIColor {
-        UIColor(rgb: 0xD0CFCD)
-    }
-}
+

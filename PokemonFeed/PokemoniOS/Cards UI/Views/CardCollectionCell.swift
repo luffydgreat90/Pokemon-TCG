@@ -24,13 +24,12 @@ public final class CardCollectionCell: UICollectionViewCell {
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
-        imageView.backgroundColor = .gray
+        imageView.backgroundColor = .cellImageViewBackground
         return imageView
     }()
     
     public private(set) var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.textColor = .black
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
         titleLabel.font = .systemFont(ofSize: 14.0, weight: .bold)
@@ -40,7 +39,6 @@ public final class CardCollectionCell: UICollectionViewCell {
     
     public private(set) var priceLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.textColor = .black
         priceLabel.numberOfLines = 0
         priceLabel.textAlignment = .center
         priceLabel.font = .systemFont(ofSize: 12.0, weight: .light)
@@ -72,7 +70,7 @@ public final class CardCollectionCell: UICollectionViewCell {
             containerStack.topAnchor.constraint(equalTo: topAnchor, constant: 4).withPriority(999),
             containerStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4).withPriority(999),
             
-            cardImageView.heightAnchor.constraint(equalToConstant: 150),
+            cardImageView.heightAnchor.constraint(equalToConstant: 130),
             cardImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
             cardImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4)
         ])

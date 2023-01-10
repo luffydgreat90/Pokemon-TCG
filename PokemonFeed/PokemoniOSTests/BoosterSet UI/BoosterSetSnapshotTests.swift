@@ -55,7 +55,7 @@ private extension ListViewController {
     }
 }
 
-private class ImageStub: ImageControllerDelegate {
+fileprivate class ImageStub: ImageControllerDelegate {
     
     let viewModel: BoosterSetViewModel
     let image: UIImage?
@@ -77,9 +77,7 @@ private class ImageStub: ImageControllerDelegate {
         }
     }
     
-    func didCancelImageRequest() {
-        
-    }
+    func didCancelImageRequest() {}
     
     
 }
