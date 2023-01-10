@@ -18,11 +18,7 @@ public enum CardListUIComposer {
         cardList: @escaping () -> AnyPublisher<[Card], Error>,
         imageLoader: @escaping (URL?) -> AnyPublisher<Data, Error>) -> CollectionListViewController{
             let adapter = CardListPresentationAdapter(loader: cardList)
-<<<<<<< HEAD
             
-=======
-
->>>>>>> revert-branch
             let collectionViewController = CollectionListViewController(
                 collectionViewLayout: CardCollectionLayout(),
                 onRefresh: { [adapter] in
