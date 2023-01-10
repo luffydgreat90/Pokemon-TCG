@@ -92,7 +92,7 @@ extension BoosterSetController: ResourceView {
 
 extension BoosterSetController: ResourceLoadingView {
     public func display(_ viewModel: ResourceLoadingViewModel) {
-        cell?.boosterSetImageView.isShimmering = viewModel.isLoading
+        cell?.containerImageView.isShimmering = viewModel.isLoading
     }
 }
 

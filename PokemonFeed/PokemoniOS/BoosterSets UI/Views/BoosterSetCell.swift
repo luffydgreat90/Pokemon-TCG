@@ -9,7 +9,7 @@ import UIKit
 
 public final class BoosterSetCell: UITableViewCell {
     
-    private var containerImageView: UIView = {
+    public private(set) var containerImageView: UIView = {
         let containerImageView = UIView()
         containerImageView.translatesAutoresizingMaskIntoConstraints = false
         containerImageView.layer.cornerRadius = 24
