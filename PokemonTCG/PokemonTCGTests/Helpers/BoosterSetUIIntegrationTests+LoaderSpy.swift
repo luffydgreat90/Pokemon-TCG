@@ -12,9 +12,14 @@ import Combine
 
 extension BoosterSetUIIntegrationTests {
     class LoaderSpy: ImageDataLoader {
+        
         private var boosterSetRequests = [PassthroughSubject<[BoosterSet], Error>]()
         private var imageRequests = [(url: URL, completion: (ImageDataLoader.Result) -> Void)]()
         private(set) var cancelledImageURLs = [URL]()
+        
+        var loadBoosterSetCallCount: Int {
+            return boosterSetRequests.count
+        }
         
         func loadPublisher() -> AnyPublisher<[BoosterSet], Error> {
             let publisher = PassthroughSubject<[BoosterSet], Error>()

@@ -37,6 +37,15 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         sut.simulateTapOnFeedImage(at: 1)
         XCTAssertEqual(selectedImages, [boosterSet1, boosterSet2])
     }
+    
+    func test_loadFeedActions_requestFeedFromLoader() {
+        let (sut, loader) = makeSUT()
+        XCTAssertEqual(loader.loadBoosterSetCallCount, 0, "Expected no loading requests before view is loaded")
+        
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(loader.loadBoosterSetCallCount, 1, "Expected a loading request once view is loaded")
+    }
+    
     // MARK: - Helpers
 
     private func makeSUT(

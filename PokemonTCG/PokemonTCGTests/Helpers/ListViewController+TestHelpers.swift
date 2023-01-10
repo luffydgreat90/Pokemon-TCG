@@ -15,5 +15,9 @@ extension ListViewController {
         delegate?.tableView?(tableView, didSelectRowAt: index)
     }
     
+    func simulateUserInitiatedReload() {
+        refreshControl?.simulatePullToRefresh()
+    }
+    
     private var boosterSetsSection: Int { 0 }
 }
