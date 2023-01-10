@@ -138,6 +138,38 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         XCTAssertEqual(sut.errorMessage, nil)
     }
     
+    func test_tapOnErrorView_hidesErrorMessage() {
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.errorMessage, nil)
+
+        loader.completeBoosterSetLoadingWithError(at: 0)
+        XCTAssertEqual(sut.errorMessage, loadError)
+
+        sut.simulateErrorViewTap()
+        XCTAssertEqual(sut.errorMessage, nil)
+    }
+    
+    // MARK: - Image View Tests
+
+    func test_boosterSetImageView_loadsImageURLWhenVisible() {
+        let boosterSet0 = makeBoosterSet(symbol: URL(string: "http://url-0.com")!)
+        let boosterSet1 = makeBoosterSet(symbol: URL(string: "http://url-1.com")!)
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading(with: [boosterSet0, boosterSet1])
+
+        XCTAssertEqual(loader.loadedImageURLs, [], "Expected no image URL requests until views become visible")
+
+        sut.simulateBoosterSetViewVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [boosterSet0.images.symbol], "Expected first image URL request once first view becomes visible")
+
+        sut.simulateBoosterSetViewVisible(at: 1)
+        XCTAssertEqual(loader.loadedImageURLs, [boosterSet0.images.symbol, boosterSet1.images.symbol], "Expected second image URL request once second view also becomes visible")
+    }
+    
     // MARK: - Helpers
 
     private func makeSUT(
@@ -155,7 +187,7 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         return (sut, loader)
     }
     
-    func makeBoosterSet() -> BoosterSet {
+    func makeBoosterSet(symbol:URL = anyURL()) -> BoosterSet {
         let id = UUID().uuidString
         return BoosterSet(
             id: id,
@@ -165,7 +197,7 @@ class BoosterSetUIIntegrationTests: XCTestCase {
             total: 1,
             legalities: Legalities(isUnlimited: true, isStandard: true, isExpanded: true),
             releaseDate: Date(),
-            images: BoosterImage(symbol: anyURL(), logo: anyURL()))
+            images: BoosterImage(symbol: symbol, logo: anyURL()))
     }
     
 }

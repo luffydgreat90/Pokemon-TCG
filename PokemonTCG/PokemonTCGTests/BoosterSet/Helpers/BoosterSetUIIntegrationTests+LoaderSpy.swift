@@ -14,7 +14,6 @@ extension BoosterSetUIIntegrationTests {
     class LoaderSpy: ImageDataLoader {
         
         private var boosterSetRequests = [PassthroughSubject<[BoosterSet], Error>]()
-        private var imageRequests = [(url: URL, completion: (ImageDataLoader.Result) -> Void)]()
         private(set) var cancelledImageURLs = [URL]()
         
         var loadBoosterSetCallCount: Int {
@@ -40,12 +39,20 @@ extension BoosterSetUIIntegrationTests {
             let error = NSError(domain: "an error", code: 0)
             boosterSetRequests[index].send(completion: .failure(error))
         }
-    }
-    
-    private struct TaskSpy: ImageDataLoaderTask {
-        let cancelCallback: () -> Void
-        func cancel() {
-            cancelCallback()
+        
+        // MARK: - ImageDataLoader
+        
+        private struct TaskSpy: ImageDataLoaderTask {
+            let cancelCallback: () -> Void
+            func cancel() {
+                cancelCallback()
+            }
+        }
+        
+        private var imageRequests = [(url: URL, completion: (ImageDataLoader.Result) -> Void)]()
+
+        var loadedImageURLs: [URL] {
+            return imageRequests.map { $0.url }
         }
     }
 }

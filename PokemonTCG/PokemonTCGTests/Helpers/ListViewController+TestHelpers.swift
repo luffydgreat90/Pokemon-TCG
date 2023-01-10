@@ -27,6 +27,10 @@ extension ListViewController {
         return refreshControl?.isRefreshing == true
     }
     
+    func simulateErrorViewTap() {
+        errorView.simulateTap()
+    }
+    
     func cell(row: Int, section: Int) -> UITableViewCell? {
         guard numberOfRows(in: section) > row else {
             return nil
@@ -40,6 +44,11 @@ extension ListViewController {
 }
 
 extension ListViewController {
+    @discardableResult
+    func simulateBoosterSetViewVisible(at index: Int) -> BoosterSetCell? {
+        return boosterSetView(at: index) as? BoosterSetCell
+    }
+    
     func numberOfRows(in section: Int) -> Int {
         tableView.numberOfSections > section ? tableView.numberOfRows(inSection: section) : 0
     }
