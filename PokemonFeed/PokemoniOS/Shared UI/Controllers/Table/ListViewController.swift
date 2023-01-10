@@ -22,7 +22,7 @@ public final class ListViewController: UITableViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        onRefresh?()
+        refresh()
     }
 
     public func display(_ cellControllers: [CellController]) {
@@ -85,12 +85,17 @@ private extension ListViewController {
         tableView.prefetchDataSource = self
         configureTableView?(tableView)
         tableView.tableHeaderView = errorView.makeContainer()
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         errorView.onHide = { [weak self] in
             self?.tableView.beginUpdates()
             self?.tableView.sizeTableHeaderToFit()
             self?.tableView.endUpdates()
         }
+    }
+    
+    @objc private func refresh(){
+        onRefresh?()
     }
     
     func controller(for indexPath: IndexPath) -> CellController? {
