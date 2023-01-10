@@ -11,7 +11,6 @@ import PokemoniOS
 import Combine
 
 extension BoosterSetUIIntegrationTests {
-        
     class LoaderSpy: ImageDataLoader {
         private var boosterSetRequests = [PassthroughSubject<[BoosterSet], Error>]()
         private var imageRequests = [(url: URL, completion: (ImageDataLoader.Result) -> Void)]()
@@ -26,6 +25,15 @@ extension BoosterSetUIIntegrationTests {
         func loadImageData(from url: URL, completion: @escaping (ImageDataLoader.Result) -> Void) -> ImageDataLoaderTask {
             imageRequests.append((url, completion))
             return TaskSpy { [weak self] in self?.cancelledImageURLs.append(url) }
+        }
+        
+        func completeFeedLoading(with feed: [BoosterSet] = [], at index: Int = 0) {
+            boosterSetRequests[index].send(feed)
+        }
+
+        func completeFeedLoadingWithError(at index: Int = 0) {
+            let error = NSError(domain: "an error", code: 0)
+            boosterSetRequests[index].send(completion: .failure(error))
         }
     }
     
