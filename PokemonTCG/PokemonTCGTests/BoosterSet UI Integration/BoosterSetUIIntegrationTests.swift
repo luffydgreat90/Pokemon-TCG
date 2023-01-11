@@ -22,20 +22,20 @@ class BoosterSetUIIntegrationTests: XCTestCase {
     }
     
     func test_boosterSetSelection_notifiesHandler() {
+        let boosterSet0 = makeBoosterSet()
         let boosterSet1 = makeBoosterSet()
-        let boosterSet2 = makeBoosterSet()
         var selectedImages = [BoosterSet]()
         
         let (sut, loader) = makeSUT(selection: { selectedImages.append($0) })
 
         sut.loadViewIfNeeded()
-        loader.completeBoosterSetLoading(with: [boosterSet1, boosterSet2], at: 0)
+        loader.completeBoosterSetLoading(with: [boosterSet0, boosterSet1], at: 0)
 
         sut.simulateTapOnFeedImage(at: 0)
-        XCTAssertEqual(selectedImages, [boosterSet1])
+        XCTAssertEqual(selectedImages, [boosterSet0])
 
         sut.simulateTapOnFeedImage(at: 1)
-        XCTAssertEqual(selectedImages, [boosterSet1, boosterSet2])
+        XCTAssertEqual(selectedImages, [boosterSet0, boosterSet1])
     }
     
     func test_loadFeedActions_requestFeedFromLoader() {

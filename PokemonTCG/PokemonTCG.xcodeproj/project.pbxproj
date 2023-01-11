@@ -19,6 +19,7 @@
 		8E067882296E143900E71A2B /* BoosterSetCell+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E067881296E143900E71A2B /* BoosterSetCell+TestHelpers.swift */; };
 		8E067884296E1EA600E71A2B /* UIButton+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E067883296E1EA600E71A2B /* UIButton+TestHelpers.swift */; };
 		8E067886296E326F00E71A2B /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E067885296E326F00E71A2B /* UIImage+TestHelpers.swift */; };
+		8E06788A296E36EB00E71A2B /* CardUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E067889296E36EB00E71A2B /* CardUIIntegrationTests.swift */; };
 		8E56CE8429679BD000FFCD15 /* CardListUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */; };
 		8EA9B9C02964EA84005E6080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9BF2964EA84005E6080 /* AppDelegate.swift */; };
 		8EA9B9C22964EA84005E6080 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9C12964EA84005E6080 /* SceneDelegate.swift */; };
@@ -74,6 +75,7 @@
 		8E067881296E143900E71A2B /* BoosterSetCell+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoosterSetCell+TestHelpers.swift"; sourceTree = "<group>"; };
 		8E067883296E1EA600E71A2B /* UIButton+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+TestHelpers.swift"; sourceTree = "<group>"; };
 		8E067885296E326F00E71A2B /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
+		8E067889296E36EB00E71A2B /* CardUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardUIIntegrationTests.swift; sourceTree = "<group>"; };
 		8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListUIComposer.swift; sourceTree = "<group>"; };
 		8EA9B9BC2964EA84005E6080 /* PokemonTCG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonTCG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B9BF2964EA84005E6080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,13 +129,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		8E06787F296E13DE00E71A2B /* BoosterSet */ = {
+		8E06787F296E13DE00E71A2B /* BoosterSet UI Integration */ = {
 			isa = PBXGroup;
 			children = (
 				8E067880296E13FE00E71A2B /* Helpers */,
 				8E06786C296DFBC700E71A2B /* BoosterSetUIIntegrationTests.swift */,
 			);
-			path = BoosterSet;
+			path = "BoosterSet UI Integration";
 			sourceTree = "<group>";
 		};
 		8E067880296E13FE00E71A2B /* Helpers */ = {
@@ -142,6 +144,22 @@
 				8E06787B296E10DD00E71A2B /* BoosterSetUIIntegrationTests+Assertions.swift */,
 				8E06786F296DFD7700E71A2B /* BoosterSetUIIntegrationTests+LoaderSpy.swift */,
 				8E067881296E143900E71A2B /* BoosterSetCell+TestHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8E067887296E369A00E71A2B /* Card UI Integration */ = {
+			isa = PBXGroup;
+			children = (
+				8E067888296E36A400E71A2B /* Helpers */,
+				8E067889296E36EB00E71A2B /* CardUIIntegrationTests.swift */,
+			);
+			path = "Card UI Integration";
+			sourceTree = "<group>";
+		};
+		8E067888296E36A400E71A2B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -192,7 +210,8 @@
 		8EA9B9D52964EA86005E6080 /* PokemonTCGTests */ = {
 			isa = PBXGroup;
 			children = (
-				8E06787F296E13DE00E71A2B /* BoosterSet */,
+				8E067887296E369A00E71A2B /* Card UI Integration */,
+				8E06787F296E13DE00E71A2B /* BoosterSet UI Integration */,
 				8E06786E296DFCCA00E71A2B /* Helpers */,
 				8EA9B9D62964EA86005E6080 /* SceneDelegateTests.swift */,
 			);
@@ -356,6 +375,7 @@
 				8E067872296E01DF00E71A2B /* SharedTestHelpers.swift in Sources */,
 				8E06786D296DFBC700E71A2B /* BoosterSetUIIntegrationTests.swift in Sources */,
 				8E067886296E326F00E71A2B /* UIImage+TestHelpers.swift in Sources */,
+				8E06788A296E36EB00E71A2B /* CardUIIntegrationTests.swift in Sources */,
 				8E06787A296E09EA00E71A2B /* UIControl+TestHelpers.swift in Sources */,
 				8E067882296E143900E71A2B /* BoosterSetCell+TestHelpers.swift in Sources */,
 				8EA9B9D72964EA86005E6080 /* SceneDelegateTests.swift in Sources */,
