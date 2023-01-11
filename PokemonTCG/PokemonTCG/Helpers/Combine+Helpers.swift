@@ -12,7 +12,7 @@ import PokemonFeed
 public extension HTTPClient {
     typealias Publisher = AnyPublisher<(Data, HTTPURLResponse), Error>
 
-    func getPublisher(url: URL) -> Publisher {
+    func getPublisher(url: URL?) -> Publisher {
         var task: HTTPClientTask?
 
         return Deferred {
@@ -38,7 +38,7 @@ extension Publisher {
 }
 
 extension Publisher where Output == Data {
-    func caching(to cache: ImageDataCache, using url: URL) -> AnyPublisher<Output, Failure> {
+    func caching(to cache: ImageDataCache, using url: URL?) -> AnyPublisher<Output, Failure> {
         handleEvents(receiveOutput: { data in
             cache.saveIgnoringResult(data, for: url)
         }).eraseToAnyPublisher()
@@ -99,16 +99,17 @@ public extension LocalCardLoader {
 }
 
 private extension ImageDataCache {
-    func saveIgnoringResult(_ data: Data, for url: URL) {
+    func saveIgnoringResult(_ data: Data, for url: URL?) {
+        guard let url = url else { return }
         save(data, for: url) { _ in }
     }
 }
 
 public extension ImageDataLoader {
     typealias Publisher = AnyPublisher<Data, Error>
-
-    func loadImageDataPublisher(from url: URL) -> Publisher {
-        var task: ImageDataLoaderTask?
+    
+    func loadImageDataPublisher(from url: URL?) -> Publisher {
+       var task: ImageDataLoaderTask?
         
         return Deferred {
             Future { completion in

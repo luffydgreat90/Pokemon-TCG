@@ -14,8 +14,11 @@ public final class URLSessionHTTPClient: HTTPClient {
         self.session = session
     }
     
-    private struct UnexpectedValuesRepresentation: Error {}
-    
+    private enum LoadError: Error {
+        case invalidURL
+        case failed
+    }
+
     private struct URLSessionTaskWrapper: HTTPClientTask {
         let wrapped: URLSessionTask
 
@@ -24,7 +27,12 @@ public final class URLSessionHTTPClient: HTTPClient {
         }
     }
     
-    public func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) -> HTTPClientTask {
+    public func get(from url: URL?, completion: @escaping (HTTPClient.Result) -> Void) -> HTTPClientTask {
+        guard let url = url else {
+            return Result {
+                throw LoadError.invalidURL
+            } as! HTTPClientTask
+        }
         
         let task = session.dataTask(with: url) { data, response, error in
             completion(Result {
@@ -34,7 +42,7 @@ public final class URLSessionHTTPClient: HTTPClient {
                 } else if let data = data, let response = response as? HTTPURLResponse {
                     return (data, response)
                 } else {
-                    throw UnexpectedValuesRepresentation()
+                    throw LoadError.failed
                 }
             })
         }

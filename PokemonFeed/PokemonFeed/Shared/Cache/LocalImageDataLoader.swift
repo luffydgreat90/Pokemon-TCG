@@ -34,6 +34,7 @@ extension LocalImageDataLoader: ImageDataLoader {
     public typealias LoadResult = ImageDataLoader.Result
 
     public enum LoadError: Error {
+        case invalidURL
         case failed
         case notFound
     }
@@ -58,7 +59,13 @@ extension LocalImageDataLoader: ImageDataLoader {
         }
     }
 
-    public func loadImageData(from url: URL, completion: @escaping (LoadResult) -> Void) -> ImageDataLoaderTask {
+    public func loadImageData(from url: URL?, completion: @escaping (LoadResult) -> Void) -> ImageDataLoaderTask {
+        guard let url = url else {
+            return Result {
+                throw LoadError.invalidURL
+            } as! ImageDataLoaderTask
+        }
+        
         let task = LoadImageDataTask(completion)
         store.retrieve(dataForURL: url) { [weak self] result in
             guard self != nil else { return }
