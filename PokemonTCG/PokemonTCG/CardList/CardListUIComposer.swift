@@ -20,12 +20,14 @@ public enum CardListUIComposer {
             let adapter = CardListPresentationAdapter(loader: cardList)
             
             let collectionViewController = CollectionListViewController(
-                collectionViewLayout: CardCollectionLayout(),
-                onRefresh: { [adapter] in
-                    adapter.loadResource()
-                }) { collectionView in
+                collectionViewLayout: CardCollectionLayout())
+            
+            collectionViewController.configureCollectionView = { collectionView in
                     collectionView.register(CardCollectionCell.self)
-                }
+            }
+            collectionViewController.onRefresh = { [adapter] in
+                adapter.loadResource()
+            }
             
             adapter.presenter = LoadResourcePresenter(
                 resourceView: CardListViewAdapter(
@@ -35,8 +37,6 @@ public enum CardListUIComposer {
                 errorView: WeakRefVirtualProxy(collectionViewController),
                 mapper: CardsPresenter.map)
             
-            adapter.loadResource()
-
             return collectionViewController
         }
 }

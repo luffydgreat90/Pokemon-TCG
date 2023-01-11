@@ -12,7 +12,6 @@ import Combine
 
 extension BoosterSetUIIntegrationTests {
     final class LoaderSpy: ImageDataLoader {
-        
         private var boosterSetRequests = [PassthroughSubject<[BoosterSet], Error>]()
     
         var loadBoosterSetCallCount: Int {
@@ -37,6 +36,13 @@ extension BoosterSetUIIntegrationTests {
         
         // MARK: - ImageDataLoader
         
+        private var imageRequests = [(url: URL, completion: (ImageDataLoader.Result) -> Void)]()
+        private(set) var cancelledImageURLs = [URL]()
+        
+        var loadedImageURLs: [URL] {
+            return imageRequests.map { $0.url }
+        }
+        
         private struct TaskSpy: ImageDataLoaderTask {
             let cancelCallback: () -> Void
             func cancel() {
@@ -44,13 +50,11 @@ extension BoosterSetUIIntegrationTests {
             }
         }
         
-        private var imageRequests = [(url: URL, completion: (ImageDataLoader.Result) -> Void)]()
-
-        var loadedImageURLs: [URL] {
-            return imageRequests.map { $0.url }
-        }
-        
-        func loadImageData(from url: URL, completion: @escaping (ImageDataLoader.Result) -> Void) -> ImageDataLoaderTask {
+        func loadImageData(from url: URL?, completion: @escaping (ImageDataLoader.Result) -> Void) -> ImageDataLoaderTask {
+            guard let url = url else{
+                return TaskSpy {}
+            }
+            
             imageRequests.append((url, completion))
             return TaskSpy { [weak self] in self?.cancelledImageURLs.append(url) }
         }
@@ -64,6 +68,6 @@ extension BoosterSetUIIntegrationTests {
             imageRequests[index].completion(.failure(error))
         }
         
-        private(set) var cancelledImageURLs = [URL]()
+        
     }
 }

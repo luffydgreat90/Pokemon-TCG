@@ -24,11 +24,7 @@ final class CollectionListSnapshotTests: XCTestCase {
 
     private func makeSUT() -> CollectionListViewController {
         let controller = CollectionListViewController(
-            collectionViewLayout: UICollectionViewFlowLayout(),
-            onRefresh: nil,
-            configureCollectionView: {_ in
-            
-        })
+            collectionViewLayout: UICollectionViewFlowLayout())
         controller.loadViewIfNeeded()
         controller.collectionView.showsVerticalScrollIndicator = false
         controller.collectionView.showsHorizontalScrollIndicator = false

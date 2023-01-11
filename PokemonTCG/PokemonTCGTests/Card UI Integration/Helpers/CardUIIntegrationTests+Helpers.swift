@@ -23,13 +23,31 @@ extension CardUIIntegrationTests {
         func loadPublisher() -> () -> AnyPublisher<[Card], Error> {
             let publisher = PassthroughSubject<[Card], Error>()
             requests.append(publisher)
-            return publisher.eraseToAnyPublisher()
+            return {
+                publisher.eraseToAnyPublisher()
+            }
         }
         
         // MARK: - ImageDataLoader
         
-        func loadImageData(from url: URL, completion: @escaping (Result) -> Void) -> ImageDataLoaderTask {
+        private var imageRequests = [(url: URL, completion: (ImageDataLoader.Result) -> Void)]()
+        private(set) var cancelledImageURLs = [URL]()
+        
+        private struct TaskSpy: ImageDataLoaderTask {
+            let cancelCallback: () -> Void
+            func cancel() {
+                cancelCallback()
+            }
+        }
+        
+        func loadImageData(from url: URL?, completion: @escaping (Result<Data, Error>) -> Void) -> PokemonFeed.ImageDataLoaderTask {
             
+            guard let url = url else{
+                return TaskSpy {}
+            }
+            
+            imageRequests.append((url, completion))
+            return TaskSpy { [weak self] in self?.cancelledImageURLs.append(url) }
         }
     }
 }

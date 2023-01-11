@@ -23,12 +23,12 @@ final class CardSnapshotTests: XCTestCase {
     // MARK: - Helpers
     
     private func makeSUT() -> CollectionListViewController {
-        let controller = CollectionListViewController(
-            collectionViewLayout: CardCollectionLayout(),
-            onRefresh: nil,
-            configureCollectionView: { collectionView in
-                collectionView.register(CardCollectionCell.self)
-        })
+        let controller = CollectionListViewController(collectionViewLayout: CardCollectionLayout())
+        
+        controller.configureCollectionView = { collectionView in
+            collectionView.register(CardCollectionCell.self)
+        }
+        
         controller.loadViewIfNeeded()
         controller.collectionView.showsVerticalScrollIndicator = false
         controller.collectionView.showsHorizontalScrollIndicator = false

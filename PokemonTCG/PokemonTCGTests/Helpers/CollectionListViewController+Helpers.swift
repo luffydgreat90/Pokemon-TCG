@@ -16,6 +16,6 @@ extension CollectionListViewController {
     }
     
     func simulateUserInitiatedReload() {
-        refreshControl?.simulatePullToRefresh()
+        collectionView.refreshControl?.simulatePullToRefresh()
     }
 }

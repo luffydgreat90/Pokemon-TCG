@@ -10,21 +10,13 @@ import PokemonFeed
 
 public final class CollectionListViewController: UICollectionViewController {
 
-    public let onRefresh: (() -> Void)?
+    public var onRefresh: (() -> Void)?
+    public var configureCollectionView: ((UICollectionView) -> Void)?
+    private let layout: UICollectionViewLayout
     
-    public init(
-        collectionViewLayout layout: UICollectionViewLayout,
-        onRefresh:(() -> Void)?,
-        configureCollectionView: ((UICollectionView) -> Void)?
-    ) {
-        self.onRefresh = onRefresh
+    public override init(collectionViewLayout layout: UICollectionViewLayout) {
+        self.layout = layout
         super.init(collectionViewLayout: layout)
-        self.collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: layout)
-        configureCollectionView?(collectionView)
-        self.collectionView.refreshControl = UIRefreshControl()
-        self.collectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        self.collectionView.dataSource = dataSource
-        self.collectionView.prefetchDataSource = self
     }
     
     required init?(coder: NSCoder) {
@@ -36,10 +28,10 @@ public final class CollectionListViewController: UICollectionViewController {
             controller.dataSource.collectionView(collectionView, cellForItemAt: index)
         }
     }()
-    
-    
+
     public override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupUI()
         self.refresh()
     }
     
@@ -90,6 +82,15 @@ extension CollectionListViewController: ResourceErrorView {
 }
 
 private extension CollectionListViewController {
+    func setupUI(){
+        self.collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: self.layout)
+        self.collectionView.refreshControl = UIRefreshControl()
+        self.collectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        self.collectionView.dataSource = dataSource
+        self.collectionView.prefetchDataSource = self
+        configureCollectionView?(collectionView)
+    }
+    
    @objc func refresh(){
         onRefresh?()
     }
