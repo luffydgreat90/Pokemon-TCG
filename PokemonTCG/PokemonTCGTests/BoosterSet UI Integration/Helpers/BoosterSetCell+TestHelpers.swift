@@ -13,7 +13,7 @@ extension BoosterSetCell {
         titleLabel.text
     }
     
-    var numberText: String? {
+    var totalCardsText: String? {
         numberLabel.text
     }
     

@@ -18,4 +18,8 @@ extension CollectionListViewController {
     func simulateUserInitiatedReload() {
         collectionView.refreshControl?.simulatePullToRefresh()
     }
+    
+    var isShowingLoadingIndicator: Bool {
+        return collectionView.refreshControl?.isRefreshing == true
+    }
 }

@@ -20,8 +20,9 @@
 		8E067884296E1EA600E71A2B /* UIButton+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E067883296E1EA600E71A2B /* UIButton+TestHelpers.swift */; };
 		8E067886296E326F00E71A2B /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E067885296E326F00E71A2B /* UIImage+TestHelpers.swift */; };
 		8E06788A296E36EB00E71A2B /* CardUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E067889296E36EB00E71A2B /* CardUIIntegrationTests.swift */; };
-		8E06788C296E388500E71A2B /* CardUIIntegrationTests+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06788B296E388500E71A2B /* CardUIIntegrationTests+Helpers.swift */; };
+		8E06788C296E388500E71A2B /* CardUIIntegrationTests+LoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06788B296E388500E71A2B /* CardUIIntegrationTests+LoaderSpy.swift */; };
 		8E06788E296EAD2400E71A2B /* CollectionListViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06788D296EAD2300E71A2B /* CollectionListViewController+Helpers.swift */; };
+		8E067890296ECA3000E71A2B /* CardUIIntegrationTests+Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06788F296ECA3000E71A2B /* CardUIIntegrationTests+Assertions.swift */; };
 		8E56CE8429679BD000FFCD15 /* CardListUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */; };
 		8EA9B9C02964EA84005E6080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9BF2964EA84005E6080 /* AppDelegate.swift */; };
 		8EA9B9C22964EA84005E6080 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9C12964EA84005E6080 /* SceneDelegate.swift */; };
@@ -78,8 +79,9 @@
 		8E067883296E1EA600E71A2B /* UIButton+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+TestHelpers.swift"; sourceTree = "<group>"; };
 		8E067885296E326F00E71A2B /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
 		8E067889296E36EB00E71A2B /* CardUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardUIIntegrationTests.swift; sourceTree = "<group>"; };
-		8E06788B296E388500E71A2B /* CardUIIntegrationTests+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardUIIntegrationTests+Helpers.swift"; sourceTree = "<group>"; };
+		8E06788B296E388500E71A2B /* CardUIIntegrationTests+LoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardUIIntegrationTests+LoaderSpy.swift"; sourceTree = "<group>"; };
 		8E06788D296EAD2300E71A2B /* CollectionListViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionListViewController+Helpers.swift"; sourceTree = "<group>"; };
+		8E06788F296ECA3000E71A2B /* CardUIIntegrationTests+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardUIIntegrationTests+Assertions.swift"; sourceTree = "<group>"; };
 		8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListUIComposer.swift; sourceTree = "<group>"; };
 		8EA9B9BC2964EA84005E6080 /* PokemonTCG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonTCG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B9BF2964EA84005E6080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,9 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				8E067871296E01DF00E71A2B /* SharedTestHelpers.swift */,
-				8E06788D296EAD2300E71A2B /* CollectionListViewController+Helpers.swift */,
 				8E067873296E024C00E71A2B /* XCTestCase+MemoryLeakTracking.swift */,
-				8E067875296E069000E71A2B /* ListViewController+TestHelpers.swift */,
 				8E067877296E09CD00E71A2B /* UIRefreshControl+TestHelpers.swift */,
 				8E067879296E09EA00E71A2B /* UIControl+TestHelpers.swift */,
 				8E06787D296E11EC00E71A2B /* UIView+LayoutCycle.swift */,
@@ -146,6 +146,7 @@
 		8E067880296E13FE00E71A2B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8E067875296E069000E71A2B /* ListViewController+TestHelpers.swift */,
 				8E06787B296E10DD00E71A2B /* BoosterSetUIIntegrationTests+Assertions.swift */,
 				8E06786F296DFD7700E71A2B /* BoosterSetUIIntegrationTests+LoaderSpy.swift */,
 				8E067881296E143900E71A2B /* BoosterSetCell+TestHelpers.swift */,
@@ -165,7 +166,9 @@
 		8E067888296E36A400E71A2B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				8E06788B296E388500E71A2B /* CardUIIntegrationTests+Helpers.swift */,
+				8E06788B296E388500E71A2B /* CardUIIntegrationTests+LoaderSpy.swift */,
+				8E06788D296EAD2300E71A2B /* CollectionListViewController+Helpers.swift */,
+				8E06788F296ECA3000E71A2B /* CardUIIntegrationTests+Assertions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -375,10 +378,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E067890296ECA3000E71A2B /* CardUIIntegrationTests+Assertions.swift in Sources */,
 				8E06787C296E10DD00E71A2B /* BoosterSetUIIntegrationTests+Assertions.swift in Sources */,
 				8E067884296E1EA600E71A2B /* UIButton+TestHelpers.swift in Sources */,
 				8E067876296E069000E71A2B /* ListViewController+TestHelpers.swift in Sources */,
-				8E06788C296E388500E71A2B /* CardUIIntegrationTests+Helpers.swift in Sources */,
+				8E06788C296E388500E71A2B /* CardUIIntegrationTests+LoaderSpy.swift in Sources */,
 				8E067872296E01DF00E71A2B /* SharedTestHelpers.swift in Sources */,
 				8E06786D296DFBC700E71A2B /* BoosterSetUIIntegrationTests.swift in Sources */,
 				8E067886296E326F00E71A2B /* UIImage+TestHelpers.swift in Sources */,
