@@ -280,6 +280,32 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         XCTAssertEqual(loader.cancelledImageURLs, [boosterSet0.images.symbol, boosterSet1.images.symbol], "Expected second cancelled image URL request once second image is not near visible anymore")
     }
     
+    func test_boosterSetView_doesNotRenderLoadedImageWhenNotVisibleAnymore() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading(with: [makeBoosterSet()])
+
+        let view = sut.simulateBoosterSetViewNotVisible(at: 0)
+        loader.completeImageLoading(with: anyImageData())
+
+        XCTAssertNil(view?.renderedImage, "Expected no rendered image when an image load finishes after the view is not visible anymore")
+    }
+    
+    func test_loadImageDataCompletion_dispatchesFromBackgroundToMainThread() {
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading(with: [makeBoosterSet()])
+        _ = sut.simulateBoosterSetViewVisible(at: 0)
+
+        let exp = expectation(description: "Wait for background queue")
+        DispatchQueue.global().async {
+            loader.completeImageLoading(with: self.anyImageData(), at: 0)
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+    }
+    
     // MARK: - Helpers
 
     private func makeSUT(
@@ -308,6 +334,10 @@ class BoosterSetUIIntegrationTests: XCTestCase {
             legalities: Legalities(isUnlimited: true, isStandard: true, isExpanded: true),
             releaseDate: Date(),
             images: BoosterImage(symbol: symbol, logo: anyURL()))
+    }
+    
+    private func anyImageData() -> Data {
+        return UIImage.make(withColor: .red).pngData()!
     }
     
 }
