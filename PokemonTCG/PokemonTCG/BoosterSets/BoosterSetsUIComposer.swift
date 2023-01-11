@@ -18,7 +18,6 @@ public enum BoosterSetsUIComposer {
         boosterSetsLoader: @escaping () -> AnyPublisher<[BoosterSet], Error>,
         imageLoader: @escaping (URL) -> AnyPublisher<Data, Error>,
         selection: @escaping (BoosterSet) -> Void) -> ListViewController {
-            
             let presentationAdapter = BoosterSetsPresentationAdapter(loader: boosterSetsLoader)
             
             let listViewController = ListViewController()
@@ -37,8 +36,6 @@ public enum BoosterSetsUIComposer {
                 loadingView: WeakRefVirtualProxy(listViewController),
                 errorView: WeakRefVirtualProxy(listViewController),
                 mapper: BoosterSetsPresenter.map)
-            
-           
             
             listViewController.onRefresh = presentationAdapter.loadResource
             

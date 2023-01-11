@@ -20,12 +20,11 @@ extension CardUIIntegrationTests {
             return requests.count
         }
         
-        func loadPublisher() -> () -> AnyPublisher<[Card], Error> {
+        func loadPublisher() -> AnyPublisher<[Card], Error> {
+            debugPrint("loadPublisher")
             let publisher = PassthroughSubject<[Card], Error>()
             requests.append(publisher)
-            return {
-                publisher.eraseToAnyPublisher()
-            }
+            return publisher.eraseToAnyPublisher()
         }
         
         // MARK: - ImageDataLoader

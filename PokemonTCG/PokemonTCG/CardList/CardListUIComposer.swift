@@ -25,6 +25,7 @@ public enum CardListUIComposer {
             collectionViewController.configureCollectionView = { collectionView in
                     collectionView.register(CardCollectionCell.self)
             }
+            
             collectionViewController.onRefresh = { [adapter] in
                 adapter.loadResource()
             }

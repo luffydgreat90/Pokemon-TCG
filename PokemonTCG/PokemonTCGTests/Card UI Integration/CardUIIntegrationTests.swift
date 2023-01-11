@@ -14,11 +14,12 @@ import Combine
 
 class CardUIIntegrationTests: XCTestCase {
     
-    func test_loadFeedActions_requestFeedFromLoader() {
+    func test_loadFeedActions_requestCardsFromLoader() {
         let (sut, loader) = makeSUT()
         XCTAssertEqual(loader.loadCardCallCount, 0, "Expected no loading requests before view is loaded")
         
         sut.loadViewIfNeeded()
+        
         XCTAssertEqual(loader.loadCardCallCount, 1, "Expected a loading request once view is loaded")
         
         sut.simulateUserInitiatedReload()
@@ -26,6 +27,7 @@ class CardUIIntegrationTests: XCTestCase {
         
         sut.simulateUserInitiatedReload()
         XCTAssertEqual(loader.loadCardCallCount, 3, "Expected yet another loading request once user initiates another reload")
+        
     }
     
     // MARK: - Helpers
@@ -36,11 +38,10 @@ class CardUIIntegrationTests: XCTestCase {
     ) -> (sut: CollectionListViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
         let sut = CardListUIComposer.cardListComposedWith(
-            cardList: loader.loadPublisher(),
+            cardList:loader.loadPublisher,
             imageLoader: loader.loadImageDataPublisher(from:))
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, loader)
     }
-    
 }
