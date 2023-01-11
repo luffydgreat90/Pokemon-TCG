@@ -20,8 +20,9 @@ public final class CollectionListViewController: UICollectionViewController {
         self.onRefresh = onRefresh
         super.init(collectionViewLayout: layout)
         self.collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: layout)
-        self.collectionView.refreshControl = UIRefreshControl()
         configureCollectionView?(collectionView)
+        self.collectionView.refreshControl = UIRefreshControl()
+        self.collectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.collectionView.dataSource = dataSource
         self.collectionView.prefetchDataSource = self
     }
@@ -39,13 +40,9 @@ public final class CollectionListViewController: UICollectionViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupUI()
+        self.refresh()
     }
     
-    private func setupUI(){
-        onRefresh?()
-    }
-
     public func display(_ cellControllers: [CollectionController]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, CollectionController>()
         snapshot.appendSections([0])
@@ -89,5 +86,11 @@ extension CollectionListViewController: ResourceLoadingView {
 extension CollectionListViewController: ResourceErrorView {
     public func display(_ viewModel: ResourceErrorViewModel) {
         
+    }
+}
+
+private extension CollectionListViewController {
+   @objc func refresh(){
+        onRefresh?()
     }
 }

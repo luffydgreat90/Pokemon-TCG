@@ -14,12 +14,18 @@ import Combine
 
 class CardUIIntegrationTests: XCTestCase {
     
-    func test_feedView_hasTitle() {
-        let (sut, _) = makeSUT()
-
-        sut.loadViewIfNeeded()
+    func test_loadFeedActions_requestFeedFromLoader() {
+        let (sut, loader) = makeSUT()
+        XCTAssertEqual(loader.loadCardCallCount, 0, "Expected no loading requests before view is loaded")
         
-        XCTAssertEqual(sut.title, boosterSetsTitle)
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(loader.loadCardCallCount, 1, "Expected a loading request once view is loaded")
+        
+        sut.simulateUserInitiatedReload()
+        XCTAssertEqual(loader.loadCardCallCount, 2, "Expected another loading request once user initiates a reload")
+        
+        sut.simulateUserInitiatedReload()
+        XCTAssertEqual(loader.loadCardCallCount, 3, "Expected yet another loading request once user initiates another reload")
     }
     
     // MARK: - Helpers
