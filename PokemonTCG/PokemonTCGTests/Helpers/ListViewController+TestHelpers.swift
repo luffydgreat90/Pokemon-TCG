@@ -15,7 +15,7 @@ extension ListViewController {
         tableView.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
     }
     
-    func simulateTapOnFeedImage(at row: Int) {
+    func simulateTapOnBoosterSet(at row: Int) {
         let delegate = tableView.delegate
         let index = IndexPath(row: row, section: boosterSetsSection)
         delegate?.tableView?(tableView, didSelectRowAt: index)

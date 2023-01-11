@@ -11,7 +11,7 @@ import PokemoniOS
 import Combine
 
 extension BoosterSetUIIntegrationTests {
-    class LoaderSpy: ImageDataLoader {
+    final class LoaderSpy: ImageDataLoader {
         
         private var boosterSetRequests = [PassthroughSubject<[BoosterSet], Error>]()
     

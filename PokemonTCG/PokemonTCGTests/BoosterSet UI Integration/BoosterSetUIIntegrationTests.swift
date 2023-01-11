@@ -31,10 +31,10 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         sut.loadViewIfNeeded()
         loader.completeBoosterSetLoading(with: [boosterSet0, boosterSet1], at: 0)
 
-        sut.simulateTapOnFeedImage(at: 0)
+        sut.simulateTapOnBoosterSet(at: 0)
         XCTAssertEqual(selectedImages, [boosterSet0])
 
-        sut.simulateTapOnFeedImage(at: 1)
+        sut.simulateTapOnBoosterSet(at: 1)
         XCTAssertEqual(selectedImages, [boosterSet0, boosterSet1])
     }
     
