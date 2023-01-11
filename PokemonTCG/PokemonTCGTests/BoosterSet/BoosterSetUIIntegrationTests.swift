@@ -247,6 +247,39 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         XCTAssertEqual(view1?.renderedImage, imageData1, "Expected image for second view once second image loading completes successfully")
     }
     
+    func test_boosterSetView_preloadsImageURLWhenNearVisible() {
+        let boosterSet0 = makeBoosterSet(symbol: URL(string: "http://url-0.com")!)
+        let boosterSet1 = makeBoosterSet(symbol: URL(string: "http://url-1.com")!)
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading(with: [boosterSet0, boosterSet1])
+        XCTAssertEqual(loader.loadedImageURLs, [], "Expected no image URL requests until image is near visible")
+
+        sut.simulateBoosterSetViewNearVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [boosterSet0.images.symbol], "Expected first image URL request once first image is near visible")
+
+        sut.simulateBoosterSetViewNearVisible(at: 1)
+        XCTAssertEqual(loader.loadedImageURLs, [boosterSet0.images.symbol, boosterSet1.images.symbol], "Expected second image URL request once second image is near visible")
+    }
+
+    func test_boosterSetView_cancelsImageURLPreloadingWhenNotNearVisibleAnymore() {
+        let boosterSet0 = makeBoosterSet(symbol: URL(string: "http://url-0.com")!)
+        let boosterSet1 = makeBoosterSet(symbol: URL(string: "http://url-1.com")!)
+        let (sut, loader) = makeSUT()
+
+
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading(with: [boosterSet0, boosterSet1])
+        XCTAssertEqual(loader.cancelledImageURLs, [], "Expected no cancelled image URL requests until image is not near visible")
+
+        sut.simulateBoosterSetViewNotNearVisible(at: 0)
+        XCTAssertEqual(loader.cancelledImageURLs, [boosterSet0.images.symbol], "Expected first cancelled image URL request once first image is not near visible anymore")
+
+        sut.simulateBoosterSetViewNotNearVisible(at: 1)
+        XCTAssertEqual(loader.cancelledImageURLs, [boosterSet0.images.symbol, boosterSet1.images.symbol], "Expected second cancelled image URL request once second image is not near visible anymore")
+    }
+    
     // MARK: - Helpers
 
     private func makeSUT(

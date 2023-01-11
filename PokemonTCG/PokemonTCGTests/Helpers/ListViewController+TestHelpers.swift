@@ -89,4 +89,17 @@ extension ListViewController {
         return view
     }
     
+    func simulateBoosterSetViewNearVisible(at row: Int) {
+        let ds = tableView.prefetchDataSource
+        let index = IndexPath(row: row, section: boosterSetsSection)
+        ds?.tableView(tableView, prefetchRowsAt: [index])
+    }
+    
+    func simulateBoosterSetViewNotNearVisible(at row: Int) {
+        simulateBoosterSetViewNearVisible(at: row)
+
+        let ds = tableView.prefetchDataSource
+        let index = IndexPath(row: row, section: boosterSetsSection)
+        ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
+    }
 }
