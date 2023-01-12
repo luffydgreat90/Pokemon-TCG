@@ -83,7 +83,6 @@ extension CollectionListViewController: ResourceErrorView {
 
 private extension CollectionListViewController {
     func setupUI(){
-        debugPrint("collection_setupUI")
         self.collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: self.layout)
         self.collectionView.refreshControl = UIRefreshControl()
         self.collectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)

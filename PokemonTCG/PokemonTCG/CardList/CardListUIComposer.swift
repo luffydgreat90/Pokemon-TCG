@@ -23,12 +23,10 @@ public enum CardListUIComposer {
                 collectionViewLayout: CardCollectionLayout())
             
             collectionViewController.configureCollectionView = { collectionView in
-                    collectionView.register(CardCollectionCell.self)
+                collectionView.register(CardCollectionCell.self)
             }
             
-            collectionViewController.onRefresh = { [adapter] in
-                adapter.loadResource()
-            }
+            collectionViewController.onRefresh = adapter.loadResource
             
             adapter.presenter = LoadResourcePresenter(
                 resourceView: CardListViewAdapter(

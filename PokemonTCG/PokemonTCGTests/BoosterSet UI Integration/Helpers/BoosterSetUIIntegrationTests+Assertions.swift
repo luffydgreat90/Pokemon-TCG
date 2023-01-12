@@ -33,8 +33,8 @@ extension BoosterSetUIIntegrationTests {
         }
         
         XCTAssertEqual(cell.titleText, viewModel.title, "Title at index (\(index))", file: file, line: line)
-        XCTAssertEqual(cell.releaseDateLabel, viewModel.releaseDate, "Title at index (\(index))", file: file, line: line)
-        XCTAssertEqual(cell.totalCardsText, viewModel.totalCards, "Title at index (\(index))", file: file, line: line)
+        XCTAssertEqual(cell.releaseDateText, viewModel.releaseDate, "Release at index (\(index))", file: file, line: line)
+        XCTAssertEqual(cell.totalCardsText, viewModel.totalCards, "Total Cards at index (\(index))", file: file, line: line)
     }
     
     private func executeRunLoopToCleanUpReferences() {
