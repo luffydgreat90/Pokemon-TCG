@@ -36,7 +36,6 @@ public final class ListViewController: UITableViewController {
         super.viewDidLayoutSubviews()
         tableView.sizeTableHeaderToFit()
     }
-
     
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dl = controller(for: indexPath)?.delegate

@@ -55,7 +55,7 @@ final class CardListViewAdapter: ResourceView {
     func display(_ viewModel: CardsViewModel) {
         let priceFormatter: NumberFormatter = .priceFormatter
         let viewControllers = viewModel.cards.map({ model in
-            let adapter = ImageDataPresentationAdapter(loader: { [priceFormatter, imageLoader] in
+            let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in
                 imageLoader(model.images?.small)
             })
             

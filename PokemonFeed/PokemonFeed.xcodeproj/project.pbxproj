@@ -19,6 +19,7 @@
 		8E06786A296DE04A00E71A2B /* CARDS_WITH_CONTENT_light_extraExtraExtraLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E067867296DE04900E71A2B /* CARDS_WITH_CONTENT_light_extraExtraExtraLarge.png */; };
 		8E06786B296DE04A00E71A2B /* CARDS_WITH_CONTENT_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E067868296DE04900E71A2B /* CARDS_WITH_CONTENT_light.png */; };
 		8E067893297019E200E71A2B /* NumberFormatter+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E067892297019E200E71A2B /* NumberFormatter+Helpers.swift */; };
+		8E0678972970676E00E71A2B /* ErrorCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678962970676E00E71A2B /* ErrorCollectionReusableView.swift */; };
 		8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC12965B05900F79B35 /* BoosterSetStore.xcdatamodeld */; };
 		8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */; };
 		8E0A6CC92965B1C300F79B35 /* BoosterSetStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */; };
@@ -165,6 +166,7 @@
 		8E067867296DE04900E71A2B /* CARDS_WITH_CONTENT_light_extraExtraExtraLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CARDS_WITH_CONTENT_light_extraExtraExtraLarge.png; sourceTree = "<group>"; };
 		8E067868296DE04900E71A2B /* CARDS_WITH_CONTENT_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CARDS_WITH_CONTENT_light.png; sourceTree = "<group>"; };
 		8E067892297019E200E71A2B /* NumberFormatter+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Helpers.swift"; sourceTree = "<group>"; };
+		8E0678962970676E00E71A2B /* ErrorCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCollectionReusableView.swift; sourceTree = "<group>"; };
 		8E0A6CC22965B05A00F79B35 /* BoosterSetStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoosterSetStore.xcdatamodel; sourceTree = "<group>"; };
 		8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBoosterSetStore.swift; sourceTree = "<group>"; };
 		8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetStoreSpecs.swift; sourceTree = "<group>"; };
@@ -327,6 +329,41 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		8E067894297060E900E71A2B /* ImageController */ = {
+			isa = PBXGroup;
+			children = (
+				8EA9B9A92964E241005E6080 /* ImageControllerDelegate.swift */,
+			);
+			path = ImageController;
+			sourceTree = "<group>";
+		};
+		8E0678952970674700E71A2B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8EFE7BB3296B8EDB003AF320 /* Helpers */,
+				8E0678962970676E00E71A2B /* ErrorCollectionReusableView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8E0678982970691B00E71A2B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8EA9B99F2964D9E2005E6080 /* ListViewController.swift */,
+				8EA9B9A42964DAF1005E6080 /* CellController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8E0678992970693400E71A2B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8E0A6D11296636D600F79B35 /* CollectionController.swift */,
+				8E56CE8029679B1A00FFCD15 /* CollectionListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		8E0A6CC02965B02500F79B35 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,8 +510,8 @@
 		8E0A6D0F296636A900F79B35 /* Table */ = {
 			isa = PBXGroup;
 			children = (
-				8EA9B99F2964D9E2005E6080 /* ListViewController.swift */,
-				8EA9B9A42964DAF1005E6080 /* CellController.swift */,
+				8E0678982970691B00E71A2B /* Controllers */,
+				8EFE7BBA296B907B003AF320 /* Views */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -482,9 +519,8 @@
 		8E0A6D10296636B500F79B35 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
-				8EFE7BB3296B8EDB003AF320 /* Helpers */,
-				8E0A6D11296636D600F79B35 /* CollectionController.swift */,
-				8E56CE8029679B1A00FFCD15 /* CollectionListViewController.swift */,
+				8E0678992970693400E71A2B /* Controllers */,
+				8E0678952970674700E71A2B /* Views */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -810,7 +846,6 @@
 		8EA9B9902964D33A005E6080 /* Shared UI */ = {
 			isa = PBXGroup;
 			children = (
-				8EFE7BBA296B907B003AF320 /* Views */,
 				8EA9B9A12964D9E8005E6080 /* Controllers */,
 				8EA9B9912964D33F005E6080 /* Helpers */,
 			);
@@ -853,9 +888,9 @@
 		8EA9B9A12964D9E8005E6080 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8E067894297060E900E71A2B /* ImageController */,
 				8E0A6D10296636B500F79B35 /* Collection */,
 				8E0A6D0F296636A900F79B35 /* Table */,
-				8EA9B9A92964E241005E6080 /* ImageControllerDelegate.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1351,6 +1386,7 @@
 				8E0A6CFB2965E68500F79B35 /* UIImageView+Animations.swift in Sources */,
 				8EA9B9AA2964E241005E6080 /* ImageControllerDelegate.swift in Sources */,
 				8E0A6D222967837F00F79B35 /* UIView+Shimmering.swift in Sources */,
+				8E0678972970676E00E71A2B /* ErrorCollectionReusableView.swift in Sources */,
 				8EA9B9A82964E048005E6080 /* BoosterSetController.swift in Sources */,
 				8E0A6D202967808200F79B35 /* UIView+Helpers.swift in Sources */,
 				8EA9B9A02964D9E2005E6080 /* ListViewController.swift in Sources */,

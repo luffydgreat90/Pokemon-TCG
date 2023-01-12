@@ -47,9 +47,24 @@ public final class CollectionListViewController: UICollectionViewController {
         dsp?.collectionView?(collectionView, didEndDisplaying: cell, forItemAt: indexPath)
     }
     
-    
     private func controller(for indexPath: IndexPath) -> CollectionController? {
         dataSource.itemIdentifier(for: indexPath)
+    }
+}
+
+private extension CollectionListViewController {
+    func setupUI(){
+        collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: self.layout)
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        collectionView.dataSource = dataSource
+        collectionView.prefetchDataSource = self
+        
+        configureCollectionView?(collectionView)
+    }
+    
+   @objc func refresh(){
+        onRefresh?()
     }
 }
 
@@ -81,17 +96,4 @@ extension CollectionListViewController: ResourceErrorView {
     }
 }
 
-private extension CollectionListViewController {
-    func setupUI(){
-        self.collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: self.layout)
-        self.collectionView.refreshControl = UIRefreshControl()
-        self.collectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        self.collectionView.dataSource = dataSource
-        self.collectionView.prefetchDataSource = self
-        configureCollectionView?(collectionView)
-    }
-    
-   @objc func refresh(){
-        onRefresh?()
-    }
-}
+
