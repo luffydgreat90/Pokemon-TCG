@@ -47,7 +47,7 @@ extension CardUIIntegrationTests {
             }
         }
         
-        func loadImageData(from url: URL?, completion: @escaping (Result<Data, Error>) -> Void) -> PokemonFeed.ImageDataLoaderTask {
+        func loadImageData(from url: URL?, completion: @escaping (Result<Data, Error>) -> Void) -> ImageDataLoaderTask {
             
             guard let url = url else{
                 return TaskSpy {}

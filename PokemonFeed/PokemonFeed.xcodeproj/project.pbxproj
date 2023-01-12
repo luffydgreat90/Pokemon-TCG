@@ -18,6 +18,7 @@
 		8E067869296DE04A00E71A2B /* CARDS_WITH_CONTENT_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E067866296DE04900E71A2B /* CARDS_WITH_CONTENT_dark.png */; };
 		8E06786A296DE04A00E71A2B /* CARDS_WITH_CONTENT_light_extraExtraExtraLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E067867296DE04900E71A2B /* CARDS_WITH_CONTENT_light_extraExtraExtraLarge.png */; };
 		8E06786B296DE04A00E71A2B /* CARDS_WITH_CONTENT_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E067868296DE04900E71A2B /* CARDS_WITH_CONTENT_light.png */; };
+		8E067893297019E200E71A2B /* NumberFormatter+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E067892297019E200E71A2B /* NumberFormatter+Helpers.swift */; };
 		8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC12965B05900F79B35 /* BoosterSetStore.xcdatamodeld */; };
 		8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */; };
 		8E0A6CC92965B1C300F79B35 /* BoosterSetStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */; };
@@ -163,6 +164,7 @@
 		8E067866296DE04900E71A2B /* CARDS_WITH_CONTENT_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CARDS_WITH_CONTENT_dark.png; sourceTree = "<group>"; };
 		8E067867296DE04900E71A2B /* CARDS_WITH_CONTENT_light_extraExtraExtraLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CARDS_WITH_CONTENT_light_extraExtraExtraLarge.png; sourceTree = "<group>"; };
 		8E067868296DE04900E71A2B /* CARDS_WITH_CONTENT_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CARDS_WITH_CONTENT_light.png; sourceTree = "<group>"; };
+		8E067892297019E200E71A2B /* NumberFormatter+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Helpers.swift"; sourceTree = "<group>"; };
 		8E0A6CC22965B05A00F79B35 /* BoosterSetStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoosterSetStore.xcdatamodel; sourceTree = "<group>"; };
 		8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBoosterSetStore.swift; sourceTree = "<group>"; };
 		8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetStoreSpecs.swift; sourceTree = "<group>"; };
@@ -317,6 +319,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E067891297019D200E71A2B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8E067892297019E200E71A2B /* NumberFormatter+Helpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		8E0A6CC02965B02500F79B35 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,6 +518,7 @@
 		8E0A6D1A29663F9700F79B35 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				8E067891297019D200E71A2B /* Helpers */,
 				8E0A6D1B296640C400F79B35 /* CardViewModel.swift */,
 				8E4F6A4E29679EBE0022403A /* CardsPresenter.swift */,
 				8E4F6A5029679EF30022403A /* CardsViewModel.swift */,
@@ -1265,6 +1276,7 @@
 				8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */,
 				8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */,
 				8E0A6CCD2965B50300F79B35 /* LocalBoosterSetLoader.swift in Sources */,
+				8E067893297019E200E71A2B /* NumberFormatter+Helpers.swift in Sources */,
 				8EFE7B9E296A1E57003AF320 /* CoreDataCardStore+CardStore.swift in Sources */,
 				8E4F6A4F29679EBE0022403A /* CardsPresenter.swift in Sources */,
 				8E1AA7DC2968D07F001E05A9 /* CardStore.xcdatamodeld in Sources */,
