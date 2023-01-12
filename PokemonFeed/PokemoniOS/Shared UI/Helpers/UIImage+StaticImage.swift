@@ -9,6 +9,6 @@ import UIKit
 
 extension UIImage {
     static func placeholder(type: AnyObject.Type) -> UIImage {
-        UIImage(named: "placeHolderImage", in: Bundle(for: type), with: nil)!
+        UIImage(named: "pokeball", in: Bundle(for: type), with: nil)!
     }
 }
