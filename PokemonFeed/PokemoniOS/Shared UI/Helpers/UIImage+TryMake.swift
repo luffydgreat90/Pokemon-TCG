@@ -5,7 +5,7 @@
 //  Created by Marlon Ansale on 1/3/23.
 //
 
-import UIKit
+import UIKit.UIImage
 
 public extension UIImage {
     struct InvalidImageData: Error {}
