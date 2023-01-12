@@ -997,18 +997,10 @@
 		8EFE7BBA296B907B003AF320 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8EFE7BBB296B9094003AF320 /* Table */,
+				8EFE7BB2296B8ECF003AF320 /* Helpers */,
+				8EFE7BBC296B9571003AF320 /* ErrorView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		8EFE7BBB296B9094003AF320 /* Table */ = {
-			isa = PBXGroup;
-			children = (
-				8EFE7BBC296B9571003AF320 /* ErrorView.swift */,
-				8EFE7BB2296B8ECF003AF320 /* Helpers */,
-			);
-			path = Table;
 			sourceTree = "<group>";
 		};
 		8EFE7BC3296CAFCD003AF320 /* snapshots */ = {

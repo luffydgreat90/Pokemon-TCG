@@ -9,10 +9,11 @@ import UIKit
 import PokemonFeed
 
 public final class CollectionListViewController: UICollectionViewController {
-
+    
     public var onRefresh: (() -> Void)?
     public var configureCollectionView: ((UICollectionView) -> Void)?
     private let layout: UICollectionViewLayout
+    private(set) public var errorView: ErrorView = ErrorView()
     
     public override init(collectionViewLayout layout: UICollectionViewLayout) {
         self.layout = layout
@@ -28,7 +29,7 @@ public final class CollectionListViewController: UICollectionViewController {
             controller.dataSource.collectionView(collectionView, cellForItemAt: index)
         }
     }()
-
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
@@ -59,8 +60,17 @@ private extension CollectionListViewController {
         collectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         collectionView.dataSource = dataSource
         collectionView.prefetchDataSource = self
-        
         configureCollectionView?(collectionView)
+        
+        errorView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(errorView)
+        
+        NSLayoutConstraint.activate([
+            errorView.heightAnchor.constraint(equalToConstant: 50),
+            errorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            errorView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            errorView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        ])
     }
     
    @objc func refresh(){
@@ -92,7 +102,11 @@ extension CollectionListViewController: ResourceLoadingView {
 
 extension CollectionListViewController: ResourceErrorView {
     public func display(_ viewModel: ResourceErrorViewModel) {
-        
+        if let message = viewModel.message {
+            errorView.message = message
+        }else {
+            errorView.message = nil
+        }
     }
 }
 

@@ -45,11 +45,11 @@ extension LocalCardLoader: CardCache {
 
 extension LocalCardLoader {
     public typealias LoadResult = Swift.Result<[Card], Error>
+    private struct EmptyList: Error {}
     
     public func load(setId: String, completion: @escaping (LoadResult) -> Void) {
         store.retrieve(setId: setId) { [weak self] result in
             guard let self = self else { return }
-
             switch result {
             case let .failure(error):
                 completion(.failure(error))
@@ -58,7 +58,7 @@ extension LocalCardLoader {
                 completion(.success(cache.cards.toModels()))
 
             case .success:
-                completion(.success([]))
+                completion(.failure(EmptyList()))
             }
         }
     }

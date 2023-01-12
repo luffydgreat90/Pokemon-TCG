@@ -18,14 +18,14 @@ public final class ErrorView: UIButton {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        setupUI()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 
-    private func configure() {
+    private func setupUI() {
         titleLabel?.textColor = .white
         titleLabel?.textAlignment = .center
         titleLabel?.numberOfLines = 0

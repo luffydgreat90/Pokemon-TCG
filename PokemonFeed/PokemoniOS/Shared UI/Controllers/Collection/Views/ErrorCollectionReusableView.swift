@@ -7,9 +7,12 @@
 
 import UIKit
 
-class ErrorCollectionView: UICollectionReusableView {
+public final class ErrorCollectionView: UICollectionReusableView {
+    public private(set) var errorView: ErrorView = ErrorView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupUI()
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -17,6 +20,13 @@ class ErrorCollectionView: UICollectionReusableView {
     }
     
     func setupUI(){
-        
+        self.addSubview(errorView)
+        errorView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            errorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            errorView.topAnchor.constraint(equalTo: topAnchor),
+            errorView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            errorView.leadingAnchor.constraint(equalTo: leadingAnchor)
+        ])
     }
 }
