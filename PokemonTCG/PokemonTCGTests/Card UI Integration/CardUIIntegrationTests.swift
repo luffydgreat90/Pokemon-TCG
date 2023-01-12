@@ -63,6 +63,45 @@ class CardUIIntegrationTests: XCTestCase {
         assertThat(sut, isRendering: [card0, card1, card2, card3])
     }
     
+    func test_loadCardCompletion_rendersSuccessfullyLoadedEmptyCardAfterNonEmptyCard() {
+        let card0 = makeCard()
+        let card1 = makeCard()
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        loader.completeCardLoading(with: [card0, card1], at: 0)
+        assertThat(sut, isRendering:  [card0, card1])
+
+        sut.simulateUserInitiatedReload()
+        loader.completeCardLoading(with: [], at: 1)
+        assertThat(sut, isRendering: [])
+    }
+    
+    func test_loadCardCompletion_doesNotAlterCurrentRenderingStateOnError() {
+        let card0 = makeCard()
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        loader.completeCardLoading(with: [card0], at: 0)
+        assertThat(sut, isRendering: [card0])
+
+        sut.simulateUserInitiatedReload()
+        loader.completeCardLoadingWithError(at: 1)
+        assertThat(sut, isRendering: [card0])
+    }
+    
+    func test_loadCardCompletion_dispatchesFromBackgroundToMainThread() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+
+        let exp = expectation(description: "Wait for background queue")
+        DispatchQueue.global().async {
+            loader.completeCardLoading(at: 0)
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+    }
+    
     // MARK: - Helpers
 
     private func makeSUT(

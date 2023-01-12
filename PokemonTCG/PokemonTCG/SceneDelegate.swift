@@ -113,7 +113,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             })
     }
     
-    
     private func makeRemoteCardsLoader(url: URL, setId:String) -> () -> AnyPublisher<[Card], Error> {
         return {  [httpClient, localCardLoader] in
             httpClient
