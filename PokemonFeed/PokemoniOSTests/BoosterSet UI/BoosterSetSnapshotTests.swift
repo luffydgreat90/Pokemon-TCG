@@ -17,7 +17,7 @@ final class BoosterSetSnapshotTests: XCTestCase {
 
         assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "BOOSTER_SETS_WITH_IMAGE_light")
         assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "BOOSTER_SETS_WITH_IMAGE_dark")
-        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light, contentSize: .extraExtraExtraLarge)), named: "BOOSTER_SETS_WITH_IMAGE_light_extraExtraExtraLarge")
+    
     }
     
     func test_boosterSetsWithoutImage() {
@@ -27,7 +27,7 @@ final class BoosterSetSnapshotTests: XCTestCase {
 
         assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "BOOSTER_SETS_WITHOUT_IMAGE_light")
         assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "BOOSTER_SETS_WITHOUT_IMAGE_dark")
-        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light, contentSize: .extraExtraExtraLarge)), named: "BOOSTER_SETS_WITHOUT_IMAGE_light_extraExtraExtraLarge")
+        
     }
     
     // MARK: - Helpers

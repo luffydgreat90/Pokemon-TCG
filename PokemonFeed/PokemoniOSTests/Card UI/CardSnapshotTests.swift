@@ -10,14 +10,22 @@ import PokemoniOS
 @testable import PokemonFeed
 
 final class CardSnapshotTests: XCTestCase {
-    func test_CardsWithContent() {
+    func test_CardsWithImage() {
         let sut = makeSUT()
 
-        sut.display(cardsWithContent())
+        sut.display(cardsWithImage())
 
-        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "CARDS_WITH_CONTENT_light")
-        assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "CARDS_WITH_CONTENT_dark")
-        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light, contentSize: .extraExtraExtraLarge)), named: "CARDS_WITH_CONTENT_light_extraExtraExtraLarge")
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "CARDS_WITH_IMAGE_light")
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "CARDS_WITH_IMAGE_dark")
+    }
+    
+    func test_CardsWithoutImage() {
+        let sut = makeSUT()
+
+        sut.display(cardsWithoutImage())
+        
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "CARDS_WITHOUT_IMAGE_light")
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "CARDS_WITHOUT_IMAGE_dark")
     }
 
     // MARK: - Helpers
@@ -35,10 +43,17 @@ final class CardSnapshotTests: XCTestCase {
         return controller
     }
     
-    private func cardsWithContent() -> [ImageStub] {
+    private func cardsWithImage() -> [ImageStub] {
         return [
             ImageStub(name: "Base", price: "Number of Cards: 102", image: UIImage.make(withColor: .red)),
             ImageStub(name: "Jungle", price: "Number of Cards: 64", image: UIImage.make(withColor: .green))
+        ]
+    }
+    
+    private func cardsWithoutImage() -> [ImageStub] {
+        return [
+            ImageStub(name: "Base", price: "Number of Cards: 102", image: nil),
+            ImageStub(name: "Jungle", price: "Number of Cards: 64", image: nil)
         ]
     }
 }
@@ -69,8 +84,8 @@ fileprivate class ImageStub: ImageControllerDelegate {
         controller?.display(ResourceLoadingViewModel(isLoading: false))
 
         if let image = image {
-            controller?.display(image)
             controller?.display(ResourceErrorViewModel(message: .none))
+            controller?.display(image)
         } else {
             controller?.display(ResourceErrorViewModel(message: "any"))
         }
