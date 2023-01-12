@@ -20,6 +20,9 @@
 		8E06786B296DE04A00E71A2B /* CARDS_WITH_CONTENT_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E067868296DE04900E71A2B /* CARDS_WITH_CONTENT_light.png */; };
 		8E067893297019E200E71A2B /* NumberFormatter+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E067892297019E200E71A2B /* NumberFormatter+Helpers.swift */; };
 		8E0678972970676E00E71A2B /* ErrorCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678962970676E00E71A2B /* ErrorCollectionReusableView.swift */; };
+		8E06789D2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E06789A2970A69F00E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png */; };
+		8E06789E2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E06789B2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_dark.png */; };
+		8E06789F2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E06789C2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_light.png */; };
 		8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC12965B05900F79B35 /* BoosterSetStore.xcdatamodeld */; };
 		8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */; };
 		8E0A6CC92965B1C300F79B35 /* BoosterSetStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */; };
@@ -167,6 +170,9 @@
 		8E067868296DE04900E71A2B /* CARDS_WITH_CONTENT_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CARDS_WITH_CONTENT_light.png; sourceTree = "<group>"; };
 		8E067892297019E200E71A2B /* NumberFormatter+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Helpers.swift"; sourceTree = "<group>"; };
 		8E0678962970676E00E71A2B /* ErrorCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCollectionReusableView.swift; sourceTree = "<group>"; };
+		8E06789A2970A69F00E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = COLLECTION_LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png; sourceTree = "<group>"; };
+		8E06789B2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = COLLECTION_LIST_WITH_ERROR_MESSAGE_dark.png; sourceTree = "<group>"; };
+		8E06789C2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = COLLECTION_LIST_WITH_ERROR_MESSAGE_light.png; sourceTree = "<group>"; };
 		8E0A6CC22965B05A00F79B35 /* BoosterSetStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoosterSetStore.xcdatamodel; sourceTree = "<group>"; };
 		8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBoosterSetStore.swift; sourceTree = "<group>"; };
 		8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetStoreSpecs.swift; sourceTree = "<group>"; };
@@ -1074,6 +1080,9 @@
 		8EFE7BE5296D84D6003AF320 /* snapshots */ = {
 			isa = PBXGroup;
 			children = (
+				8E06789B2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_dark.png */,
+				8E06789A2970A69F00E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png */,
+				8E06789C2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_light.png */,
 				8E067862296DE03B00E71A2B /* EMPTY_COLLECTION_LIST_dark.png */,
 				8E067863296DE03B00E71A2B /* EMPTY_COLLECTION_LIST_light.png */,
 			);
@@ -1250,9 +1259,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E067861296DE02F00E71A2B /* EMPTY_LIST_light.png in Resources */,
+				8E06789E2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_dark.png in Resources */,
 				8E067864296DE03B00E71A2B /* EMPTY_COLLECTION_LIST_dark.png in Resources */,
 				8EFE7BD9296CDB78003AF320 /* BOOSTER_SETS_WITH_CONTENT_light.png in Resources */,
 				8E06786A296DE04A00E71A2B /* CARDS_WITH_CONTENT_light_extraExtraExtraLarge.png in Resources */,
+				8E06789F2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_light.png in Resources */,
+				8E06789D2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png in Resources */,
 				8E067860296DE02F00E71A2B /* LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png in Resources */,
 				8E06785D296DE02F00E71A2B /* EMPTY_LIST_dark.png in Resources */,
 				8EFE7BDB296CDB78003AF320 /* BOOSTER_SETS_WITH_CONTENT_light_extraExtraExtraLarge.png in Resources */,

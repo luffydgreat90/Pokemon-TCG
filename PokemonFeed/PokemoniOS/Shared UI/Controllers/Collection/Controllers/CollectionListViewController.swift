@@ -66,7 +66,7 @@ private extension CollectionListViewController {
         view.addSubview(errorView)
         
         NSLayoutConstraint.activate([
-            errorView.heightAnchor.constraint(equalToConstant: 50),
+            errorView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50.0),
             errorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             errorView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             errorView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
