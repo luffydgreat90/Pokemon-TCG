@@ -24,7 +24,6 @@ extension BoosterSetUIIntegrationTests {
             return publisher.eraseToAnyPublisher()
         }
         
-        
         func completeBoosterSetLoading(with boosterSets: [BoosterSet] = [], at index: Int = 0) {
             boosterSetRequests[index].send(boosterSets)
         }
@@ -67,7 +66,5 @@ extension BoosterSetUIIntegrationTests {
             let error = NSError(domain: "an error", code: 0)
             imageRequests[index].completion(.failure(error))
         }
-        
-        
     }
 }

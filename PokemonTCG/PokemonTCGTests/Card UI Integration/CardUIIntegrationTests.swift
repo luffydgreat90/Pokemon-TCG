@@ -13,7 +13,6 @@ import PokemoniOS
 import Combine
 
 class CardUIIntegrationTests: XCTestCase {
-    
     func test_loadFeedActions_requestCardsFromLoader() {
         let (sut, loader) = makeSUT()
         XCTAssertEqual(loader.loadCardCallCount, 0, "Expected no loading requests before view is loaded")
@@ -46,6 +45,24 @@ class CardUIIntegrationTests: XCTestCase {
         XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading completes with error")
     }
     
+    func test_loadCardCompletion_rendersSuccessfullyLoadedCard() {
+        let card0 = makeCard()
+        let card1 = makeCard()
+        let card2 = makeCard()
+        let card3 = makeCard()  
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        assertThat(sut, isRendering: [])
+
+        loader.completeCardLoading(with: [card0], at: 0)
+        assertThat(sut, isRendering: [card0])
+
+        sut.simulateUserInitiatedReload()
+        loader.completeCardLoading(with: [card0, card1, card2, card3], at: 1)
+        assertThat(sut, isRendering: [card0, card1, card2, card3])
+    }
+    
     // MARK: - Helpers
 
     private func makeSUT(
@@ -61,31 +78,19 @@ class CardUIIntegrationTests: XCTestCase {
         return (sut, loader)
     }
     
-    func makeCard(name: String = "Abra", superType: SuperType = .pokemon, image:URL = anyURL()) -> Card {
+    private func makeCard(name: String = "Abra", superType: SuperType = .pokemon, number: String = "1", rarity: String = "Common", flavorText: String? = nil, image: URL = anyURL()) -> Card {
         let id = UUID().uuidString
         return Card(
             id: id,
             name: name,
             supertype: superType,
-            number: "1",
-            rarity: "Common",
-            flavorText: nil,
+            number: number,
+            rarity: rarity,
+            flavorText: flavorText,
             legalities: Legalities(isUnlimited: true, isStandard: false, isExpanded: false),
             artist: nil,
             cardmarket: CardMarket(url: anyURL(), updatedAt: Date(), prices: CardPrice(averageSellPrice: 1.0, lowPrice: 1.0, trendPrice: 3.0, reverseHoloTrend: 5.0)),
             images: CardImages(small: image, large: anyURL()),
             cardSet: CardSet(id: id, name: "Base", series: "Base1"))
-    }
-    func makeBoosterSet(symbol:URL = anyURL()) -> BoosterSet {
-        let id = UUID().uuidString
-        return BoosterSet(
-            id: id,
-            name: "Booster \(id)",
-            series: "Series \(id)",
-            printedTotal: 1,
-            total: 1,
-            legalities: Legalities(isUnlimited: true, isStandard: true, isExpanded: true),
-            releaseDate: Date(),
-            images: BoosterImage(symbol: symbol, logo: anyURL()))
     }
 }

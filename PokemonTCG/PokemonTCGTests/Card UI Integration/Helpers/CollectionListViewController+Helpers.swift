@@ -41,7 +41,15 @@ extension CollectionListViewController {
     }
         
     func cardView(at row: Int) -> UICollectionViewCell? {
-        collectionView.cellForItem(at: IndexPath(row: row, section: cardsSection))
+        cell(row: row, section: cardsSection)
     }
     
+    func cell(row: Int, section: Int) -> UICollectionViewCell? {
+        guard numberOfRows(in: section) > row else {
+            return nil
+        }
+        let ds = collectionView.dataSource
+        let index = IndexPath(row: row, section: section)
+        return ds?.collectionView(collectionView, cellForItemAt: index)
+    }
 }
