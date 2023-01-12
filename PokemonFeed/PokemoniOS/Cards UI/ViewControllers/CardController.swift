@@ -57,7 +57,6 @@ extension CardController: UICollectionViewDelegate {
     }
 }
 
-
 extension CardController: ResourceView, ResourceLoadingView, ResourceErrorView {
     public func display(_ viewModel: UIImage) {
         cell?.cardImageView.setImageAnimated(viewModel)
@@ -68,6 +67,7 @@ extension CardController: ResourceView, ResourceLoadingView, ResourceErrorView {
     }
     
     public func display(_ viewModel: ResourceErrorViewModel) {
-        
+        cell?.cardImageView.setImageAnimated(UIImage.placeholder(type: Self.self))
     }
+    
 }

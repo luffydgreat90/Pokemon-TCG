@@ -23,6 +23,8 @@
 		8E06789D2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E06789A2970A69F00E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png */; };
 		8E06789E2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E06789B2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_dark.png */; };
 		8E06789F2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E06789C2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_light.png */; };
+		8E0678A22970AADC00E71A2B /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E0678A12970AADC00E71A2B /* Shared.xcassets */; };
+		8E0678A52970AED600E71A2B /* UIImage+StaticImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678A42970AED600E71A2B /* UIImage+StaticImage.swift */; };
 		8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC12965B05900F79B35 /* BoosterSetStore.xcdatamodeld */; };
 		8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */; };
 		8E0A6CC92965B1C300F79B35 /* BoosterSetStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */; };
@@ -173,6 +175,8 @@
 		8E06789A2970A69F00E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = COLLECTION_LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png; sourceTree = "<group>"; };
 		8E06789B2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = COLLECTION_LIST_WITH_ERROR_MESSAGE_dark.png; sourceTree = "<group>"; };
 		8E06789C2970A6A000E71A2B /* COLLECTION_LIST_WITH_ERROR_MESSAGE_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = COLLECTION_LIST_WITH_ERROR_MESSAGE_light.png; sourceTree = "<group>"; };
+		8E0678A12970AADC00E71A2B /* Shared.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared.xcassets; sourceTree = "<group>"; };
+		8E0678A42970AED600E71A2B /* UIImage+StaticImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+StaticImage.swift"; sourceTree = "<group>"; };
 		8E0A6CC22965B05A00F79B35 /* BoosterSetStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoosterSetStore.xcdatamodel; sourceTree = "<group>"; };
 		8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBoosterSetStore.swift; sourceTree = "<group>"; };
 		8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetStoreSpecs.swift; sourceTree = "<group>"; };
@@ -368,6 +372,14 @@
 				8E56CE8029679B1A00FFCD15 /* CollectionListViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8E0678A02970AABF00E71A2B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8E0678A12970AADC00E71A2B /* Shared.xcassets */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8E0A6CC02965B02500F79B35 /* CoreData */ = {
@@ -852,6 +864,7 @@
 		8EA9B9902964D33A005E6080 /* Shared UI */ = {
 			isa = PBXGroup;
 			children = (
+				8E0678A02970AABF00E71A2B /* Views */,
 				8EA9B9A12964D9E8005E6080 /* Controllers */,
 				8EA9B9912964D33F005E6080 /* Helpers */,
 			);
@@ -862,6 +875,7 @@
 			isa = PBXGroup;
 			children = (
 				8EA9B9A22964DA13005E6080 /* UIImage+TryMake.swift */,
+				8E0678A42970AED600E71A2B /* UIImage+StaticImage.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1251,6 +1265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E0678A22970AADC00E71A2B /* Shared.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1381,6 +1396,7 @@
 				8EA9B99D2964D951005E6080 /* NSLayoutConstraint+Helpers.swift in Sources */,
 				8E0A6D1E2966423C00F79B35 /* UICollectionView+Dequeueing.swift in Sources */,
 				8E0A6D1729663F5100F79B35 /* CardCollectionCell.swift in Sources */,
+				8E0678A52970AED600E71A2B /* UIImage+StaticImage.swift in Sources */,
 				8E067857296DD77700E71A2B /* CardCollectionLayout.swift in Sources */,
 				8EA9B9A32964DA13005E6080 /* UIImage+TryMake.swift in Sources */,
 				8EFE7BA0296B1C13003AF320 /* UIRefreshControl+Helpers.swift in Sources */,

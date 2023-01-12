@@ -9,7 +9,6 @@ import UIKit
 import PokemonFeed
 
 public final class CollectionListViewController: UICollectionViewController {
-    
     public var onRefresh: (() -> Void)?
     public var configureCollectionView: ((UICollectionView) -> Void)?
     private let layout: UICollectionViewLayout
@@ -96,17 +95,13 @@ extension CollectionListViewController: UICollectionViewDataSourcePrefetching {
 
 extension CollectionListViewController: ResourceLoadingView {
     public func display(_ viewModel: ResourceLoadingViewModel) {
-        self.collectionView.refreshControl?.update(isRefreshing: viewModel.isLoading)
+        collectionView.refreshControl?.update(isRefreshing: viewModel.isLoading)
     }
 }
 
 extension CollectionListViewController: ResourceErrorView {
     public func display(_ viewModel: ResourceErrorViewModel) {
-        if let message = viewModel.message {
-            errorView.message = message
-        }else {
-            errorView.message = nil
-        }
+        errorView.message = viewModel.message
     }
 }
 

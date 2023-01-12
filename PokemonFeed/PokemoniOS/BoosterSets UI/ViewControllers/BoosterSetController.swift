@@ -98,6 +98,6 @@ extension BoosterSetController: ResourceLoadingView {
 
 extension BoosterSetController: ResourceErrorView{
     public func display(_ viewModel: ResourceErrorViewModel) {
-        
+        cell?.boosterSetImageView.setImageAnimated(UIImage.placeholder(type: Self.self))
     }
 }
