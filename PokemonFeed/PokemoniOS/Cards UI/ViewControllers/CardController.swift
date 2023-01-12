@@ -67,7 +67,9 @@ extension CardController: ResourceView, ResourceLoadingView, ResourceErrorView {
     }
     
     public func display(_ viewModel: ResourceErrorViewModel) {
-        cell?.cardImageView.setImageAnimated(UIImage.placeholder(type: Self.self))
+        if viewModel.message != nil {
+            cell?.cardImageView.setImageAnimated(UIImage.placeholder(type: Self.self))
+        }
     }
     
 }

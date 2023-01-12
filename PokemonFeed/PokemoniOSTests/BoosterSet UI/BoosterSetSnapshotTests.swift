@@ -10,14 +10,24 @@ import PokemoniOS
 @testable import PokemonFeed
 
 final class BoosterSetSnapshotTests: XCTestCase {
-    func test_boosterSetsWithContent() {
+    func test_boosterSetsWithImage() {
         let sut = makeSUT()
 
-        sut.display(boosterSetsWithContent())
+        sut.display(boosterSetsWithImage())
 
-        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "BOOSTER_SETS_WITH_CONTENT_light")
-        assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "BOOSTER_SETS_WITH_CONTENT_dark")
-        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light, contentSize: .extraExtraExtraLarge)), named: "BOOSTER_SETS_WITH_CONTENT_light_extraExtraExtraLarge")
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "BOOSTER_SETS_WITH_IMAGE_light")
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "BOOSTER_SETS_WITH_IMAGE_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light, contentSize: .extraExtraExtraLarge)), named: "BOOSTER_SETS_WITH_IMAGE_light_extraExtraExtraLarge")
+    }
+    
+    func test_boosterSetsWithoutImage() {
+        let sut = makeSUT()
+
+        sut.display(boosterSetsWithoutImage())
+
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "BOOSTER_SETS_WITHOUT_IMAGE_light")
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "BOOSTER_SETS_WITHOUT_IMAGE_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light, contentSize: .extraExtraExtraLarge)), named: "BOOSTER_SETS_WITHOUT_IMAGE_light_extraExtraExtraLarge")
     }
     
     // MARK: - Helpers
@@ -34,10 +44,17 @@ final class BoosterSetSnapshotTests: XCTestCase {
         return controller
     }
     
-    private func boosterSetsWithContent() -> [ImageStub] {
+    private func boosterSetsWithImage() -> [ImageStub] {
         return [
             ImageStub(title: "Base", totalCards: "Number of Cards: 102", releaseDate: "Jan 09 1999", image: UIImage.make(withColor: .red)),
             ImageStub(title: "Jungle", totalCards: "Number of Cards: 64", releaseDate: "Jun 16 1999", image: UIImage.make(withColor: .green))
+        ]
+    }
+    
+    private func boosterSetsWithoutImage() -> [ImageStub] {
+        return [
+            ImageStub(title: "Base", totalCards: "Number of Cards: 102", releaseDate: "Jan 09 1999", image: nil),
+            ImageStub(title: "Jungle", totalCards: "Number of Cards: 64", releaseDate: "Jun 16 1999", image: nil)
         ]
     }
     
@@ -70,14 +87,12 @@ fileprivate class ImageStub: ImageControllerDelegate {
         controller?.display(ResourceLoadingViewModel(isLoading: false))
 
         if let image = image {
-            controller?.display(image)
             controller?.display(ResourceErrorViewModel(message: .none))
+            controller?.display(image)
         } else {
             controller?.display(ResourceErrorViewModel(message: "any"))
         }
     }
     
     func didCancelImageRequest() {}
-    
-    
 }
