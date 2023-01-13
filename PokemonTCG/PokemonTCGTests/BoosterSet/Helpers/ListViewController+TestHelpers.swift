@@ -102,4 +102,8 @@ extension ListViewController {
         let index = IndexPath(row: row, section: boosterSetsSection)
         ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
     }
+    
+    func renderedFeedImageData(at index: Int) -> Data? {
+        return simulateBoosterSetViewVisible(at: index)?.renderedImage
+    }
 }

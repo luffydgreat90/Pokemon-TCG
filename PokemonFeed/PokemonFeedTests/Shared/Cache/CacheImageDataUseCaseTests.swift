@@ -9,7 +9,6 @@ import XCTest
 import PokemonFeed
 
 class CacheImageDataUseCaseTests: XCTestCase {
-    
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
 
@@ -92,5 +91,4 @@ class CacheImageDataUseCaseTests: XCTestCase {
         action()
         wait(for: [exp], timeout: 1.0)
     }
-    
 }

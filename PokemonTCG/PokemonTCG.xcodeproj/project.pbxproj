@@ -23,6 +23,10 @@
 		8E06788C296E388500E71A2B /* CardUIIntegrationTests+LoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06788B296E388500E71A2B /* CardUIIntegrationTests+LoaderSpy.swift */; };
 		8E06788E296EAD2400E71A2B /* CollectionListViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06788D296EAD2300E71A2B /* CollectionListViewController+Helpers.swift */; };
 		8E067890296ECA3000E71A2B /* CardUIIntegrationTests+Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06788F296ECA3000E71A2B /* CardUIIntegrationTests+Assertions.swift */; };
+		8E0678BD2970DF8000E71A2B /* HTTPClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678BC2970DF8000E71A2B /* HTTPClientStub.swift */; };
+		8E0678BF2970DFEF00E71A2B /* BoosterSetAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678BE2970DFEF00E71A2B /* BoosterSetAcceptanceTests.swift */; };
+		8E0678C12970E3F700E71A2B /* InMemoryBoosterSetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678C02970E3F700E71A2B /* InMemoryBoosterSetStore.swift */; };
+		8E0678C329716C9B00E71A2B /* DispatchQueue+SchedulersHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678C229716C9B00E71A2B /* DispatchQueue+SchedulersHelpers.swift */; };
 		8E56CE8429679BD000FFCD15 /* CardListUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */; };
 		8EA9B9C02964EA84005E6080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9BF2964EA84005E6080 /* AppDelegate.swift */; };
 		8EA9B9C22964EA84005E6080 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9C12964EA84005E6080 /* SceneDelegate.swift */; };
@@ -82,6 +86,10 @@
 		8E06788B296E388500E71A2B /* CardUIIntegrationTests+LoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardUIIntegrationTests+LoaderSpy.swift"; sourceTree = "<group>"; };
 		8E06788D296EAD2300E71A2B /* CollectionListViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionListViewController+Helpers.swift"; sourceTree = "<group>"; };
 		8E06788F296ECA3000E71A2B /* CardUIIntegrationTests+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardUIIntegrationTests+Assertions.swift"; sourceTree = "<group>"; };
+		8E0678BC2970DF8000E71A2B /* HTTPClientStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientStub.swift; sourceTree = "<group>"; };
+		8E0678BE2970DFEF00E71A2B /* BoosterSetAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetAcceptanceTests.swift; sourceTree = "<group>"; };
+		8E0678C02970E3F700E71A2B /* InMemoryBoosterSetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryBoosterSetStore.swift; sourceTree = "<group>"; };
+		8E0678C229716C9B00E71A2B /* DispatchQueue+SchedulersHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+SchedulersHelpers.swift"; sourceTree = "<group>"; };
 		8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListUIComposer.swift; sourceTree = "<group>"; };
 		8EA9B9BC2964EA84005E6080 /* PokemonTCG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonTCG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B9BF2964EA84005E6080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,13 +142,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		8E06787F296E13DE00E71A2B /* BoosterSet UI Integration */ = {
+		8E06787F296E13DE00E71A2B /* BoosterSet */ = {
 			isa = PBXGroup;
 			children = (
 				8E067880296E13FE00E71A2B /* Helpers */,
 				8E06786C296DFBC700E71A2B /* BoosterSetUIIntegrationTests.swift */,
+				8E0678BE2970DFEF00E71A2B /* BoosterSetAcceptanceTests.swift */,
 			);
-			path = "BoosterSet UI Integration";
+			path = BoosterSet;
 			sourceTree = "<group>";
 		};
 		8E067880296E13FE00E71A2B /* Helpers */ = {
@@ -150,17 +159,19 @@
 				8E06787B296E10DD00E71A2B /* BoosterSetUIIntegrationTests+Assertions.swift */,
 				8E06786F296DFD7700E71A2B /* BoosterSetUIIntegrationTests+LoaderSpy.swift */,
 				8E067881296E143900E71A2B /* BoosterSetCell+TestHelpers.swift */,
+				8E0678BC2970DF8000E71A2B /* HTTPClientStub.swift */,
+				8E0678C02970E3F700E71A2B /* InMemoryBoosterSetStore.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		8E067887296E369A00E71A2B /* Card UI Integration */ = {
+		8E067887296E369A00E71A2B /* Card */ = {
 			isa = PBXGroup;
 			children = (
 				8E067888296E36A400E71A2B /* Helpers */,
 				8E067889296E36EB00E71A2B /* CardUIIntegrationTests.swift */,
 			);
-			path = "Card UI Integration";
+			path = Card;
 			sourceTree = "<group>";
 		};
 		8E067888296E36A400E71A2B /* Helpers */ = {
@@ -219,8 +230,8 @@
 		8EA9B9D52964EA86005E6080 /* PokemonTCGTests */ = {
 			isa = PBXGroup;
 			children = (
-				8E067887296E369A00E71A2B /* Card UI Integration */,
-				8E06787F296E13DE00E71A2B /* BoosterSet UI Integration */,
+				8E067887296E369A00E71A2B /* Card */,
+				8E06787F296E13DE00E71A2B /* BoosterSet */,
 				8E06786E296DFCCA00E71A2B /* Helpers */,
 				8EA9B9D62964EA86005E6080 /* SceneDelegateTests.swift */,
 			);
@@ -258,6 +269,7 @@
 			children = (
 				8EBEA69D2964F23D000F1FC8 /* Combine+Helpers.swift */,
 				8EFE7BAE296B8CB4003AF320 /* DispatchQueue+Helpers.swift */,
+				8E0678C229716C9B00E71A2B /* DispatchQueue+SchedulersHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -365,6 +377,7 @@
 			files = (
 				8EBEA69C2964F1F9000F1FC8 /* LoadResourcePresentationAdapter.swift in Sources */,
 				8EFE7BAF296B8CB4003AF320 /* DispatchQueue+Helpers.swift in Sources */,
+				8E0678C329716C9B00E71A2B /* DispatchQueue+SchedulersHelpers.swift in Sources */,
 				8E56CE8429679BD000FFCD15 /* CardListUIComposer.swift in Sources */,
 				8EBEA69E2964F23D000F1FC8 /* Combine+Helpers.swift in Sources */,
 				8EBEA6962964F0B8000F1FC8 /* BoosterSetsUIComposer.swift in Sources */,
@@ -391,10 +404,13 @@
 				8E067882296E143900E71A2B /* BoosterSetCell+TestHelpers.swift in Sources */,
 				8E06788E296EAD2400E71A2B /* CollectionListViewController+Helpers.swift in Sources */,
 				8EA9B9D72964EA86005E6080 /* SceneDelegateTests.swift in Sources */,
+				8E0678BF2970DFEF00E71A2B /* BoosterSetAcceptanceTests.swift in Sources */,
 				8E067878296E09CD00E71A2B /* UIRefreshControl+TestHelpers.swift in Sources */,
 				8E06787E296E11EC00E71A2B /* UIView+LayoutCycle.swift in Sources */,
+				8E0678BD2970DF8000E71A2B /* HTTPClientStub.swift in Sources */,
 				8E067870296DFD7700E71A2B /* BoosterSetUIIntegrationTests+LoaderSpy.swift in Sources */,
 				8E067874296E024C00E71A2B /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				8E0678C12970E3F700E71A2B /* InMemoryBoosterSetStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

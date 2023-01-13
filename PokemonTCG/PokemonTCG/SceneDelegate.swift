@@ -49,6 +49,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UINavigationController(rootViewController: makeBoosterSetsViewController())
     }()
     
+    convenience init(httpClient: HTTPClient, boosterSetStore: BoosterSetStore & ImageDataStore) {
+        self.init()
+        self.httpClient = httpClient
+        self.boosterSetStore = boosterSetStore
+    }
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
     

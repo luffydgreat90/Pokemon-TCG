@@ -13,7 +13,7 @@ public enum BoosterSetsEndPoint {
     public func url(baseURL: URL) -> URL {
         switch self {
         case .get:
-            return baseURL.appendingPathComponent("/sets")
+            return baseURL.appendingPathComponent("sets")
         }
     }
 }

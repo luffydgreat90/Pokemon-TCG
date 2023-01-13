@@ -92,6 +92,5 @@ fileprivate class ImageStub: ImageControllerDelegate {
     }
     
     func didCancelImageRequest() {
-        
     }
 }
