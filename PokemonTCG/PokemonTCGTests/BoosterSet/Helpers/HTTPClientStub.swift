@@ -21,7 +21,6 @@ class HTTPClientStub: HTTPClient {
     }
     
     func get(from url: URL?, completion: @escaping (HTTPClient.Result) -> Void) -> HTTPClientTask {
-        debugPrint("url \(url)")
         if let url = url {
             completion(stub(url))
         }

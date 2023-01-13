@@ -44,7 +44,6 @@ public enum BoosterSetsMapper {
         decoder.dateDecodingStrategy = .formatted(.yearMonthDay)
         
         guard response.isOK, let root = try? decoder.decode(Root.self, from: data) else {
-            debugPrint("BoosterSetsMapper_error")
             throw Error.invalidData
         }
         
