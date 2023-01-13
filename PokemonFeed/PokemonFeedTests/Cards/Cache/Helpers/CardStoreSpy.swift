@@ -38,7 +38,7 @@ class CardStoreSpy: CardStore {
         receivedCards.append(.retrieve(setId))
     }
     
-    func completeRetrievalError(with error: Error, setID: String, at index:Int = 0) {
+    func completeRetrievalError(with error: Error, setID: String) {
         retrievalCompletions[setID]!(.failure(error))
     }
     

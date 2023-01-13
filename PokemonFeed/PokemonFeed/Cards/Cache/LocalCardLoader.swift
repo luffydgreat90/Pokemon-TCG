@@ -49,8 +49,8 @@ extension LocalCardLoader {
         public init() {}
     }
     
-    public func load(setId: String, completion: @escaping (LoadResult) -> Void) {
-        store.retrieve(setID: setId) { [weak self] result in
+    public func load(setID: String, completion: @escaping (LoadResult) -> Void) {
+        store.retrieve(setID: setID) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .failure(error):

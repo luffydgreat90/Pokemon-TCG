@@ -89,7 +89,7 @@ public extension LocalCardLoader {
     func loadPublisher(setId: String) -> Publisher {
         return Deferred {
             Future { promise in
-                self.load(setId: setId) { result in
+                self.load(setID: setId) { result in
                     promise(result)
                 }
             }
