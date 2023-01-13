@@ -57,6 +57,18 @@ class LoadCardFromCacheUseCaseTests: XCTestCase {
         })
     }
 
+    func test_load_deliversNoCardsOnCacheExpirationError() {
+        let cards = uniqueCards()
+        let fixedCurrentDate = Date()
+        let expirationTimestamp = fixedCurrentDate.minusCardCacheMaxAge()
+        let setID = "base1"
+        let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
+        
+        expect(sut, setID: setID, toCompleteWith: .failure(LocalCardLoader.EmptyList()), when: {
+            try store.completeRetrieval(with: cards.local, setID: setID, timestamp: expirationTimestamp)
+        })
+    }
+    
     // MARK: - Helpers
 
     private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #filePath, line: UInt = #line) -> (sut: LocalCardLoader, store: CardStoreSpy) {

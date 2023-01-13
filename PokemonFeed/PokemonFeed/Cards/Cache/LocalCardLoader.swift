@@ -45,7 +45,9 @@ extension LocalCardLoader: CardCache {
 
 extension LocalCardLoader {
     public typealias LoadResult = Swift.Result<[Card], Error>
-    private struct EmptyList: Error {}
+    public struct EmptyList: Error {
+        public init() {}
+    }
     
     public func load(setId: String, completion: @escaping (LoadResult) -> Void) {
         store.retrieve(setID: setId) { [weak self] result in
