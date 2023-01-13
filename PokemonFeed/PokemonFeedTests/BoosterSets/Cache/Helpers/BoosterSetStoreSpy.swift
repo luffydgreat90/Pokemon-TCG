@@ -9,13 +9,13 @@ import Foundation
 import PokemonFeed
 
 class BoosterSetStoreSpy: BoosterSetStore {
-    enum ReceivedMessage: Equatable {
+    enum ReceivedBoosterSet: Equatable {
         case deleteCachedFeed
         case insert([LocalBoosterSet], Date)
         case retrieve
     }
 
-    private(set) var receivedMessages = [ReceivedMessage]()
+    private(set) var receivedBoosterSets = [ReceivedBoosterSet]()
 
     private var deletionCompletions = [DeletionCompletion]()
     private var insertionCompletions = [InsertionCompletion]()
@@ -23,7 +23,7 @@ class BoosterSetStoreSpy: BoosterSetStore {
 
     func deleteCachedBoosterSet(completion: @escaping DeletionCompletion) {
         deletionCompletions.append(completion)
-        receivedMessages.append(.deleteCachedFeed)
+        receivedBoosterSets.append(.deleteCachedFeed)
     }
 
     func completeDeletion(with error: Error, at index: Int = 0) {
@@ -36,7 +36,7 @@ class BoosterSetStoreSpy: BoosterSetStore {
 
     func insert(_ feed: [LocalBoosterSet], timestamp: Date, completion: @escaping InsertionCompletion) {
         insertionCompletions.append(completion)
-        receivedMessages.append(.insert(feed, timestamp))
+        receivedBoosterSets.append(.insert(feed, timestamp))
     }
 
     func completeInsertion(with error: Error, at index: Int = 0) {
@@ -49,7 +49,7 @@ class BoosterSetStoreSpy: BoosterSetStore {
 
     func retrieve(completion: @escaping RetrievalCompletion) {
         retrievalCompletions.append(completion)
-        receivedMessages.append(.retrieve)
+        receivedBoosterSets.append(.retrieve)
     }
 
     func completeRetrieval(with error: Error, at index: Int = 0) {

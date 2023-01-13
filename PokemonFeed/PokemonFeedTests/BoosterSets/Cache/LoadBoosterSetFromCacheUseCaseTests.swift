@@ -13,7 +13,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
 
-        XCTAssertEqual(store.receivedMessages, [])
+        XCTAssertEqual(store.receivedBoosterSets, [])
     }
 
     func test_load_requestsCacheRetrieval() {
@@ -21,7 +21,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
 
         sut.load { _ in }
 
-        XCTAssertEqual(store.receivedMessages, [.retrieve])
+        XCTAssertEqual(store.receivedBoosterSets, [.retrieve])
     }
 
     func test_load_failsOnRetrievalError() {
@@ -80,7 +80,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
         sut.load { _ in }
         store.completeRetrieval(with: anyNSError())
 
-        XCTAssertEqual(store.receivedMessages, [.retrieve])
+        XCTAssertEqual(store.receivedBoosterSets, [.retrieve])
     }
 
     func test_load_hasNoSideEffectsOnEmptyCache() {
@@ -89,7 +89,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
         sut.load { _ in }
         store.completeRetrievalWithEmptyCache()
 
-        XCTAssertEqual(store.receivedMessages, [.retrieve])
+        XCTAssertEqual(store.receivedBoosterSets, [.retrieve])
     }
 
     func test_load_hasNoSideEffectsOnNonExpiredCache() {
@@ -101,7 +101,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
         sut.load { _ in }
         store.completeRetrieval(with: boosterSets.local, timestamp: nonExpiredTimestamp)
 
-        XCTAssertEqual(store.receivedMessages, [.retrieve])
+        XCTAssertEqual(store.receivedBoosterSets, [.retrieve])
     }
 
     func test_load_hasNoSideEffectsOnCacheExpiration() {
@@ -113,7 +113,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
         sut.load { _ in }
         store.completeRetrieval(with: boosterSets.local, timestamp: expirationTimestamp)
 
-        XCTAssertEqual(store.receivedMessages, [.retrieve])
+        XCTAssertEqual(store.receivedBoosterSets, [.retrieve])
     }
 
     func test_load_hasNoSideEffectsOnExpiredCache() {
@@ -125,7 +125,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
         sut.load { _ in }
         store.completeRetrieval(with: boosterSets.local, timestamp: expiredTimestamp)
 
-        XCTAssertEqual(store.receivedMessages, [.retrieve])
+        XCTAssertEqual(store.receivedBoosterSets, [.retrieve])
     }
 
     func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {

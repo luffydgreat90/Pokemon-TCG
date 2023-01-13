@@ -12,7 +12,7 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
         
-        XCTAssertEqual(store.receivedMessages, [])
+        XCTAssertEqual(store.receivedBoosterSets, [])
     }
     
     func test_validateCache_deletesCacheOnRetrievalError() {
@@ -21,7 +21,7 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
         sut.validateCache { _ in }
         store.completeRetrieval(with: anyNSError())
 
-        XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCachedFeed])
+        XCTAssertEqual(store.receivedBoosterSets, [.retrieve, .deleteCachedFeed])
     }
 
     func test_validateCache_doesNotDeleteCacheOnEmptyCache() {
@@ -30,7 +30,7 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
         sut.validateCache { _ in }
         store.completeRetrievalWithEmptyCache()
 
-        XCTAssertEqual(store.receivedMessages, [.retrieve])
+        XCTAssertEqual(store.receivedBoosterSets, [.retrieve])
     }
     
     func test_validateCache_doesNotDeleteNonExpiredCache() {
@@ -42,7 +42,7 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
         sut.validateCache { _ in }
         store.completeRetrieval(with: boosterSets.local, timestamp: nonExpiredTimestamp)
 
-        XCTAssertEqual(store.receivedMessages, [.retrieve])
+        XCTAssertEqual(store.receivedBoosterSets, [.retrieve])
     }
 
     func test_validateCache_deletesCacheOnExpiration() {
@@ -54,7 +54,7 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
         sut.validateCache { _ in }
         store.completeRetrieval(with: boosterSets.local, timestamp: expirationTimestamp)
 
-        XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCachedFeed])
+        XCTAssertEqual(store.receivedBoosterSets, [.retrieve, .deleteCachedFeed])
     }
 
     func test_validateCache_deletesExpiredCache() {
@@ -66,7 +66,7 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
         sut.validateCache { _ in }
         store.completeRetrieval(with: boosterSets.local, timestamp: expiredTimestamp)
 
-        XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCachedFeed])
+        XCTAssertEqual(store.receivedBoosterSets, [.retrieve, .deleteCachedFeed])
     }
 
     func test_validateCache_failsOnDeletionErrorOfFailedRetrieval() {
@@ -141,7 +141,7 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
         sut = nil
         store.completeRetrieval(with: anyNSError())
 
-        XCTAssertEqual(store.receivedMessages, [.retrieve])
+        XCTAssertEqual(store.receivedBoosterSets, [.retrieve])
     }
     
     // MARK: - Helpers

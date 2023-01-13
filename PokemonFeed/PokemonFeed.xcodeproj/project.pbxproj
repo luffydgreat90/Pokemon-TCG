@@ -30,6 +30,7 @@
 		8E0678B72970CCD900E71A2B /* CARDS_WITH_IMAGE_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0678B32970CCD800E71A2B /* CARDS_WITH_IMAGE_dark.png */; };
 		8E0678B82970CCD900E71A2B /* CARDS_WITH_IMAGE_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0678B42970CCD800E71A2B /* CARDS_WITH_IMAGE_light.png */; };
 		8E0678B92970CCD900E71A2B /* CARDS_WITHOUT_IMAGE_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0678B52970CCD800E71A2B /* CARDS_WITHOUT_IMAGE_light.png */; };
+		8E0678C629719CDE00E71A2B /* CardStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678C529719CDE00E71A2B /* CardStoreSpy.swift */; };
 		8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC12965B05900F79B35 /* BoosterSetStore.xcdatamodeld */; };
 		8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */; };
 		8E0A6CC92965B1C300F79B35 /* BoosterSetStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */; };
@@ -184,6 +185,7 @@
 		8E0678B32970CCD800E71A2B /* CARDS_WITH_IMAGE_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CARDS_WITH_IMAGE_dark.png; sourceTree = "<group>"; };
 		8E0678B42970CCD800E71A2B /* CARDS_WITH_IMAGE_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CARDS_WITH_IMAGE_light.png; sourceTree = "<group>"; };
 		8E0678B52970CCD800E71A2B /* CARDS_WITHOUT_IMAGE_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CARDS_WITHOUT_IMAGE_light.png; sourceTree = "<group>"; };
+		8E0678C529719CDE00E71A2B /* CardStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStoreSpy.swift; sourceTree = "<group>"; };
 		8E0A6CC22965B05A00F79B35 /* BoosterSetStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoosterSetStore.xcdatamodel; sourceTree = "<group>"; };
 		8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBoosterSetStore.swift; sourceTree = "<group>"; };
 		8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetStoreSpecs.swift; sourceTree = "<group>"; };
@@ -384,6 +386,14 @@
 				8E0678A12970AADC00E71A2B /* Shared.xcassets */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8E0678C429719CCB00E71A2B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8E0678C529719CDE00E71A2B /* CardStoreSpy.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		8E0A6CC02965B02500F79B35 /* CoreData */ = {
@@ -977,6 +987,7 @@
 		8EFE7BAB296B8114003AF320 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				8E0678C429719CCB00E71A2B /* Helpers */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -1379,6 +1390,7 @@
 				8E0A6CDD2965C79600F79B35 /* BoosterSetStoreSpy.swift in Sources */,
 				8EFE7BA3296B70E8003AF320 /* CardPresenterTests.swift in Sources */,
 				8EFE7BAD296B811D003AF320 /* CoreDataBoosterSetImageDataStoreTests.swift in Sources */,
+				8E0678C629719CDE00E71A2B /* CardStoreSpy.swift in Sources */,
 				8EA9B92E29649359005E6080 /* URLProtocolStub.swift in Sources */,
 				8E0A6CDF2965C87B00F79B35 /* LoadBoosterSetFromCacheUseCaseTests.swift in Sources */,
 				8EA9B939296499B2005E6080 /* BoosterSetsMapperTests.swift in Sources */,
