@@ -9,10 +9,10 @@ import XCTest
 import PokemonFeed
 
 class CacheImageDataUseCaseTests: XCTestCase {
-    func test_init_doesNotMessageStoreUponCreation() {
+    func test_init_doesNotImageStoreUponCreation() {
         let (_, store) = makeSUT()
 
-        XCTAssertTrue(store.receivedMessages.isEmpty)
+        XCTAssertTrue(store.receivedImages.isEmpty)
     }
     
     func test_saveImageDataForURL_requestsImageDataInsertionForURL() {
@@ -22,7 +22,7 @@ class CacheImageDataUseCaseTests: XCTestCase {
 
         sut.save(data, for: url) { _ in }
 
-        XCTAssertEqual(store.receivedMessages, [.insert(data: data, for: url)])
+        XCTAssertEqual(store.receivedImages, [.insert(data: data, for: url)])
     }
     
     func test_saveImageDataFromURL_failsOnStoreInsertionError() {

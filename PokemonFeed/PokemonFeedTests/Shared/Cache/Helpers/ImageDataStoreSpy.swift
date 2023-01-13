@@ -9,22 +9,22 @@ import Foundation
 import PokemonFeed
 
 class ImageDataStoreSpy: ImageDataStore {
-    enum Message: Equatable {
+    enum ImageData: Equatable {
         case insert(data: Data, for: URL)
         case retrieve(dataFor: URL)
     }
 
-    private(set) var receivedMessages = [Message]()
+    private(set) var receivedImages = [ImageData]()
     private var retrievalCompletions = [(ImageDataStore.RetrievalResult) -> Void]()
     private var insertionCompletions = [(ImageDataStore.InsertionResult) -> Void]()
 
     func insert(_ data: Data, for url: URL, completion: @escaping (ImageDataStore.InsertionResult) -> Void) {
-        receivedMessages.append(.insert(data: data, for: url))
+        receivedImages.append(.insert(data: data, for: url))
         insertionCompletions.append(completion)
     }
 
     func retrieve(dataForURL url: URL, completion: @escaping (ImageDataStore.RetrievalResult) -> Void) {
-        receivedMessages.append(.retrieve(dataFor: url))
+        receivedImages.append(.retrieve(dataFor: url))
         retrievalCompletions.append(completion)
     }
 
@@ -44,4 +44,3 @@ class ImageDataStoreSpy: ImageDataStore {
         insertionCompletions[index](.success(()))
     }
 }
-
