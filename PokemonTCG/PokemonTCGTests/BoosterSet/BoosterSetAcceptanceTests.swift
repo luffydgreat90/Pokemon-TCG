@@ -12,7 +12,6 @@ import PokemonFeed
 @testable import PokemonTCG
 
 class BoosterSetAcceptanceTests: XCTestCase {
-    
     func test_onLaunch_displaysRemoteFeedWhenCustomerHasConnectivity() {
         
         let feed = launch(httpClient: .online(response), boosterSetStore: .empty)
@@ -20,6 +19,33 @@ class BoosterSetAcceptanceTests: XCTestCase {
         XCTAssertEqual(feed.numberOfRenderedBoosterSetViews(), 2)
         XCTAssertEqual(feed.renderedFeedImageData(at: 0), makeImageData())
         XCTAssertEqual(feed.renderedFeedImageData(at: 1), makeImageData())
+    }
+    
+    func test_onLaunch_displaysCachedRemoteFeedWhenCustomerHasNoConnectivity() {
+        let sharedStore = InMemoryBoosterSetStore.empty
+        let onlineFeed = launch(httpClient: .online(response), boosterSetStore: sharedStore)
+        onlineFeed.renderedFeedImageData(at: 0)
+        onlineFeed.renderedFeedImageData(at: 1)
+
+        let offlineFeed = launch(httpClient: .offline, boosterSetStore: sharedStore)
+
+        XCTAssertEqual(offlineFeed.numberOfRenderedBoosterSetViews(), 2)
+        XCTAssertEqual(offlineFeed.renderedFeedImageData(at: 0), makeImageData())
+        XCTAssertEqual(offlineFeed.renderedFeedImageData(at: 1), makeImageData())
+    }
+    
+    func test_onLaunch_displaysEmptyFeedWhenCustomerHasNoConnectivityAndNoCache() {
+        let feed = launch(httpClient: .offline, boosterSetStore: .empty)
+
+        XCTAssertEqual(feed.numberOfRenderedBoosterSetViews(), 0)
+    }
+    
+    func test_onEnteringBackground_deletesExpiredFeedCache() throws {
+        let store = InMemoryBoosterSetStore.withExpiredFeedCache
+
+        try enterBackground(with: store)
+
+        XCTAssertNil(store.boosterSetCache, "Expected to delete expired cache")
     }
     
     // MARK: - Helpers
@@ -34,6 +60,14 @@ class BoosterSetAcceptanceTests: XCTestCase {
         
         let nav = sut.window?.rootViewController as? UINavigationController
         return nav?.topViewController as! ListViewController
+    }
+    
+    private func enterBackground(with boosterSetStore: InMemoryBoosterSetStore) throws {
+        let sut = SceneDelegate(httpClient: HTTPClientStub.offline, boosterSetStore: boosterSetStore)
+
+        let sceneClass = NSClassFromString("UIScene") as? NSObject.Type
+        let scene = try XCTUnwrap(sceneClass?.init() as? UIScene)
+        sut.sceneWillResignActive(scene)
     }
     
     private func response(for url: URL) -> (Data, HTTPURLResponse) {

@@ -48,4 +48,8 @@ extension InMemoryBoosterSetStore {
     static var empty: InMemoryBoosterSetStore {
         InMemoryBoosterSetStore()
     }
+    
+    static var withExpiredFeedCache: InMemoryBoosterSetStore {
+        InMemoryBoosterSetStore(boosterSetCache: CachedBoosterSet(boosterSets: [], timestamp: Date.distantPast))
+    }
 }

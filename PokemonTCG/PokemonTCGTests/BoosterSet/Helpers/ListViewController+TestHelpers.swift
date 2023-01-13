@@ -103,6 +103,7 @@ extension ListViewController {
         ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
     }
     
+    @discardableResult
     func renderedFeedImageData(at index: Int) -> Data? {
         return simulateBoosterSetViewVisible(at: index)?.renderedImage
     }
