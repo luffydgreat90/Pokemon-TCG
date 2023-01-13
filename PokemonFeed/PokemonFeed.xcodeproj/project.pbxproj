@@ -31,6 +31,7 @@
 		8E0678B82970CCD900E71A2B /* CARDS_WITH_IMAGE_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0678B42970CCD800E71A2B /* CARDS_WITH_IMAGE_light.png */; };
 		8E0678B92970CCD900E71A2B /* CARDS_WITHOUT_IMAGE_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0678B52970CCD800E71A2B /* CARDS_WITHOUT_IMAGE_light.png */; };
 		8E0678C629719CDE00E71A2B /* CardStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678C529719CDE00E71A2B /* CardStoreSpy.swift */; };
+		8E0678C829719FDC00E71A2B /* LoadCardFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678C729719FDC00E71A2B /* LoadCardFromCacheUseCaseTests.swift */; };
 		8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC12965B05900F79B35 /* BoosterSetStore.xcdatamodeld */; };
 		8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */; };
 		8E0A6CC92965B1C300F79B35 /* BoosterSetStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */; };
@@ -186,6 +187,7 @@
 		8E0678B42970CCD800E71A2B /* CARDS_WITH_IMAGE_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CARDS_WITH_IMAGE_light.png; sourceTree = "<group>"; };
 		8E0678B52970CCD800E71A2B /* CARDS_WITHOUT_IMAGE_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CARDS_WITHOUT_IMAGE_light.png; sourceTree = "<group>"; };
 		8E0678C529719CDE00E71A2B /* CardStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStoreSpy.swift; sourceTree = "<group>"; };
+		8E0678C729719FDC00E71A2B /* LoadCardFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCardFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		8E0A6CC22965B05A00F79B35 /* BoosterSetStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoosterSetStore.xcdatamodel; sourceTree = "<group>"; };
 		8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBoosterSetStore.swift; sourceTree = "<group>"; };
 		8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetStoreSpecs.swift; sourceTree = "<group>"; };
@@ -988,6 +990,7 @@
 			isa = PBXGroup;
 			children = (
 				8E0678C429719CCB00E71A2B /* Helpers */,
+				8E0678C729719FDC00E71A2B /* LoadCardFromCacheUseCaseTests.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -1399,6 +1402,7 @@
 				8EA9B9352964941E005E6080 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				8EA9B9892964CDCF005E6080 /* BoosterSetsLocalizationTests.swift in Sources */,
 				8EFE7B9A296A1631003AF320 /* LoadImageDataFromCacheUseCaseTests.swift in Sources */,
+				8E0678C829719FDC00E71A2B /* LoadCardFromCacheUseCaseTests.swift in Sources */,
 				8E0A6D0A29662DCC00F79B35 /* CardEndPointTests.swift in Sources */,
 				8EA9B9B02964E654005E6080 /* BoosterSetPresenterTests.swift in Sources */,
 				8EFE7BA8296B7B46003AF320 /* CacheImageDataUseCaseTests.swift in Sources */,

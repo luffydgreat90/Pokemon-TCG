@@ -10,7 +10,7 @@ import PokemonFeed
 
 class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
     
-    func test_init_doesNotMessageStoreUponCreation() {
+    func test_init_doesNotStoreUponCreation() {
         let (_, store) = makeSUT()
 
         XCTAssertEqual(store.receivedBoosterSets, [])
@@ -33,7 +33,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
         })
     }
 
-    func test_load_deliversNoImagesOnEmptyCache() {
+    func test_load_deliversNoBoosterSetsOnEmptyCache() {
         let (sut, store) = makeSUT()
 
         expect(sut, toCompleteWith: .success([]), when: {
@@ -41,7 +41,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
         })
     }
 
-    func test_load_deliversCachedImagesOnNonExpiredCache() {
+    func test_load_deliversCachedBoosterSetsOnNonExpiredCache() {
         let boosterSets = uniqueBoosterSets()
         let fixedCurrentDate = Date()
         let nonExpiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge().adding(seconds: 1)
@@ -52,7 +52,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
         })
     }
 
-    func test_load_deliversNoImagesOnCacheExpiration() {
+    func test_load_deliversNoBoosterSetsOnCacheExpiration() {
         let boosterSets = uniqueBoosterSets()
         let fixedCurrentDate = Date()
         let expirationTimestamp = fixedCurrentDate.minusFeedCacheMaxAge()
@@ -63,7 +63,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
         })
     }
 
-    func test_load_deliversNoImagesOnExpiredCache() {
+    func test_load_deliversNoBoosterSetsOnExpiredCache() {
         let boosterSets = uniqueBoosterSets()
         let fixedCurrentDate = Date()
         let expiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge().adding(seconds: -1)

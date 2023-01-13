@@ -9,13 +9,25 @@ import Foundation
 import PokemonFeed
 
 class CardStoreSpy: CardStore {
+    enum ReceivedCard: Equatable {
+        case deleteCachedCard
+        case insert([LocalCard], String, Date)
+        case retrieve
+    }
+
+    private(set) var receivedCards = [ReceivedCard]()
+
+    private var deletionCompletions = [DeletionCompletion]()
+    private var insertionCompletions = [InsertionCompletion]()
+    private var retrievalCompletions = [RetrievalCompletion]()
     
     func deleteCachedCards(setId: String, completion: @escaping DeletionCompletion){
-        
+       
     }
 
     func insert(_ cards: [LocalCard], setId: String, timestamp: Date, completion: @escaping InsertionCompletion){
-        
+        insertionCompletions.append(completion)
+        receivedCards.append(.insert(cards, setId, timestamp))
     }
 
     func retrieve(setId: String, completion: @escaping RetrievalCompletion){
