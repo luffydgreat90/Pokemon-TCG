@@ -32,7 +32,7 @@ extension CoreDataStore: CardStore where Store: CoreDataCardStore {
         perform { context in
             completion(Result {
                 try ManagedCardCache.find(setId: setId, in: context).map {
-                    CachedCard(cards: $0.localCards, timestamp: $0.timestamp)
+                    CachedCard(cards: $0.localCards, setID: setId, timestamp: $0.timestamp)
                 }
             })
         }

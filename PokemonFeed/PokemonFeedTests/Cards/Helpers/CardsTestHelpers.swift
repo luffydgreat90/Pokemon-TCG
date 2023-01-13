@@ -27,3 +27,9 @@ func uniqueCard(name:String = "Charmander", supertype:SuperType = .pokemon, numb
         images: CardImages(small: anyURL(), large: anyURL()),
         cardSet: CardSet(id: id, name: "Base \(id)", series: "Series \(id)"))
 }
+
+func uniqueCards() -> (models: [Card], local: [LocalCard]) {
+    let models = [uniqueCard(), uniqueCard()]
+    let locals = models.toLocal()
+    return (models, locals)
+}

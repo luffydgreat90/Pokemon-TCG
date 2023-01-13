@@ -7,7 +7,7 @@
 
 import Foundation
 
-public typealias CachedCard = (cards: [LocalCard], timestamp: Date)
+public typealias CachedCard = (cards: [LocalCard], setID: String, timestamp: Date)
 
 public protocol CardStore {
     typealias DeletionResult = Result<Void, Error>
