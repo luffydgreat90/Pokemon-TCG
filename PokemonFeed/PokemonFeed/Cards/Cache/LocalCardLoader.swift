@@ -48,7 +48,7 @@ extension LocalCardLoader {
     private struct EmptyList: Error {}
     
     public func load(setId: String, completion: @escaping (LoadResult) -> Void) {
-        store.retrieve(setId: setId) { [weak self] result in
+        store.retrieve(setID: setId) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .failure(error):
@@ -68,7 +68,7 @@ extension LocalCardLoader {
     public typealias ValidationResult = Result<Void, Error>
 
     public func validateCache(setId: String, completion: @escaping (ValidationResult) -> Void) {
-        store.retrieve(setId: setId) { [weak self] result in
+        store.retrieve(setID: setId) { [weak self] result in
             guard let self = self else { return }
 
             switch result {

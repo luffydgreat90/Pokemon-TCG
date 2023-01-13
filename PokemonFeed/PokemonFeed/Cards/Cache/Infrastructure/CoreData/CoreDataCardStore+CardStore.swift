@@ -28,11 +28,11 @@ extension CoreDataStore: CardStore where Store: CoreDataCardStore {
         }
     }
     
-    public func retrieve(setId: String, completion: @escaping CardStore.RetrievalCompletion) {
+    public func retrieve(setID: String, completion: @escaping CardStore.RetrievalCompletion) {
         perform { context in
             completion(Result {
-                try ManagedCardCache.find(setId: setId, in: context).map {
-                    CachedCard(cards: $0.localCards, setID: setId, timestamp: $0.timestamp)
+                try ManagedCardCache.find(setId: setID, in: context).map {
+                    CachedCard(cards: $0.localCards, setID: setID, timestamp: $0.timestamp)
                 }
             })
         }

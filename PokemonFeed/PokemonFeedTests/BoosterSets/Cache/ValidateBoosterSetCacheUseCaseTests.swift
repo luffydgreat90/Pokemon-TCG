@@ -36,7 +36,7 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
     func test_validateCache_doesNotDeleteNonExpiredCache() {
         let boosterSets = uniqueBoosterSets()
         let fixedCurrentDate = Date()
-        let nonExpiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge().adding(seconds: 1)
+        let nonExpiredTimestamp = fixedCurrentDate.minusBoosterSetCacheMaxAge().adding(seconds: 1)
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
 
         sut.validateCache { _ in }
@@ -48,7 +48,7 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
     func test_validateCache_deletesCacheOnExpiration() {
         let boosterSets = uniqueBoosterSets()
         let fixedCurrentDate = Date()
-        let expirationTimestamp = fixedCurrentDate.minusFeedCacheMaxAge()
+        let expirationTimestamp = fixedCurrentDate.minusBoosterSetCacheMaxAge()
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
 
         sut.validateCache { _ in }
@@ -60,7 +60,7 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
     func test_validateCache_deletesExpiredCache() {
         let boosterSets = uniqueBoosterSets()
         let fixedCurrentDate = Date()
-        let expiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge().adding(seconds: -1)
+        let expiredTimestamp = fixedCurrentDate.minusBoosterSetCacheMaxAge().adding(seconds: -1)
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
 
         sut.validateCache { _ in }
@@ -99,7 +99,7 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
     func test_validateCache_succeedsOnNonExpiredCache() {
         let boosterSets = uniqueBoosterSets()
         let fixedCurrentDate = Date()
-        let nonExpiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge().adding(seconds: 1)
+        let nonExpiredTimestamp = fixedCurrentDate.minusBoosterSetCacheMaxAge().adding(seconds: 1)
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
 
         expect(sut, toCompleteWith: .success(()), when: {
@@ -110,7 +110,7 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
     func test_validateCache_failsOnDeletionErrorOfExpiredCache() {
         let boosterSets = uniqueBoosterSets()
         let fixedCurrentDate = Date()
-        let expiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge().adding(seconds: -1)
+        let expiredTimestamp = fixedCurrentDate.minusBoosterSetCacheMaxAge().adding(seconds: -1)
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
         let deletionError = anyNSError()
 
@@ -123,7 +123,7 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
     func test_validateCache_succeedsOnSuccessfulDeletionOfExpiredCache() {
         let boosterSets = uniqueBoosterSets()
         let fixedCurrentDate = Date()
-        let expiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge().adding(seconds: -1)
+        let expiredTimestamp = fixedCurrentDate.minusBoosterSetCacheMaxAge().adding(seconds: -1)
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
 
         expect(sut, toCompleteWith: .success(()), when: {

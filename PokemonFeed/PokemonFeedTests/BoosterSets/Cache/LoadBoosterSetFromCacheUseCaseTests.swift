@@ -44,7 +44,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
     func test_load_deliversCachedBoosterSetsOnNonExpiredCache() {
         let boosterSets = uniqueBoosterSets()
         let fixedCurrentDate = Date()
-        let nonExpiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge().adding(seconds: 1)
+        let nonExpiredTimestamp = fixedCurrentDate.minusBoosterSetCacheMaxAge().adding(seconds: 1)
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
 
         expect(sut, toCompleteWith: .success(boosterSets.models), when: {
@@ -55,7 +55,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
     func test_load_deliversNoBoosterSetsOnCacheExpiration() {
         let boosterSets = uniqueBoosterSets()
         let fixedCurrentDate = Date()
-        let expirationTimestamp = fixedCurrentDate.minusFeedCacheMaxAge()
+        let expirationTimestamp = fixedCurrentDate.minusBoosterSetCacheMaxAge()
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
 
         expect(sut, toCompleteWith: .success([]), when: {
@@ -66,7 +66,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
     func test_load_deliversNoBoosterSetsOnExpiredCache() {
         let boosterSets = uniqueBoosterSets()
         let fixedCurrentDate = Date()
-        let expiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge().adding(seconds: -1)
+        let expiredTimestamp = fixedCurrentDate.minusBoosterSetCacheMaxAge().adding(seconds: -1)
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
 
         expect(sut, toCompleteWith: .success([]), when: {
@@ -95,7 +95,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
     func test_load_hasNoSideEffectsOnNonExpiredCache() {
         let boosterSets = uniqueBoosterSets()
         let fixedCurrentDate = Date()
-        let nonExpiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge().adding(seconds: 1)
+        let nonExpiredTimestamp = fixedCurrentDate.minusBoosterSetCacheMaxAge().adding(seconds: 1)
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
 
         sut.load { _ in }
@@ -107,7 +107,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
     func test_load_hasNoSideEffectsOnCacheExpiration() {
         let boosterSets = uniqueBoosterSets()
         let fixedCurrentDate = Date()
-        let expirationTimestamp = fixedCurrentDate.minusFeedCacheMaxAge()
+        let expirationTimestamp = fixedCurrentDate.minusBoosterSetCacheMaxAge()
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
 
         sut.load { _ in }
@@ -119,7 +119,7 @@ class LoadBoosterSetFromCacheUseCaseTests: XCTestCase {
     func test_load_hasNoSideEffectsOnExpiredCache() {
         let boosterSets = uniqueBoosterSets()
         let fixedCurrentDate = Date()
-        let expiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge().adding(seconds: -1)
+        let expiredTimestamp = fixedCurrentDate.minusBoosterSetCacheMaxAge().adding(seconds: -1)
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
 
         sut.load { _ in }

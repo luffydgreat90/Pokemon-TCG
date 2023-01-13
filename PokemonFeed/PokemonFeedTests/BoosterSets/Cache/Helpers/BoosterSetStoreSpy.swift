@@ -17,9 +17,9 @@ class BoosterSetStoreSpy: BoosterSetStore {
 
     private(set) var receivedBoosterSets = [ReceivedBoosterSet]()
 
-    private var deletionCompletions = [DeletionCompletion]()
-    private var insertionCompletions = [InsertionCompletion]()
-    private var retrievalCompletions = [RetrievalCompletion]()
+    private var deletionCompletions: [DeletionCompletion] = []
+    private var insertionCompletions: [InsertionCompletion] = []
+    private var retrievalCompletions: [RetrievalCompletion] = []
 
     func deleteCachedBoosterSet(completion: @escaping DeletionCompletion) {
         deletionCompletions.append(completion)

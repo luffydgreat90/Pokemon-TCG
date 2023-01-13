@@ -29,5 +29,5 @@ public protocol CardStore {
 
     /// The completion handler can be invoked in any thread.
     /// Clients are responsible to dispatch to appropriate threads, if needed.
-    func retrieve(setId: String, completion: @escaping RetrievalCompletion)
+    func retrieve(setID: String, completion: @escaping RetrievalCompletion)
 }

@@ -32,6 +32,7 @@
 		8E0678B92970CCD900E71A2B /* CARDS_WITHOUT_IMAGE_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0678B52970CCD800E71A2B /* CARDS_WITHOUT_IMAGE_light.png */; };
 		8E0678C629719CDE00E71A2B /* CardStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678C529719CDE00E71A2B /* CardStoreSpy.swift */; };
 		8E0678C829719FDC00E71A2B /* LoadCardFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678C729719FDC00E71A2B /* LoadCardFromCacheUseCaseTests.swift */; };
+		8E0678CA2971D01800E71A2B /* CardCache+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678C92971D01800E71A2B /* CardCache+TestHelpers.swift */; };
 		8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC12965B05900F79B35 /* BoosterSetStore.xcdatamodeld */; };
 		8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */; };
 		8E0A6CC92965B1C300F79B35 /* BoosterSetStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */; };
@@ -45,7 +46,7 @@
 		8E0A6CDD2965C79600F79B35 /* BoosterSetStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CDC2965C79600F79B35 /* BoosterSetStoreSpy.swift */; };
 		8E0A6CDF2965C87B00F79B35 /* LoadBoosterSetFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CDE2965C87B00F79B35 /* LoadBoosterSetFromCacheUseCaseTests.swift */; };
 		8E0A6CE12965CA6800F79B35 /* BoosterSetCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CE02965CA6800F79B35 /* BoosterSetCachePolicy.swift */; };
-		8E0A6CE32965CE9200F79B35 /* BoosterSetCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CE22965CE9200F79B35 /* BoosterSetCacheTestHelpers.swift */; };
+		8E0A6CE32965CE9200F79B35 /* BoosterSetCache+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CE22965CE9200F79B35 /* BoosterSetCache+TestHelpers.swift */; };
 		8E0A6CE52965D21000F79B35 /* ValidateBoosterSetCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CE42965D21000F79B35 /* ValidateBoosterSetCacheUseCaseTests.swift */; };
 		8E0A6CE82965D73400F79B35 /* ImageDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CE72965D73400F79B35 /* ImageDataStore.swift */; };
 		8E0A6CEF2965DB7B00F79B35 /* ImageDataStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6CEE2965DB7B00F79B35 /* ImageDataStoreSpy.swift */; };
@@ -188,6 +189,7 @@
 		8E0678B52970CCD800E71A2B /* CARDS_WITHOUT_IMAGE_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CARDS_WITHOUT_IMAGE_light.png; sourceTree = "<group>"; };
 		8E0678C529719CDE00E71A2B /* CardStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStoreSpy.swift; sourceTree = "<group>"; };
 		8E0678C729719FDC00E71A2B /* LoadCardFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCardFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
+		8E0678C92971D01800E71A2B /* CardCache+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardCache+TestHelpers.swift"; sourceTree = "<group>"; };
 		8E0A6CC22965B05A00F79B35 /* BoosterSetStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoosterSetStore.xcdatamodel; sourceTree = "<group>"; };
 		8E0A6CC42965B11600F79B35 /* CoreDataBoosterSetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBoosterSetStore.swift; sourceTree = "<group>"; };
 		8E0A6CC82965B1C300F79B35 /* BoosterSetStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetStoreSpecs.swift; sourceTree = "<group>"; };
@@ -201,7 +203,7 @@
 		8E0A6CDC2965C79600F79B35 /* BoosterSetStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetStoreSpy.swift; sourceTree = "<group>"; };
 		8E0A6CDE2965C87B00F79B35 /* LoadBoosterSetFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBoosterSetFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		8E0A6CE02965CA6800F79B35 /* BoosterSetCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetCachePolicy.swift; sourceTree = "<group>"; };
-		8E0A6CE22965CE9200F79B35 /* BoosterSetCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetCacheTestHelpers.swift; sourceTree = "<group>"; };
+		8E0A6CE22965CE9200F79B35 /* BoosterSetCache+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoosterSetCache+TestHelpers.swift"; sourceTree = "<group>"; };
 		8E0A6CE42965D21000F79B35 /* ValidateBoosterSetCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateBoosterSetCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		8E0A6CE72965D73400F79B35 /* ImageDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataStore.swift; sourceTree = "<group>"; };
 		8E0A6CEE2965DB7B00F79B35 /* ImageDataStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataStoreSpy.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				8E0678C529719CDE00E71A2B /* CardStoreSpy.swift */,
+				8E0678C92971D01800E71A2B /* CardCache+TestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -434,7 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				8E0A6CDC2965C79600F79B35 /* BoosterSetStoreSpy.swift */,
-				8E0A6CE22965CE9200F79B35 /* BoosterSetCacheTestHelpers.swift */,
+				8E0A6CE22965CE9200F79B35 /* BoosterSetCache+TestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1388,7 +1391,7 @@
 				8E0A6CEF2965DB7B00F79B35 /* ImageDataStoreSpy.swift in Sources */,
 				8EA9B9942964D366005E6080 /* ImageDataMapperTests.swift in Sources */,
 				8E0A6CC92965B1C300F79B35 /* BoosterSetStoreSpecs.swift in Sources */,
-				8E0A6CE32965CE9200F79B35 /* BoosterSetCacheTestHelpers.swift in Sources */,
+				8E0A6CE32965CE9200F79B35 /* BoosterSetCache+TestHelpers.swift in Sources */,
 				8E0A6CE52965D21000F79B35 /* ValidateBoosterSetCacheUseCaseTests.swift in Sources */,
 				8E0A6CDD2965C79600F79B35 /* BoosterSetStoreSpy.swift in Sources */,
 				8EFE7BA3296B70E8003AF320 /* CardPresenterTests.swift in Sources */,
@@ -1403,6 +1406,7 @@
 				8EA9B9892964CDCF005E6080 /* BoosterSetsLocalizationTests.swift in Sources */,
 				8EFE7B9A296A1631003AF320 /* LoadImageDataFromCacheUseCaseTests.swift in Sources */,
 				8E0678C829719FDC00E71A2B /* LoadCardFromCacheUseCaseTests.swift in Sources */,
+				8E0678CA2971D01800E71A2B /* CardCache+TestHelpers.swift in Sources */,
 				8E0A6D0A29662DCC00F79B35 /* CardEndPointTests.swift in Sources */,
 				8EA9B9B02964E654005E6080 /* BoosterSetPresenterTests.swift in Sources */,
 				8EFE7BA8296B7B46003AF320 /* CacheImageDataUseCaseTests.swift in Sources */,
