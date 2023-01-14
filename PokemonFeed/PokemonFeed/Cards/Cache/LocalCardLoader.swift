@@ -101,10 +101,26 @@ public extension Array where Element == Card {
                 flavorText: $0.flavorText,
                 legalities: LocalLegalities(isUnlimited: $0.legalities.isUnlimited, isStandard: $0.legalities.isStandard, isExpanded: $0.legalities.isExpanded),
                 artist: $0.artist,
-                cardmarket: LocalCardMarket(url: $0.cardmarket.url, updatedAt: $0.cardmarket.updatedAt, prices: LocalCardPrice(averageSellPrice: $0.cardmarket.prices.averageSellPrice, lowPrice: $0.cardmarket.prices.lowPrice, trendPrice: $0.cardmarket.prices.trendPrice, reverseHoloTrend: $0.cardmarket.prices.reverseHoloTrend)),
+                cardmarket: getLocalCardMarket(cardmarket: $0.cardmarket),
                 images: images,
                 cardSet: LocalCardSet(id: $0.cardSet.id, name: $0.cardSet.name, series: $0.cardSet.series))
         }
+    }
+    
+    private func getLocalCardMarket(cardmarket: CardMarket?) -> LocalCardMarket? {
+        guard let cardmarket = cardmarket else {
+            return nil
+        }
+        
+        return LocalCardMarket(
+            url: cardmarket.url,
+            updatedAt: cardmarket.updatedAt,
+            prices: LocalCardPrice(
+                averageSellPrice: cardmarket.prices.averageSellPrice,
+                lowPrice: cardmarket.prices.lowPrice,
+                trendPrice: cardmarket.prices.trendPrice,
+                reverseHoloTrend: cardmarket.prices.reverseHoloTrend)
+        )
     }
 }
 
@@ -122,9 +138,25 @@ public extension Array where Element == LocalCard {
                 flavorText: $0.flavorText,
                 legalities: Legalities(isUnlimited: $0.legalities.isUnlimited, isStandard: $0.legalities.isStandard, isExpanded: $0.legalities.isExpanded),
                 artist: $0.artist,
-                cardmarket: CardMarket(url: $0.cardmarket.url, updatedAt: $0.cardmarket.updatedAt, prices: CardPrice(averageSellPrice: $0.cardmarket.prices.averageSellPrice, lowPrice: $0.cardmarket.prices.lowPrice, trendPrice: $0.cardmarket.prices.trendPrice, reverseHoloTrend: $0.cardmarket.prices.reverseHoloTrend)),
+                cardmarket: getCardMarket(cardmarket: $0.cardmarket),
                 images: images,
                 cardSet: CardSet(id: $0.cardSet.id, name: $0.cardSet.name, series: $0.cardSet.series))
         }
+    }
+    
+    private func getCardMarket(cardmarket: LocalCardMarket?) -> CardMarket? {
+        guard let cardmarket = cardmarket else {
+            return nil
+        }
+        
+        return CardMarket(
+            url: cardmarket.url,
+            updatedAt: cardmarket.updatedAt,
+            prices: CardPrice(
+                averageSellPrice: cardmarket.prices.averageSellPrice,
+                lowPrice: cardmarket.prices.lowPrice,
+                trendPrice: cardmarket.prices.trendPrice,
+                reverseHoloTrend: cardmarket.prices.reverseHoloTrend)
+        )
     }
 }

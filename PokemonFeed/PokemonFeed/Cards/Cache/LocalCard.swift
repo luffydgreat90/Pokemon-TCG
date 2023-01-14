@@ -16,11 +16,11 @@ public struct LocalCard: Equatable {
     public let flavorText: String?
     public let legalities: LocalLegalities
     public let artist: String?
-    public let cardmarket: LocalCardMarket
+    public let cardmarket: LocalCardMarket?
     public let images: LocalCardImages?
     public let cardSet: LocalCardSet
     
-    public init(id: String, name: String, supertype: SuperType, number: String, rarity: String?, flavorText: String?, legalities: LocalLegalities, artist: String?, cardmarket: LocalCardMarket, images: LocalCardImages?, cardSet: LocalCardSet) {
+    public init(id: String, name: String, supertype: SuperType, number: String, rarity: String?, flavorText: String?, legalities: LocalLegalities, artist: String?, cardmarket: LocalCardMarket?, images: LocalCardImages?, cardSet: LocalCardSet) {
         self.id = id
         self.name = name
         self.supertype = supertype

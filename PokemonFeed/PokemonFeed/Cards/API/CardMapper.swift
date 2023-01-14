@@ -19,9 +19,9 @@ public enum CardMapper {
         let number: String
         let rarity: String?
         let flavorText: String?
-        let legalities: RemoteLegalities
+        let legalities: RemoteLegalities?
         let artist: String?
-        let cardmarket: RemoteCardMarket
+        let cardmarket: RemoteCardMarket?
         let images: RemoteImages?
         let set: RemoteSet
     }
@@ -76,6 +76,8 @@ public enum CardMapper {
                 cardImages = CardImages(small: images.small, large: images.large)
             }
             
+            let legalities: Legalities = getLegalities(remoteLegalities: $0.legalities)
+            
             return Card(
                 id: $0.id,
                 name: $0.name,
@@ -83,20 +85,37 @@ public enum CardMapper {
                 number: $0.number,
                 rarity: $0.rarity,
                 flavorText: $0.flavorText,
-                legalities: Legalities(isUnlimited: Legalities.checkLegality(legality: $0.legalities.unlimited), isStandard: Legalities.checkLegality(legality: $0.legalities.standard), isExpanded: Legalities.checkLegality(legality: $0.legalities.expanded)),
+                legalities: legalities,
                 artist: $0.artist,
-                cardmarket: CardMarket(url: $0.cardmarket.url,
-                                       updatedAt: $0.cardmarket.updatedAt,
-                                       prices: CardPrice(
-                                        averageSellPrice: $0.cardmarket.prices.averageSellPrice,
-                                        lowPrice: $0.cardmarket.prices.lowPrice,
-                                        trendPrice: $0.cardmarket.prices.trendPrice,
-                                        reverseHoloTrend: $0.cardmarket.prices.reverseHoloTrend)),
+                cardmarket: getCardMarket(remoteCardMarket: $0.cardmarket),
                 images: cardImages,
                 cardSet: CardSet(
                     id: $0.set.id,
                     name: $0.set.name,
                     series: $0.set.series))
         }
+    }
+    
+    private static func getLegalities(remoteLegalities: RemoteLegalities?) -> Legalities {
+        guard let remoteLegalities = remoteLegalities else{
+            return Legalities(isUnlimited: false, isStandard: false, isExpanded: false)
+        }
+     
+        return Legalities(isUnlimited: Legalities.checkLegality(legality: remoteLegalities.unlimited), isStandard: Legalities.checkLegality(legality: remoteLegalities.standard), isExpanded: Legalities.checkLegality(legality: remoteLegalities.expanded))
+    }
+    
+    private static func getCardMarket(remoteCardMarket: RemoteCardMarket?) -> CardMarket? {
+        
+        guard let remoteCardMarket = remoteCardMarket else{
+             return nil
+        }
+        
+        return CardMarket(url: remoteCardMarket.url,
+                          updatedAt: remoteCardMarket.updatedAt,
+                          prices: CardPrice(
+                           averageSellPrice: remoteCardMarket.prices.averageSellPrice,
+                           lowPrice: remoteCardMarket.prices.lowPrice,
+                           trendPrice: remoteCardMarket.prices.trendPrice,
+                           reverseHoloTrend: remoteCardMarket.prices.reverseHoloTrend))
     }
 }

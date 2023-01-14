@@ -16,11 +16,11 @@ public struct Card: Hashable {
     public let flavorText: String?
     public let legalities: Legalities
     public let artist: String?
-    public let cardmarket: CardMarket
+    public let cardmarket: CardMarket?
     public let images: CardImages?
     public let cardSet: CardSet
     
-    public init(id: String, name: String, supertype: SuperType, number: String, rarity: String?, flavorText: String?, legalities: Legalities, artist: String?, cardmarket: CardMarket, images: CardImages?, cardSet: CardSet) {
+    public init(id: String, name: String, supertype: SuperType, number: String, rarity: String?, flavorText: String?, legalities: Legalities, artist: String?, cardmarket: CardMarket?, images: CardImages?, cardSet: CardSet) {
         self.id = id
         self.name = name
         self.supertype = supertype
