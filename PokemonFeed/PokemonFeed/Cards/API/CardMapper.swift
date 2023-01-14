@@ -19,7 +19,7 @@ public enum CardMapper {
         let number: String
         let rarity: String?
         let flavorText: String?
-        let legalities: RemoteLegalities
+        let legalities: RemoteLegalities?
         let artist: String?
         let cardmarket: RemoteCardMarket
         let images: RemoteImages?
@@ -76,6 +76,8 @@ public enum CardMapper {
                 cardImages = CardImages(small: images.small, large: images.large)
             }
             
+            let legalities: Legalities = getLegalities(remoteLegalities: $0.legalities)
+            
             return Card(
                 id: $0.id,
                 name: $0.name,
@@ -83,7 +85,7 @@ public enum CardMapper {
                 number: $0.number,
                 rarity: $0.rarity,
                 flavorText: $0.flavorText,
-                legalities: Legalities(isUnlimited: Legalities.checkLegality(legality: $0.legalities.unlimited), isStandard: Legalities.checkLegality(legality: $0.legalities.standard), isExpanded: Legalities.checkLegality(legality: $0.legalities.expanded)),
+                legalities: legalities,
                 artist: $0.artist,
                 cardmarket: CardMarket(url: $0.cardmarket.url,
                                        updatedAt: $0.cardmarket.updatedAt,
@@ -98,5 +100,13 @@ public enum CardMapper {
                     name: $0.set.name,
                     series: $0.set.series))
         }
+    }
+    
+    private static func getLegalities(remoteLegalities: RemoteLegalities?) -> Legalities {
+        guard let remoteLegalities = remoteLegalities else{
+            return Legalities(isUnlimited: false, isStandard: false, isExpanded: false)
+        }
+     
+        return Legalities(isUnlimited: Legalities.checkLegality(legality: remoteLegalities.unlimited), isStandard: Legalities.checkLegality(legality: remoteLegalities.standard), isExpanded: Legalities.checkLegality(legality: remoteLegalities.expanded))
     }
 }
