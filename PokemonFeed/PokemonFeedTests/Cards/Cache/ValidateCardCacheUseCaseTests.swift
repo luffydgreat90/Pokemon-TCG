@@ -70,6 +70,18 @@ class ValidateCardCacheUseCaseTests: XCTestCase {
             store.completeDeletionSuccessfully(setId: setID)
         })
     }
+
+    func test_validateCache_doesNotDeleteInvalidCacheAfterSUTInstanceHasBeenDeallocated() {
+        let store = CardStoreSpy()
+        var sut: LocalCardLoader? = LocalCardLoader(store: store, currentDate: Date.init)
+        let setID = "base1"
+        sut?.validateCache(setId: setID) { _ in }
+
+        sut = nil
+        store.completeRetrievalError(with: anyNSError(), setID: setID)
+
+        XCTAssertEqual(store.receivedCards, [.retrieve(setID)])
+    }
     
     // MARK: - Helpers
 
@@ -92,7 +104,7 @@ class ValidateCardCacheUseCaseTests: XCTestCase {
 
             case let (.failure(receivedError as NSError), .failure(expectedError as NSError)):
                 XCTAssertEqual(receivedError, expectedError, file: file, line: line)
-
+            
             default:
                 XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
             }

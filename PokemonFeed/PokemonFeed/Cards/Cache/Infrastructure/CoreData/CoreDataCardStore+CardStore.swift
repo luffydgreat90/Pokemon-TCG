@@ -10,8 +10,11 @@ import CoreData
 extension CoreDataStore: CardStore where Store: CoreDataCardStore {
     public func deleteCachedCards(setId: String, completion: @escaping CardStore.DeletionCompletion) {
         perform { context in
-            completion(Result {
-                try ManagedCardCache.find(setId: setId,in: context).map(context.delete).map(context.save)
+            completion( Result {
+                try ManagedCardCache
+                    .find(setId: setId,in: context)
+                    .map(context.delete)
+                    .map(context.save)
             })
         }
     }

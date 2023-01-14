@@ -72,16 +72,16 @@ extension LocalCardLoader {
     public func validateCache(setId: String, completion: @escaping (ValidationResult) -> Void) {
         store.retrieve(setID: setId) { [weak self] result in
             guard let self = self else { return }
-
             switch result {
             case .failure:
                 self.store.deleteCachedCards(setId: setId, completion: completion)
-
+                
             case let .success(.some(cache)) where !CardCachePolicy.validate(cache.timestamp, against: self.currentDate()):
                 self.store.deleteCachedCards(setId: setId, completion: completion)
 
             case .success:
-                completion(.success(()))
+                completion(.failure(EmptyList()))
+            
             }
         }
     }
