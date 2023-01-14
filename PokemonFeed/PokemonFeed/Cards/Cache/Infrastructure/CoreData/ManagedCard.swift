@@ -27,8 +27,8 @@ class ManagedCard: NSManagedObject {
     @NSManaged var largeData: Data?
     @NSManaged var supertype: String
     @NSManaged var trendPrice: Double
-    @NSManaged var updatedAt: Date
-    @NSManaged var url: URL
+    @NSManaged var marketUpdatedAt: Date?
+    @NSManaged var marketUrl: URL?
     @NSManaged var setName: String
     @NSManaged var setId: String
     @NSManaged var setSeries: String
@@ -52,13 +52,13 @@ extension ManagedCard {
            
             managed.largeUrl = local.images?.large
             managed.smallUrl = local.images?.small
-            managed.updatedAt = local.cardmarket.updatedAt
-            managed.url = local.cardmarket.url
+            managed.marketUpdatedAt = local.cardmarket?.updatedAt
+            managed.marketUrl = local.cardmarket?.url
             
-            managed.lowPrice = local.cardmarket.prices.lowPrice ?? 0.0
-            managed.averageSellPrice = local.cardmarket.prices.averageSellPrice ?? 0.0
-            managed.reverseHoloTrend = local.cardmarket.prices.reverseHoloTrend ?? 0.0
-            managed.trendPrice = local.cardmarket.prices.trendPrice ?? 0.0
+            managed.lowPrice = local.cardmarket?.prices.lowPrice ?? 0.0
+            managed.averageSellPrice = local.cardmarket?.prices.averageSellPrice ?? 0.0
+            managed.reverseHoloTrend = local.cardmarket?.prices.reverseHoloTrend ?? 0.0
+            managed.trendPrice = local.cardmarket?.prices.trendPrice ?? 0.0
             
             managed.setName = local.cardSet.name
             managed.setId = local.cardSet.id
@@ -93,8 +93,23 @@ extension ManagedCard {
             flavorText: flavorText,
             legalities: LocalLegalities(isUnlimited: isUnlimited, isStandard: isStandard, isExpanded: isExpanded),
             artist: artist,
-            cardmarket: LocalCardMarket(url: url, updatedAt: updatedAt, prices: LocalCardPrice(averageSellPrice: averageSellPrice, lowPrice: lowPrice, trendPrice: trendPrice, reverseHoloTrend: reverseHoloTrend)),
+            cardmarket: getLocalCardMarket(),
             images: images,
             cardSet: LocalCardSet(id: setId, name: setName, series: setSeries))
+    }
+    
+    private func getLocalCardMarket() -> LocalCardMarket? {
+        guard let marketUrl = marketUrl, let updatedAt = marketUpdatedAt else {
+            return nil
+        }
+        
+        return LocalCardMarket(
+            url: marketUrl,
+            updatedAt: updatedAt,
+            prices: LocalCardPrice(
+                averageSellPrice: averageSellPrice,
+                lowPrice: lowPrice,
+                trendPrice: trendPrice,
+                reverseHoloTrend: reverseHoloTrend))
     }
 }

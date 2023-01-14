@@ -21,7 +21,7 @@ public enum CardMapper {
         let flavorText: String?
         let legalities: RemoteLegalities?
         let artist: String?
-        let cardmarket: RemoteCardMarket
+        let cardmarket: RemoteCardMarket?
         let images: RemoteImages?
         let set: RemoteSet
     }
@@ -87,13 +87,7 @@ public enum CardMapper {
                 flavorText: $0.flavorText,
                 legalities: legalities,
                 artist: $0.artist,
-                cardmarket: CardMarket(url: $0.cardmarket.url,
-                                       updatedAt: $0.cardmarket.updatedAt,
-                                       prices: CardPrice(
-                                        averageSellPrice: $0.cardmarket.prices.averageSellPrice,
-                                        lowPrice: $0.cardmarket.prices.lowPrice,
-                                        trendPrice: $0.cardmarket.prices.trendPrice,
-                                        reverseHoloTrend: $0.cardmarket.prices.reverseHoloTrend)),
+                cardmarket: getCardMarket(remoteCardMarket: $0.cardmarket),
                 images: cardImages,
                 cardSet: CardSet(
                     id: $0.set.id,
@@ -108,5 +102,20 @@ public enum CardMapper {
         }
      
         return Legalities(isUnlimited: Legalities.checkLegality(legality: remoteLegalities.unlimited), isStandard: Legalities.checkLegality(legality: remoteLegalities.standard), isExpanded: Legalities.checkLegality(legality: remoteLegalities.expanded))
+    }
+    
+    private static func getCardMarket(remoteCardMarket: RemoteCardMarket?) -> CardMarket? {
+        
+        guard let remoteCardMarket = remoteCardMarket else{
+             return nil
+        }
+        
+        return CardMarket(url: remoteCardMarket.url,
+                          updatedAt: remoteCardMarket.updatedAt,
+                          prices: CardPrice(
+                           averageSellPrice: remoteCardMarket.prices.averageSellPrice,
+                           lowPrice: remoteCardMarket.prices.lowPrice,
+                           trendPrice: remoteCardMarket.prices.trendPrice,
+                           reverseHoloTrend: remoteCardMarket.prices.reverseHoloTrend))
     }
 }
