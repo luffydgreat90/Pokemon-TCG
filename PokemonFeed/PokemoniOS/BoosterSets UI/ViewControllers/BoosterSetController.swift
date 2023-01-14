@@ -10,7 +10,6 @@ import PokemonFeed
 
 public final class BoosterSetController: NSObject {
     public typealias ResourceViewModel = UIImage
-    
     private let viewModel: BoosterSetViewModel
     private let delegate: ImageControllerDelegate
     private var cell: BoosterSetCell?
@@ -63,7 +62,6 @@ extension BoosterSetController: UITableViewDataSource{
     public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cancel()
     }
-
 }
 
 extension BoosterSetController: UITableViewDataSourcePrefetching {
