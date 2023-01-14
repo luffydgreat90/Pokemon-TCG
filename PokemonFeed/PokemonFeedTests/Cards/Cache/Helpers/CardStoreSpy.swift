@@ -28,6 +28,14 @@ class CardStoreSpy: CardStore {
         receivedCards.append(.deleteCachedCard(setId))
     }
 
+    func completeDeletion(with error: Error, setId: String) {
+        deletionCompletions[setId]!(.failure(error))
+    }
+    
+    func completeDeletionSuccessfully(setId: String) {
+        deletionCompletions[setId]!(.success(()))
+    }
+    
     func insert(_ cards: [LocalCard], setId: String, timestamp: Date, completion: @escaping InsertionCompletion){
         insertionCompletions[setId] = completion
         receivedCards.append(.insert(cards, setId, timestamp))
