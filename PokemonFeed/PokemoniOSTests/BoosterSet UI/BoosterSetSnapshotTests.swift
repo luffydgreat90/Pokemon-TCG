@@ -12,26 +12,46 @@ import PokemoniOS
 final class BoosterSetSnapshotTests: XCTestCase {
     func test_boosterSetsWithImage() {
         let sut = makeSUT()
-
+        
         sut.display(boosterSetsWithImage())
-
+        
         assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "BOOSTER_SETS_WITH_IMAGE_light")
         assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "BOOSTER_SETS_WITH_IMAGE_dark")
-    
+        
     }
     
     func test_boosterSetsWithoutImage() {
         let sut = makeSUT()
-
+        
         sut.display(boosterSetsWithoutImage())
-
+        
         assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "BOOSTER_SETS_WITHOUT_IMAGE_light")
         assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "BOOSTER_SETS_WITHOUT_IMAGE_dark")
         
     }
     
-    // MARK: - Helpers
+    func test_boosterSetWithLoadMoreIndicator() {
+        let sut = makeSUT()
+        sut.display(boosterSetsWithLoadMoreIndicator())
+        
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "BOOSTER_SETS_WITH_LOAD_MORE_INDICATOR_light")
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "BOOSTER_SETS_WITH_LOAD_MORE_INDICATOR_dark")
+    }
+    
+    func test_boosterSetsWithLoadMoreError() {
+        let sut = makeSUT()
 
+        sut.display(boosterSetsWithLoadMoreError())
+
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "BOOSTER_SETS_LOAD_MORE_ERROR_light")
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "BOOSTER_SETS_LOAD_MORE_ERROR_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light, contentSize: .extraExtraExtraLarge)), named: "BOOSTER_SETS_LOAD_MORE_ERROR_extraExtraExtraLarge")
+    }
+    
+    
+    
+    // MARK: - Helpers
+    
     private func makeSUT() -> ListViewController {
         let controller = ListViewController()
         controller.configureTableView = { tableView in
@@ -43,6 +63,30 @@ final class BoosterSetSnapshotTests: XCTestCase {
         controller.tableView.showsHorizontalScrollIndicator = false
         return controller
     }
+    
+    
+    private func boosterSetsWithLoadMoreIndicator() -> [CellController] {
+            let loadMore = LoadMoreCellController(callback: {})
+            loadMore.display(ResourceLoadingViewModel(isLoading: true))
+            return boosterSetsWith(loadMore: loadMore)
+    }
+    
+    private func boosterSetsWithLoadMoreError() -> [CellController] {
+          let loadMore = LoadMoreCellController(callback: {})
+          loadMore.display(ResourceErrorViewModel(message: "This is a multiline\nerror message"))
+          return boosterSetsWith(loadMore: loadMore)
+      }
+    
+    private func boosterSetsWith(loadMore: LoadMoreCellController) -> [CellController] {
+            let stub = boosterSetsWithImage().last!
+            let cellController = BoosterSetController(viewModel: stub.viewModel, delegate: stub, selection: {})
+            stub.controller = cellController
+
+            return [
+                CellController(id: UUID(), cellController),
+                CellController(id: UUID(), loadMore)
+            ]
+        }
     
     private func boosterSetsWithImage() -> [ImageStub] {
         return [

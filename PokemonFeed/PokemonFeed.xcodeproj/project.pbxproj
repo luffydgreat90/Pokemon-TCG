@@ -72,6 +72,8 @@
 		8E1AA7E32968DA6D001E05A9 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7E22968DA6D001E05A9 /* CoreDataStore.swift */; };
 		8E1AA7E529698ED7001E05A9 /* CoreDataBoosterSetStore+BoosterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7E429698ED7001E05A9 /* CoreDataBoosterSetStore+BoosterStore.swift */; };
 		8E1AA7E72969D06F001E05A9 /* ManagedCardCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7E62969D06F001E05A9 /* ManagedCardCache.swift */; };
+		8E2C0D59297483E90079329F /* LoadMoreCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C0D58297483E90079329F /* LoadMoreCellController.swift */; };
+		8E2C0D5B297486CC0079329F /* LoadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C0D5A297486CC0079329F /* LoadMoreCell.swift */; };
 		8E4F6A4F29679EBE0022403A /* CardsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4F6A4E29679EBE0022403A /* CardsPresenter.swift */; };
 		8E4F6A5129679EF30022403A /* CardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4F6A5029679EF30022403A /* CardsViewModel.swift */; };
 		8E4F6A532967A2180022403A /* CardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4F6A522967A2180022403A /* CardController.swift */; };
@@ -230,6 +232,8 @@
 		8E1AA7E22968DA6D001E05A9 /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		8E1AA7E429698ED7001E05A9 /* CoreDataBoosterSetStore+BoosterStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreDataBoosterSetStore+BoosterStore.swift"; sourceTree = "<group>"; };
 		8E1AA7E62969D06F001E05A9 /* ManagedCardCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCardCache.swift; sourceTree = "<group>"; };
+		8E2C0D58297483E90079329F /* LoadMoreCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreCellController.swift; sourceTree = "<group>"; };
+		8E2C0D5A297486CC0079329F /* LoadMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreCell.swift; sourceTree = "<group>"; };
 		8E4F6A4E29679EBE0022403A /* CardsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsPresenter.swift; sourceTree = "<group>"; };
 		8E4F6A5029679EF30022403A /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
 		8E4F6A522967A2180022403A /* CardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardController.swift; sourceTree = "<group>"; };
@@ -373,6 +377,7 @@
 			children = (
 				8EA9B99F2964D9E2005E6080 /* ListViewController.swift */,
 				8EA9B9A42964DAF1005E6080 /* CellController.swift */,
+				8E2C0D58297483E90079329F /* LoadMoreCellController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1043,6 +1048,7 @@
 			children = (
 				8EFE7BB2296B8ECF003AF320 /* Helpers */,
 				8EFE7BBC296B9571003AF320 /* ErrorView.swift */,
+				8E2C0D5A297486CC0079329F /* LoadMoreCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1437,10 +1443,12 @@
 				8EFE7BBD296B9571003AF320 /* ErrorView.swift in Sources */,
 				8E0A6CFB2965E68500F79B35 /* UIImageView+Animations.swift in Sources */,
 				8EA9B9AA2964E241005E6080 /* ImageControllerDelegate.swift in Sources */,
+				8E2C0D5B297486CC0079329F /* LoadMoreCell.swift in Sources */,
 				8E0A6D222967837F00F79B35 /* UIView+Shimmering.swift in Sources */,
 				8E0678972970676E00E71A2B /* ErrorCollectionReusableView.swift in Sources */,
 				8EA9B9A82964E048005E6080 /* BoosterSetController.swift in Sources */,
 				8E0A6D202967808200F79B35 /* UIView+Helpers.swift in Sources */,
+				8E2C0D59297483E90079329F /* LoadMoreCellController.swift in Sources */,
 				8EA9B9A02964D9E2005E6080 /* ListViewController.swift in Sources */,
 				8E4F6A532967A2180022403A /* CardController.swift in Sources */,
 				8EA9B9A52964DAF1005E6080 /* CellController.swift in Sources */,
