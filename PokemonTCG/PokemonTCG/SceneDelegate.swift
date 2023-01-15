@@ -79,7 +79,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             selection: showCard(for:))
     }
     
-    private func makeRemoteBoosterSetsLoader() -> AnyPublisher<[BoosterSet], Error> {
+    private func makeRemoteBoosterSetsLoader() -> AnyPublisher<Paginated<BoosterSet>, Error> {
         let url = BoosterSetsEndPoint.get.url(baseURL: baseURL)
 
         return httpClient
@@ -87,6 +87,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .tryMap(BoosterSetsMapper.map)
             .caching(to: localBoosterSetLoader)
             .fallback(to: localBoosterSetLoader.loadPublisher)
+            .map {
+                Paginated(items: $0)
+            }
+            .eraseToAnyPublisher()
     }
 
     private func showCard(for boosterSet: BoosterSet) {

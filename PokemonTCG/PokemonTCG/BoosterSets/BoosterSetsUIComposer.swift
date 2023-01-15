@@ -12,10 +12,10 @@ import PokemoniOS
 
 public enum BoosterSetsUIComposer {
    
-    private typealias BoosterSetsPresentationAdapter = LoadResourcePresentationAdapter<[BoosterSet], BoosterSetsViewAdapter>
+    private typealias BoosterSetsPresentationAdapter = LoadResourcePresentationAdapter<Paginated<BoosterSet>, BoosterSetsViewAdapter>
     
     public static func boosterSetsComposedWith(
-        boosterSetsLoader: @escaping () -> AnyPublisher<[BoosterSet], Error>,
+        boosterSetsLoader: @escaping () -> AnyPublisher<Paginated<BoosterSet>, Error>,
         imageLoader: @escaping (URL) -> AnyPublisher<Data, Error>,
         selection: @escaping (BoosterSet) -> Void) -> ListViewController {
             let presentationAdapter = BoosterSetsPresentationAdapter(loader: boosterSetsLoader)
@@ -35,7 +35,7 @@ public enum BoosterSetsUIComposer {
                     selection: selection),
                 loadingView: WeakRefVirtualProxy(listViewController),
                 errorView: WeakRefVirtualProxy(listViewController),
-                mapper: BoosterSetsPresenter.map)
+                mapper: { $0 })
             
             listViewController.onRefresh = presentationAdapter.loadResource
             
@@ -59,11 +59,11 @@ final class BoosterSetsViewAdapter: ResourceView {
         self.selection = selection
     }
     
-    func display(_ viewModel: BoosterSetsViewModel) {
+    func display(_ viewModel: Paginated<BoosterSet>) {
         
         let dateFormatter = DateFormatter.monthDayYear
         
-        let viewControllers = viewModel.sets.map({ model in
+        let viewControllers = viewModel.items.map({ model in
             let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in
                 imageLoader(model.images.symbol)
             })
