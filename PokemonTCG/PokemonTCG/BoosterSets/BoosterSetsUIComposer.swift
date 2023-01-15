@@ -63,7 +63,7 @@ final class BoosterSetsViewAdapter: ResourceView {
         
         let dateFormatter = DateFormatter.monthDayYear
         
-        let viewControllers = viewModel.items.map({ model in
+        let boosterSets = viewModel.items.map({ model in
             let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in
                 imageLoader(model.images.symbol)
             })
@@ -84,6 +84,14 @@ final class BoosterSetsViewAdapter: ResourceView {
             return CellController(id: model, controller)
         })
         
-        controller?.display(viewControllers)
+        let loadMore = LoadMoreCellController {
+            viewModel.loadMore?({ _ in
+                 
+            })
+        }
+        
+        let loadMoreSection = [CellController(id: UUID(), loadMore)]
+        
+        controller?.display(boosterSets, loadMoreSection)
     }
 }

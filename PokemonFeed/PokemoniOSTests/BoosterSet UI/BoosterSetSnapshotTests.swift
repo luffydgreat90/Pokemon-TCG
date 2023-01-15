@@ -66,13 +66,13 @@ final class BoosterSetSnapshotTests: XCTestCase {
     
     
     private func boosterSetsWithLoadMoreIndicator() -> [CellController] {
-            let loadMore = LoadMoreCellController(callback: {})
+        let loadMore = LoadMoreCellController(callBack: {})
             loadMore.display(ResourceLoadingViewModel(isLoading: true))
             return boosterSetsWith(loadMore: loadMore)
     }
     
     private func boosterSetsWithLoadMoreError() -> [CellController] {
-          let loadMore = LoadMoreCellController(callback: {})
+        let loadMore = LoadMoreCellController(callBack: {})
           loadMore.display(ResourceErrorViewModel(message: "This is a multiline\nerror message"))
           return boosterSetsWith(loadMore: loadMore)
       }

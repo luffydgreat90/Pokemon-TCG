@@ -12,20 +12,24 @@ import Combine
 
 extension BoosterSetUIIntegrationTests {
     final class LoaderSpy: ImageDataLoader {
-        private var boosterSetRequests = [PassthroughSubject<[BoosterSet], Error>]()
+        private var boosterSetRequests = [PassthroughSubject<Paginated<BoosterSet>, Error>]()
     
         var loadBoosterSetCallCount: Int {
             return boosterSetRequests.count
         }
         
-        func loadPublisher() -> AnyPublisher<[BoosterSet], Error> {
-            let publisher = PassthroughSubject<[BoosterSet], Error>()
+        private(set) var loadMoreCount: Int = 0
+        
+        func loadPublisher() -> AnyPublisher<Paginated<BoosterSet>, Error> {
+            let publisher = PassthroughSubject<Paginated<BoosterSet>, Error>()
             boosterSetRequests.append(publisher)
             return publisher.eraseToAnyPublisher()
         }
         
         func completeBoosterSetLoading(with boosterSets: [BoosterSet] = [], at index: Int = 0) {
-            boosterSetRequests[index].send(boosterSets)
+            boosterSetRequests[index].send(Paginated(items: boosterSets, loadMore: { [weak self] _ in
+                self?.loadMoreCount += 1
+            }))
         }
 
         func completeBoosterSetLoadingWithError(at index: Int = 0) {

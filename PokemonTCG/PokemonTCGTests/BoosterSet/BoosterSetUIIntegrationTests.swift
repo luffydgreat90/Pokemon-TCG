@@ -38,7 +38,7 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         XCTAssertEqual(selectedImages, [boosterSet0, boosterSet1])
     }
     
-    func test_loadFeedActions_requestFeedFromLoader() {
+    func test_loadBoosterSetsActions_requestBoosterSetsFromLoader() {
         let (sut, loader) = makeSUT()
         XCTAssertEqual(loader.loadBoosterSetCallCount, 0, "Expected no loading requests before view is loaded")
         
@@ -50,6 +50,20 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         
         sut.simulateUserInitiatedReload()
         XCTAssertEqual(loader.loadBoosterSetCallCount, 3, "Expected yet another loading request once user initiates another reload")
+    }
+    
+    func test_loadMoreActions_requestMoreBoosterSetsFromLoader() {
+        let (sut, loader) = makeSUT()
+        XCTAssertEqual(loader.loadBoosterSetCallCount, 0, "Expected no loading requests before view is loaded")
+        
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading()
+        
+        sut.simulateLoadMoreAction()
+        XCTAssertEqual(loader.loadMoreCount, 1, "Expected load more requests")
+        
+        sut.simulateLoadMoreAction()
+        XCTAssertEqual(loader.loadMoreCount, 2, "Expected load more requests")
     }
     
     func test_loadingListIndicator_isVisibleWhileLoadingBoosterSet() {

@@ -10,10 +10,10 @@ import PokemonFeed
 
 public class LoadMoreCellController: NSObject {
     private let cell = LoadMoreCell()
-    private let callback: () -> Void
+    private let callBack: () -> Void
     
-    public init(callback: @escaping () -> Void) {
-        self.callback = callback
+    public init(callBack: @escaping () -> Void) {
+        self.callBack = callBack
     }
 }
 
@@ -25,8 +25,13 @@ extension LoadMoreCellController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
           cell.selectionStyle = .none
           return cell
-      }
-    
+    }
+}
+
+extension LoadMoreCellController: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        callBack()
+    }
 }
 
 extension LoadMoreCellController: ResourceLoadingView, ResourceErrorView {

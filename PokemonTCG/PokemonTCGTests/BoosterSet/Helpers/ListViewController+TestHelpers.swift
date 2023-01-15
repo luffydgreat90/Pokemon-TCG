@@ -45,8 +45,6 @@ extension ListViewController {
         let index = IndexPath(row: row, section: section)
         return ds?.tableView(tableView, cellForRowAt: index)
     }
-
-    private var boosterSetsSection: Int { 0 }
 }
 
 extension ListViewController {
@@ -103,8 +101,22 @@ extension ListViewController {
         ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
     }
     
+    func simulateLoadMoreAction() {
+        guard let view = loadMoreCell() else { return }
+        let delegate = tableView.delegate
+        let index = IndexPath(row: 0, section: loadMoreSection)
+        delegate?.tableView?(tableView, willDisplay: view, forRowAt: index)
+    }
+    
+    private func loadMoreCell() -> LoadMoreCell? {
+           cell(row: 0, section: loadMoreSection) as? LoadMoreCell
+       }
+    
     @discardableResult
     func renderedFeedImageData(at index: Int) -> Data? {
         return simulateBoosterSetViewVisible(at: index)?.renderedImage
     }
+    
+    private var boosterSetsSection: Int { 0 }
+    private var loadMoreSection: Int { 1 }
 }
