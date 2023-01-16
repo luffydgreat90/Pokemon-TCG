@@ -108,6 +108,10 @@ extension ListViewController {
         delegate?.tableView?(tableView, willDisplay: view, forRowAt: index)
     }
     
+    var isShowingLoadMoreIndicator: Bool {
+        return loadMoreCell()?.isLoading == true
+    }
+
     private func loadMoreCell() -> LoadMoreCell? {
            cell(row: 0, section: loadMoreSection) as? LoadMoreCell
        }

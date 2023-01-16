@@ -18,8 +18,6 @@ extension BoosterSetUIIntegrationTests {
             return boosterSetRequests.count
         }
         
-        private(set) var loadMoreCount: Int = 0
-        
         func loadPublisher() -> AnyPublisher<Paginated<BoosterSet>, Error> {
             let publisher = PassthroughSubject<Paginated<BoosterSet>, Error>()
             boosterSetRequests.append(publisher)
@@ -27,14 +25,42 @@ extension BoosterSetUIIntegrationTests {
         }
         
         func completeBoosterSetLoading(with boosterSets: [BoosterSet] = [], at index: Int = 0) {
-            boosterSetRequests[index].send(Paginated(items: boosterSets, loadMore: { [weak self] _ in
-                self?.loadMoreCount += 1
+            boosterSetRequests[index].send(Paginated(items: boosterSets, loadMorePublisher: { [weak self] in
+                self?.loadMorePublisher() ?? Empty().eraseToAnyPublisher()
             }))
+            boosterSetRequests[index].send(completion: .finished)
         }
-
+        
         func completeBoosterSetLoadingWithError(at index: Int = 0) {
             let error = NSError(domain: "an error", code: 0)
             boosterSetRequests[index].send(completion: .failure(error))
+        }
+        
+        // MARK: - LoadMoreFeedLoader
+        
+        private var loadMoreRequests = [PassthroughSubject<Paginated<BoosterSet>, Error>]()
+        
+        var loadMoreCallCount: Int {
+            return loadMoreRequests.count
+        }
+        
+        func loadMorePublisher() -> AnyPublisher<Paginated<BoosterSet>, Error> {
+            let publisher = PassthroughSubject<Paginated<BoosterSet>, Error>()
+            loadMoreRequests.append(publisher)
+            return publisher.eraseToAnyPublisher()
+        }
+        
+        func completeLoadMore(with boosterSets: [BoosterSet] = [], lastPage: Bool = false, at index: Int = 0) {
+            loadMoreRequests[index].send(
+                Paginated(
+                    items: boosterSets,
+                    loadMorePublisher: lastPage ? nil : { [weak self] in
+                        self?.loadMorePublisher() ?? Empty().eraseToAnyPublisher()
+            }))
+        }
+
+        func completeLoadMoreWithError(at index: Int = 0) {
+            loadMoreRequests[index].send(completion: .failure(anyNSError()))
         }
         
         // MARK: - ImageDataLoader

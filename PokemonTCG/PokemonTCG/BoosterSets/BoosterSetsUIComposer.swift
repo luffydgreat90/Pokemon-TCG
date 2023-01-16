@@ -47,10 +47,12 @@ final class BoosterSetsViewAdapter: ResourceView {
     
     private typealias ImageDataPresentationAdapter = LoadResourcePresentationAdapter<Data, WeakRefVirtualProxy<BoosterSetController>>
     
+    private typealias LoadMorePresentationAdapter = LoadResourcePresentationAdapter<Paginated<BoosterSet>, BoosterSetsViewAdapter>
+    
     private weak var controller: ListViewController?
     private let imageLoader: (URL) -> AnyPublisher<Data, Error>
     private let selection: (BoosterSet) -> Void
-    
+    private let dateFormatter = DateFormatter.monthDayYear
     init(controller: ListViewController? = nil,
          imageLoader: @escaping (URL) -> AnyPublisher<Data, Error>,
          selection: @escaping (BoosterSet) -> Void) {
@@ -60,8 +62,7 @@ final class BoosterSetsViewAdapter: ResourceView {
     }
     
     func display(_ viewModel: Paginated<BoosterSet>) {
-        
-        let dateFormatter = DateFormatter.monthDayYear
+        guard let controller = controller else { return }
         
         let boosterSets = viewModel.items.map({ model in
             let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in
@@ -84,14 +85,23 @@ final class BoosterSetsViewAdapter: ResourceView {
             return CellController(id: model, controller)
         })
         
-        let loadMore = LoadMoreCellController {
-            viewModel.loadMore?({ _ in
-                 
-            })
+        guard let loadMorePublisher = viewModel.loadMorePublisher else {
+            controller.display(boosterSets)
+            return
         }
         
-        let loadMoreSection = [CellController(id: UUID(), loadMore)]
+        let loadMoreAdapter = LoadMorePresentationAdapter(loader: loadMorePublisher)
+        let loadMore = LoadMoreCellController(callBack: loadMoreAdapter.loadResource)
+
+        loadMoreAdapter.presenter = LoadResourcePresenter(
+            resourceView: BoosterSetsViewAdapter(
+                controller: controller,
+                imageLoader: imageLoader,
+                selection: selection),
+            loadingView: WeakRefVirtualProxy(loadMore),
+            errorView: WeakRefVirtualProxy(loadMore))
         
-        controller?.display(boosterSets, loadMoreSection)
+        let loadMoreSection = [CellController(id: UUID(), loadMore)]
+        controller.display(boosterSets, loadMoreSection)
     }
 }

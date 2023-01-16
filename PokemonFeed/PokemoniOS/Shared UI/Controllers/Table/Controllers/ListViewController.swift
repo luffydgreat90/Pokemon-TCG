@@ -33,7 +33,11 @@ public final class ListViewController: UITableViewController {
             snapshot.appendItems(cellControllers, toSection: section)
         }
         
-        dataSource.apply(snapshot)
+        if #available(iOS 15.0, *) {
+            dataSource.applySnapshotUsingReloadData(snapshot)
+        } else {
+            dataSource.apply(snapshot)
+        }
     }
     
     public override func viewDidLayoutSubviews() {

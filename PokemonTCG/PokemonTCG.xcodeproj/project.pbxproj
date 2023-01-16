@@ -26,7 +26,7 @@
 		8E0678BD2970DF8000E71A2B /* HTTPClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678BC2970DF8000E71A2B /* HTTPClientStub.swift */; };
 		8E0678BF2970DFEF00E71A2B /* BoosterSetAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678BE2970DFEF00E71A2B /* BoosterSetAcceptanceTests.swift */; };
 		8E0678C12970E3F700E71A2B /* InMemoryBoosterSetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678C02970E3F700E71A2B /* InMemoryBoosterSetStore.swift */; };
-		8E0678C329716C9B00E71A2B /* DispatchQueue+SchedulersHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678C229716C9B00E71A2B /* DispatchQueue+SchedulersHelpers.swift */; };
+		8E2C0D612974CA560079329F /* Paginated+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C0D602974CA560079329F /* Paginated+Helpers.swift */; };
 		8E56CE8429679BD000FFCD15 /* CardListUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */; };
 		8EA9B9C02964EA84005E6080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9BF2964EA84005E6080 /* AppDelegate.swift */; };
 		8EA9B9C22964EA84005E6080 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9C12964EA84005E6080 /* SceneDelegate.swift */; };
@@ -89,7 +89,7 @@
 		8E0678BC2970DF8000E71A2B /* HTTPClientStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientStub.swift; sourceTree = "<group>"; };
 		8E0678BE2970DFEF00E71A2B /* BoosterSetAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetAcceptanceTests.swift; sourceTree = "<group>"; };
 		8E0678C02970E3F700E71A2B /* InMemoryBoosterSetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryBoosterSetStore.swift; sourceTree = "<group>"; };
-		8E0678C229716C9B00E71A2B /* DispatchQueue+SchedulersHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+SchedulersHelpers.swift"; sourceTree = "<group>"; };
+		8E2C0D602974CA560079329F /* Paginated+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Paginated+Helpers.swift"; sourceTree = "<group>"; };
 		8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListUIComposer.swift; sourceTree = "<group>"; };
 		8EA9B9BC2964EA84005E6080 /* PokemonTCG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonTCG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B9BF2964EA84005E6080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 			children = (
 				8EBEA69D2964F23D000F1FC8 /* Combine+Helpers.swift */,
 				8EFE7BAE296B8CB4003AF320 /* DispatchQueue+Helpers.swift */,
-				8E0678C229716C9B00E71A2B /* DispatchQueue+SchedulersHelpers.swift */,
+				8E2C0D602974CA560079329F /* Paginated+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -376,8 +376,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EBEA69C2964F1F9000F1FC8 /* LoadResourcePresentationAdapter.swift in Sources */,
+				8E2C0D612974CA560079329F /* Paginated+Helpers.swift in Sources */,
 				8EFE7BAF296B8CB4003AF320 /* DispatchQueue+Helpers.swift in Sources */,
-				8E0678C329716C9B00E71A2B /* DispatchQueue+SchedulersHelpers.swift in Sources */,
 				8E56CE8429679BD000FFCD15 /* CardListUIComposer.swift in Sources */,
 				8EBEA69E2964F23D000F1FC8 /* Combine+Helpers.swift in Sources */,
 				8EBEA6962964F0B8000F1FC8 /* BoosterSetsUIComposer.swift in Sources */,

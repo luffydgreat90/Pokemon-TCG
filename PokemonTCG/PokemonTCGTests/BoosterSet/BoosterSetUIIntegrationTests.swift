@@ -52,6 +52,8 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         XCTAssertEqual(loader.loadBoosterSetCallCount, 3, "Expected yet another loading request once user initiates another reload")
     }
     
+    // MARK: - Load More Tests
+    
     func test_loadMoreActions_requestMoreBoosterSetsFromLoader() {
         let (sut, loader) = makeSUT()
         XCTAssertEqual(loader.loadBoosterSetCallCount, 0, "Expected no loading requests before view is loaded")
@@ -60,10 +62,40 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         loader.completeBoosterSetLoading()
         
         sut.simulateLoadMoreAction()
-        XCTAssertEqual(loader.loadMoreCount, 1, "Expected load more requests")
+        XCTAssertEqual(loader.loadMoreCallCount, 1, "Expected load more requests")
+        
+        XCTAssertEqual(loader.loadMoreCallCount, 1, "Expected to have 1 requests")
+        
+        loader.completeLoadMore(lastPage: false, at: 0)
+        sut.simulateLoadMoreAction()
+        XCTAssertEqual(loader.loadMoreCallCount, 2, "Expected load more requests")
+        
+        loader.completeLoadMoreWithError(at: 1)
+        sut.simulateLoadMoreAction()
+        XCTAssertEqual(loader.loadMoreCallCount, 3, "Expected request after load more failure")
+    }
+    
+    func test_loadingMoreIndicator_isVisibleWhileLoadingMore() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        XCTAssertFalse(sut.isShowingLoadMoreIndicator, "Expected no loading indicator once view is loaded")
+        
+        loader.completeBoosterSetLoading()
+        XCTAssertFalse(sut.isShowingLoadMoreIndicator, "Expected no loading indicator once loading completes successfully")
         
         sut.simulateLoadMoreAction()
-        XCTAssertEqual(loader.loadMoreCount, 2, "Expected load more requests")
+        XCTAssertTrue(sut.isShowingLoadMoreIndicator, "Expected loading indicator on load more action")
+        
+        loader.completeLoadMore(at: 0)
+        
+        XCTAssertFalse(sut.isShowingLoadMoreIndicator, "Expected no loading indicator once user initiated loading completes successfully")
+        
+        sut.simulateLoadMoreAction()
+        XCTAssertTrue(sut.isShowingLoadMoreIndicator, "Expected loading indicator on second load more action")
+
+        loader.completeLoadMoreWithError(at: 1)
+        XCTAssertFalse(sut.isShowingLoadMoreIndicator, "Expected no loading indicator once user initiated loading completes with error")
     }
     
     func test_loadingListIndicator_isVisibleWhileLoadingBoosterSet() {
@@ -80,6 +112,20 @@ class BoosterSetUIIntegrationTests: XCTestCase {
 
         loader.completeBoosterSetLoadingWithError(at: 1)
         XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading completes with error")
+    }
+    
+    func test_loadMoreCompletion_dispatchesFromBackgroundToMainThread() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading(at: 0)
+        sut.simulateLoadMoreAction()
+        
+        let exp = expectation(description: "Wait for background queue")
+        DispatchQueue.global().async {
+            loader.completeLoadMore()
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
     }
     
     func test_loadBoosterSetCompletion_rendersSuccessfullyLoadedBoosterSet() {
@@ -330,7 +376,7 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         let loader = LoaderSpy()
         let sut = BoosterSetsUIComposer.boosterSetsComposedWith(
             boosterSetsLoader: loader.loadPublisher,
-            imageLoader: loader.loadImageDataPublisher(from:),
+            imageLoader: loader.loadImageDataPublisher,
             selection: selection)
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)

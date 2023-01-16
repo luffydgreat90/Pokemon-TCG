@@ -26,7 +26,6 @@ class CardStoreSpy: CardStore {
     func deleteCachedCards(setId: String, completion: @escaping DeletionCompletion){
         deletionCompletions[setId] = completion
         receivedCards.append(.deleteCachedCard(setId))
-        debugPrint("deleteCachedCards")
     }
 
     func completeDeletion(with error: Error, setId: String) {
