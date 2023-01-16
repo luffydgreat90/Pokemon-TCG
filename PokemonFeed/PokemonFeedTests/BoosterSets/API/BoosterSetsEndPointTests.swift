@@ -9,12 +9,27 @@ import XCTest
 import PokemonFeed
 
 class BoosterSetsEndPointTests: XCTestCase {
-    func test_feed_endpointURL() {
+    func test_boosterSet_endpointURL() {
         let baseURL = URL(string: "http://base-url.com")!
 
-        let received = BoosterSetsEndPoint.get.url(baseURL: baseURL)
-        let expected = URL(string: "http://base-url.com/sets")!
+        let received = BoosterSetsEndPoint.get().url(baseURL: baseURL)
+    
+        XCTAssertEqual(received.scheme, "http", "scheme")
+        XCTAssertEqual(received.host, "base-url.com", "host")
+        XCTAssertEqual(received.path, "/v2/sets", "path")
+        XCTAssertEqual(received.query?.contains("pageSize=\(BoosterSetsEndPoint.pageSize)"), true, "query")
+        XCTAssertEqual(received.query?.contains("page=1"), true, "query")
+    }
+    
+    func test_boosterSet_endpointURL_withContents(){
+        let baseURL = URL(string: "http://base-url.com")!
 
-        XCTAssertEqual(received, expected)
+        let received = BoosterSetsEndPoint.get(totalItems: 20).url(baseURL: baseURL)
+    
+        XCTAssertEqual(received.scheme, "http", "scheme")
+        XCTAssertEqual(received.host, "base-url.com", "host")
+        XCTAssertEqual(received.path, "/v2/sets", "path")
+        XCTAssertEqual(received.query?.contains("pageSize=\(BoosterSetsEndPoint.pageSize)"), true, "query")
+        XCTAssertEqual(received.query?.contains("page=3"), true, "query")
     }
 }

@@ -128,6 +128,39 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    func test_loadMoreCompletion_rendersErrorMessageOnError() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading()
+        
+        sut.simulateLoadMoreAction()
+        XCTAssertEqual(sut.loadMoreFeedErrorMessage, nil)
+        
+        loader.completeLoadMoreWithError()
+        XCTAssertEqual(sut.loadMoreFeedErrorMessage, loadError)
+        
+        sut.simulateLoadMoreAction()
+        XCTAssertEqual(sut.loadMoreFeedErrorMessage, nil)
+    }
+    
+    func test_tapOnLoadMoreErrorView_loadsMore() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading()
+        
+        sut.simulateLoadMoreAction()
+        XCTAssertEqual(loader.loadMoreCallCount, 1)
+        
+        sut.simulateTapOnLoadMoreError()
+        XCTAssertEqual(loader.loadMoreCallCount, 1)
+        
+        loader.completeLoadMoreWithError()
+        sut.simulateTapOnLoadMoreError()
+        XCTAssertEqual(loader.loadMoreCallCount, 2)
+    }
+    
+    // MARK: - Load Images Tests
+    
     func test_loadBoosterSetCompletion_rendersSuccessfullyLoadedBoosterSet() {
         let boosterSet0 = makeBoosterSet()
         let boosterSet1 = makeBoosterSet()

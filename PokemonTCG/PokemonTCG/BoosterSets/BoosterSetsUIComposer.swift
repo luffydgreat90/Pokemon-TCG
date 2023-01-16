@@ -52,13 +52,16 @@ final class BoosterSetsViewAdapter: ResourceView {
     private weak var controller: ListViewController?
     private let imageLoader: (URL) -> AnyPublisher<Data, Error>
     private let selection: (BoosterSet) -> Void
-    private let dateFormatter = DateFormatter.monthDayYear
+    private let dateFormatter: DateFormatter
+    
     init(controller: ListViewController? = nil,
          imageLoader: @escaping (URL) -> AnyPublisher<Data, Error>,
-         selection: @escaping (BoosterSet) -> Void) {
+         selection: @escaping (BoosterSet) -> Void,
+         dateFormatter: DateFormatter = DateFormatter.monthDayYear) {
         self.controller = controller
         self.imageLoader = imageLoader
         self.selection = selection
+        self.dateFormatter = dateFormatter
     }
     
     func display(_ viewModel: Paginated<BoosterSet>) {

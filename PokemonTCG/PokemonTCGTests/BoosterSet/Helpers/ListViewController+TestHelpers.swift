@@ -108,6 +108,12 @@ extension ListViewController {
         delegate?.tableView?(tableView, willDisplay: view, forRowAt: index)
     }
     
+    func simulateTapOnLoadMoreError() {
+        let delegate = tableView.delegate
+        let index = IndexPath(row: 0, section: loadMoreSection)
+        delegate?.tableView?(tableView, didSelectRowAt: index)
+    }
+    
     var isShowingLoadMoreIndicator: Bool {
         return loadMoreCell()?.isLoading == true
     }
@@ -119,6 +125,10 @@ extension ListViewController {
     @discardableResult
     func renderedFeedImageData(at index: Int) -> Data? {
         return simulateBoosterSetViewVisible(at: index)?.renderedImage
+    }
+    
+    var loadMoreFeedErrorMessage: String? {
+        return loadMoreCell()?.message
     }
     
     private var boosterSetsSection: Int { 0 }

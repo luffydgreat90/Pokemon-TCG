@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    private lazy var baseURL = URL(string: "https://api.pokemontcg.io/v2/")!
+    private lazy var baseURL = URL(string: "https://api.pokemontcg.io/")!
     
     private lazy var httpClient: HTTPClient = {
         URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
@@ -80,7 +80,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func makeRemoteBoosterSetsLoader() -> AnyPublisher<Paginated<BoosterSet>, Error> {
-        let url = BoosterSetsEndPoint.get.url(baseURL: baseURL)
+        let url = BoosterSetsEndPoint.get().url(baseURL: baseURL)
 
         return httpClient
             .getPublisher(url: url)
