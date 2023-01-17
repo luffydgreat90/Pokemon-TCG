@@ -97,10 +97,7 @@ final class BoosterSetsViewAdapter: ResourceView {
         let loadMore = LoadMoreCellController(callBack: loadMoreAdapter.loadResource)
 
         loadMoreAdapter.presenter = LoadResourcePresenter(
-            resourceView: BoosterSetsViewAdapter(
-                controller: controller,
-                imageLoader: imageLoader,
-                selection: selection),
+            resourceView: self,
             loadingView: WeakRefVirtualProxy(loadMore),
             errorView: WeakRefVirtualProxy(loadMore))
         

@@ -30,6 +30,6 @@ class BoosterSetsEndPointTests: XCTestCase {
         XCTAssertEqual(received.host, "base-url.com", "host")
         XCTAssertEqual(received.path, "/v2/sets", "path")
         XCTAssertEqual(received.query?.contains("pageSize=\(BoosterSetsEndPoint.pageSize)"), true, "query")
-        XCTAssertEqual(received.query?.contains("page=3"), true, "query")
+        XCTAssertEqual(received.query?.contains("page=2"), true, "query")
     }
 }

@@ -8,14 +8,15 @@
 import Foundation
 
 public enum BoosterSetsEndPoint {
-    public static let pageSize: Int = 10
+    public static let pageSize: Int = 50
     
     case get(totalItems:Int = 0)
 
     public func url(baseURL: URL) -> URL {
         switch self {
         case let .get(totalItems):
-            let page: Int = totalItems / BoosterSetsEndPoint.pageSize + 1
+            let ceilItems = ceil(Double(totalItems) / Double(BoosterSetsEndPoint.pageSize))
+            let page: Int = Int(ceilItems) + 1
             
             var components = URLComponents()
             components.scheme = baseURL.scheme

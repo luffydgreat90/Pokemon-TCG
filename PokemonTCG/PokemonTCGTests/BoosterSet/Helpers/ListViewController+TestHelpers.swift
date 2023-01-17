@@ -11,7 +11,6 @@ import PokemoniOS
 extension ListViewController {
     public override func loadViewIfNeeded() {
         super.loadViewIfNeeded()
-
         tableView.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
     }
     

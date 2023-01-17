@@ -45,15 +45,23 @@ extension Publisher where Output == Data {
     }
 }
 
-extension Publisher where Output == [BoosterSet] {
-    func caching(to cache: BoosterSetCache) -> AnyPublisher<Output, Failure> {
+extension Publisher {
+    func caching(to cache: BoosterSetCache) -> AnyPublisher<Output, Failure> where Output == [BoosterSet] {
+        handleEvents(receiveOutput: cache.saveIgnoringResult).eraseToAnyPublisher()
+    }
+    
+    func caching(to cache: BoosterSetCache) -> AnyPublisher<Output, Failure> where Output == Paginated<BoosterSet> {
         handleEvents(receiveOutput: cache.saveIgnoringResult).eraseToAnyPublisher()
     }
 }
 
 private extension BoosterSetCache {
-    func saveIgnoringResult(_ feed: [BoosterSet]) {
-        save(feed) { _ in }
+    func saveIgnoringResult(_ boosterSets: [BoosterSet]) {
+        save(boosterSets) { _ in }
+    }
+    
+    func saveIgnoringResult(_ page: Paginated<BoosterSet>) {
+        saveIgnoringResult(page.items)
     }
 }
 
