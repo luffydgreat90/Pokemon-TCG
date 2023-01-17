@@ -119,8 +119,12 @@ extension ListViewController {
 
     private func loadMoreCell() -> LoadMoreCell? {
            cell(row: 0, section: loadMoreSection) as? LoadMoreCell
-       }
+    }
     
+    var canLoadMore: Bool {
+        loadMoreCell() != nil
+    }
+
     @discardableResult
     func renderedFeedImageData(at index: Int) -> Data? {
         return simulateBoosterSetViewVisible(at: index)?.renderedImage

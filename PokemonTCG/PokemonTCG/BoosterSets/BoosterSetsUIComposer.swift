@@ -102,6 +102,7 @@ final class BoosterSetsViewAdapter: ResourceView {
             errorView: WeakRefVirtualProxy(loadMore))
         
         let loadMoreSection = [CellController(id: UUID(), loadMore)]
+        
         controller.display(boosterSets, loadMoreSection)
     }
 }

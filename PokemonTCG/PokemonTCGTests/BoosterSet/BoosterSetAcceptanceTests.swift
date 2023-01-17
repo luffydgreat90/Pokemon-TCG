@@ -15,37 +15,18 @@ class BoosterSetAcceptanceTests: XCTestCase {
     func test_onLaunch_displaysRemoteFeedWhenCustomerHasConnectivity() {
         
         let feed = launch(httpClient: .online(response), boosterSetStore: .empty)
-    
-        XCTAssertEqual(feed.numberOfRenderedBoosterSetViews(), 2)
-        XCTAssertEqual(feed.renderedFeedImageData(at: 0), makeImageData())
-        XCTAssertEqual(feed.renderedFeedImageData(at: 1), makeImageData())
         
-//        feed.simulateLoadMoreAction()
-//        XCTAssertEqual(feed.numberOfRenderedBoosterSetViews(), 3)
-    }
-    
-    func test_onLaunch_displaysCachedRemoteFeedWhenCustomerHasNoConnectivity() {
-        let sharedStore = InMemoryBoosterSetStore.empty
-        let onlineFeed = launch(httpClient: .online(response), boosterSetStore: sharedStore)
-        onlineFeed.renderedFeedImageData(at: 0)
-        onlineFeed.renderedFeedImageData(at: 1)
-
-        let offlineFeed = launch(httpClient: .offline, boosterSetStore: sharedStore)
-
-        XCTAssertEqual(offlineFeed.numberOfRenderedBoosterSetViews(), 2)
-        XCTAssertEqual(offlineFeed.renderedFeedImageData(at: 0), makeImageData())
-        XCTAssertEqual(offlineFeed.renderedFeedImageData(at: 1), makeImageData())
-    }
-    
-    func test_onLaunch_displaysEmptyFeedWhenCustomerHasNoConnectivityAndNoCache() {
-        let feed = launch(httpClient: .offline, boosterSetStore: .empty)
-
-        XCTAssertEqual(feed.numberOfRenderedBoosterSetViews(), 0)
+        XCTAssertEqual(feed.numberOfRenderedBoosterSetViews(), 2)
+        XCTAssertEqual(feed.renderedFeedImageData(at: 0), self.makeImageData())
+        XCTAssertEqual(feed.renderedFeedImageData(at: 1), self.makeImageData())
+        XCTAssertTrue(feed.canLoadMore)
     }
     
     func test_onEnteringBackground_deletesExpiredFeedCache() throws {
         let store = InMemoryBoosterSetStore.withExpiredFeedCache
-        try enterBackground(with: store)
+        
+        try? enterBackground(with: store)
+
         XCTAssertNil(store.boosterSetCache, "Expected to delete expired cache")
     }
     

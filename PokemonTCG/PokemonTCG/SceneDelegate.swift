@@ -14,12 +14,6 @@ import PokemoniOS
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-    private lazy var scheduler: AnyDispatchQueueScheduler = DispatchQueue(
-        label: "com.pokemon.infra.queue",
-        qos: .userInitiated,
-        attributes: .concurrent
-    ).eraseToAnyScheduler()
     
     private lazy var baseURL = URL(string: "https://api.pokemontcg.io")!
     
@@ -89,7 +83,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .caching(to: localBoosterSetLoader)
             .fallback(to: localBoosterSetLoader.loadPublisher)
             .map(makeFirstPage)
-            .subscribe(on: scheduler)
             .eraseToAnyPublisher()
     }
     
@@ -118,7 +111,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 (cachedItems + newItems, newItems.last)
             }.map(makePage)
             .caching(to: localBoosterSetLoader)
-            .subscribe(on: scheduler)
             .eraseToAnyPublisher()
     }
     
