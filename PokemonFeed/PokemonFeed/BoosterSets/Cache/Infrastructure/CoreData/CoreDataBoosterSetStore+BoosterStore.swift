@@ -12,7 +12,9 @@ extension CoreDataStore: BoosterSetStore where Store: CoreDataBoosterSetStore {
         perform { context in
             completion(Result {
                 try ManagedBoosterSetCache.find(in: context).map {
-                    CachedBoosterSet(boosterSets: $0.localBoosterSets, timestamp: $0.timestamp)
+                    CachedBoosterSet(
+                        boosterSets: $0.localBoosterSets,
+                        timestamp: $0.timestamp)
                 }
             })
         }
@@ -21,7 +23,8 @@ extension CoreDataStore: BoosterSetStore where Store: CoreDataBoosterSetStore {
     public func deleteCachedBoosterSet(completion: @escaping BoosterSetStore.DeletionCompletion) {
         perform { context in
             completion(Result {
-                try ManagedBoosterSetCache.find(in: context).map(context.delete).map(context.save)
+                try ManagedBoosterSetCache
+                    .deleteCache(in: context)
             })
         }
     }
