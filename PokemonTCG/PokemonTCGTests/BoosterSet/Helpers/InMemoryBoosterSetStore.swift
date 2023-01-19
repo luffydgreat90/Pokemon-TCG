@@ -10,7 +10,7 @@ import PokemonFeed
 
 class InMemoryBoosterSetStore {
     private(set) var boosterSetCache: CachedBoosterSet?
-    private var feedImageDataCache: [URL: Data] = [:]
+    private var imageDataCache: [URL: Data] = [:]
     
     private init(boosterSetCache: CachedBoosterSet? = nil) {
         self.boosterSetCache = boosterSetCache
@@ -35,12 +35,12 @@ extension InMemoryBoosterSetStore: BoosterSetStore {
 
 extension InMemoryBoosterSetStore: ImageDataStore {
     func insert(_ data: Data, for url: URL, completion: @escaping (ImageDataStore.InsertionResult) -> Void){
-        feedImageDataCache[url] = data
+        imageDataCache[url] = data
         completion(.success(()))
     }
     
     func retrieve(dataForURL url: URL, completion: @escaping (ImageDataStore.RetrievalResult) -> Void){
-        completion(.success(feedImageDataCache[url]))
+        completion(.success(imageDataCache[url]))
     }
 }
 

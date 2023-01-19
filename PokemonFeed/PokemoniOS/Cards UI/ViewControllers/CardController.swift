@@ -48,10 +48,13 @@ extension CardController: UICollectionViewDataSource {
         requestImage()
         return cell!
     }
-
 }
 
 extension CardController: UICollectionViewDelegate {
+    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        self.cell = cell as? CardCollectionCell
+        requestImage()
+    }
     public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         cancel()
     }

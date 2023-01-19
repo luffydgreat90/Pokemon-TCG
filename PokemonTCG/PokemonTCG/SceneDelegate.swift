@@ -21,6 +21,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     }()
     
+    private lazy var scheduler: AnyDispatchQueueScheduler = DispatchQueue(
+        label: "com.pokemontcg.infra.queue",
+        qos: .userInitiated,
+        attributes: .concurrent
+    ).eraseToAnyScheduler()
+    
     private lazy var boosterSetStore: BoosterSetStore & ImageDataStore = {
         try! CoreDataStore(
             storeURL: NSPersistentContainer
@@ -49,10 +55,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UINavigationController(rootViewController: makeBoosterSetsViewController())
     }()
     
-    convenience init(httpClient: HTTPClient, boosterSetStore: BoosterSetStore & ImageDataStore) {
+    convenience init(httpClient: HTTPClient, boosterSetStore: BoosterSetStore & ImageDataStore, scheduler: AnyDispatchQueueScheduler) {
         self.init()
         self.httpClient = httpClient
         self.boosterSetStore = boosterSetStore
+        self.scheduler = scheduler
     }
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -141,7 +148,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     .getPublisher(url: url)
                     .tryMap(ImageDataMapper.map)
                     .caching(to: localImageLoader, using: url)
+                    .eraseToAnyPublisher()
             })
+            .eraseToAnyPublisher()
     }
     
     private func makeRemoteCardsLoader(url: URL, setId:String) -> () -> AnyPublisher<[Card], Error> {

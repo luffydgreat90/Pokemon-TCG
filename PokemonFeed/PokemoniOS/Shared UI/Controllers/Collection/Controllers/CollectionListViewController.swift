@@ -42,6 +42,10 @@ public final class CollectionListViewController: UICollectionViewController {
         dataSource.apply(snapshot)
     }
     
+    public override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let dsp = controller(for: indexPath)?.delegate
+        dsp?.collectionView?(collectionView, willDisplay: cell, forItemAt: indexPath)
+    }
     public override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let dsp = controller(for: indexPath)?.delegate
         dsp?.collectionView?(collectionView, didEndDisplaying: cell, forItemAt: indexPath)

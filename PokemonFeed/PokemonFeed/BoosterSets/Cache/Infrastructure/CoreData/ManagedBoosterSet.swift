@@ -70,4 +70,9 @@ extension ManagedBoosterSet {
             releaseDate: releaseDate,
             images: LocalImages(symbol: symbol, logo: logo))
     }
+    
+    override func prepareForDeletion() {
+        super.prepareForDeletion()
+        managedObjectContext?.userInfo[symbol] = data
+    }
 }
