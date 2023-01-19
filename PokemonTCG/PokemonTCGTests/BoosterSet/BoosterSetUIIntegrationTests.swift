@@ -45,9 +45,11 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         sut.loadViewIfNeeded()
         XCTAssertEqual(loader.loadBoosterSetCallCount, 1, "Expected a loading request once view is loaded")
         
+        loader.completeBoosterSetLoading(at: 0)
         sut.simulateUserInitiatedReload()
         XCTAssertEqual(loader.loadBoosterSetCallCount, 2, "Expected another loading request once user initiates a reload")
         
+        loader.completeBoosterSetLoading(at: 1)
         sut.simulateUserInitiatedReload()
         XCTAssertEqual(loader.loadBoosterSetCallCount, 3, "Expected yet another loading request once user initiates another reload")
     }

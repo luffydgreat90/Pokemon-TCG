@@ -57,6 +57,8 @@ extension BoosterSetUIIntegrationTests {
                     loadMorePublisher: lastPage ? nil : { [weak self] in
                         self?.loadMorePublisher() ?? Empty().eraseToAnyPublisher()
             }))
+            
+            loadMoreRequests[index].send(completion: .finished)
         }
 
         func completeLoadMoreWithError(at index: Int = 0) {
