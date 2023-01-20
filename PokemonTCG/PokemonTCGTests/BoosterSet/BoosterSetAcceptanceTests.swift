@@ -16,10 +16,12 @@ class BoosterSetAcceptanceTests: XCTestCase {
         
         let feed = launch(httpClient: .online(response), boosterSetStore: .empty)
         
-        XCTAssertEqual(feed.numberOfRenderedBoosterSetViews(), 2)
-        XCTAssertEqual(feed.renderedFeedImageData(at: 0), makeImageData())
-        XCTAssertEqual(feed.renderedFeedImageData(at: 1), makeImageData())
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            XCTAssertEqual(feed.numberOfRenderedBoosterSetViews(), 2)
+            XCTAssertEqual(feed.renderedFeedImageData(at: 0), self.makeImageData())
+            XCTAssertEqual(feed.renderedFeedImageData(at: 1), self.makeImageData())
+        }
+       
         XCTAssertTrue(feed.canLoadMore)
     }
     

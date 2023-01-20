@@ -77,7 +77,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
-    
+        
     private func makeBoosterSetsViewController() -> ListViewController {
         return BoosterSetsUIComposer.boosterSetsComposedWith(
             boosterSetsLoader: makeRemoteBoosterSetsLoaderWithLocalFallback,
@@ -90,6 +90,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .caching(to: localBoosterSetLoader)
             .fallback(to: localBoosterSetLoader.loadPublisher)
             .map(makeFirstPage)
+            .subscribe(on: scheduler)
             .eraseToAnyPublisher()
     }
     
@@ -118,6 +119,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 (cachedItems + newItems, newItems.last)
             }.map(makePage)
             .caching(to: localBoosterSetLoader)
+            .subscribe(on: scheduler)
             .eraseToAnyPublisher()
     }
     
@@ -143,13 +145,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func makeImageLoader(withURL url:URL?, localImageLoader: LocalImageDataLoader) -> AnyPublisher<Data, Error> {
         return localImageLoader
             .loadImageDataPublisher(from: url)
-            .fallback(to: { [httpClient] in
+            .fallback(to: { [httpClient, scheduler] in
                 return httpClient
                     .getPublisher(url: url)
                     .tryMap(ImageDataMapper.map)
                     .caching(to: localImageLoader, using: url)
+                    .subscribe(on: scheduler)
                     .eraseToAnyPublisher()
             })
+            .subscribe(on: scheduler)
             .eraseToAnyPublisher()
     }
     
