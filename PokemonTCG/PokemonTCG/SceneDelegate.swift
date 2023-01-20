@@ -158,7 +158,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func makeRemoteCardsLoader(url: URL, setId:String) -> () -> AnyPublisher<[Card], Error> {
-        return {  [httpClient, localCardLoader] in
+        return {  [httpClient, localCardLoader, scheduler] in
             httpClient
             .getPublisher(url: url)
             .tryMap(CardMapper.map)
@@ -166,6 +166,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .fallback(to: {
                 return localCardLoader.loadPublisher(setId: setId)
             })
+            .subscribe(on: scheduler)
+            .eraseToAnyPublisher()
         }
     }
 }

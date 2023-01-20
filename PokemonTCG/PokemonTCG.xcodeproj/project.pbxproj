@@ -27,6 +27,7 @@
 		8E0678BF2970DFEF00E71A2B /* BoosterSetAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678BE2970DFEF00E71A2B /* BoosterSetAcceptanceTests.swift */; };
 		8E0678C12970E3F700E71A2B /* InMemoryBoosterSetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678C02970E3F700E71A2B /* InMemoryBoosterSetStore.swift */; };
 		8E2C0D612974CA560079329F /* Paginated+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2C0D602974CA560079329F /* Paginated+Helpers.swift */; };
+		8E3053A3297AE5A40046EFEC /* ImageLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3053A2297AE5A40046EFEC /* ImageLoaderSpy.swift */; };
 		8E56CE8429679BD000FFCD15 /* CardListUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */; };
 		8EA9B9C02964EA84005E6080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9BF2964EA84005E6080 /* AppDelegate.swift */; };
 		8EA9B9C22964EA84005E6080 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9C12964EA84005E6080 /* SceneDelegate.swift */; };
@@ -90,6 +91,7 @@
 		8E0678BE2970DFEF00E71A2B /* BoosterSetAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetAcceptanceTests.swift; sourceTree = "<group>"; };
 		8E0678C02970E3F700E71A2B /* InMemoryBoosterSetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryBoosterSetStore.swift; sourceTree = "<group>"; };
 		8E2C0D602974CA560079329F /* Paginated+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Paginated+Helpers.swift"; sourceTree = "<group>"; };
+		8E3053A2297AE5A40046EFEC /* ImageLoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderSpy.swift; sourceTree = "<group>"; };
 		8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListUIComposer.swift; sourceTree = "<group>"; };
 		8EA9B9BC2964EA84005E6080 /* PokemonTCG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonTCG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA9B9BF2964EA84005E6080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				8E06787D296E11EC00E71A2B /* UIView+LayoutCycle.swift */,
 				8E067883296E1EA600E71A2B /* UIButton+TestHelpers.swift */,
 				8E067885296E326F00E71A2B /* UIImage+TestHelpers.swift */,
+				8E3053A2297AE5A40046EFEC /* ImageLoaderSpy.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E067890296ECA3000E71A2B /* CardUIIntegrationTests+Assertions.swift in Sources */,
+				8E3053A3297AE5A40046EFEC /* ImageLoaderSpy.swift in Sources */,
 				8E06787C296E10DD00E71A2B /* BoosterSetUIIntegrationTests+Assertions.swift in Sources */,
 				8E067884296E1EA600E71A2B /* UIButton+TestHelpers.swift in Sources */,
 				8E067876296E069000E71A2B /* ListViewController+TestHelpers.swift in Sources */,
