@@ -15,32 +15,32 @@ class ImageDataStoreSpy: ImageDataStore {
     }
 
     private(set) var receivedImages = [ImageData]()
-    private var retrievalCompletions = [(ImageDataStore.RetrievalResult) -> Void]()
-    private var insertionCompletions = [(ImageDataStore.InsertionResult) -> Void]()
+    private var retrievalResult: Result<Data?, Error>?
+    private var insertionResult: Result<Void, Error>?
 
-    func insert(_ data: Data, for url: URL, completion: @escaping (ImageDataStore.InsertionResult) -> Void) {
+    func insert(_ data: Data, for url: URL) throws {
         receivedImages.append(.insert(data: data, for: url))
-        insertionCompletions.append(completion)
+        try insertionResult?.get()
     }
 
-    func retrieve(dataForURL url: URL, completion: @escaping (ImageDataStore.RetrievalResult) -> Void) {
+    func retrieve(dataForURL url: URL) throws -> Data? {
         receivedImages.append(.retrieve(dataFor: url))
-        retrievalCompletions.append(completion)
+        return try retrievalResult?.get()
     }
 
     func completeRetrieval(with error: Error, at index: Int = 0) {
-        retrievalCompletions[index](.failure(error))
+        retrievalResult = .failure(error)
     }
 
     func completeRetrieval(with data: Data?, at index: Int = 0) {
-        retrievalCompletions[index](.success(data))
+        retrievalResult = .success(data)
     }
 
     func completeInsertion(with error: Error, at index: Int = 0) {
-        insertionCompletions[index](.failure(error))
+        insertionResult = .failure(error)
     }
 
     func completeInsertionSuccessfully(at index: Int = 0) {
-        insertionCompletions[index](.success(()))
+        insertionResult = .success(())
     }
 }

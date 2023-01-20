@@ -11,7 +11,8 @@ import PokemoniOS
 import Combine
 
 extension BoosterSetUIIntegrationTests {
-    final class LoaderSpy: ImageDataLoader {
+    final class LoaderSpy {
+    
         private var boosterSetRequests = [PassthroughSubject<Paginated<BoosterSet>, Error>]()
     
         var loadBoosterSetCallCount: Int {
@@ -67,36 +68,34 @@ extension BoosterSetUIIntegrationTests {
         
         // MARK: - ImageDataLoader
         
-        private var imageRequests = [(url: URL, completion: (ImageDataLoader.Result) -> Void)]()
+        private var imageRequests =  [(url: URL, publisher: PassthroughSubject<Data, Error>)]()
         private(set) var cancelledImageURLs = [URL]()
         
         var loadedImageURLs: [URL] {
             return imageRequests.map { $0.url }
         }
         
-        private struct TaskSpy: ImageDataLoaderTask {
-            let cancelCallback: () -> Void
-            func cancel() {
-                cancelCallback()
-            }
-        }
-        
-        func loadImageData(from url: URL?, completion: @escaping (ImageDataLoader.Result) -> Void) -> ImageDataLoaderTask {
+        func loadImageData(from url: URL?) -> AnyPublisher<Data, Error>  {
             guard let url = url else{
-                return TaskSpy {}
+                return Future { complete in
+                    complete(.failure(LocalImageDataLoader.LoadError.notFound))
+                }.eraseToAnyPublisher()
             }
             
-            imageRequests.append((url, completion))
-            return TaskSpy { [weak self] in self?.cancelledImageURLs.append(url) }
+            let publisher = PassthroughSubject<Data, Error>()
+            imageRequests.append((url, publisher))
+            return publisher.handleEvents(receiveCancel: { [weak self] in
+                self?.cancelledImageURLs.append(url)
+            }).eraseToAnyPublisher()
         }
         
         func completeImageLoading(with imageData: Data = Data(), at index: Int = 0) {
-            imageRequests[index].completion(.success(imageData))
+            imageRequests[index].publisher.send(imageData)
+            imageRequests[index].publisher.send(completion: .finished)
         }
 
         func completeImageLoadingWithError(at index: Int = 0) {
-            let error = NSError(domain: "an error", code: 0)
-            imageRequests[index].completion(.failure(error))
+            imageRequests[index].publisher.send(completion: .failure(anyNSError()))
         }
     }
 }

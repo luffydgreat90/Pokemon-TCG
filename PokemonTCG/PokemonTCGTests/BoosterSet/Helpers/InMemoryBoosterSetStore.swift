@@ -34,13 +34,12 @@ extension InMemoryBoosterSetStore: BoosterSetStore {
 }
 
 extension InMemoryBoosterSetStore: ImageDataStore {
-    func insert(_ data: Data, for url: URL, completion: @escaping (ImageDataStore.InsertionResult) -> Void){
+    func insert(_ data: Data, for url: URL) throws {
         imageDataCache[url] = data
-        completion(.success(()))
     }
     
-    func retrieve(dataForURL url: URL, completion: @escaping (ImageDataStore.RetrievalResult) -> Void){
-        completion(.success(imageDataCache[url]))
+    func retrieve(dataForURL url: URL) throws -> Data? {
+        imageDataCache[url]
     }
 }
 

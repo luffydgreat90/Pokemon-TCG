@@ -19,7 +19,7 @@ class LoadImageDataFromCacheUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let url = anyURL()
 
-        _ = sut.loadImageData(from: url) { _ in }
+        _ = try? sut.loadImageData(from: url)
 
         XCTAssertEqual(store.receivedImages, [.retrieve(dataFor: url)])
     }
@@ -49,34 +49,6 @@ class LoadImageDataFromCacheUseCaseTests: XCTestCase {
             store.completeRetrieval(with: foundData)
         })
     }
-
-    func test_loadImageDataFromURL_doesNotDeliverResultAfterCancellingTask() {
-        let (sut, store) = makeSUT()
-        let foundData = anyData()
-
-        var received = [ImageDataLoader.Result]()
-        let task = sut.loadImageData(from: anyURL()) { received.append($0) }
-        task.cancel()
-
-        store.completeRetrieval(with: foundData)
-        store.completeRetrieval(with: .none)
-        store.completeRetrieval(with: anyNSError())
-
-        XCTAssertTrue(received.isEmpty, "Expected no received results after cancelling task")
-    }
-
-    func test_loadImageDataFromURL_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
-        let store = ImageDataStoreSpy()
-        var sut: ImageDataLoader? = LocalImageDataLoader(store: store)
-
-        var received = [ImageDataLoader.Result]()
-        _ = sut?.loadImageData(from: anyURL()) { received.append($0) }
-
-        sut = nil
-        store.completeRetrieval(with: anyData())
-
-        XCTAssertTrue(received.isEmpty, "Expected no received results after instance has been deallocated")
-    }
     
     // MARK: - Helpers
 
@@ -88,11 +60,11 @@ class LoadImageDataFromCacheUseCaseTests: XCTestCase {
         return (sut, store)
     }
 
-    private func failed() -> ImageDataLoader.Result {
+    private func failed() -> Result<Data, Error> {
         return .failure(LocalImageDataLoader.LoadError.failed)
     }
 
-    private func notFound() -> ImageDataLoader.Result {
+    private func notFound() -> Result<Data, Error> {
         return .failure(LocalImageDataLoader.LoadError.notFound)
     }
 
@@ -100,26 +72,20 @@ class LoadImageDataFromCacheUseCaseTests: XCTestCase {
         XCTFail("Expected no no invocations", file: file, line: line)
     }
     
-    private func expect(_ sut: LocalImageDataLoader, toCompleteWith expectedResult: ImageDataLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
-        let exp = expectation(description: "Wait for load completion")
+    private func expect(_ sut: LocalImageDataLoader, toCompleteWith expectedResult: Result<Data, Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        
+        let receivedResult = Result { try sut.loadImageData(from: anyURL()) }
 
-        _ = sut.loadImageData(from: anyURL()) { receivedResult in
-            switch (receivedResult, expectedResult) {
-            case let (.success(receivedData), .success(expectedData)):
-                XCTAssertEqual(receivedData, expectedData, file: file, line: line)
-
-            case (.failure(let receivedError as LocalImageDataLoader.LoadError),
-                  .failure(let expectedError as LocalImageDataLoader.LoadError)):
-                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
-
-            default:
-                XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
-            }
-
-            exp.fulfill()
+        switch (receivedResult, expectedResult) {
+        case let (.success(receivedData), .success(expectedData)):
+            XCTAssertEqual(receivedData, expectedData, file: file, line: line)
+            
+        case (.failure(let receivedError as LocalImageDataLoader.LoadError),
+              .failure(let expectedError as LocalImageDataLoader.LoadError)):
+            XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+            
+        default:
+            XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
         }
-
-        action()
-        wait(for: [exp], timeout: 1.0)
     }
 }

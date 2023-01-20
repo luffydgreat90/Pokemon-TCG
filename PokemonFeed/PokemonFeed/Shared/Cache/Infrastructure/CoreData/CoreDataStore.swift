@@ -14,6 +14,7 @@ public protocol DataStore {
 
 public protocol DataStoreImage: DataStore {
     static func resultImageRetrieve(dataForURL url: URL, context: NSManagedObjectContext) -> Result<Data?, Error>
+    
     static func resultSaveRetrieve(data: Data, for url: URL, context: NSManagedObjectContext) -> Result<Void, Error>
 }
 
@@ -39,6 +40,13 @@ public final class CoreDataStore<Store:DataStore>{
         context.perform { [context] in action(context) }
     }
 
+    func performSync<R>(_ action: (NSManagedObjectContext) -> Result<R, Error>) throws -> R {
+        let context = self.context
+        var result: Result<R, Error>!
+        context.performAndWait { result = action(context) }
+        return try result.get()
+    }
+    
     private func cleanUpReferencesToPersistentStores() {
         context.performAndWait {
             let coordinator = self.container.persistentStoreCoordinator
@@ -52,15 +60,14 @@ public final class CoreDataStore<Store:DataStore>{
 }
 
 extension CoreDataStore: ImageDataStore where Store: DataStoreImage {
-    public func insert(_ data: Data, for url: URL, completion: @escaping (ImageDataStore.InsertionResult) -> Void) {
-        perform { context in
-            completion(Store.resultSaveRetrieve(data: data, for: url, context: context))
+    public func insert(_ data: Data, for url: URL) throws {
+        try performSync { context in
+            Store.resultSaveRetrieve(data: data, for: url, context: context)
         }
     }
-    
-    public func retrieve(dataForURL url: URL, completion: @escaping (ImageDataStore.RetrievalResult) -> Void) {
-        perform { context in
-            completion(Store.resultImageRetrieve(dataForURL: url, context: context))
+    public func retrieve(dataForURL url: URL) throws -> Data? {
+        try performSync { context in
+            Store.resultImageRetrieve(dataForURL: url, context: context)
         }
     }
 }

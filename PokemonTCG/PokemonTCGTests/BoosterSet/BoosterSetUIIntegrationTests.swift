@@ -411,7 +411,7 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         let loader = LoaderSpy()
         let sut = BoosterSetsUIComposer.boosterSetsComposedWith(
             boosterSetsLoader: loader.loadPublisher,
-            imageLoader: loader.loadImageDataPublisher,
+            imageLoader: loader.loadImageData,
             selection: selection)
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)

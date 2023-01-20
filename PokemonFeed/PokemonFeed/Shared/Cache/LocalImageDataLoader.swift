@@ -16,66 +16,37 @@ public final class LocalImageDataLoader {
 }
 
 extension LocalImageDataLoader: ImageDataCache {
-    public typealias SaveResult = ImageDataCache.Result
-
     public enum SaveError: Error {
         case failed
     }
 
-    public func save(_ data: Data, for url: URL, completion: @escaping (SaveResult) -> Void) {
-        store.insert(data, for: url) { [weak self] result in
-            guard self != nil else { return }
-            completion(result.mapError { _ in SaveError.failed })
-        }
+    public func save(_ data: Data, for url: URL) throws {
+        try? store.insert(data, for: url)
     }
 }
 
 extension LocalImageDataLoader: ImageDataLoader {
-    public typealias LoadResult = ImageDataLoader.Result
-
+    
     public enum LoadError: Error {
         case invalidURL
         case failed
         case notFound
     }
 
-    private final class LoadImageDataTask: ImageDataLoaderTask {
-        private var completion: ((ImageDataLoader.Result) -> Void)?
 
-        init(_ completion: @escaping (ImageDataLoader.Result) -> Void) {
-            self.completion = completion
-        }
-
-        func complete(with result: ImageDataLoader.Result) {
-            completion?(result)
-        }
-
-        func cancel() {
-            preventFurtherCompletions()
-        }
-
-        private func preventFurtherCompletions() {
-            completion = nil
-        }
-    }
-
-    public func loadImageData(from url: URL?, completion: @escaping (LoadResult) -> Void) -> ImageDataLoaderTask {
+    public func loadImageData(from url: URL?) throws -> Data {
         guard let url = url else {
-            return Result {
-                throw LoadError.invalidURL
-            } as! ImageDataLoaderTask
+            throw LoadError.invalidURL
         }
         
-        let task = LoadImageDataTask(completion)
-        store.retrieve(dataForURL: url) { [weak self] result in
-            guard self != nil else { return }
-            
-            task.complete(with: result
-                .mapError { _ in LoadError.failed }
-                .flatMap { data in
-                      data.map { .success($0) } ?? .failure(LoadError.notFound)
-                })
+        do {
+            if let imageData = try store.retrieve(dataForURL: url) {
+                return imageData
+            }
+        } catch {
+            throw LoadError.failed
         }
-        return task
+        
+        throw LoadError.notFound
     }
 }
