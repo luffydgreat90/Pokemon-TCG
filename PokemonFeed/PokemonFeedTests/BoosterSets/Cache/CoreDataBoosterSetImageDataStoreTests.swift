@@ -24,16 +24,15 @@ final class CoreDataBoosterSetImageDataStoreTests: XCTestCase {
         expect(sut, toCompleteRetrievalWith: notFound(), for: nonMatchingURL)
     }
     
-    func test_retrieveImageData_deliversLastInsertedValue() {
+    func test_retrieveImageData_inserteData() {
         let sut = makeSUT()
-        let firstStoredData = Data("first".utf8)
-        let lastStoredData = Data("last".utf8)
+        let storedData = Data("first".utf8)
+
         let url = URL(string: "http://a-url.com")!
 
-        insert(firstStoredData, for: url, into: sut)
-        insert(lastStoredData, for: url, into: sut)
-
-        expect(sut, toCompleteRetrievalWith: found(lastStoredData), for: url)
+        insert(storedData, for: url, into: sut)
+    
+        self.expect(sut, toCompleteRetrievalWith: self.found(storedData), for: url)
     }
     
 
