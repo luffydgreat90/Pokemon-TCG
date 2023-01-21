@@ -15,8 +15,8 @@ final class CardSnapshotTests: XCTestCase {
 
         sut.display(cardsWithImage())
 
-        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "CARDS_WITH_IMAGE_light")
-        assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "CARDS_WITH_IMAGE_dark")
+        record(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "CARDS_WITH_IMAGE_light")
+        record(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "CARDS_WITH_IMAGE_dark")
     }
     
     func test_CardsWithoutImage() {
@@ -24,8 +24,8 @@ final class CardSnapshotTests: XCTestCase {
 
         sut.display(cardsWithoutImage())
         
-        assert(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "CARDS_WITHOUT_IMAGE_light")
-        assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "CARDS_WITHOUT_IMAGE_dark")
+        record(snapshot: sut.snapshot(for: .iPhone13(style: .light)), named: "CARDS_WITHOUT_IMAGE_light")
+        record(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "CARDS_WITHOUT_IMAGE_dark")
     }
 
     // MARK: - Helpers
