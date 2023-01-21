@@ -62,9 +62,6 @@ public final class CollectionListViewController: UICollectionViewController {
 
 private extension CollectionListViewController {
     func setupUI(){
-        debugPrint("framess")
-        debugPrint(self.frame)
-        debugPrint(self.view.frame)
         collectionView = UICollectionView.init(frame: self.frame ?? self.view.frame, collectionViewLayout: self.layout)
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
