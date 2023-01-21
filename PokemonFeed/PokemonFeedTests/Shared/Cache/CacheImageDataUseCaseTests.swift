@@ -29,6 +29,7 @@ class CacheImageDataUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
 
         expect(sut, toCompleteWith: failed(), when: {
+            
             let insertionError = anyNSError()
             store.completeInsertion(with: insertionError)
         })
@@ -57,7 +58,7 @@ class CacheImageDataUseCaseTests: XCTestCase {
     }
     
     private func expect(_ sut: LocalImageDataLoader, toCompleteWith expectedResult: Result<Void, Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
-        
+        action()
         let receivedResult = Result { try sut.save(anyData(), for: anyURL()) }
         
         switch (receivedResult, expectedResult) {

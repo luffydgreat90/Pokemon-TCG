@@ -27,7 +27,7 @@ class ManagedBoosterSet: NSManagedObject {
 extension ManagedBoosterSet {
     
     static func boosterSets(from localBoosterSet: [LocalBoosterSet], in context: NSManagedObjectContext) -> NSOrderedSet {
-        return NSOrderedSet(array: localBoosterSet.map { local in
+         let boosterSets = NSOrderedSet(array: localBoosterSet.map { local in
             let managed = ManagedBoosterSet(context: context)
             managed.id = local.id
             managed.isExpanded = local.legalities.isExpanded
@@ -43,6 +43,8 @@ extension ManagedBoosterSet {
             managed.data = context.userInfo[local.images.symbol] as? Data
             return managed
         })
+        context.userInfo.removeAllObjects()
+        return boosterSets
     }
     
     static func data(with url: URL, in context: NSManagedObjectContext) throws -> Data? {
@@ -55,7 +57,6 @@ extension ManagedBoosterSet {
         request.predicate = NSPredicate(format: "%K = %@", argumentArray: [#keyPath(ManagedBoosterSet.symbol), url])
         request.returnsObjectsAsFaults = false
         request.fetchLimit = 1
-        
         return try context.fetch(request).first
     }
     

@@ -31,7 +31,7 @@ final class CollectionListSnapshotTests: XCTestCase {
 
     private func makeSUT() -> CollectionListViewController {
         let controller = CollectionListViewController(
-            collectionViewLayout: UICollectionViewFlowLayout())
+            collectionViewLayout: CardCollectionLayout())
         controller.loadViewIfNeeded()
         controller.collectionView.showsVerticalScrollIndicator = false
         controller.collectionView.showsHorizontalScrollIndicator = false

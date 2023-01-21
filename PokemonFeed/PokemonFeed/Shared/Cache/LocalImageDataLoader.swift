@@ -21,7 +21,11 @@ extension LocalImageDataLoader: ImageDataCache {
     }
 
     public func save(_ data: Data, for url: URL) throws {
-        try? store.insert(data, for: url)
+        do {
+            try store.insert(data, for: url)
+        } catch {
+            throw SaveError.failed
+        }
     }
 }
 
