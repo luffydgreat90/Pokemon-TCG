@@ -22,6 +22,10 @@ extension CollectionListViewController {
         return collectionView.refreshControl?.isRefreshing == true
     }
     
+    var errorMessage: String? {
+        return errorView.message
+    }
+    
     private var cardsSection: Int { 0 }
 }
 
