@@ -29,6 +29,7 @@ extension CardUIIntegrationTests {
         
         func completeCardLoading(with cards: [Card] = [], at index: Int = 0) {
             requests[index].send(cards)
+            requests[index].send(completion: .finished)
         }
 
         func completeCardLoadingWithError(at index: Int = 0) {

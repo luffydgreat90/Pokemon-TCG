@@ -20,12 +20,14 @@ class CardUIIntegrationTests: XCTestCase {
         sut.loadViewIfNeeded()
         
         XCTAssertEqual(loader.loadCardCallCount, 1, "Expected a loading request once view is loaded")
-        
+        loader.completeCardLoading(at: 0)
         sut.simulateUserInitiatedReload()
-//        XCTAssertEqual(loader.loadCardCallCount, 2, "Expected another loading request once user initiates a reload")
-//
-//        sut.simulateUserInitiatedReload()
-//        XCTAssertEqual(loader.loadCardCallCount, 3, "Expected yet another loading request once user initiates another reload")
+
+        XCTAssertEqual(loader.loadCardCallCount, 2, "Expected another loading request once user initiates a reload")
+        
+        loader.completeCardLoading(at: 1)
+        sut.simulateUserInitiatedReload()
+        XCTAssertEqual(loader.loadCardCallCount, 3, "Expected yet another loading request once user initiates another reload")
         
     }
     
@@ -38,11 +40,11 @@ class CardUIIntegrationTests: XCTestCase {
         loader.completeCardLoading(at: 0)
         XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once loading completes successfully")
         
-//        sut.simulateUserInitiatedReload()
-//        XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once user initiates a reload")
-//
-//        loader.completeCardLoadingWithError(at: 1)
-//        XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading completes with error")
+        sut.simulateUserInitiatedReload()
+        XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once user initiates a reload")
+
+        loader.completeCardLoadingWithError(at: 1)
+        XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading completes with error")
     }
     
     func test_loadCardCompletion_rendersSuccessfullyLoadedCard() {
@@ -58,9 +60,9 @@ class CardUIIntegrationTests: XCTestCase {
         loader.completeCardLoading(with: [card0], at: 0)
         assertThat(sut, isRendering: [card0])
 
-//        sut.simulateUserInitiatedReload()
-//        loader.completeCardLoading(with: [card0, card1, card2, card3], at: 1)
-//        assertThat(sut, isRendering: [card0, card1, card2, card3])
+        sut.simulateUserInitiatedReload()
+        loader.completeCardLoading(with: [card0, card1, card2, card3], at: 1)
+        assertThat(sut, isRendering: [card0, card1, card2, card3])
     }
     
     func test_loadCardCompletion_rendersSuccessfullyLoadedEmptyCardAfterNonEmptyCard() {
@@ -72,9 +74,9 @@ class CardUIIntegrationTests: XCTestCase {
         loader.completeCardLoading(with: [card0, card1], at: 0)
         assertThat(sut, isRendering:  [card0, card1])
 
-//        sut.simulateUserInitiatedReload()
-//        loader.completeCardLoading(with: [], at: 1)
-//        assertThat(sut, isRendering: [])
+        sut.simulateUserInitiatedReload()
+        loader.completeCardLoading(with: [], at: 1)
+        assertThat(sut, isRendering: [])
     }
     
     func test_loadCardCompletion_doesNotAlterCurrentRenderingStateOnError() {
@@ -85,9 +87,9 @@ class CardUIIntegrationTests: XCTestCase {
         loader.completeCardLoading(with: [card0], at: 0)
         assertThat(sut, isRendering: [card0])
 
-//        sut.simulateUserInitiatedReload()
-//        loader.completeCardLoadingWithError(at: 1)
-//        assertThat(sut, isRendering: [card0])
+        sut.simulateUserInitiatedReload()
+        loader.completeCardLoadingWithError(at: 1)
+        assertThat(sut, isRendering: [card0])
     }
     
     func test_loadCardCompletion_dispatchesFromBackgroundToMainThread() {
