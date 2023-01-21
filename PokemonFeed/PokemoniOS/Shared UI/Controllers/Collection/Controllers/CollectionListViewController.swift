@@ -12,11 +12,15 @@ public final class CollectionListViewController: UICollectionViewController {
     public var onRefresh: (() -> Void)?
     public var configureCollectionView: ((UICollectionView) -> Void)?
     private let layout: UICollectionViewLayout
+    private let frame: CGRect?
+    
     private(set) public var errorView: ErrorView = ErrorView()
     
-    public override init(collectionViewLayout layout: UICollectionViewLayout) {
+    public init(collectionViewLayout layout: UICollectionViewLayout, frame: CGRect? = nil) {
         self.layout = layout
+        self.frame = frame
         super.init(collectionViewLayout: layout)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -58,7 +62,10 @@ public final class CollectionListViewController: UICollectionViewController {
 
 private extension CollectionListViewController {
     func setupUI(){
-        collectionView = UICollectionView.init(frame: self.view.frame, collectionViewLayout: self.layout)
+        debugPrint("framess")
+        debugPrint(self.frame)
+        debugPrint(self.view.frame)
+        collectionView = UICollectionView.init(frame: self.frame ?? self.view.frame, collectionViewLayout: self.layout)
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         collectionView.dataSource = dataSource

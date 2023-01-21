@@ -27,12 +27,19 @@ final class CollectionListSnapshotTests: XCTestCase {
         assert(snapshot: sut.snapshot(for: .iPhone13(style: .dark)), named: "COLLECTION_LIST_WITH_ERROR_MESSAGE_dark")
         assert(snapshot: sut.snapshot(for: .iPhone13(style: .light, contentSize: .extraExtraExtraLarge)), named: "COLLECTION_LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge")
     }
+    
     // MARK: - Helpers
 
     private func makeSUT() -> CollectionListViewController {
         let controller = CollectionListViewController(
-            collectionViewLayout: CardCollectionLayout())
+            collectionViewLayout: CardCollectionLayout(),
+            frame: CGRect(origin: CGPoint(x: 0, y: 0), size: SnapshotConfiguration.iPhone13FrameSize))
         controller.loadViewIfNeeded()
+        
+        controller.configureCollectionView = { collectionView in
+            collectionView.register(CardCollectionCell.self)
+        }
+        
         controller.collectionView.showsVerticalScrollIndicator = false
         controller.collectionView.showsHorizontalScrollIndicator = false
         return controller
