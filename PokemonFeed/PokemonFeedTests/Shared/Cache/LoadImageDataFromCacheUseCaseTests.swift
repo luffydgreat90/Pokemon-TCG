@@ -73,6 +73,7 @@ class LoadImageDataFromCacheUseCaseTests: XCTestCase {
     }
     
     private func expect(_ sut: LocalImageDataLoader, toCompleteWith expectedResult: Result<Data, Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        action()
         
         let receivedResult = Result { try sut.loadImageData(from: anyURL()) }
 
