@@ -77,7 +77,6 @@ extension BoosterSetController: UITableViewDataSourcePrefetching {
 extension BoosterSetController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selection()
-        
     }
 }
 

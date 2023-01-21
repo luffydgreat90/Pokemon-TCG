@@ -23,6 +23,10 @@ extension ManagedBoosterSetCache {
         return try context.fetch(request).first
     }
     
+    static func deleteCache(in context: NSManagedObjectContext) throws {
+        try find(in: context).map(context.delete).map(context.save)
+    }
+    
     static func newUniqueInstance(in context: NSManagedObjectContext) throws -> ManagedBoosterSetCache {
         try find(in: context).map(context.delete)
         return ManagedBoosterSetCache(context: context)

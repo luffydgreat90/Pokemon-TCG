@@ -12,10 +12,10 @@ import PokemoniOS
 
 public enum BoosterSetsUIComposer {
    
-    private typealias BoosterSetsPresentationAdapter = LoadResourcePresentationAdapter<[BoosterSet], BoosterSetsViewAdapter>
+    private typealias BoosterSetsPresentationAdapter = LoadResourcePresentationAdapter<Paginated<BoosterSet>, BoosterSetsViewAdapter>
     
     public static func boosterSetsComposedWith(
-        boosterSetsLoader: @escaping () -> AnyPublisher<[BoosterSet], Error>,
+        boosterSetsLoader: @escaping () -> AnyPublisher<Paginated<BoosterSet>, Error>,
         imageLoader: @escaping (URL) -> AnyPublisher<Data, Error>,
         selection: @escaping (BoosterSet) -> Void) -> ListViewController {
             let presentationAdapter = BoosterSetsPresentationAdapter(loader: boosterSetsLoader)
@@ -35,7 +35,7 @@ public enum BoosterSetsUIComposer {
                     selection: selection),
                 loadingView: WeakRefVirtualProxy(listViewController),
                 errorView: WeakRefVirtualProxy(listViewController),
-                mapper: BoosterSetsPresenter.map)
+                mapper: { $0 })
             
             listViewController.onRefresh = presentationAdapter.loadResource
             
@@ -47,23 +47,27 @@ final class BoosterSetsViewAdapter: ResourceView {
     
     private typealias ImageDataPresentationAdapter = LoadResourcePresentationAdapter<Data, WeakRefVirtualProxy<BoosterSetController>>
     
+    private typealias LoadMorePresentationAdapter = LoadResourcePresentationAdapter<Paginated<BoosterSet>, BoosterSetsViewAdapter>
+    
     private weak var controller: ListViewController?
     private let imageLoader: (URL) -> AnyPublisher<Data, Error>
     private let selection: (BoosterSet) -> Void
+    private let dateFormatter: DateFormatter
     
     init(controller: ListViewController? = nil,
          imageLoader: @escaping (URL) -> AnyPublisher<Data, Error>,
-         selection: @escaping (BoosterSet) -> Void) {
+         selection: @escaping (BoosterSet) -> Void,
+         dateFormatter: DateFormatter = DateFormatter.monthDayYear) {
         self.controller = controller
         self.imageLoader = imageLoader
         self.selection = selection
+        self.dateFormatter = dateFormatter
     }
     
-    func display(_ viewModel: BoosterSetsViewModel) {
+    func display(_ viewModel: Paginated<BoosterSet>) {
+        guard let controller = controller else { return }
         
-        let dateFormatter = DateFormatter.monthDayYear
-        
-        let viewControllers = viewModel.sets.map({ model in
+        let boosterSets = viewModel.items.map({ model in
             let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in
                 imageLoader(model.images.symbol)
             })
@@ -84,6 +88,21 @@ final class BoosterSetsViewAdapter: ResourceView {
             return CellController(id: model, controller)
         })
         
-        controller?.display(viewControllers)
+        guard let loadMorePublisher = viewModel.loadMorePublisher else {
+            controller.display(boosterSets)
+            return
+        }
+        
+        let loadMoreAdapter = LoadMorePresentationAdapter(loader: loadMorePublisher)
+        let loadMore = LoadMoreCellController(callBack: loadMoreAdapter.loadResource)
+
+        loadMoreAdapter.presenter = LoadResourcePresenter(
+            resourceView: self,
+            loadingView: WeakRefVirtualProxy(loadMore),
+            errorView: WeakRefVirtualProxy(loadMore))
+        
+        let loadMoreSection = [CellController(id: UUID(), loadMore)]
+        
+        controller.display(boosterSets, loadMoreSection)
     }
 }

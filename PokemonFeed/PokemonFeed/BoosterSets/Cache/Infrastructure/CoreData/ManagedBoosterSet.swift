@@ -40,12 +40,17 @@ extension ManagedBoosterSet {
             managed.series = local.series
             managed.symbol = local.images.symbol
             managed.total = Int16(local.total)
+            managed.data = context.userInfo[local.images.symbol] as? Data
             return managed
         })
     }
     
+    static func data(with url: URL, in context: NSManagedObjectContext) throws -> Data? {
+        if let data = context.userInfo[url] as? Data { return data }
+        return try first(with: url, in: context)?.data
+    }
+    
     static func first(with url: URL, in context: NSManagedObjectContext) throws -> ManagedBoosterSet? {
-        
         let request = NSFetchRequest<ManagedBoosterSet>(entityName: entity().name!)
         request.predicate = NSPredicate(format: "%K = %@", argumentArray: [#keyPath(ManagedBoosterSet.symbol), url])
         request.returnsObjectsAsFaults = false
@@ -66,4 +71,8 @@ extension ManagedBoosterSet {
             images: LocalImages(symbol: symbol, logo: logo))
     }
     
+    override func prepareForDeletion() {
+        super.prepareForDeletion()
+        managedObjectContext?.userInfo[symbol] = data
+    }
 }

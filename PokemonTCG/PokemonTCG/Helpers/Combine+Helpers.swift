@@ -45,15 +45,23 @@ extension Publisher where Output == Data {
     }
 }
 
-extension Publisher where Output == [BoosterSet] {
-    func caching(to cache: BoosterSetCache) -> AnyPublisher<Output, Failure> {
+extension Publisher {
+    func caching(to cache: BoosterSetCache) -> AnyPublisher<Output, Failure> where Output == [BoosterSet] {
+        handleEvents(receiveOutput: cache.saveIgnoringResult).eraseToAnyPublisher()
+    }
+    
+    func caching(to cache: BoosterSetCache) -> AnyPublisher<Output, Failure> where Output == Paginated<BoosterSet> {
         handleEvents(receiveOutput: cache.saveIgnoringResult).eraseToAnyPublisher()
     }
 }
 
 private extension BoosterSetCache {
-    func saveIgnoringResult(_ feed: [BoosterSet]) {
-        save(feed) { _ in }
+    func saveIgnoringResult(_ boosterSets: [BoosterSet]) {
+        save(boosterSets) { _ in }
+    }
+    
+    func saveIgnoringResult(_ page: Paginated<BoosterSet>) {
+        saveIgnoringResult(page.items)
     }
 }
 
@@ -101,7 +109,7 @@ public extension LocalCardLoader {
 private extension ImageDataCache {
     func saveIgnoringResult(_ data: Data, for url: URL?) {
         guard let url = url else { return }
-        save(data, for: url) { _ in }
+        try? save(data, for: url)
     }
 }
 
@@ -109,14 +117,11 @@ public extension ImageDataLoader {
     typealias Publisher = AnyPublisher<Data, Error>
     
     func loadImageDataPublisher(from url: URL?) -> Publisher {
-       var task: ImageDataLoaderTask?
-        
-        return Deferred {
+        Deferred {
             Future { completion in
-                task = self.loadImageData(from: url, completion: completion)
+                completion(Result{ try self.loadImageData(from: url) })
             }
         }
-        .handleEvents(receiveCancel: { task?.cancel() })
         .eraseToAnyPublisher()
     }
 }

@@ -114,8 +114,8 @@ public final class BoosterSetCell: UITableViewCell {
             boosterSetImageView.bottomAnchor.constraint(equalTo: containerImageView.bottomAnchor, constant: -8),
             
             titleLabel.topAnchor.constraint(equalTo: containerDetailsView.topAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: containerDetailsView.leadingAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: containerDetailsView.trailingAnchor, constant: -8),
+            titleLabel.leadingAnchor.constraint(equalTo: containerDetailsView.leadingAnchor, constant: 8).withPriority(999),
+            titleLabel.trailingAnchor.constraint(equalTo: containerDetailsView.trailingAnchor, constant: -8).withPriority(999),
             
             numberLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
             numberLabel.leadingAnchor.constraint(equalTo: containerDetailsView.leadingAnchor, constant: 8),

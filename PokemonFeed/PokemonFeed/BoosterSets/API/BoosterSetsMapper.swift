@@ -56,7 +56,7 @@ public enum BoosterSetsMapper {
                        legalities: Legalities(isUnlimited: Legalities.checkLegality(legality: $0.legalities.unlimited), isStandard: Legalities.checkLegality(legality: $0.legalities.standard), isExpanded: Legalities.checkLegality(legality: $0.legalities.expanded)),
                        releaseDate: $0.releaseDate,
                        images: BoosterImage(symbol: $0.images.symbol, logo: $0.images.logo))
-        }.sorted(by: { $0.releaseDate > $1.releaseDate})
+        }
     }
 
 }

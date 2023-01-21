@@ -14,12 +14,18 @@ import PokemoniOS
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-    private lazy var baseURL = URL(string: "https://api.pokemontcg.io/v2/")!
+    
+    private lazy var baseURL = URL(string: "https://api.pokemontcg.io")!
     
     private lazy var httpClient: HTTPClient = {
         URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     }()
+    
+    private lazy var scheduler: AnyDispatchQueueScheduler = DispatchQueue(
+        label: "com.pokemontcg.infra.queue",
+        qos: .userInitiated,
+        attributes: .concurrent
+    ).eraseToAnyScheduler()
     
     private lazy var boosterSetStore: BoosterSetStore & ImageDataStore = {
         try! CoreDataStore(
@@ -49,10 +55,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UINavigationController(rootViewController: makeBoosterSetsViewController())
     }()
     
-    convenience init(httpClient: HTTPClient, boosterSetStore: BoosterSetStore & ImageDataStore) {
+    convenience init(httpClient: HTTPClient, boosterSetStore: BoosterSetStore & ImageDataStore, scheduler: AnyDispatchQueueScheduler) {
         self.init()
         self.httpClient = httpClient
         self.boosterSetStore = boosterSetStore
+        self.scheduler = scheduler
     }
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -69,26 +76,53 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func configureWindow() {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        
     }
-    
+        
     private func makeBoosterSetsViewController() -> ListViewController {
         return BoosterSetsUIComposer.boosterSetsComposedWith(
-            boosterSetsLoader: makeRemoteBoosterSetsLoader,
+            boosterSetsLoader: makeRemoteBoosterSetsLoaderWithLocalFallback,
             imageLoader: makeBoosterSetImageLoader,
-            selection: showCard(for:))
+            selection: showCard)
     }
     
-    private func makeRemoteBoosterSetsLoader() -> AnyPublisher<[BoosterSet], Error> {
-        let url = BoosterSetsEndPoint.get.url(baseURL: baseURL)
-
+    private func makeRemoteBoosterSetsLoaderWithLocalFallback() -> AnyPublisher<Paginated<BoosterSet>, Error> {
+        return makeRemoteBoosterSetsLoader()
+            .caching(to: localBoosterSetLoader)
+            .fallback(to: localBoosterSetLoader.loadPublisher)
+            .map(makeFirstPage)
+            .subscribe(on: scheduler)
+            .eraseToAnyPublisher()
+    }
+    
+    private func makeRemoteBoosterSetsLoader(totalItems:Int = 0) -> AnyPublisher<[BoosterSet], Error> {
+        let url = BoosterSetsEndPoint.get(totalItems: totalItems).url(baseURL: baseURL)
         return httpClient
             .getPublisher(url: url)
             .tryMap(BoosterSetsMapper.map)
-            .caching(to: localBoosterSetLoader)
-            .fallback(to: localBoosterSetLoader.loadPublisher)
+            .eraseToAnyPublisher()
+    }
+    
+    private func makeFirstPage(items: [BoosterSet]) -> Paginated<BoosterSet> {
+        makePage(items: items, last: items.last)
+    }
+    
+    private func makePage(items: [BoosterSet], last: BoosterSet?) -> Paginated<BoosterSet> {
+        return Paginated(items: items, loadMorePublisher: last.map { last in
+            { self.makeRemoteLoadMoreLoader(totalItems:items.count) }
+        })
     }
 
+    private func makeRemoteLoadMoreLoader(totalItems:Int) -> AnyPublisher<Paginated<BoosterSet>, Error> {
+        localBoosterSetLoader.loadPublisher()
+            .zip(makeRemoteBoosterSetsLoader(totalItems: totalItems))
+            .map { (cachedItems, newItems) in
+                (cachedItems + newItems, newItems.last)
+            }.map(makePage)
+            .caching(to: localBoosterSetLoader)
+            .subscribe(on: scheduler)
+            .eraseToAnyPublisher()
+    }
+    
     private func showCard(for boosterSet: BoosterSet) {
         let url = CardEndPoint.get(boosterSet.id).url(baseURL: baseURL)
         let viewController = CardListUIComposer.cardListComposedWith(
@@ -111,16 +145,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func makeImageLoader(withURL url:URL?, localImageLoader: LocalImageDataLoader) -> AnyPublisher<Data, Error> {
         return localImageLoader
             .loadImageDataPublisher(from: url)
-            .fallback(to: { [httpClient] in
+            .fallback(to: { [httpClient, scheduler] in
                 return httpClient
                     .getPublisher(url: url)
                     .tryMap(ImageDataMapper.map)
                     .caching(to: localImageLoader, using: url)
+                    .subscribe(on: scheduler)
+                    .eraseToAnyPublisher()
             })
+            .subscribe(on: scheduler)
+            .eraseToAnyPublisher()
     }
     
     private func makeRemoteCardsLoader(url: URL, setId:String) -> () -> AnyPublisher<[Card], Error> {
-        return {  [httpClient, localCardLoader] in
+        return {  [httpClient, localCardLoader, scheduler] in
             httpClient
             .getPublisher(url: url)
             .tryMap(CardMapper.map)
@@ -128,6 +166,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .fallback(to: {
                 return localCardLoader.loadPublisher(setId: setId)
             })
+            .subscribe(on: scheduler)
+            .eraseToAnyPublisher()
         }
     }
 }

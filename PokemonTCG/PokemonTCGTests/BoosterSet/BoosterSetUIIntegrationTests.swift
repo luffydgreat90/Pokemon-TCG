@@ -38,18 +38,66 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         XCTAssertEqual(selectedImages, [boosterSet0, boosterSet1])
     }
     
-    func test_loadFeedActions_requestFeedFromLoader() {
+    func test_loadBoosterSetsActions_requestBoosterSetsFromLoader() {
         let (sut, loader) = makeSUT()
         XCTAssertEqual(loader.loadBoosterSetCallCount, 0, "Expected no loading requests before view is loaded")
         
         sut.loadViewIfNeeded()
         XCTAssertEqual(loader.loadBoosterSetCallCount, 1, "Expected a loading request once view is loaded")
         
+        loader.completeBoosterSetLoading(at: 0)
         sut.simulateUserInitiatedReload()
         XCTAssertEqual(loader.loadBoosterSetCallCount, 2, "Expected another loading request once user initiates a reload")
         
+        loader.completeBoosterSetLoading(at: 1)
         sut.simulateUserInitiatedReload()
         XCTAssertEqual(loader.loadBoosterSetCallCount, 3, "Expected yet another loading request once user initiates another reload")
+    }
+    
+    // MARK: - Load More Tests
+    
+    func test_loadMoreActions_requestMoreBoosterSetsFromLoader() {
+        let (sut, loader) = makeSUT()
+        XCTAssertEqual(loader.loadBoosterSetCallCount, 0, "Expected no loading requests before view is loaded")
+        
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading()
+        
+        sut.simulateLoadMoreAction()
+        XCTAssertEqual(loader.loadMoreCallCount, 1, "Expected load more requests")
+        
+        XCTAssertEqual(loader.loadMoreCallCount, 1, "Expected to have 1 requests")
+        
+        loader.completeLoadMore(lastPage: false, at: 0)
+        sut.simulateLoadMoreAction()
+        XCTAssertEqual(loader.loadMoreCallCount, 2, "Expected load more requests")
+        
+        loader.completeLoadMoreWithError(at: 1)
+        sut.simulateLoadMoreAction()
+        XCTAssertEqual(loader.loadMoreCallCount, 3, "Expected request after load more failure")
+    }
+    
+    func test_loadingMoreIndicator_isVisibleWhileLoadingMore() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        XCTAssertFalse(sut.isShowingLoadMoreIndicator, "Expected no loading indicator once view is loaded")
+        
+        loader.completeBoosterSetLoading()
+        XCTAssertFalse(sut.isShowingLoadMoreIndicator, "Expected no loading indicator once loading completes successfully")
+        
+        sut.simulateLoadMoreAction()
+        XCTAssertTrue(sut.isShowingLoadMoreIndicator, "Expected loading indicator on load more action")
+        
+        loader.completeLoadMore(at: 0)
+        
+        XCTAssertFalse(sut.isShowingLoadMoreIndicator, "Expected no loading indicator once user initiated loading completes successfully")
+        
+        sut.simulateLoadMoreAction()
+        XCTAssertTrue(sut.isShowingLoadMoreIndicator, "Expected loading indicator on second load more action")
+
+        loader.completeLoadMoreWithError(at: 1)
+        XCTAssertFalse(sut.isShowingLoadMoreIndicator, "Expected no loading indicator once user initiated loading completes with error")
     }
     
     func test_loadingListIndicator_isVisibleWhileLoadingBoosterSet() {
@@ -67,6 +115,53 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         loader.completeBoosterSetLoadingWithError(at: 1)
         XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading completes with error")
     }
+    
+    func test_loadMoreCompletion_dispatchesFromBackgroundToMainThread() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading(at: 0)
+        sut.simulateLoadMoreAction()
+        
+        let exp = expectation(description: "Wait for background queue")
+        DispatchQueue.global().async {
+            loader.completeLoadMore()
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    func test_loadMoreCompletion_rendersErrorMessageOnError() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading()
+        
+        sut.simulateLoadMoreAction()
+        XCTAssertEqual(sut.loadMoreFeedErrorMessage, nil)
+        
+        loader.completeLoadMoreWithError()
+        XCTAssertEqual(sut.loadMoreFeedErrorMessage, loadError)
+        
+        sut.simulateLoadMoreAction()
+        XCTAssertEqual(sut.loadMoreFeedErrorMessage, nil)
+    }
+    
+    func test_tapOnLoadMoreErrorView_loadsMore() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        loader.completeBoosterSetLoading()
+        
+        sut.simulateLoadMoreAction()
+        XCTAssertEqual(loader.loadMoreCallCount, 1)
+        
+        sut.simulateTapOnLoadMoreError()
+        XCTAssertEqual(loader.loadMoreCallCount, 1)
+        
+        loader.completeLoadMoreWithError()
+        sut.simulateTapOnLoadMoreError()
+        XCTAssertEqual(loader.loadMoreCallCount, 2)
+    }
+    
+    // MARK: - Load Images Tests
     
     func test_loadBoosterSetCompletion_rendersSuccessfullyLoadedBoosterSet() {
         let boosterSet0 = makeBoosterSet()
@@ -161,13 +256,13 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         sut.loadViewIfNeeded()
         loader.completeBoosterSetLoading(with: [boosterSet0, boosterSet1])
 
-        XCTAssertEqual(loader.loadedImageURLs, [], "Expected no image URL requests until views become visible")
+        XCTAssertEqual(loader.imageLoader.loadedImageURLs, [], "Expected no image URL requests until views become visible")
 
         sut.simulateBoosterSetViewVisible(at: 0)
-        XCTAssertEqual(loader.loadedImageURLs, [boosterSet0.images.symbol], "Expected first image URL request once first view becomes visible")
+        XCTAssertEqual(loader.imageLoader.loadedImageURLs, [boosterSet0.images.symbol], "Expected first image URL request once first view becomes visible")
 
         sut.simulateBoosterSetViewVisible(at: 1)
-        XCTAssertEqual(loader.loadedImageURLs, [boosterSet0.images.symbol, boosterSet1.images.symbol], "Expected second image URL request once second view also becomes visible")
+        XCTAssertEqual(loader.imageLoader.loadedImageURLs, [boosterSet0.images.symbol, boosterSet1.images.symbol], "Expected second image URL request once second view also becomes visible")
     }
     
     func test_boosterSetImageView_cancelsImageLoadingWhenNotVisibleAnymore() {
@@ -177,13 +272,13 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         
         sut.loadViewIfNeeded()
         loader.completeBoosterSetLoading(with: [boosterSet0, boosterSet1])
-        XCTAssertEqual(loader.cancelledImageURLs, [], "Expected no cancelled image URL requests until image is not visible")
+        XCTAssertEqual(loader.imageLoader.cancelledImageURLs, [], "Expected no cancelled image URL requests until image is not visible")
         
         sut.simulateBoosterSetViewNotVisible(at: 0)
-        XCTAssertEqual(loader.cancelledImageURLs, [boosterSet0.images.symbol], "Expected one cancelled image URL request once first image is not visible anymore")
+        XCTAssertEqual(loader.imageLoader.cancelledImageURLs, [boosterSet0.images.symbol], "Expected one cancelled image URL request once first image is not visible anymore")
         
         sut.simulateBoosterSetViewNotVisible(at: 1)
-        XCTAssertEqual(loader.cancelledImageURLs, [boosterSet0.images.symbol, boosterSet1.images.symbol], "Expected two cancelled image URL requests once second image is also not visible anymore")
+        XCTAssertEqual(loader.imageLoader.cancelledImageURLs, [boosterSet0.images.symbol, boosterSet1.images.symbol], "Expected two cancelled image URL requests once second image is also not visible anymore")
 
     }
     
@@ -198,11 +293,11 @@ class BoosterSetUIIntegrationTests: XCTestCase {
 
         sut.simulateBoosterSetViewBecomingVisibleAgain(at: 0)
         
-        XCTAssertEqual(loader.loadedImageURLs, [boosterSet0.images.symbol, boosterSet0.images.symbol], "Expected two image URL request after first view becomes visible again")
+        XCTAssertEqual(loader.imageLoader.loadedImageURLs, [boosterSet0.images.symbol, boosterSet0.images.symbol], "Expected two image URL request after first view becomes visible again")
 
         sut.simulateBoosterSetViewBecomingVisibleAgain(at: 1)
 
-        XCTAssertEqual(loader.loadedImageURLs, [boosterSet0.images.symbol, boosterSet0.images.symbol, boosterSet1.images.symbol, boosterSet1.images.symbol], "Expected two new image URL request after second view becomes visible again")
+        XCTAssertEqual(loader.imageLoader.loadedImageURLs, [boosterSet0.images.symbol, boosterSet0.images.symbol, boosterSet1.images.symbol, boosterSet1.images.symbol], "Expected two new image URL request after second view becomes visible again")
     }
     
     func test_boosterSetViewLoadingIndicator_isVisibleWhileLoadingImage() {
@@ -216,11 +311,11 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         XCTAssertEqual(view0?.isShowingImageLoadingIndicator, true, "Expected loading indicator for first view while loading first image")
         XCTAssertEqual(view1?.isShowingImageLoadingIndicator, true, "Expected loading indicator for second view while loading second image")
         
-        loader.completeImageLoading(at: 0)
+        loader.imageLoader.completeImageLoading(at: 0)
         XCTAssertEqual(view0?.isShowingImageLoadingIndicator, false, "Expected no loading indicator for first view once first image loading completes successfully")
         XCTAssertEqual(view1?.isShowingImageLoadingIndicator, true, "Expected no loading indicator state change for second view once first image loading completes successfully")
         
-        loader.completeImageLoadingWithError(at: 1)
+        loader.imageLoader.completeImageLoadingWithError(at: 1)
         XCTAssertEqual(view0?.isShowingImageLoadingIndicator, false, "Expected no loading indicator state change for first view once second image loading completes with error")
         XCTAssertEqual(view1?.isShowingImageLoadingIndicator, false, "Expected no loading indicator for second view once second image loading completes with error")
     }
@@ -237,12 +332,12 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         XCTAssertEqual(view1?.renderedImage, .none, "Expected no image for second view while loading second image")
         
         let imageData0 = UIImage.make(withColor: .red).pngData()!
-        loader.completeImageLoading(with: imageData0, at: 0)
+        loader.imageLoader.completeImageLoading(with: imageData0, at: 0)
         XCTAssertEqual(view0?.renderedImage, imageData0, "Expected image for first view once first image loading completes successfully")
         XCTAssertEqual(view1?.renderedImage, .none, "Expected no image state change for second view once first image loading completes successfully")
         
         let imageData1 = UIImage.make(withColor: .blue).pngData()!
-        loader.completeImageLoading(with: imageData1, at: 1)
+        loader.imageLoader.completeImageLoading(with: imageData1, at: 1)
         XCTAssertEqual(view0?.renderedImage, imageData0, "Expected no image state change for first view once second image loading completes successfully")
         XCTAssertEqual(view1?.renderedImage, imageData1, "Expected image for second view once second image loading completes successfully")
     }
@@ -254,13 +349,13 @@ class BoosterSetUIIntegrationTests: XCTestCase {
 
         sut.loadViewIfNeeded()
         loader.completeBoosterSetLoading(with: [boosterSet0, boosterSet1])
-        XCTAssertEqual(loader.loadedImageURLs, [], "Expected no image URL requests until image is near visible")
+        XCTAssertEqual(loader.imageLoader.loadedImageURLs, [], "Expected no image URL requests until image is near visible")
 
         sut.simulateBoosterSetViewNearVisible(at: 0)
-        XCTAssertEqual(loader.loadedImageURLs, [boosterSet0.images.symbol], "Expected first image URL request once first image is near visible")
+        XCTAssertEqual(loader.imageLoader.loadedImageURLs, [boosterSet0.images.symbol], "Expected first image URL request once first image is near visible")
 
         sut.simulateBoosterSetViewNearVisible(at: 1)
-        XCTAssertEqual(loader.loadedImageURLs, [boosterSet0.images.symbol, boosterSet1.images.symbol], "Expected second image URL request once second image is near visible")
+        XCTAssertEqual(loader.imageLoader.loadedImageURLs, [boosterSet0.images.symbol, boosterSet1.images.symbol], "Expected second image URL request once second image is near visible")
     }
 
     func test_boosterSetView_cancelsImageURLPreloadingWhenNotNearVisibleAnymore() {
@@ -271,13 +366,13 @@ class BoosterSetUIIntegrationTests: XCTestCase {
 
         sut.loadViewIfNeeded()
         loader.completeBoosterSetLoading(with: [boosterSet0, boosterSet1])
-        XCTAssertEqual(loader.cancelledImageURLs, [], "Expected no cancelled image URL requests until image is not near visible")
+        XCTAssertEqual(loader.imageLoader.cancelledImageURLs, [], "Expected no cancelled image URL requests until image is not near visible")
 
         sut.simulateBoosterSetViewNotNearVisible(at: 0)
-        XCTAssertEqual(loader.cancelledImageURLs, [boosterSet0.images.symbol], "Expected first cancelled image URL request once first image is not near visible anymore")
+        XCTAssertEqual(loader.imageLoader.cancelledImageURLs, [boosterSet0.images.symbol], "Expected first cancelled image URL request once first image is not near visible anymore")
 
         sut.simulateBoosterSetViewNotNearVisible(at: 1)
-        XCTAssertEqual(loader.cancelledImageURLs, [boosterSet0.images.symbol, boosterSet1.images.symbol], "Expected second cancelled image URL request once second image is not near visible anymore")
+        XCTAssertEqual(loader.imageLoader.cancelledImageURLs, [boosterSet0.images.symbol, boosterSet1.images.symbol], "Expected second cancelled image URL request once second image is not near visible anymore")
     }
     
     func test_boosterSetView_doesNotRenderLoadedImageWhenNotVisibleAnymore() {
@@ -286,7 +381,7 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         loader.completeBoosterSetLoading(with: [makeBoosterSet()])
 
         let view = sut.simulateBoosterSetViewNotVisible(at: 0)
-        loader.completeImageLoading(with: anyImageData())
+        loader.imageLoader.completeImageLoading(with: anyImageData())
 
         XCTAssertNil(view?.renderedImage, "Expected no rendered image when an image load finishes after the view is not visible anymore")
     }
@@ -300,7 +395,7 @@ class BoosterSetUIIntegrationTests: XCTestCase {
 
         let exp = expectation(description: "Wait for background queue")
         DispatchQueue.global().async {
-            loader.completeImageLoading(with: self.anyImageData(), at: 0)
+            loader.imageLoader.completeImageLoading(with: self.anyImageData(), at: 0)
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1.0)
@@ -316,7 +411,7 @@ class BoosterSetUIIntegrationTests: XCTestCase {
         let loader = LoaderSpy()
         let sut = BoosterSetsUIComposer.boosterSetsComposedWith(
             boosterSetsLoader: loader.loadPublisher,
-            imageLoader: loader.loadImageDataPublisher(from:),
+            imageLoader: loader.imageLoader.loadImageData,
             selection: selection)
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)

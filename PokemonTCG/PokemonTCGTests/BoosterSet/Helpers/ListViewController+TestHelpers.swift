@@ -11,7 +11,6 @@ import PokemoniOS
 extension ListViewController {
     public override func loadViewIfNeeded() {
         super.loadViewIfNeeded()
-
         tableView.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
     }
     
@@ -45,8 +44,6 @@ extension ListViewController {
         let index = IndexPath(row: row, section: section)
         return ds?.tableView(tableView, cellForRowAt: index)
     }
-
-    private var boosterSetsSection: Int { 0 }
 }
 
 extension ListViewController {
@@ -103,8 +100,40 @@ extension ListViewController {
         ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
     }
     
+    func simulateLoadMoreAction() {
+        guard let view = loadMoreCell() else { return }
+        let delegate = tableView.delegate
+        let index = IndexPath(row: 0, section: loadMoreSection)
+        delegate?.tableView?(tableView, willDisplay: view, forRowAt: index)
+    }
+    
+    func simulateTapOnLoadMoreError() {
+        let delegate = tableView.delegate
+        let index = IndexPath(row: 0, section: loadMoreSection)
+        delegate?.tableView?(tableView, didSelectRowAt: index)
+    }
+    
+    var isShowingLoadMoreIndicator: Bool {
+        return loadMoreCell()?.isLoading == true
+    }
+
+    private func loadMoreCell() -> LoadMoreCell? {
+           cell(row: 0, section: loadMoreSection) as? LoadMoreCell
+    }
+    
+    var canLoadMore: Bool {
+        loadMoreCell() != nil
+    }
+
     @discardableResult
     func renderedFeedImageData(at index: Int) -> Data? {
         return simulateBoosterSetViewVisible(at: index)?.renderedImage
     }
+    
+    var loadMoreFeedErrorMessage: String? {
+        return loadMoreCell()?.message
+    }
+    
+    private var boosterSetsSection: Int { 0 }
+    private var loadMoreSection: Int { 1 }
 }
