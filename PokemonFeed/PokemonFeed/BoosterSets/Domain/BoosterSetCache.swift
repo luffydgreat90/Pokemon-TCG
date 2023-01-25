@@ -8,7 +8,5 @@
 import Foundation
 
 public protocol BoosterSetCache {
-    typealias Result = Swift.Result<Void, Error>
-
-    func save(_ feed: [BoosterSet], completion: @escaping (Result) -> Void)
+    func save(_ boosterSets: [BoosterSet]) throws
 }

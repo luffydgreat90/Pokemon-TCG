@@ -18,68 +18,32 @@ public final class LocalBoosterSetLoader {
 }
 
 extension LocalBoosterSetLoader: BoosterSetCache {
-    public typealias SaveResult = BoosterSetCache.Result
-    
-    public func save(_ feed: [BoosterSet], completion: @escaping (SaveResult) -> Void) {
-        store.deleteCachedBoosterSet { [weak self] deletionResult in
-            guard let self = self else { return }
-
-            switch deletionResult {
-            case .success:
-                self.cache(feed, with: completion)
-
-            case let .failure(error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    private func cache(_ boosterSets: [BoosterSet], with completion: @escaping (SaveResult) -> Void) {
-        store.insert(boosterSets.toLocal(), timestamp: currentDate()) { [weak self] insertionResult in
-            guard self != nil else { return }
-
-            completion(insertionResult)
-        }
+    public func save(_ boosterSets: [BoosterSet]) throws {
+        try store.deleteCachedBoosterSet()
+        try store.insert(boosterSets.toLocal(), timestamp: currentDate())
     }
 }
 
 extension LocalBoosterSetLoader {
-    public typealias LoadResult = Swift.Result<[BoosterSet], Error>
-    
-    public func load(completion: @escaping (LoadResult) -> Void) {
-        store.retrieve { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case let .failure(error):
-                completion(.failure(error))
-
-            case let .success(.some(cache)) where BoosterSetCachePolicy.validate(cache.timestamp, against: self.currentDate()):
-                completion(.success(cache.boosterSets.toModels()))
-
-            case .success:
-                completion(.success([]))
-            }
+    public func load() throws -> [BoosterSet] {
+        if let cache = try store.retrieve(), BoosterSetCachePolicy.validate(cache.timestamp, against: self.currentDate()) {
+            return cache.boosterSets.toModels()
         }
+        
+        return []
     }
 }
 
 extension LocalBoosterSetLoader {
-    public typealias ValidationResult = Result<Void, Error>
+    private struct InvalidCache: Error {}
 
-    public func validateCache(completion: @escaping (ValidationResult) -> Void) {
-        store.retrieve { [weak self] result in
-            guard let self = self else { return }
-
-            switch result {
-            case .failure:
-                self.store.deleteCachedBoosterSet(completion: completion)
-
-            case let .success(.some(cache)) where !BoosterSetCachePolicy.validate(cache.timestamp, against: self.currentDate()):
-                self.store.deleteCachedBoosterSet(completion: completion)
-
-            case .success:
-                completion(.success(()))
+    public func validateCache() throws {
+        do {
+            if let cache = try store.retrieve(), !BoosterSetCachePolicy.validate(cache.timestamp, against: self.currentDate()) {
+                throw InvalidCache()
             }
+        } catch {
+            try store.deleteCachedBoosterSet()
         }
     }
 }

@@ -57,7 +57,7 @@ extension Publisher {
 
 private extension BoosterSetCache {
     func saveIgnoringResult(_ boosterSets: [BoosterSet]) {
-        save(boosterSets) { _ in }
+        try? save(boosterSets)
     }
     
     func saveIgnoringResult(_ page: Paginated<BoosterSet>) {
@@ -85,7 +85,9 @@ public extension LocalBoosterSetLoader {
 
     func loadPublisher() -> Publisher {
         Deferred {
-            Future(self.load)
+            Future { completion in
+                completion(Result{ try self.load() })
+            }
         }
         .eraseToAnyPublisher()
     }

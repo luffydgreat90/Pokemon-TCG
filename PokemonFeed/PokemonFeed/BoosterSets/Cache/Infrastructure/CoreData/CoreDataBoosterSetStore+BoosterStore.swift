@@ -8,35 +8,36 @@
 import CoreData
 
 extension CoreDataStore: BoosterSetStore where Store: CoreDataBoosterSetStore {
-    public func retrieve(completion: @escaping BoosterSetStore.RetrievalCompletion) {
-        perform { context in
-            completion(Result {
+    public func retrieve() throws -> CachedBoosterSet? {
+        try performSync { context in
+            Result {
                 try ManagedBoosterSetCache.find(in: context).map {
                     CachedBoosterSet(
                         boosterSets: $0.localBoosterSets,
                         timestamp: $0.timestamp)
                 }
-            })
+            }
         }
     }
     
-    public func deleteCachedBoosterSet(completion: @escaping BoosterSetStore.DeletionCompletion) {
-        perform { context in
-            completion(Result {
+    public func deleteCachedBoosterSet() throws {
+        try performSync { context in
+            Result {
                 try ManagedBoosterSetCache
-                    .deleteCache(in: context)
-            })
+                .deleteCache(in: context)
+                
+            }
         }
     }
     
-    public func insert(_ boosterSets: [LocalBoosterSet], timestamp: Date, completion: @escaping BoosterSetStore.InsertionCompletion) {
-        perform { context in
-            completion(Result {
+    public func insert(_ boosterSets: [LocalBoosterSet], timestamp: Date) throws {
+        try performSync { context in
+            Result {
                 let managedCache = try ManagedBoosterSetCache.newUniqueInstance(in: context)
                 managedCache.timestamp = timestamp
                 managedCache.boosterSets = ManagedBoosterSet.boosterSets(from: boosterSets, in: context)
                 try context.save()
-            })
+            }
         }
     }
 }

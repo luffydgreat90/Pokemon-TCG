@@ -51,6 +51,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         LocalCardLoader(store: cardStore, currentDate: Date.init)
     }()
     
+    
     private lazy var navigationController: UINavigationController = {
         UINavigationController(rootViewController: makeBoosterSetsViewController())
     }()
@@ -70,7 +71,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
-        localBoosterSetLoader.validateCache { _ in }
+        do {
+            try localBoosterSetLoader.validateCache()
+        }catch {
+            debugPrint("Failed to validate cache with error: \(error.localizedDescription)")
+        }
     }
 
     func configureWindow() {
