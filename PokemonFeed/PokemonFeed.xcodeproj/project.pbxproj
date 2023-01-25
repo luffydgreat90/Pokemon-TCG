@@ -117,6 +117,9 @@
 		8EA9B9AE2964E30A005E6080 /* BoosterSetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */; };
 		8EA9B9B02964E654005E6080 /* BoosterSetPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */; };
 		8EA9B9B22964E8FC005E6080 /* UITableView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */; };
+		8EE3DDA9298186D100DBF2C0 /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDA8298186D100DBF2C0 /* CardDetailViewModel.swift */; };
+		8EE3DDAB2981894500DBF2C0 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDAA2981894500DBF2C0 /* CardDetailViewController.swift */; };
+		8EE3DDAD2981894D00DBF2C0 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDAC2981894D00DBF2C0 /* CardDetailView.swift */; };
 		8EFE7B872969D1C3003AF320 /* ManagedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B862969D1C3003AF320 /* ManagedCard.swift */; };
 		8EFE7B892969D8B7003AF320 /* LocalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B882969D8B7003AF320 /* LocalCard.swift */; };
 		8EFE7B8B2969E103003AF320 /* LocalLegalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B8A2969E103003AF320 /* LocalLegalities.swift */; };
@@ -278,6 +281,9 @@
 		8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenter.swift; sourceTree = "<group>"; };
 		8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenterTests.swift; sourceTree = "<group>"; };
 		8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeueing.swift"; sourceTree = "<group>"; };
+		8EE3DDA8298186D100DBF2C0 /* CardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
+		8EE3DDAA2981894500DBF2C0 /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
+		8EE3DDAC2981894D00DBF2C0 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		8EFE7B862969D1C3003AF320 /* ManagedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCard.swift; sourceTree = "<group>"; };
 		8EFE7B882969D8B7003AF320 /* LocalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCard.swift; sourceTree = "<group>"; };
 		8EFE7B8A2969E103003AF320 /* LocalLegalities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLegalities.swift; sourceTree = "<group>"; };
@@ -683,6 +689,7 @@
 		8EA9B90929648B36005E6080 /* PokemonFeed */ = {
 			isa = PBXGroup;
 			children = (
+				8EE3DDA6298186B800DBF2C0 /* CardDetail */,
 				8E0A6CE92965D76000F79B35 /* Cards */,
 				8EA9B924296492A3005E6080 /* Shared */,
 				8EA9B91F29648B64005E6080 /* BoosterSets */,
@@ -814,6 +821,7 @@
 		8EA9B9512964B699005E6080 /* PokemoniOS */ = {
 			isa = PBXGroup;
 			children = (
+				8EE3DDA32981868300DBF2C0 /* Card Details UI */,
 				8E0A6D1329663CAA00F79B35 /* Cards UI */,
 				8E0A6CF92965E67100F79B35 /* Helpers */,
 				8EA9B9972964D443005E6080 /* BoosterSets UI */,
@@ -965,6 +973,47 @@
 				8E0A6CC02965B02500F79B35 /* CoreData */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		8EE3DDA32981868300DBF2C0 /* Card Details UI */ = {
+			isa = PBXGroup;
+			children = (
+				8EE3DDA52981869800DBF2C0 /* Views */,
+				8EE3DDA42981868F00DBF2C0 /* ViewController */,
+			);
+			path = "Card Details UI";
+			sourceTree = "<group>";
+		};
+		8EE3DDA42981868F00DBF2C0 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8EE3DDAA2981894500DBF2C0 /* CardDetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8EE3DDA52981869800DBF2C0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8EE3DDAC2981894D00DBF2C0 /* CardDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8EE3DDA6298186B800DBF2C0 /* CardDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8EE3DDA7298186C000DBF2C0 /* Presentation */,
+			);
+			path = CardDetail;
+			sourceTree = "<group>";
+		};
+		8EE3DDA7298186C000DBF2C0 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				8EE3DDA8298186D100DBF2C0 /* CardDetailViewModel.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		8EFE7B96296A13E4003AF320 /* Domain */ = {
@@ -1349,6 +1398,7 @@
 				8E0A6D0829662D0B00F79B35 /* CardMapper.swift in Sources */,
 				8E0A6D0C2966351100F79B35 /* CardEndPoint.swift in Sources */,
 				8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */,
+				8EE3DDA9298186D100DBF2C0 /* CardDetailViewModel.swift in Sources */,
 				8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */,
 				8E0A6CCD2965B50300F79B35 /* LocalBoosterSetLoader.swift in Sources */,
 				8E067893297019E200E71A2B /* NumberFormatter+Helpers.swift in Sources */,
@@ -1432,6 +1482,7 @@
 				8E0A6CFB2965E68500F79B35 /* UIImageView+Animations.swift in Sources */,
 				8EA9B9AA2964E241005E6080 /* ImageControllerDelegate.swift in Sources */,
 				8E2C0D5B297486CC0079329F /* LoadMoreCell.swift in Sources */,
+				8EE3DDAB2981894500DBF2C0 /* CardDetailViewController.swift in Sources */,
 				8E0A6D222967837F00F79B35 /* UIView+Shimmering.swift in Sources */,
 				8E0678972970676E00E71A2B /* ErrorCollectionReusableView.swift in Sources */,
 				8EA9B9A82964E048005E6080 /* BoosterSetController.swift in Sources */,
@@ -1445,6 +1496,7 @@
 				8E0A6D12296636D600F79B35 /* CollectionController.swift in Sources */,
 				8EFE7BC2296C22DB003AF320 /* UITableView+HeaderSizing.swift in Sources */,
 				8EFE7BC0296C2132003AF320 /* UIView+Container.swift in Sources */,
+				8EE3DDAD2981894D00DBF2C0 /* CardDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

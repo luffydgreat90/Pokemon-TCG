@@ -42,6 +42,7 @@
 		8EBEA69A2964F143000F1FC8 /* WeakRefVirtualProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBEA6992964F143000F1FC8 /* WeakRefVirtualProxy.swift */; };
 		8EBEA69C2964F1F9000F1FC8 /* LoadResourcePresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBEA69B2964F1F9000F1FC8 /* LoadResourcePresentationAdapter.swift */; };
 		8EBEA69E2964F23D000F1FC8 /* Combine+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBEA69D2964F23D000F1FC8 /* Combine+Helpers.swift */; };
+		8EE3DDB02981A33C00DBF2C0 /* CardDetailUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDAF2981A33C00DBF2C0 /* CardDetailUIComposer.swift */; };
 		8EFE7BAF296B8CB4003AF320 /* DispatchQueue+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BAE296B8CB4003AF320 /* DispatchQueue+Helpers.swift */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +108,7 @@
 		8EBEA6992964F143000F1FC8 /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
 		8EBEA69B2964F1F9000F1FC8 /* LoadResourcePresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresentationAdapter.swift; sourceTree = "<group>"; };
 		8EBEA69D2964F23D000F1FC8 /* Combine+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Helpers.swift"; sourceTree = "<group>"; };
+		8EE3DDAF2981A33C00DBF2C0 /* CardDetailUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailUIComposer.swift; sourceTree = "<group>"; };
 		8EFE7BAE296B8CB4003AF320 /* DispatchQueue+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,6 +219,7 @@
 		8EA9B9BE2964EA84005E6080 /* PokemonTCG */ = {
 			isa = PBXGroup;
 			children = (
+				8EE3DDAE2981A32900DBF2C0 /* CardDetail */,
 				8E56CE8229679BBC00FFCD15 /* CardList */,
 				8EBEA6982964F133000F1FC8 /* Helpers */,
 				8EBEA6972964F124000F1FC8 /* Shared */,
@@ -275,6 +278,14 @@
 				8E2C0D602974CA560079329F /* Paginated+Helpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8EE3DDAE2981A32900DBF2C0 /* CardDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8EE3DDAF2981A33C00DBF2C0 /* CardDetailUIComposer.swift */,
+			);
+			path = CardDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,6 +395,7 @@
 				8E56CE8429679BD000FFCD15 /* CardListUIComposer.swift in Sources */,
 				8EBEA69E2964F23D000F1FC8 /* Combine+Helpers.swift in Sources */,
 				8EBEA6962964F0B8000F1FC8 /* BoosterSetsUIComposer.swift in Sources */,
+				8EE3DDB02981A33C00DBF2C0 /* CardDetailUIComposer.swift in Sources */,
 				8EA9B9C02964EA84005E6080 /* AppDelegate.swift in Sources */,
 				8EBEA69A2964F143000F1FC8 /* WeakRefVirtualProxy.swift in Sources */,
 				8EA9B9C22964EA84005E6080 /* SceneDelegate.swift in Sources */,
