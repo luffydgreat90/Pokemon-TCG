@@ -141,7 +141,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func showCardDetail(for card: Card) {
         let viewController = CardDetailUIComposer.cardDetailComposedWith(
             card: card,
-            imageLoader: makeCardImageLoader(url:))
+            imageLoader: makeCardImageLoader(url:),
+            openURL: openURL(url:))
         
         navigationController.present(viewController, animated: true)
     }
@@ -183,6 +184,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .subscribe(on: scheduler)
             .eraseToAnyPublisher()
         }
+    }
+    
+    private func openURL(url: URL?){
+        guard let url =  url else{ return }
+        UIApplication.shared.open(url)
     }
 }
 

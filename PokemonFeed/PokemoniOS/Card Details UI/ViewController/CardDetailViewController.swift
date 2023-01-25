@@ -12,6 +12,7 @@ public class CardDetailViewController: UIViewController {
     public typealias ResourceViewModel = UIImage
     private let customView: CardDetailView = CardDetailView()
     public var loadImage: (() -> Void)?
+    public var openUrl: (() -> Void)?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,12 @@ public class CardDetailViewController: UIViewController {
         customView.artistLabel.text = viewModel.artist
         customView.cardTypeLabel.text = viewModel.supertype
         customView.baseSetLabel.text = viewModel.baseSetName
+        
+        customView.cardMarketButton.addTarget(self, action: #selector(cardMarketButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func cardMarketButtonTapped() {
+        openUrl?()
     }
 }
 
