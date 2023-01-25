@@ -16,51 +16,50 @@ class BoosterSetStoreSpy: BoosterSetStore {
     }
 
     private(set) var receivedBoosterSets = [ReceivedBoosterSet]()
+    private var deletionResult: Result<Void, Error>?
+    private var insertionResult: Result<Void, Error>?
+    private var retrievalResult: Result<CachedBoosterSet?, Error>?
 
-    private var deletionCompletions: [DeletionCompletion] = []
-    private var insertionCompletions: [InsertionCompletion] = []
-    private var retrievalCompletions: [RetrievalCompletion] = []
-
-    func deleteCachedBoosterSet(completion: @escaping DeletionCompletion) {
-        deletionCompletions.append(completion)
+    func deleteCachedBoosterSet() throws {
         receivedBoosterSets.append(.deleteCachedFeed)
+        try deletionResult?.get()
     }
 
-    func completeDeletion(with error: Error, at index: Int = 0) {
-        deletionCompletions[index](.failure(error))
+    func completeDeletion(with error: Error) {
+        deletionResult = .failure(error)
+    }
+    
+    func completeDeletionSuccessfully() {
+        deletionResult = .success(())
     }
 
-    func completeDeletionSuccessfully(at index: Int = 0) {
-        deletionCompletions[index](.success(()))
+    func insert(_ boosterSet: [LocalBoosterSet], timestamp: Date) throws {
+        receivedBoosterSets.append(.insert(boosterSet, timestamp))
+        try insertionResult?.get()
     }
 
-    func insert(_ feed: [LocalBoosterSet], timestamp: Date, completion: @escaping InsertionCompletion) {
-        insertionCompletions.append(completion)
-        receivedBoosterSets.append(.insert(feed, timestamp))
+    func completeInsertion(with error: Error) {
+        insertionResult = .failure(error)
+    }
+    
+    func completeInsertionSuccessfully() {
+        insertionResult = .success(())
     }
 
-    func completeInsertion(with error: Error, at index: Int = 0) {
-        insertionCompletions[index](.failure(error))
-    }
-
-    func completeInsertionSuccessfully(at index: Int = 0) {
-        insertionCompletions[index](.success(()))
-    }
-
-    func retrieve(completion: @escaping RetrievalCompletion) {
-        retrievalCompletions.append(completion)
+    func retrieve() throws -> CachedBoosterSet? {
         receivedBoosterSets.append(.retrieve)
+        return try retrievalResult?.get()
     }
 
-    func completeRetrieval(with error: Error, at index: Int = 0) {
-        retrievalCompletions[index](.failure(error))
+    func completeRetrieval(with error: Error) {
+        retrievalResult = .failure(error)
+    }
+    
+    func completeRetrievalWithEmptyCache() {
+        retrievalResult = .success(.none)
     }
 
-    func completeRetrievalWithEmptyCache(at index: Int = 0) {
-        retrievalCompletions[index](.success(.none))
-    }
-
-    func completeRetrieval(with feed: [LocalBoosterSet], timestamp: Date, at index: Int = 0) {
-        retrievalCompletions[index](.success(CachedBoosterSet(boosterSets: feed, timestamp: timestamp)))
+    func completeRetrieval(with boosterSets: [LocalBoosterSet], timestamp: Date) {
+        retrievalResult = .success(CachedBoosterSet(boosterSets: boosterSets, timestamp: timestamp))
     }
 }

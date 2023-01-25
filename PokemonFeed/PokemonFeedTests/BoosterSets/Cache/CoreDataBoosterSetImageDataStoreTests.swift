@@ -70,24 +70,14 @@ final class CoreDataBoosterSetImageDataStoreTests: XCTestCase {
     }
     
     private func insert(_ data: Data, for url: URL, into sut: CoreDataStore<CoreDataBoosterSetStore>, file: StaticString = #filePath, line: UInt = #line) {
-        let exp = expectation(description: "Wait for cache insertion")
-        let boosterSet = localBoosterSet(url: url)
-        sut.insert([boosterSet], timestamp: Date()) { result in
-            switch result {
-            case let .failure(error):
-                XCTFail("Failed to save \(boosterSet) with error \(error)", file: file, line: line)
-                exp.fulfill()
-
-            case .success:
-                do {
-                    try sut.insert(data, for: url)
-                }catch {
-                    XCTFail("Failed to insert \(data) with error \(error)", file: file, line: line)
-                }
-                exp.fulfill()
-            }
+        
+        do {
+            let image =  localBoosterSet(url: url)
+            try sut.insert([image], timestamp: Date())
+            try sut.insert(data, for: url)
+        } catch {
+            XCTFail("Failed to insert \(data) with error \(error)", file: file, line: line)
         }
-        wait(for: [exp], timeout: 1.0)
     }
 }
 

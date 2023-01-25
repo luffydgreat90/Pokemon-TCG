@@ -18,18 +18,16 @@ class InMemoryBoosterSetStore {
 }
 
 extension InMemoryBoosterSetStore: BoosterSetStore {
-    func deleteCachedBoosterSet(completion: @escaping BoosterSetStore.DeletionCompletion){
+    func deleteCachedBoosterSet() throws {
         boosterSetCache = nil
-        completion(.success(()))
     }
     
-    func insert(_ boosterSets: [LocalBoosterSet], timestamp: Date, completion: @escaping BoosterSetStore.InsertionCompletion){
+    func insert(_ boosterSets: [LocalBoosterSet], timestamp: Date) throws {
         boosterSetCache = CachedBoosterSet(boosterSets:boosterSets, timestamp: Date())
-        completion(.success(()))
     }
 
-    func retrieve(completion: @escaping BoosterSetStore.RetrievalCompletion){
-        completion(.success(boosterSetCache))
+    func retrieve() throws -> CachedBoosterSet? {
+        boosterSetCache
     }
 }
 

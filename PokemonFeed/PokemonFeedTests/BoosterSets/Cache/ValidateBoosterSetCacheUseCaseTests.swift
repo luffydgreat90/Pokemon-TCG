@@ -17,17 +17,17 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
     
     func test_validateCache_deletesCacheOnRetrievalError() {
         let (sut, store) = makeSUT()
-
-        sut.validateCache { _ in }
+        
         store.completeRetrieval(with: anyNSError())
-
+        try? sut.validateCache()
+        
         XCTAssertEqual(store.receivedBoosterSets, [.retrieve, .deleteCachedFeed])
     }
 
     func test_validateCache_doesNotDeleteCacheOnEmptyCache() {
         let (sut, store) = makeSUT()
 
-        sut.validateCache { _ in }
+        try? sut.validateCache()
         store.completeRetrievalWithEmptyCache()
 
         XCTAssertEqual(store.receivedBoosterSets, [.retrieve])
@@ -39,7 +39,7 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
         let nonExpiredTimestamp = fixedCurrentDate.minusBoosterSetCacheMaxAge().adding(seconds: 1)
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
 
-        sut.validateCache { _ in }
+        try? sut.validateCache()
         store.completeRetrieval(with: boosterSets.local, timestamp: nonExpiredTimestamp)
 
         XCTAssertEqual(store.receivedBoosterSets, [.retrieve])
@@ -51,9 +51,9 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
         let expirationTimestamp = fixedCurrentDate.minusBoosterSetCacheMaxAge()
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
 
-        sut.validateCache { _ in }
         store.completeRetrieval(with: boosterSets.local, timestamp: expirationTimestamp)
-
+        try? sut.validateCache()
+        
         XCTAssertEqual(store.receivedBoosterSets, [.retrieve, .deleteCachedFeed])
     }
 
@@ -62,10 +62,10 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
         let fixedCurrentDate = Date()
         let expiredTimestamp = fixedCurrentDate.minusBoosterSetCacheMaxAge().adding(seconds: -1)
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
-
-        sut.validateCache { _ in }
+        
         store.completeRetrieval(with: boosterSets.local, timestamp: expiredTimestamp)
-
+        try? sut.validateCache()
+       
         XCTAssertEqual(store.receivedBoosterSets, [.retrieve, .deleteCachedFeed])
     }
 
@@ -131,18 +131,6 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
             store.completeDeletionSuccessfully()
         })
     }
-
-    func test_validateCache_doesNotDeleteInvalidCacheAfterSUTInstanceHasBeenDeallocated() {
-        let store = BoosterSetStoreSpy()
-        var sut: LocalBoosterSetLoader? = LocalBoosterSetLoader(store: store, currentDate: Date.init)
-
-        sut?.validateCache { _ in }
-
-        sut = nil
-        store.completeRetrieval(with: anyNSError())
-
-        XCTAssertEqual(store.receivedBoosterSets, [.retrieve])
-    }
     
     // MARK: - Helpers
 
@@ -154,25 +142,19 @@ class ValidateBoosterSetCacheUseCaseTests: XCTestCase {
         return (sut, store)
     }
 
-    private func expect(_ sut: LocalBoosterSetLoader, toCompleteWith expectedResult: LocalBoosterSetLoader.ValidationResult, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
-        let exp = expectation(description: "Wait for load completion")
-
-        sut.validateCache { receivedResult in
-            switch (receivedResult, expectedResult) {
-            case (.success, .success):
-                break
-
-            case let (.failure(receivedError as NSError), .failure(expectedError as NSError)):
-                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
-
-            default:
-                XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
-            }
-
-            exp.fulfill()
-        }
-
+    private func expect(_ sut: LocalBoosterSetLoader, toCompleteWith expectedResult: Result<Void, Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         action()
-        wait(for: [exp], timeout: 1.0)
+        let receivedResult = Result { try sut.validateCache() }
+        
+        switch (receivedResult, expectedResult) {
+        case (.success, .success):
+            break
+            
+        case let (.failure(receivedError as NSError), .failure(expectedError as NSError)):
+            XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+            
+        default:
+            XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
+        }
     }
 }
