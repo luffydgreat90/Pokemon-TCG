@@ -58,6 +58,11 @@ public final class CollectionListViewController: UICollectionViewController {
     private func controller(for indexPath: IndexPath) -> CollectionController? {
         dataSource.itemIdentifier(for: indexPath)
     }
+    
+    public override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let dsp = controller(for: indexPath)?.delegate
+        dsp?.collectionView?(collectionView, didSelectItemAt: indexPath)
+    }
 }
 
 private extension CollectionListViewController {

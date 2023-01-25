@@ -87,7 +87,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return BoosterSetsUIComposer.boosterSetsComposedWith(
             boosterSetsLoader: makeRemoteBoosterSetsLoaderWithLocalFallback,
             imageLoader: makeBoosterSetImageLoader,
-            selection: showCard)
+            selection: showCards)
     }
     
     private func makeRemoteBoosterSetsLoaderWithLocalFallback() -> AnyPublisher<Paginated<BoosterSet>, Error> {
@@ -128,13 +128,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .eraseToAnyPublisher()
     }
     
-    private func showCard(for boosterSet: BoosterSet) {
+    private func showCards(for boosterSet: BoosterSet) {
         let url = CardEndPoint.get(boosterSet.id).url(baseURL: baseURL)
         let viewController = CardListUIComposer.cardListComposedWith(
             cardList: makeRemoteCardsLoader(url: url, setId: boosterSet.id),
-            imageLoader: makeCardImageLoader(url:))
+            imageLoader: makeCardImageLoader(url:),
+            selection: showCardDetail(for:))
         
         navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    private func showCardDetail(for card: Card) {
+        let viewController = CardDetailUIComposer.cardDetailComposedWith(
+            card: card,
+            imageLoader: makeCardImageLoader(url:))
+        
+        navigationController.present(viewController, animated: true)
     }
     
     private func makeBoosterSetImageLoader(url: URL) -> AnyPublisher<Data, Error> {

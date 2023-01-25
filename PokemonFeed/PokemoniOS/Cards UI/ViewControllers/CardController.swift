@@ -10,15 +10,20 @@ import PokemonFeed
 
 public final class CardController: NSObject {
     public typealias ResourceViewModel = UIImage
-    
     private let viewModel: CardViewModel
     private let delegate: ImageControllerDelegate
     private var cell: CardCollectionCell?
+    private let selection: () -> Void
     
-    public init(viewModel: CardViewModel, delegate: ImageControllerDelegate, cell: CardCollectionCell? = nil) {
-        self.viewModel = viewModel
-        self.delegate = delegate
-        self.cell = cell
+    public init(
+        viewModel: CardViewModel,
+        delegate: ImageControllerDelegate,
+        cell: CardCollectionCell? = nil,
+        selection: @escaping () -> Void) {
+            self.viewModel = viewModel
+            self.delegate = delegate
+            self.cell = cell
+            self.selection = selection
     }
     
     private func cancel() {
@@ -57,6 +62,10 @@ extension CardController: UICollectionViewDelegate {
     }
     public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         cancel()
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selection()
     }
 }
 

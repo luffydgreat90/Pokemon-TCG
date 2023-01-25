@@ -9,22 +9,36 @@ import UIKit
 import PokemonFeed
 
 public class CardDetailViewController: UIViewController {
-    public typealias ResourceViewModel = CardDetailViewModel
+    public typealias ResourceViewModel = UIImage
     private let customView: CardDetailView = CardDetailView()
+    public var loadImage: (() -> Void)?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         self.view = customView
+        loadImage?()
+    }
+    
+    public func displayCardDetail(_ viewModel: CardDetailViewModel){
+        customView.titleLabel.text = viewModel.name
+        customView.numberLabel.text = viewModel.number
+        customView.lowPriceLabel.text = viewModel.lowPrice
+        customView.trendPriceLabel.text = viewModel.trendPrice
+        customView.averageSellPriceLabel.text = viewModel.averageSellPrice
+        customView.artistLabel.text = viewModel.artist
+        customView.cardTypeLabel.text = viewModel.supertype
+        customView.baseSetLabel.text = viewModel.baseSetName
     }
 }
 
 extension CardDetailViewController: ResourceView, ResourceLoadingView, ResourceErrorView {
-    public func display(_ viewModel: CardDetailViewModel) {
-        
+    
+    public func display(_ viewModel: UIImage) {
+        customView.cardImageView.setImageAnimated(viewModel)
     }
     
     public func display(_ viewModel: ResourceLoadingViewModel) {
-        
+        customView.cardImageView.isShimmering = viewModel.isLoading
     }
     
     public func display(_ viewModel: ResourceErrorViewModel) {

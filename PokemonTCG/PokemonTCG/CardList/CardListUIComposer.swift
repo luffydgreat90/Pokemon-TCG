@@ -16,7 +16,8 @@ public enum CardListUIComposer {
 
     public static func cardListComposedWith(
         cardList: @escaping () -> AnyPublisher<[Card], Error>,
-        imageLoader: @escaping (URL?) -> AnyPublisher<Data, Error>) -> CollectionListViewController{
+        imageLoader: @escaping (URL?) -> AnyPublisher<Data, Error>,
+        selection: @escaping (Card) -> Void) -> CollectionListViewController{
             let adapter = CardListPresentationAdapter(loader: cardList)
             
             let collectionViewController = CollectionListViewController(
@@ -31,7 +32,8 @@ public enum CardListUIComposer {
             adapter.presenter = LoadResourcePresenter(
                 resourceView: CardListViewAdapter(
                     controller: collectionViewController,
-                    imageLoader: imageLoader),
+                    imageLoader: imageLoader,
+                    selection: selection),
                 loadingView: WeakRefVirtualProxy(collectionViewController),
                 errorView: WeakRefVirtualProxy(collectionViewController),
                 mapper: CardsPresenter.map)
@@ -46,14 +48,19 @@ final class CardListViewAdapter: ResourceView {
     
     private weak var controller: CollectionListViewController?
     private let imageLoader: (URL?) -> AnyPublisher<Data, Error>
+    private let selection: (Card) -> Void
     
-    init(controller: CollectionListViewController? = nil, imageLoader: @escaping (URL?) -> AnyPublisher<Data, Error>) {
+    init(controller: CollectionListViewController? = nil,
+         imageLoader: @escaping (URL?) -> AnyPublisher<Data, Error>,
+         selection: @escaping (Card) -> Void) {
         self.controller = controller
         self.imageLoader = imageLoader
+        self.selection = selection
     }
     
     func display(_ viewModel: CardsViewModel) {
         let priceFormatter: NumberFormatter = .priceFormatter
+        
         let viewControllers = viewModel.cards.map({ model in
             let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in
                 imageLoader(model.images?.small)
@@ -61,7 +68,10 @@ final class CardListViewAdapter: ResourceView {
             
             let controller = CardController(
                 viewModel: CardPresenter.map(model, currencyFormatter: priceFormatter),
-                delegate: adapter)
+                delegate: adapter,
+                selection: { [selection] in
+                    selection(model)
+                })
             
             adapter.presenter = LoadResourcePresenter(
                 resourceView: WeakRefVirtualProxy(controller),

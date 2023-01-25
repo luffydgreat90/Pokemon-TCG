@@ -9,7 +9,6 @@ import Foundation
 
 public struct CardDetailViewModel {
     public let name: String
-    public let price: String
     public let supertype: String
     public let number: String
     public let artist: String
@@ -19,9 +18,8 @@ public struct CardDetailViewModel {
     public let baseSetName: String
     public let flavorText: String
     
-    public init(name: String, price: String, supertype: String, number: String, artist: String, averageSellPrice: String, trendPrice: String, lowPrice: String, baseSetName: String, flavorText: String) {
+    public init(name: String, supertype: String, number: String, artist: String, averageSellPrice: String, trendPrice: String, lowPrice: String, baseSetName: String, flavorText: String) {
         self.name = name
-        self.price = price
         self.supertype = supertype
         self.number = number
         self.artist = artist

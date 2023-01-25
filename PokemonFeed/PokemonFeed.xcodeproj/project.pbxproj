@@ -13,7 +13,6 @@
 		8E06785F296DE02F00E71A2B /* LIST_WITH_ERROR_MESSAGE_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E06785A296DE02F00E71A2B /* LIST_WITH_ERROR_MESSAGE_dark.png */; };
 		8E067860296DE02F00E71A2B /* LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E06785B296DE02F00E71A2B /* LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png */; };
 		8E067861296DE02F00E71A2B /* EMPTY_LIST_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E06785C296DE02F00E71A2B /* EMPTY_LIST_light.png */; };
-		8E067893297019E200E71A2B /* NumberFormatter+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E067892297019E200E71A2B /* NumberFormatter+Helpers.swift */; };
 		8E0678972970676E00E71A2B /* ErrorCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678962970676E00E71A2B /* ErrorCollectionReusableView.swift */; };
 		8E0678A22970AADC00E71A2B /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E0678A12970AADC00E71A2B /* Shared.xcassets */; };
 		8E0678A52970AED600E71A2B /* UIImage+StaticImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0678A42970AED600E71A2B /* UIImage+StaticImage.swift */; };
@@ -120,6 +119,8 @@
 		8EE3DDA9298186D100DBF2C0 /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDA8298186D100DBF2C0 /* CardDetailViewModel.swift */; };
 		8EE3DDAB2981894500DBF2C0 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDAA2981894500DBF2C0 /* CardDetailViewController.swift */; };
 		8EE3DDAD2981894D00DBF2C0 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDAC2981894D00DBF2C0 /* CardDetailView.swift */; };
+		8EE3DDB22981AC4A00DBF2C0 /* CardDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDB12981AC4A00DBF2C0 /* CardDetailPresenter.swift */; };
+		8EE3DDB52981AE6700DBF2C0 /* NumberFormatter+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDB42981AE6700DBF2C0 /* NumberFormatter+Currency.swift */; };
 		8EFE7B872969D1C3003AF320 /* ManagedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B862969D1C3003AF320 /* ManagedCard.swift */; };
 		8EFE7B892969D8B7003AF320 /* LocalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B882969D8B7003AF320 /* LocalCard.swift */; };
 		8EFE7B8B2969E103003AF320 /* LocalLegalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B8A2969E103003AF320 /* LocalLegalities.swift */; };
@@ -173,7 +174,6 @@
 		8E06785A296DE02F00E71A2B /* LIST_WITH_ERROR_MESSAGE_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LIST_WITH_ERROR_MESSAGE_dark.png; sourceTree = "<group>"; };
 		8E06785B296DE02F00E71A2B /* LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png; sourceTree = "<group>"; };
 		8E06785C296DE02F00E71A2B /* EMPTY_LIST_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EMPTY_LIST_light.png; sourceTree = "<group>"; };
-		8E067892297019E200E71A2B /* NumberFormatter+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Helpers.swift"; sourceTree = "<group>"; };
 		8E0678962970676E00E71A2B /* ErrorCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCollectionReusableView.swift; sourceTree = "<group>"; };
 		8E0678A12970AADC00E71A2B /* Shared.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared.xcassets; sourceTree = "<group>"; };
 		8E0678A42970AED600E71A2B /* UIImage+StaticImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+StaticImage.swift"; sourceTree = "<group>"; };
@@ -284,6 +284,8 @@
 		8EE3DDA8298186D100DBF2C0 /* CardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
 		8EE3DDAA2981894500DBF2C0 /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		8EE3DDAC2981894D00DBF2C0 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
+		8EE3DDB12981AC4A00DBF2C0 /* CardDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailPresenter.swift; sourceTree = "<group>"; };
+		8EE3DDB42981AE6700DBF2C0 /* NumberFormatter+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Currency.swift"; sourceTree = "<group>"; };
 		8EFE7B862969D1C3003AF320 /* ManagedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCard.swift; sourceTree = "<group>"; };
 		8EFE7B882969D8B7003AF320 /* LocalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCard.swift; sourceTree = "<group>"; };
 		8EFE7B8A2969E103003AF320 /* LocalLegalities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLegalities.swift; sourceTree = "<group>"; };
@@ -347,14 +349,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8E067891297019D200E71A2B /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				8E067892297019E200E71A2B /* NumberFormatter+Helpers.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		8E067894297060E900E71A2B /* ImageController */ = {
 			isa = PBXGroup;
 			children = (
@@ -598,7 +592,6 @@
 		8E0A6D1A29663F9700F79B35 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				8E067891297019D200E71A2B /* Helpers */,
 				8E0A6D1B296640C400F79B35 /* CardViewModel.swift */,
 				8E4F6A4E29679EBE0022403A /* CardsPresenter.swift */,
 				8E4F6A5029679EF30022403A /* CardsViewModel.swift */,
@@ -689,6 +682,7 @@
 		8EA9B90929648B36005E6080 /* PokemonFeed */ = {
 			isa = PBXGroup;
 			children = (
+				8EE3DDB32981AE4600DBF2C0 /* Helpers */,
 				8EE3DDA6298186B800DBF2C0 /* CardDetail */,
 				8E0A6CE92965D76000F79B35 /* Cards */,
 				8EA9B924296492A3005E6080 /* Shared */,
@@ -1012,8 +1006,17 @@
 			isa = PBXGroup;
 			children = (
 				8EE3DDA8298186D100DBF2C0 /* CardDetailViewModel.swift */,
+				8EE3DDB12981AC4A00DBF2C0 /* CardDetailPresenter.swift */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		8EE3DDB32981AE4600DBF2C0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8EE3DDB42981AE6700DBF2C0 /* NumberFormatter+Currency.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		8EFE7B96296A13E4003AF320 /* Domain */ = {
@@ -1378,6 +1381,7 @@
 				8E0A6CCB2965B2F900F79B35 /* LocalBoosterSet.swift in Sources */,
 				8EA9B9AC2964E2BA005E6080 /* BoosterSetViewModel.swift in Sources */,
 				8EFE7B9C296A193E003AF320 /* CardCachePolicy.swift in Sources */,
+				8EE3DDB52981AE6700DBF2C0 /* NumberFormatter+Currency.swift in Sources */,
 				8E0A6CD12965B7EE00F79B35 /* BoosterSetCache.swift in Sources */,
 				8E0A6D1C296640C400F79B35 /* CardViewModel.swift in Sources */,
 				8EA9B9672964B7E4005E6080 /* BoosterSetsPresenter.swift in Sources */,
@@ -1399,9 +1403,9 @@
 				8E0A6D0C2966351100F79B35 /* CardEndPoint.swift in Sources */,
 				8E0A6CC52965B11600F79B35 /* CoreDataBoosterSetStore.swift in Sources */,
 				8EE3DDA9298186D100DBF2C0 /* CardDetailViewModel.swift in Sources */,
+				8EE3DDB22981AC4A00DBF2C0 /* CardDetailPresenter.swift in Sources */,
 				8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */,
 				8E0A6CCD2965B50300F79B35 /* LocalBoosterSetLoader.swift in Sources */,
-				8E067893297019E200E71A2B /* NumberFormatter+Helpers.swift in Sources */,
 				8E2C0D5F2974A3360079329F /* Paginated.swift in Sources */,
 				8EFE7B9E296A1E57003AF320 /* CoreDataCardStore+CardStore.swift in Sources */,
 				8E4F6A4F29679EBE0022403A /* CardsPresenter.swift in Sources */,
