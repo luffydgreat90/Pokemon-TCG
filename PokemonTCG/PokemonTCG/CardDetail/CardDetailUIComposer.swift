@@ -38,7 +38,7 @@ public enum CardDetailUIComposer {
                 openURL(card.cardmarket?.url)
             }
             
-            controller.displayCardDetail(CardDetailPresenter.map(card, currencyFormatter: priceFormatter))
+            controller.display(CardDetailPresenter.map(card, currencyFormatter: priceFormatter))
             
             return controller
     }

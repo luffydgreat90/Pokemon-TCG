@@ -20,7 +20,7 @@ public class CardDetailViewController: UIViewController {
         loadImage?()
     }
     
-    public func displayCardDetail(_ viewModel: CardDetailViewModel){
+    public func display(_ viewModel: CardDetailViewModel){
         customView.titleLabel.text = viewModel.name
         customView.numberLabel.text = viewModel.number
         customView.lowPriceLabel.text = viewModel.lowPrice

@@ -30,7 +30,7 @@ final class CardListViewAdapter: ResourceView {
     }
     
     func display(_ viewModel: CardsViewModel) {
-        var viewControllers = toCollectionController(with: viewModel.cards, priceFormatter: priceFormatter)
+        let viewControllers = toCollectionController(with: viewModel.cards, priceFormatter: priceFormatter)
         controller?.display(viewControllers)
         
         cancellable = controller?.navigationItem.searchController?.searchBar.searchTextField.textPublisher

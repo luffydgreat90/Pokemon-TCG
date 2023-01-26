@@ -45,7 +45,6 @@
 		8EE3DDB02981A33C00DBF2C0 /* CardDetailUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDAF2981A33C00DBF2C0 /* CardDetailUIComposer.swift */; };
 		8EE3DDB72981F51A00DBF2C0 /* CardListViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDB62981F51A00DBF2C0 /* CardListViewAdapter.swift */; };
 		8EE3DDB929829B8900DBF2C0 /* Search+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDB829829B8900DBF2C0 /* Search+Helpers.swift */; };
-		8EE3DDC72982BE2A00DBF2C0 /* CardListSearchPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDC62982BE2A00DBF2C0 /* CardListSearchPresentationAdapter.swift */; };
 		8EFE7BAF296B8CB4003AF320 /* DispatchQueue+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BAE296B8CB4003AF320 /* DispatchQueue+Helpers.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,7 +113,6 @@
 		8EE3DDAF2981A33C00DBF2C0 /* CardDetailUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailUIComposer.swift; sourceTree = "<group>"; };
 		8EE3DDB62981F51A00DBF2C0 /* CardListViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewAdapter.swift; sourceTree = "<group>"; };
 		8EE3DDB829829B8900DBF2C0 /* Search+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search+Helpers.swift"; sourceTree = "<group>"; };
-		8EE3DDC62982BE2A00DBF2C0 /* CardListSearchPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListSearchPresentationAdapter.swift; sourceTree = "<group>"; };
 		8EFE7BAE296B8CB4003AF320 /* DispatchQueue+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,7 +198,6 @@
 			children = (
 				8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */,
 				8EE3DDB62981F51A00DBF2C0 /* CardListViewAdapter.swift */,
-				8EE3DDC62982BE2A00DBF2C0 /* CardListSearchPresentationAdapter.swift */,
 			);
 			path = CardList;
 			sourceTree = "<group>";
@@ -410,7 +407,6 @@
 				8EA9B9C02964EA84005E6080 /* AppDelegate.swift in Sources */,
 				8EBEA69A2964F143000F1FC8 /* WeakRefVirtualProxy.swift in Sources */,
 				8EA9B9C22964EA84005E6080 /* SceneDelegate.swift in Sources */,
-				8EE3DDC72982BE2A00DBF2C0 /* CardListSearchPresentationAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
