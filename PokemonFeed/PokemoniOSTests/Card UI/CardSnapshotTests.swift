@@ -29,7 +29,6 @@ final class CardSnapshotTests: XCTestCase {
     }
 
     // MARK: - Helpers
-    
     private func makeSUT() -> CollectionListViewController {
         let controller = CollectionListViewController(collectionViewLayout: CardCollectionLayout(), frame: CGRect(origin: CGPoint(x: 0, y: 0), size: SnapshotConfiguration.iPhone13FrameSize))
         

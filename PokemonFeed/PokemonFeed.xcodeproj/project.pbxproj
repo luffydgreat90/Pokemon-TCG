@@ -122,6 +122,7 @@
 		8EE3DDB22981AC4A00DBF2C0 /* CardDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDB12981AC4A00DBF2C0 /* CardDetailPresenter.swift */; };
 		8EE3DDB52981AE6700DBF2C0 /* NumberFormatter+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDB42981AE6700DBF2C0 /* NumberFormatter+Currency.swift */; };
 		8EE3DDC52982BD7E00DBF2C0 /* ResourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDC42982BD7E00DBF2C0 /* ResourceView.swift */; };
+		8EE3DDCB29833D2100DBF2C0 /* CardDetailSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDCA29833D2100DBF2C0 /* CardDetailSnapshotTests.swift */; };
 		8EFE7B872969D1C3003AF320 /* ManagedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B862969D1C3003AF320 /* ManagedCard.swift */; };
 		8EFE7B892969D8B7003AF320 /* LocalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B882969D8B7003AF320 /* LocalCard.swift */; };
 		8EFE7B8B2969E103003AF320 /* LocalLegalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B8A2969E103003AF320 /* LocalLegalities.swift */; };
@@ -288,6 +289,7 @@
 		8EE3DDB12981AC4A00DBF2C0 /* CardDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailPresenter.swift; sourceTree = "<group>"; };
 		8EE3DDB42981AE6700DBF2C0 /* NumberFormatter+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Currency.swift"; sourceTree = "<group>"; };
 		8EE3DDC42982BD7E00DBF2C0 /* ResourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceView.swift; sourceTree = "<group>"; };
+		8EE3DDCA29833D2100DBF2C0 /* CardDetailSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailSnapshotTests.swift; sourceTree = "<group>"; };
 		8EFE7B862969D1C3003AF320 /* ManagedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCard.swift; sourceTree = "<group>"; };
 		8EFE7B882969D8B7003AF320 /* LocalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCard.swift; sourceTree = "<group>"; };
 		8EFE7B8A2969E103003AF320 /* LocalLegalities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLegalities.swift; sourceTree = "<group>"; };
@@ -1026,8 +1028,17 @@
 		8EE3DDC829833B8000DBF2C0 /* Card Detail UI */ = {
 			isa = PBXGroup;
 			children = (
+				8EE3DDC929833CFF00DBF2C0 /* snapshots */,
+				8EE3DDCA29833D2100DBF2C0 /* CardDetailSnapshotTests.swift */,
 			);
 			path = "Card Detail UI";
+			sourceTree = "<group>";
+		};
+		8EE3DDC929833CFF00DBF2C0 /* snapshots */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = snapshots;
 			sourceTree = "<group>";
 		};
 		8EFE7B96296A13E4003AF320 /* Domain */ = {
@@ -1520,6 +1531,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EE3DDCB29833D2100DBF2C0 /* CardDetailSnapshotTests.swift in Sources */,
 				8EFE7BB7296B8FE0003AF320 /* UIViewController+Snapshot.swift in Sources */,
 				8EFE7BD3296CC178003AF320 /* BoosterSetSnapshotTests.swift in Sources */,
 				8EFE7BC5296CB019003AF320 /* ListSnapshotTests.swift in Sources */,

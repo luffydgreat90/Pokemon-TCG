@@ -18,6 +18,7 @@ public class CardDetailViewController: UIViewController {
         super.viewDidLoad()
         self.view = customView
         loadImage?()
+        setupAction()
     }
     
     public func display(_ viewModel: CardDetailViewModel){
@@ -29,11 +30,13 @@ public class CardDetailViewController: UIViewController {
         customView.artistLabel.text = viewModel.artist
         customView.cardTypeLabel.text = viewModel.supertype
         customView.baseSetLabel.text = viewModel.baseSetName
-        
+    }
+    
+    private func setupAction(){
         customView.cardMarketButton.addTarget(self, action: #selector(cardMarketButtonTapped), for: .touchUpInside)
     }
     
-    @objc func cardMarketButtonTapped() {
+    @objc private func cardMarketButtonTapped() {
         openUrl?()
     }
 }

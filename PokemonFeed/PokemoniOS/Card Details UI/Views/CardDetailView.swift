@@ -42,7 +42,6 @@ public class CardDetailView: UIView {
         let trendPriceLabel = UILabel()
         trendPriceLabel.numberOfLines = 0
         trendPriceLabel.textAlignment = .left
-        trendPriceLabel.textColor = .black
         trendPriceLabel.font = .systemFont(ofSize: 14.0, weight: .bold)
         trendPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         return trendPriceLabel
@@ -71,7 +70,6 @@ public class CardDetailView: UIView {
         let cardTypeLabel = UILabel()
         cardTypeLabel.numberOfLines = 0
         cardTypeLabel.textAlignment = .left
-        cardTypeLabel.textColor = .black
         cardTypeLabel.font = .systemFont(ofSize: 14.0, weight: .bold)
         cardTypeLabel.translatesAutoresizingMaskIntoConstraints = false
         return cardTypeLabel
@@ -81,7 +79,6 @@ public class CardDetailView: UIView {
         let artistLabel = UILabel()
         artistLabel.numberOfLines = 0
         artistLabel.textAlignment = .left
-        artistLabel.textColor = .black
         artistLabel.font = .systemFont(ofSize: 14.0, weight: .bold)
         artistLabel.translatesAutoresizingMaskIntoConstraints = false
         return artistLabel
@@ -100,8 +97,10 @@ public class CardDetailView: UIView {
     public private(set) var cardMarketButton: UIButton = {
         let cardMarketButton = UIButton()
         cardMarketButton.setTitle("Card Market", for: .normal)
-        cardMarketButton.backgroundColor = .black
+        cardMarketButton.backgroundColor = .systemBlue
         cardMarketButton.titleLabel?.textColor = .white
+        cardMarketButton.layer.cornerRadius = 8.0
+        cardMarketButton.layer.masksToBounds = true
         cardMarketButton.translatesAutoresizingMaskIntoConstraints = false
         return cardMarketButton
     }()
@@ -130,7 +129,7 @@ public class CardDetailView: UIView {
     
     private func setupUI() {
         self.addSubview(scrollView)
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
         scrollView.addSubview(contentView)
         contentView.addSubviews(
             views: [cardImageView, titleLabel, numberLabel, lowPriceLabel, averageSellPriceLabel, trendPriceLabel, artistLabel, cardTypeLabel, baseSetLabel, cardMarketButton])
@@ -151,7 +150,7 @@ public class CardDetailView: UIView {
             
             cardImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             cardImageView.heightAnchor.constraint(equalToConstant: 300),
-            cardImageView.widthAnchor.constraint(equalToConstant: 300),
+            cardImageView.widthAnchor.constraint(equalToConstant: 218),
             cardImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
             baseSetLabel.topAnchor.constraint(equalTo: cardImageView.bottomAnchor, constant: 16),
