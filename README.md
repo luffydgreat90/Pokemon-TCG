@@ -1,2 +1,9 @@
 # Pokemon-TCG
-Pokemon TCG Set
+Pokemon TCG
+
+- Combine
+- UIKit 
+- Modulorization
+- Behavioural Driven Development
+
+Thanks to Essential Developers.
