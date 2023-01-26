@@ -61,7 +61,7 @@ final class CardSnapshotTests: XCTestCase {
 private extension CollectionListViewController {
     func display(_ stubs: [ImageStub]) {
         let cells: [CollectionController] = stubs.map { stub in
-            let cellController = CardController(viewModel: stub.viewModel, delegate: stub)
+            let cellController = CardController(viewModel: stub.viewModel, delegate: stub, selection: { })
             stub.controller = cellController
             return CollectionController(id: UUID(), dataSource: cellController)
         }

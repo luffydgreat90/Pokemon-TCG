@@ -138,8 +138,8 @@ public class CardDetailView: UIView {
     
     private func setupAutoLayout(){
         NSLayoutConstraint.activate([
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             scrollView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
             

@@ -136,8 +136,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewController = CardListUIComposer.cardListComposedWith(
             cardList: makeRemoteCardsLoader(url: url, setId: boosterSet.id),
             imageLoader: makeCardImageLoader(url:),
-            selection: showCardDetail(for:),
-            priceFormatter: priceFormatter)
+            priceFormatter: priceFormatter,
+            selection: showCardDetail(for:))
         
         navigationController.pushViewController(viewController, animated: true)
     }

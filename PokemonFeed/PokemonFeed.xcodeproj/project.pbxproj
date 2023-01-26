@@ -829,6 +829,7 @@
 		8EA9B95B2964B69A005E6080 /* PokemoniOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				8EE3DDC829833B8000DBF2C0 /* Card Detail UI */,
 				8EFE7BDC296D7743003AF320 /* Card UI */,
 				8EFE7BD0296CC138003AF320 /* BoosterSet UI */,
 				8EFE7BB1296B8E7C003AF320 /* Helpers */,
@@ -1020,6 +1021,13 @@
 				8EE3DDB42981AE6700DBF2C0 /* NumberFormatter+Currency.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8EE3DDC829833B8000DBF2C0 /* Card Detail UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Card Detail UI";
 			sourceTree = "<group>";
 		};
 		8EFE7B96296A13E4003AF320 /* Domain */ = {

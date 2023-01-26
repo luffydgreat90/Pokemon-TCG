@@ -117,5 +117,3 @@ extension CollectionListViewController: ResourceErrorView {
         errorView.message = viewModel.message
     }
 }
-
-

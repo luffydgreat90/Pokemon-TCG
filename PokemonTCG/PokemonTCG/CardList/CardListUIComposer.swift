@@ -17,8 +17,8 @@ public enum CardListUIComposer {
     public static func cardListComposedWith(
         cardList: @escaping () -> AnyPublisher<[Card], Error>,
         imageLoader: @escaping (URL?) -> AnyPublisher<Data, Error>,
-        selection: @escaping (Card) -> Void,
-        priceFormatter: NumberFormatter) -> CollectionListViewController{
+        priceFormatter: NumberFormatter,
+        selection: @escaping (Card) -> Void) -> CollectionListViewController{
             let adapter = CardListPresentationAdapter(loader: cardList)
             
             let priceFormatter: NumberFormatter = .priceFormatter

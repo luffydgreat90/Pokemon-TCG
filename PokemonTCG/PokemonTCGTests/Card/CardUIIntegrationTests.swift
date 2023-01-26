@@ -126,7 +126,9 @@ class CardUIIntegrationTests: XCTestCase {
         let loader = LoaderSpy()
         let sut = CardListUIComposer.cardListComposedWith(
             cardList:loader.loadPublisher,
-            imageLoader: loader.imageLoader.loadImageData)
+            imageLoader: loader.imageLoader.loadImageData,
+            priceFormatter: .priceFormatter) { _ in }
+        
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, loader)
