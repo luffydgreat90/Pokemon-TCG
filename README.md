@@ -6,7 +6,7 @@ Pokemon TCG
 - Modulorization
 - Behavioural Driven Development 
  
-![Simulator Screen Shot - iPhone 11 Pro - 2023-01-26 at 11 34 39](https://user-images.githubusercontent.com/117570623/214870275-92f10c31-248a-4e34-8ef3-5c4157d873ad.png)
+![Simulator Screen Shot - iPhone 11 Pro - 2023-01-26 at 11 34 39](https://user-images.githubusercontent.com/117570623/214870707-46821398-bff9-48ea-9968-30c4e95e0882.png)
 
 
 Thanks to Essential Developers.
