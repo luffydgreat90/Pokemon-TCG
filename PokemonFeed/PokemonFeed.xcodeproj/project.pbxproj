@@ -972,6 +972,7 @@
 		8EE3DDA32981868300DBF2C0 /* Card Details UI */ = {
 			isa = PBXGroup;
 			children = (
+				8EE3DDBA2982B2BE00DBF2C0 /* Helpers */,
 				8EE3DDA52981869800DBF2C0 /* Views */,
 				8EE3DDA42981868F00DBF2C0 /* ViewController */,
 			);
@@ -1015,6 +1016,13 @@
 			isa = PBXGroup;
 			children = (
 				8EE3DDB42981AE6700DBF2C0 /* NumberFormatter+Currency.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8EE3DDBA2982B2BE00DBF2C0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Helpers;
 			sourceTree = "<group>";

@@ -26,12 +26,6 @@ public extension HTTPClient {
 }
 
 extension Publisher {
-    func dispatchOnMainQueue() -> AnyPublisher<Output, Failure> {
-        receive(on: DispatchQueue.immediateWhenOnMainQueueScheduler).eraseToAnyPublisher()
-    }
-}
-
-extension Publisher {
     func fallback(to fallbackPublisher: @escaping () -> AnyPublisher<Output, Failure>) -> AnyPublisher<Output, Failure> {
         self.catch { _ in fallbackPublisher() }.eraseToAnyPublisher()
     }

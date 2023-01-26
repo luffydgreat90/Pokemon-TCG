@@ -14,13 +14,19 @@ public final class CollectionListViewController: UICollectionViewController {
     private let layout: UICollectionViewLayout
     private let frame: CGRect?
     
+    public var searchController: UISearchController {
+        let searchController = UISearchController()
+        searchController.searchBar.searchTextField.backgroundColor = .lightGray
+        searchController.searchBar.showsCancelButton = false
+        return searchController
+    }
+    
     private(set) public var errorView: ErrorView = ErrorView()
     
     public init(collectionViewLayout layout: UICollectionViewLayout, frame: CGRect? = nil) {
         self.layout = layout
         self.frame = frame
         super.init(collectionViewLayout: layout)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -83,6 +89,11 @@ private extension CollectionListViewController {
             errorView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             errorView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         ])
+        
+       
+        definesPresentationContext = true
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
    @objc func refresh(){

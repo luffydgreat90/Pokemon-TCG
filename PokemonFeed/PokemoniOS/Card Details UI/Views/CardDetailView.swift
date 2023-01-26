@@ -182,7 +182,6 @@ public class CardDetailView: UIView {
             cardMarketButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             cardMarketButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             cardMarketButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
-            
         ])
     }
 }

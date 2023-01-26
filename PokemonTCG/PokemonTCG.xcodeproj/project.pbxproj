@@ -43,6 +43,8 @@
 		8EBEA69C2964F1F9000F1FC8 /* LoadResourcePresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBEA69B2964F1F9000F1FC8 /* LoadResourcePresentationAdapter.swift */; };
 		8EBEA69E2964F23D000F1FC8 /* Combine+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBEA69D2964F23D000F1FC8 /* Combine+Helpers.swift */; };
 		8EE3DDB02981A33C00DBF2C0 /* CardDetailUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDAF2981A33C00DBF2C0 /* CardDetailUIComposer.swift */; };
+		8EE3DDB72981F51A00DBF2C0 /* CardListViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDB62981F51A00DBF2C0 /* CardListViewAdapter.swift */; };
+		8EE3DDB929829B8900DBF2C0 /* Search+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDB829829B8900DBF2C0 /* Search+Helpers.swift */; };
 		8EFE7BAF296B8CB4003AF320 /* DispatchQueue+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BAE296B8CB4003AF320 /* DispatchQueue+Helpers.swift */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +111,8 @@
 		8EBEA69B2964F1F9000F1FC8 /* LoadResourcePresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresentationAdapter.swift; sourceTree = "<group>"; };
 		8EBEA69D2964F23D000F1FC8 /* Combine+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Helpers.swift"; sourceTree = "<group>"; };
 		8EE3DDAF2981A33C00DBF2C0 /* CardDetailUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailUIComposer.swift; sourceTree = "<group>"; };
+		8EE3DDB62981F51A00DBF2C0 /* CardListViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewAdapter.swift; sourceTree = "<group>"; };
+		8EE3DDB829829B8900DBF2C0 /* Search+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search+Helpers.swift"; sourceTree = "<group>"; };
 		8EFE7BAE296B8CB4003AF320 /* DispatchQueue+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				8E56CE8329679BD000FFCD15 /* CardListUIComposer.swift */,
+				8EE3DDB62981F51A00DBF2C0 /* CardListViewAdapter.swift */,
 			);
 			path = CardList;
 			sourceTree = "<group>";
@@ -276,6 +281,7 @@
 				8EBEA69D2964F23D000F1FC8 /* Combine+Helpers.swift */,
 				8EFE7BAE296B8CB4003AF320 /* DispatchQueue+Helpers.swift */,
 				8E2C0D602974CA560079329F /* Paginated+Helpers.swift */,
+				8EE3DDB829829B8900DBF2C0 /* Search+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -389,12 +395,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EE3DDB72981F51A00DBF2C0 /* CardListViewAdapter.swift in Sources */,
 				8EBEA69C2964F1F9000F1FC8 /* LoadResourcePresentationAdapter.swift in Sources */,
 				8E2C0D612974CA560079329F /* Paginated+Helpers.swift in Sources */,
 				8EFE7BAF296B8CB4003AF320 /* DispatchQueue+Helpers.swift in Sources */,
 				8E56CE8429679BD000FFCD15 /* CardListUIComposer.swift in Sources */,
 				8EBEA69E2964F23D000F1FC8 /* Combine+Helpers.swift in Sources */,
 				8EBEA6962964F0B8000F1FC8 /* BoosterSetsUIComposer.swift in Sources */,
+				8EE3DDB929829B8900DBF2C0 /* Search+Helpers.swift in Sources */,
 				8EE3DDB02981A33C00DBF2C0 /* CardDetailUIComposer.swift in Sources */,
 				8EA9B9C02964EA84005E6080 /* AppDelegate.swift in Sources */,
 				8EBEA69A2964F143000F1FC8 /* WeakRefVirtualProxy.swift in Sources */,
