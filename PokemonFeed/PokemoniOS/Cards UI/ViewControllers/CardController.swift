@@ -83,5 +83,4 @@ extension CardController: ResourceView, ResourceLoadingView, ResourceErrorView {
             cell?.cardImageView.setImageAnimated(UIImage.placeholder(type: Self.self))
         }
     }
-    
 }

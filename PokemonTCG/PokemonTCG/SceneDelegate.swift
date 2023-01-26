@@ -51,6 +51,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         LocalCardLoader(store: cardStore, currentDate: Date.init)
     }()
     
+    private lazy var priceFormatter: NumberFormatter = {
+        .priceFormatter
+    }()
     
     private lazy var navigationController: UINavigationController = {
         UINavigationController(rootViewController: makeBoosterSetsViewController())
@@ -133,7 +136,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewController = CardListUIComposer.cardListComposedWith(
             cardList: makeRemoteCardsLoader(url: url, setId: boosterSet.id),
             imageLoader: makeCardImageLoader(url:),
-            selection: showCardDetail(for:))
+            selection: showCardDetail(for:),
+            priceFormatter: priceFormatter)
         
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -142,7 +146,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewController = CardDetailUIComposer.cardDetailComposedWith(
             card: card,
             imageLoader: makeCardImageLoader(url:),
-            openURL: openURL(url:))
+            openURL: openURL(url:),
+            priceFormatter: priceFormatter)
         
         navigationController.present(viewController, animated: true)
     }

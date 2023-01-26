@@ -121,6 +121,7 @@
 		8EE3DDAD2981894D00DBF2C0 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDAC2981894D00DBF2C0 /* CardDetailView.swift */; };
 		8EE3DDB22981AC4A00DBF2C0 /* CardDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDB12981AC4A00DBF2C0 /* CardDetailPresenter.swift */; };
 		8EE3DDB52981AE6700DBF2C0 /* NumberFormatter+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDB42981AE6700DBF2C0 /* NumberFormatter+Currency.swift */; };
+		8EE3DDC52982BD7E00DBF2C0 /* ResourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDC42982BD7E00DBF2C0 /* ResourceView.swift */; };
 		8EFE7B872969D1C3003AF320 /* ManagedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B862969D1C3003AF320 /* ManagedCard.swift */; };
 		8EFE7B892969D8B7003AF320 /* LocalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B882969D8B7003AF320 /* LocalCard.swift */; };
 		8EFE7B8B2969E103003AF320 /* LocalLegalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7B8A2969E103003AF320 /* LocalLegalities.swift */; };
@@ -286,6 +287,7 @@
 		8EE3DDAC2981894D00DBF2C0 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		8EE3DDB12981AC4A00DBF2C0 /* CardDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailPresenter.swift; sourceTree = "<group>"; };
 		8EE3DDB42981AE6700DBF2C0 /* NumberFormatter+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Currency.swift"; sourceTree = "<group>"; };
+		8EE3DDC42982BD7E00DBF2C0 /* ResourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceView.swift; sourceTree = "<group>"; };
 		8EFE7B862969D1C3003AF320 /* ManagedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCard.swift; sourceTree = "<group>"; };
 		8EFE7B882969D8B7003AF320 /* LocalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCard.swift; sourceTree = "<group>"; };
 		8EFE7B8A2969E103003AF320 /* LocalLegalities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLegalities.swift; sourceTree = "<group>"; };
@@ -872,6 +874,7 @@
 				8EA9B9812964CB50005E6080 /* ResourceErrorView.swift */,
 				8EA9B97F2964C869005E6080 /* ResourceLoadingView.swift */,
 				8EA9B97D2964C7DB005E6080 /* Shared.strings */,
+				8EE3DDC42982BD7E00DBF2C0 /* ResourceView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -972,7 +975,6 @@
 		8EE3DDA32981868300DBF2C0 /* Card Details UI */ = {
 			isa = PBXGroup;
 			children = (
-				8EE3DDBA2982B2BE00DBF2C0 /* Helpers */,
 				8EE3DDA52981869800DBF2C0 /* Views */,
 				8EE3DDA42981868F00DBF2C0 /* ViewController */,
 			);
@@ -1016,13 +1018,6 @@
 			isa = PBXGroup;
 			children = (
 				8EE3DDB42981AE6700DBF2C0 /* NumberFormatter+Currency.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		8EE3DDBA2982B2BE00DBF2C0 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1404,6 +1399,7 @@
 				8E0A6D0229660DD100F79B35 /* Legalities.swift in Sources */,
 				8EA9B93E2964A214005E6080 /* DateFormatter+Helpers.swift in Sources */,
 				8EA9B9822964CB50005E6080 /* ResourceErrorView.swift in Sources */,
+				8EE3DDC52982BD7E00DBF2C0 /* ResourceView.swift in Sources */,
 				8EA9B9782964C796005E6080 /* LoadResourcePresenter.swift in Sources */,
 				8E4F6A552967A5270022403A /* CardPresenter.swift in Sources */,
 				8EFE7B892969D8B7003AF320 /* LocalCard.swift in Sources */,

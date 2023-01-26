@@ -16,7 +16,8 @@ public enum CardDetailUIComposer {
     public static func cardDetailComposedWith(
         card: Card,
         imageLoader: @escaping (URL?) -> AnyPublisher<Data, Error>,
-        openURL: @escaping (URL?) -> Void) -> CardDetailViewController {
+        openURL: @escaping (URL?) -> Void,
+        priceFormatter: NumberFormatter) -> CardDetailViewController {
             let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in
                 imageLoader(card.images?.large)
             })
@@ -37,7 +38,7 @@ public enum CardDetailUIComposer {
                 openURL(card.cardmarket?.url)
             }
             
-            controller.displayCardDetail(CardDetailPresenter.map(card, currencyFormatter: .priceFormatter))
+            controller.displayCardDetail(CardDetailPresenter.map(card, currencyFormatter: priceFormatter))
             
             return controller
     }

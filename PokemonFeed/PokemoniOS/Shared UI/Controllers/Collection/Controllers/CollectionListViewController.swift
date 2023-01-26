@@ -14,13 +14,6 @@ public final class CollectionListViewController: UICollectionViewController {
     private let layout: UICollectionViewLayout
     private let frame: CGRect?
     
-    public var searchController: UISearchController {
-        let searchController = UISearchController()
-        searchController.searchBar.searchTextField.backgroundColor = .lightGray
-        searchController.searchBar.showsCancelButton = false
-        return searchController
-    }
-    
     private(set) public var errorView: ErrorView = ErrorView()
     
     public init(collectionViewLayout layout: UICollectionViewLayout, frame: CGRect? = nil) {
@@ -33,7 +26,7 @@ public final class CollectionListViewController: UICollectionViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var dataSource: UICollectionViewDiffableDataSource<Int, CollectionController> = {
+    private(set) public lazy var dataSource: UICollectionViewDiffableDataSource<Int, CollectionController> = {
         .init(collectionView: collectionView) { (collectionView, index, controller) in
             controller.dataSource.collectionView(collectionView, cellForItemAt: index)
         }
@@ -89,10 +82,6 @@ private extension CollectionListViewController {
             errorView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             errorView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         ])
-        
-       
-        definesPresentationContext = true
-        navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
