@@ -224,6 +224,7 @@
 		8EA9B9BE2964EA84005E6080 /* PokemonTCG */ = {
 			isa = PBXGroup;
 			children = (
+				8EAD9C5E298568E6003EACC3 /* Tab */,
 				8EE3DDAE2981A32900DBF2C0 /* CardDetail */,
 				8E56CE8229679BBC00FFCD15 /* CardList */,
 				8EBEA6982964F133000F1FC8 /* Helpers */,
@@ -256,6 +257,13 @@
 				8EA9B9F12964EB1C005E6080 /* PokemoniOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8EAD9C5E298568E6003EACC3 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tab;
 			sourceTree = "<group>";
 		};
 		8EBEA6942964F097000F1FC8 /* BoosterSets */ = {

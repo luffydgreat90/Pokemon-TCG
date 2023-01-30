@@ -56,6 +56,7 @@
 		8E0A6D1E2966423C00F79B35 /* UICollectionView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D1D2966423C00F79B35 /* UICollectionView+Dequeueing.swift */; };
 		8E0A6D202967808200F79B35 /* UIView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D1F2967808200F79B35 /* UIView+Helpers.swift */; };
 		8E0A6D222967837F00F79B35 /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D212967837F00F79B35 /* UIView+Shimmering.swift */; };
+		8E11EC3E2984161600788F9F /* ManagedSaveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E11EC3D2984161600788F9F /* ManagedSaveCard.swift */; };
 		8E1AA7DC2968D07F001E05A9 /* CardStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7DA2968D07F001E05A9 /* CardStore.xcdatamodeld */; };
 		8E1AA7DE2968D40E001E05A9 /* SuperType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7DD2968D40E001E05A9 /* SuperType.swift */; };
 		8E1AA7E02968D8D0001E05A9 /* CoreDataCardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7DF2968D8D0001E05A9 /* CoreDataCardStore.swift */; };
@@ -116,6 +117,7 @@
 		8EA9B9AE2964E30A005E6080 /* BoosterSetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */; };
 		8EA9B9B02964E654005E6080 /* BoosterSetPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */; };
 		8EA9B9B22964E8FC005E6080 /* UITableView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */; };
+		8EAD9C60298744FC003EACC3 /* ManageDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAD9C5F298744FC003EACC3 /* ManageDeck.swift */; };
 		8EE3DDA9298186D100DBF2C0 /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDA8298186D100DBF2C0 /* CardDetailViewModel.swift */; };
 		8EE3DDAB2981894500DBF2C0 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDAA2981894500DBF2C0 /* CardDetailViewController.swift */; };
 		8EE3DDAD2981894D00DBF2C0 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDAC2981894D00DBF2C0 /* CardDetailView.swift */; };
@@ -219,6 +221,7 @@
 		8E0A6D1D2966423C00F79B35 /* UICollectionView+Dequeueing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Dequeueing.swift"; sourceTree = "<group>"; };
 		8E0A6D1F2967808200F79B35 /* UIView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Helpers.swift"; sourceTree = "<group>"; };
 		8E0A6D212967837F00F79B35 /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmering.swift"; sourceTree = "<group>"; };
+		8E11EC3D2984161600788F9F /* ManagedSaveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedSaveCard.swift; sourceTree = "<group>"; };
 		8E1AA7DB2968D07F001E05A9 /* CardStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CardStore.xcdatamodel; sourceTree = "<group>"; };
 		8E1AA7DD2968D40E001E05A9 /* SuperType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperType.swift; sourceTree = "<group>"; };
 		8E1AA7DF2968D8D0001E05A9 /* CoreDataCardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCardStore.swift; sourceTree = "<group>"; };
@@ -283,6 +286,7 @@
 		8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenter.swift; sourceTree = "<group>"; };
 		8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenterTests.swift; sourceTree = "<group>"; };
 		8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeueing.swift"; sourceTree = "<group>"; };
+		8EAD9C5F298744FC003EACC3 /* ManageDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDeck.swift; sourceTree = "<group>"; };
 		8EE3DDA8298186D100DBF2C0 /* CardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
 		8EE3DDAA2981894500DBF2C0 /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		8EE3DDAC2981894D00DBF2C0 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
@@ -631,7 +635,9 @@
 				8E1AA7DF2968D8D0001E05A9 /* CoreDataCardStore.swift */,
 				8E1AA7E62969D06F001E05A9 /* ManagedCardCache.swift */,
 				8EFE7B862969D1C3003AF320 /* ManagedCard.swift */,
+				8E11EC3D2984161600788F9F /* ManagedSaveCard.swift */,
 				8EFE7B9D296A1E57003AF320 /* CoreDataCardStore+CardStore.swift */,
+				8EAD9C5F298744FC003EACC3 /* ManageDeck.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -1417,9 +1423,11 @@
 				8EA9B9672964B7E4005E6080 /* BoosterSetsPresenter.swift in Sources */,
 				8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */,
 				8E0A6D0629662BE200F79B35 /* Card.swift in Sources */,
+				8EAD9C60298744FC003EACC3 /* ManageDeck.swift in Sources */,
 				8E0A6CCF2965B54000F79B35 /* BoosterSetStore.swift in Sources */,
 				8E0A6CE12965CA6800F79B35 /* BoosterSetCachePolicy.swift in Sources */,
 				8E4F6A5129679EF30022403A /* CardsViewModel.swift in Sources */,
+				8E11EC3E2984161600788F9F /* ManagedSaveCard.swift in Sources */,
 				8EA9B9462964B437005E6080 /* BoosterSetsMapper.swift in Sources */,
 				8EA9B9802964C869005E6080 /* ResourceLoadingView.swift in Sources */,
 				8EFE7B8B2969E103003AF320 /* LocalLegalities.swift in Sources */,
