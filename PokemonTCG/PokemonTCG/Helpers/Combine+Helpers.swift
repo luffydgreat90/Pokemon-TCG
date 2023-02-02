@@ -69,7 +69,7 @@ extension Publisher where Output == [Card] {
 
 private extension CardCache {
     func saveIgnoringResult(_ cards: [Card], setId: String) {
-        save(cards, setId: setId) { _ in }
+        try? save(cards, setId: setId)
     }
 }
 
@@ -92,10 +92,8 @@ public extension LocalCardLoader {
 
     func loadPublisher(setId: String) -> Publisher {
         return Deferred {
-            Future { promise in
-                self.load(setID: setId) { result in
-                    promise(result)
-                }
+            Future { completion in
+                completion(Result{ try self.load(setID: setId) })
             }
         }
         .eraseToAnyPublisher()

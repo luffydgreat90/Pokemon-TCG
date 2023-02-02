@@ -19,47 +19,43 @@ class CardStoreSpy: CardStore {
 
     private(set) var receivedCards = [ReceivedCard]()
 
-    private var deletionCompletions = [String: DeletionCompletion]()
-    private var insertionCompletions = [String: InsertionCompletion]()
-    private var retrievalCompletions = [String: RetrievalCompletion]()
+    private var deletionResult: Result<Void, Error>?
+    private var insertionResult: Result<Void, Error>?
+    private var retrievalResult: Result<CachedCard?, Error>?
     
-    func deleteCachedCards(setId: String, completion: @escaping DeletionCompletion){
-        deletionCompletions[setId] = completion
+    func deleteCachedCards(setId: String) throws {
         receivedCards.append(.deleteCachedCard(setId))
+        try deletionResult?.get()
     }
 
     func completeDeletion(with error: Error, setId: String) {
-        deletionCompletions[setId]!(.failure(error))
+        deletionResult = .failure(error)
     }
     
     func completeDeletionSuccessfully(setId: String) {
-        deletionCompletions[setId]!(.success(()))
+        deletionResult = .success(())
     }
     
-    func insert(_ cards: [LocalCard], setId: String, timestamp: Date, completion: @escaping InsertionCompletion){
-        insertionCompletions[setId] = completion
-        receivedCards.append(.insert(cards, setId, timestamp))
+    func insert(_ cards: [LocalCard], setId: String, timestamp: Date) throws {
+        receivedCards.append(.insert(cards,setId, timestamp))
+        try insertionResult?.get()
     }
 
-    func retrieve(setID setId: String, completion: @escaping RetrievalCompletion){
-        retrievalCompletions[setId] = completion
+    func retrieve(setID setId: String)  throws -> CachedCard?{
         receivedCards.append(.retrieve(setId))
+        return try retrievalResult?.get()
     }
     
-    func completeRetrievalError(with error: Error, setID: String) {
-        retrievalCompletions[setID]!(.failure(error))
+    func completeRetrieval(with error: Error, setID: String) {
+        retrievalResult = .failure(error)
     }
     
     func completeRetrievalWithEmptyCache(with error: Error, setID: String) {
-        retrievalCompletions[setID]!(.failure(error))
+        retrievalResult = .failure(error)
     }
      
     func completeRetrieval(with feed: [LocalCard], setID: String, timestamp: Date) throws {
-        guard let completion = retrievalCompletions[setID] else{
-            throw CardsNotFound()
-        }
-        
-        completion(.success(CachedCard(cards: feed, setID: setID, timestamp: timestamp)))
+        retrievalResult = .success(CachedCard(cards: feed, setID: setID, timestamp: timestamp))
     }
     
 }

@@ -19,8 +19,8 @@ class ValidateCardCacheUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let setID = "base1"
         
-        sut.validateCache(setId: setID) { _ in }
-        store.completeRetrievalError(with: anyNSError(), setID: setID)
+        store.completeRetrieval(with: anyNSError(), setID: setID)
+        try?  sut.validateCache(setId: setID)
 
         XCTAssertEqual(store.receivedCards, [.retrieve(setID), .deleteCachedCard(setID)])
     }
@@ -29,9 +29,9 @@ class ValidateCardCacheUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let setID = "base1"
         
-        sut.validateCache(setId: setID) { _ in }
         store.completeRetrievalWithEmptyCache(with: anyNSError(), setID: setID)
-
+        try?  sut.validateCache(setId: setID)
+        
         XCTAssertEqual(store.receivedCards, [.retrieve(setID), .deleteCachedCard(setID)])
     }
     
@@ -42,11 +42,11 @@ class ValidateCardCacheUseCaseTests: XCTestCase {
         let expirationTimestamp = fixedCurrentDate.minusCardCacheMaxAge()
         let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
 
-        sut.validateCache(setId: setID) { _ in }
        
         XCTAssertNoThrow(try? store.completeRetrieval(with: cards.local, setID: setID, timestamp: expirationTimestamp), "Booster Set ID not found \(setID)")
         
-
+        try?  sut.validateCache(setId: setID)
+       
         XCTAssertEqual(store.receivedCards, [.retrieve(setID), .deleteCachedCard(setID)])
     }
     
@@ -56,7 +56,7 @@ class ValidateCardCacheUseCaseTests: XCTestCase {
         let setID = "base1"
         
         expect(sut, setID: setID, toCompleteWith: .failure(deletionError), when: {
-            store.completeRetrievalError(with: anyNSError(), setID: setID)
+            store.completeRetrieval(with: anyNSError(), setID: setID)
             store.completeDeletion(with: deletionError, setId: setID)
         })
     }
@@ -66,21 +66,9 @@ class ValidateCardCacheUseCaseTests: XCTestCase {
         let setID = "base1"
         
         expect(sut, setID: setID, toCompleteWith: .success(()), when: {
-            store.completeRetrievalError(with: anyNSError(), setID: setID)
+            store.completeRetrieval(with: anyNSError(), setID: setID)
             store.completeDeletionSuccessfully(setId: setID)
         })
-    }
-
-    func test_validateCache_doesNotDeleteInvalidCacheAfterSUTInstanceHasBeenDeallocated() {
-        let store = CardStoreSpy()
-        var sut: LocalCardLoader? = LocalCardLoader(store: store, currentDate: Date.init)
-        let setID = "base1"
-        sut?.validateCache(setId: setID) { _ in }
-
-        sut = nil
-        store.completeRetrievalError(with: anyNSError(), setID: setID)
-
-        XCTAssertEqual(store.receivedCards, [.retrieve(setID)])
     }
     
     // MARK: - Helpers
@@ -94,25 +82,20 @@ class ValidateCardCacheUseCaseTests: XCTestCase {
         return (sut, store)
     }
     
-    private func expect(_ sut: LocalCardLoader, setID: String, toCompleteWith expectedResult: LocalCardLoader.ValidationResult, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
-        let exp = expectation(description: "Wait for load completion")
-
-        sut.validateCache(setId: setID) { receivedResult in
-            switch (receivedResult, expectedResult) {
+    private func expect(_ sut: LocalCardLoader, setID: String, toCompleteWith expectedResult: Result<Void, Error>,  when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        
+        action()
+        let receivedResult = Result { try sut.validateCache(setId: setID) }
+        
+        switch (receivedResult, expectedResult) {
             case (.success, .success):
                 break
-
+                
             case let (.failure(receivedError as NSError), .failure(expectedError as NSError)):
                 XCTAssertEqual(receivedError, expectedError, file: file, line: line)
-            
+                
             default:
                 XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
-            }
-
-            exp.fulfill()
         }
-
-        action()
-        wait(for: [exp], timeout: 1.0)
     }
 }

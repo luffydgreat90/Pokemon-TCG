@@ -18,28 +18,10 @@ public final class LocalCardLoader {
 }
 
 extension LocalCardLoader: CardCache {
-    public typealias SaveResult = CardCache.Result
     
-    public func save(_ cards: [Card],setId: String, completion: @escaping (SaveResult) -> Void) {
-        store.deleteCachedCards(setId: setId) { [weak self] deletionResult in
-            guard let self = self else { return }
-
-            switch deletionResult {
-            case .success:
-                self.cache(cards,setId: setId, with: completion)
-
-            case let .failure(error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    private func cache(_ cards: [Card], setId: String, with completion: @escaping (SaveResult) -> Void) {
-        store.insert(cards.toLocal(), setId: setId, timestamp: currentDate()) { [weak self] insertionResult in
-            guard self != nil else { return }
-
-            completion(insertionResult)
-        }
+    public func save(_ cards: [Card], setId: String) throws {
+        try store.deleteCachedCards(setId: setId)
+        try store.insert(cards.toLocal(), setId: setId, timestamp: currentDate())
     }
 }
 
@@ -49,40 +31,25 @@ extension LocalCardLoader {
         public init() {}
     }
     
-    public func load(setID: String, completion: @escaping (LoadResult) -> Void) {
-        store.retrieve(setID: setID) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case let .failure(error):
-                completion(.failure(error))
-
-            case let .success(.some(cache)) where CardCachePolicy.validate(cache.timestamp, against: self.currentDate()):
-                completion(.success(cache.cards.toModels()))
-
-            case .success:
-                completion(.failure(EmptyList()))
-            }
+    public func load(setID: String) throws -> [Card] {
+        if let cache = try store.retrieve(setID: setID), CardCachePolicy.validate(cache.timestamp, against: self.currentDate()) {
+            return cache.cards.toModels()
+        }else{
+            throw EmptyList()
         }
     }
 }
 
 extension LocalCardLoader {
-    public typealias ValidationResult = Result<Void, Error>
+    private struct InvalidCache: Error {}
 
-    public func validateCache(setId: String, completion: @escaping (ValidationResult) -> Void) {
-        store.retrieve(setID: setId) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .failure:
-                self.store.deleteCachedCards(setId: setId, completion: completion)
-                
-            case let .success(.some(cache)) where !CardCachePolicy.validate(cache.timestamp, against: self.currentDate()):
-                self.store.deleteCachedCards(setId: setId, completion: completion)
-
-            case .success:
-                completion(.failure(EmptyList()))
-            
+    public func validateCache(setId: String) throws {
+        do {
+            if let cache = try store.retrieve(setID: setId), !CardCachePolicy.validate(cache.timestamp, against: self.currentDate()) {
+                throw InvalidCache()
             }
+        } catch {
+            try store.deleteCachedCards(setId: setId)
         }
     }
 }
