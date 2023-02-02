@@ -10,5 +10,5 @@ import CoreData
 @objc(ManagedSaveCard)
 class ManagedSaveCard: NSManagedObject {
     @NSManaged var quantity: Int16
-    @NSManaged var saveCards: NSOrderedSet
+    @NSManaged var card: ManagedCard
 }

@@ -32,6 +32,7 @@ class ManagedCard: NSManagedObject {
     @NSManaged var setName: String
     @NSManaged var setId: String
     @NSManaged var setSeries: String
+    @NSManaged var cache: ManagedCardCache
 }
 
 extension ManagedCard {

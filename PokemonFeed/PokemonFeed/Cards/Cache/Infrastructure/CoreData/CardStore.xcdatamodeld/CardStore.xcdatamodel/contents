@@ -35,11 +35,11 @@
     <entity name="ManageDeck" representedClassName="ManageDeck" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="update" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="saveCards" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ManagedSaveCard" inverseName="deck" inverseEntity="ManagedSaveCard"/>
+        <relationship name="saveCards" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ManagedSaveCard" inverseName="deck" inverseEntity="ManagedSaveCard"/>
     </entity>
     <entity name="ManagedSaveCard" representedClassName="ManagedSaveCard" syncable="YES">
         <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="card" maxCount="1" deletionRule="Cascade" ordered="YES" destinationEntity="ManagedCard" inverseName="save" inverseEntity="ManagedCard"/>
-        <relationship name="deck" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManageDeck" inverseName="saveCards" inverseEntity="ManageDeck"/>
+        <relationship name="deck" maxCount="1" deletionRule="Nullify" destinationEntity="ManageDeck" inverseName="saveCards" inverseEntity="ManageDeck"/>
     </entity>
 </model>
