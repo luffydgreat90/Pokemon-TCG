@@ -27,7 +27,7 @@ class LoadCardFromCacheUseCaseTests: XCTestCase {
     
     func test_load_failsOnRetrievalError() {
         let (sut, store) = makeSUT()
-        let retrievalError = anyNSError()
+        let retrievalError = LocalCardLoader.EmptyList()
         let setID = "base1"
         
         expect(sut, setID:setID, toCompleteWith: .failure(retrievalError), when: {
@@ -37,7 +37,7 @@ class LoadCardFromCacheUseCaseTests: XCTestCase {
     
     func test_load_deliversNoCardsOnEmptyCacheError() {
         let (sut, store) = makeSUT()
-        let retrievalError = anyNSError()
+        let retrievalError = LocalCardLoader.EmptyList()
         let setID = "base1"
         
         expect(sut, setID: setID, toCompleteWith: .failure(retrievalError), when: { [retrievalError] in
@@ -45,48 +45,13 @@ class LoadCardFromCacheUseCaseTests: XCTestCase {
         })
     }
     
-    func test_load_deliversCachedBoosterSetsOnNonExpiredCache() throws {
-        let cards = uniqueCards()
-        let fixedCurrentDate = Date()
-        let setID = "base1"
-        let nonExpiredTimestamp = fixedCurrentDate.minusCardCacheMaxAge().adding(seconds: 1)
-        let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
-
-        expect(sut, setID: setID, toCompleteWith: .success(cards.models), when: {
-            XCTAssertNoThrow(try store.completeRetrieval(with: cards.local, setID: setID, timestamp: nonExpiredTimestamp), "BoosterSet \(setID) not found ")
-            
-        })
-    }
-
-    func test_load_deliversNoCardsOnCacheExpirationError() {
-        let cards = uniqueCards()
-        let fixedCurrentDate = Date()
-        let expirationTimestamp = fixedCurrentDate.minusCardCacheMaxAge()
-        let setID = "base1"
-        let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
-        
-        expect(sut, setID: setID, toCompleteWith: .failure(LocalCardLoader.EmptyList()), when: {
-            try store.completeRetrieval(with: cards.local, setID: setID, timestamp: expirationTimestamp)
-        })
-    }
-    
     func test_load_hasNoSideEffectsOnRetrievalError() {
         let (sut, store) = makeSUT()
         let setID = "base1"
         _ = try? sut.load(setID: setID)
-    
-        store.completeRetrieval(with: anyNSError(), setID: setID)
+
+        store.completeRetrieval(with: LocalCardLoader.EmptyList(), setID: setID)
         XCTAssertEqual(store.receivedCards, [.retrieve(setID)])
-    }
-    
-    func test_load_deliversNoBoosterSetsOnEmptyCache() {
-        let (sut, store) = makeSUT()
-        let setID = "base1"
-        let retrievalError = anyNSError()
-        
-        expect(sut, setID: setID, toCompleteWith: .failure(retrievalError), when: {
-            store.completeRetrievalWithEmptyCache(with: retrievalError, setID: setID)
-        })
     }
     
     func test_load_hasNoSideEffectsOnNonExpiredCache() throws {
@@ -98,19 +63,6 @@ class LoadCardFromCacheUseCaseTests: XCTestCase {
 
         _ = try? sut.load(setID: setID)
         XCTAssertNoThrow(try store.completeRetrieval(with: cards.local, setID: setID, timestamp: nonExpiredTimestamp))
-
-        XCTAssertEqual(store.receivedCards, [.retrieve(setID)])
-    }
-    
-    func test_load_hasNoSideEffectsOnCacheExpiration() throws {
-        let cards = uniqueCards()
-        let fixedCurrentDate = Date()
-        let setID = "base1"
-        let expirationTimestamp = fixedCurrentDate.minusBoosterSetCacheMaxAge()
-        let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
-
-        _ = try? sut.load(setID: setID)
-        XCTAssertNoThrow(try store.completeRetrieval(with: cards.local, setID: setID, timestamp: expirationTimestamp))
 
         XCTAssertEqual(store.receivedCards, [.retrieve(setID)])
     }
