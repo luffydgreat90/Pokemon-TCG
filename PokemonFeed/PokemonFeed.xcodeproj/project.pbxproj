@@ -122,6 +122,8 @@
 		8EB567E5298C82BA0004746B /* DeckController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB567E4298C82BA0004746B /* DeckController.swift */; };
 		8EB567E8298C87570004746B /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB567E7298C87570004746B /* Deck.swift */; };
 		8EB567EA298C87B50004746B /* SaveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB567E9298C87B50004746B /* SaveCard.swift */; };
+		8EB567EC298C88660004746B /* DeckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB567EB298C88660004746B /* DeckViewModel.swift */; };
+		8EB567EE298C88960004746B /* DeckPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB567ED298C88960004746B /* DeckPresenter.swift */; };
 		8EE3DDA9298186D100DBF2C0 /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDA8298186D100DBF2C0 /* CardDetailViewModel.swift */; };
 		8EE3DDAB2981894500DBF2C0 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDAA2981894500DBF2C0 /* CardDetailViewController.swift */; };
 		8EE3DDAD2981894D00DBF2C0 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDAC2981894D00DBF2C0 /* CardDetailView.swift */; };
@@ -295,6 +297,8 @@
 		8EB567E4298C82BA0004746B /* DeckController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckController.swift; sourceTree = "<group>"; };
 		8EB567E7298C87570004746B /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		8EB567E9298C87B50004746B /* SaveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCard.swift; sourceTree = "<group>"; };
+		8EB567EB298C88660004746B /* DeckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckViewModel.swift; sourceTree = "<group>"; };
+		8EB567ED298C88960004746B /* DeckPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckPresenter.swift; sourceTree = "<group>"; };
 		8EE3DDA8298186D100DBF2C0 /* CardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
 		8EE3DDAA2981894500DBF2C0 /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		8EE3DDAC2981894D00DBF2C0 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
@@ -645,9 +649,7 @@
 				8E1AA7DF2968D8D0001E05A9 /* CoreDataCardStore.swift */,
 				8E1AA7E62969D06F001E05A9 /* ManagedCardCache.swift */,
 				8EFE7B862969D1C3003AF320 /* ManagedCard.swift */,
-				8E11EC3D2984161600788F9F /* ManagedSaveCard.swift */,
 				8EFE7B9D296A1E57003AF320 /* CoreDataCardStore+CardStore.swift */,
-				8EAD9C5F298744FC003EACC3 /* ManageDeck.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -702,6 +704,7 @@
 		8EA9B90929648B36005E6080 /* PokemonFeed */ = {
 			isa = PBXGroup;
 			children = (
+				8EB567EF298C88B10004746B /* Deck */,
 				8EE3DDB32981AE4600DBF2C0 /* Helpers */,
 				8EE3DDA6298186B800DBF2C0 /* CardDetail */,
 				8E0A6CE92965D76000F79B35 /* Cards */,
@@ -996,6 +999,49 @@
 				8EB567E4298C82BA0004746B /* DeckController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8EB567EF298C88B10004746B /* Deck */ = {
+			isa = PBXGroup;
+			children = (
+				8EB567F3298C88EC0004746B /* Presentation */,
+				8EB567F0298C88BD0004746B /* Cache */,
+			);
+			path = Deck;
+			sourceTree = "<group>";
+		};
+		8EB567F0298C88BD0004746B /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				8EB567F1298C88CE0004746B /* Infrastructure */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		8EB567F1298C88CE0004746B /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				8EB567F2298C88D40004746B /* CoreData */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		8EB567F2298C88D40004746B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				8E11EC3D2984161600788F9F /* ManagedSaveCard.swift */,
+				8EAD9C5F298744FC003EACC3 /* ManageDeck.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		8EB567F3298C88EC0004746B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				8EB567EB298C88660004746B /* DeckViewModel.swift */,
+				8EB567ED298C88960004746B /* DeckPresenter.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		8EBEA69F296585FB000F1FC8 /* Cache */ = {
@@ -1464,6 +1510,7 @@
 				8E0A6CE12965CA6800F79B35 /* BoosterSetCachePolicy.swift in Sources */,
 				8E4F6A5129679EF30022403A /* CardsViewModel.swift in Sources */,
 				8E11EC3E2984161600788F9F /* ManagedSaveCard.swift in Sources */,
+				8EB567EC298C88660004746B /* DeckViewModel.swift in Sources */,
 				8EA9B9462964B437005E6080 /* BoosterSetsMapper.swift in Sources */,
 				8EA9B9802964C869005E6080 /* ResourceLoadingView.swift in Sources */,
 				8EFE7B8B2969E103003AF320 /* LocalLegalities.swift in Sources */,
@@ -1494,6 +1541,7 @@
 				8EA9B92929649315005E6080 /* URLSessionHTTPClient.swift in Sources */,
 				8EA9B96F2964B8EE005E6080 /* BoosterSetsViewModel.swift in Sources */,
 				8EFE7B95296A10C6003AF320 /* CardCache.swift in Sources */,
+				8EB567EE298C88960004746B /* DeckPresenter.swift in Sources */,
 				8E1AA7E02968D8D0001E05A9 /* CoreDataCardStore.swift in Sources */,
 				8E0A6CF82965DEB100F79B35 /* ImageDataLoader.swift in Sources */,
 				8E1AA7DE2968D40E001E05A9 /* SuperType.swift in Sources */,
