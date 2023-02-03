@@ -80,7 +80,6 @@ extension BoosterSetController: UITableViewDelegate {
     }
 }
 
-
 extension BoosterSetController: ResourceView {
     public func display(_ viewModel: UIImage) {
         cell?.boosterSetImageView.setImageAnimated(viewModel)
