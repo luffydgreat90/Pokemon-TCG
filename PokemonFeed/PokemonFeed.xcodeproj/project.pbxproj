@@ -118,6 +118,10 @@
 		8EA9B9B02964E654005E6080 /* BoosterSetPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */; };
 		8EA9B9B22964E8FC005E6080 /* UITableView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */; };
 		8EAD9C60298744FC003EACC3 /* ManageDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAD9C5F298744FC003EACC3 /* ManageDeck.swift */; };
+		8EB567E2298C819F0004746B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB567E1298C819F0004746B /* TabBarController.swift */; };
+		8EB567E5298C82BA0004746B /* DeckController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB567E4298C82BA0004746B /* DeckController.swift */; };
+		8EB567E8298C87570004746B /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB567E7298C87570004746B /* Deck.swift */; };
+		8EB567EA298C87B50004746B /* SaveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB567E9298C87B50004746B /* SaveCard.swift */; };
 		8EE3DDA9298186D100DBF2C0 /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDA8298186D100DBF2C0 /* CardDetailViewModel.swift */; };
 		8EE3DDAB2981894500DBF2C0 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDAA2981894500DBF2C0 /* CardDetailViewController.swift */; };
 		8EE3DDAD2981894D00DBF2C0 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDAC2981894D00DBF2C0 /* CardDetailView.swift */; };
@@ -287,6 +291,10 @@
 		8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenterTests.swift; sourceTree = "<group>"; };
 		8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeueing.swift"; sourceTree = "<group>"; };
 		8EAD9C5F298744FC003EACC3 /* ManageDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDeck.swift; sourceTree = "<group>"; };
+		8EB567E1298C819F0004746B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		8EB567E4298C82BA0004746B /* DeckController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckController.swift; sourceTree = "<group>"; };
+		8EB567E7298C87570004746B /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		8EB567E9298C87B50004746B /* SaveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCard.swift; sourceTree = "<group>"; };
 		8EE3DDA8298186D100DBF2C0 /* CardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
 		8EE3DDAA2981894500DBF2C0 /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		8EE3DDAC2981894D00DBF2C0 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
@@ -549,6 +557,8 @@
 				8E0A6D0529662BE200F79B35 /* Card.swift */,
 				8E1AA7DD2968D40E001E05A9 /* SuperType.swift */,
 				8EFE7B94296A10C6003AF320 /* CardCache.swift */,
+				8EB567E7298C87570004746B /* Deck.swift */,
+				8EB567E9298C87B50004746B /* SaveCard.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -825,6 +835,7 @@
 		8EA9B9512964B699005E6080 /* PokemoniOS */ = {
 			isa = PBXGroup;
 			children = (
+				8EB567E3298C82950004746B /* Deck UI */,
 				8EE3DDCC2983F9F300DBF2C0 /* Cards Save UI */,
 				8EE3DDA32981868300DBF2C0 /* Card Details UI */,
 				8E0A6D1329663CAA00F79B35 /* Cards UI */,
@@ -944,6 +955,7 @@
 		8EA9B9A12964D9E8005E6080 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8EB567E0298C81900004746B /* TabController */,
 				8E067894297060E900E71A2B /* ImageController */,
 				8E0A6D10296636B500F79B35 /* Collection */,
 				8E0A6D0F296636A900F79B35 /* Table */,
@@ -960,6 +972,30 @@
 				8EA9B9842964CD0C005E6080 /* SharedLocalizationTests.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8EB567E0298C81900004746B /* TabController */ = {
+			isa = PBXGroup;
+			children = (
+				8EB567E1298C819F0004746B /* TabBarController.swift */,
+			);
+			path = TabController;
+			sourceTree = "<group>";
+		};
+		8EB567E3298C82950004746B /* Deck UI */ = {
+			isa = PBXGroup;
+			children = (
+				8EB567E6298C84C80004746B /* Views */,
+			);
+			path = "Deck UI";
+			sourceTree = "<group>";
+		};
+		8EB567E6298C84C80004746B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8EB567E4298C82BA0004746B /* DeckController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8EBEA69F296585FB000F1FC8 /* Cache */ = {
@@ -1432,6 +1468,7 @@
 				8EA9B9802964C869005E6080 /* ResourceLoadingView.swift in Sources */,
 				8EFE7B8B2969E103003AF320 /* LocalLegalities.swift in Sources */,
 				8E0A6D0229660DD100F79B35 /* Legalities.swift in Sources */,
+				8EB567E8298C87570004746B /* Deck.swift in Sources */,
 				8EA9B93E2964A214005E6080 /* DateFormatter+Helpers.swift in Sources */,
 				8EA9B9822964CB50005E6080 /* ResourceErrorView.swift in Sources */,
 				8EE3DDC52982BD7E00DBF2C0 /* ResourceView.swift in Sources */,
@@ -1445,6 +1482,7 @@
 				8EE3DDB22981AC4A00DBF2C0 /* CardDetailPresenter.swift in Sources */,
 				8E0A6CC32965B05A00F79B35 /* BoosterSetStore.xcdatamodeld in Sources */,
 				8E0A6CCD2965B50300F79B35 /* LocalBoosterSetLoader.swift in Sources */,
+				8EB567EA298C87B50004746B /* SaveCard.swift in Sources */,
 				8E2C0D5F2974A3360079329F /* Paginated.swift in Sources */,
 				8EFE7B9E296A1E57003AF320 /* CoreDataCardStore+CardStore.swift in Sources */,
 				8E4F6A4F29679EBE0022403A /* CardsPresenter.swift in Sources */,
@@ -1529,12 +1567,14 @@
 				8E0A6D222967837F00F79B35 /* UIView+Shimmering.swift in Sources */,
 				8E0678972970676E00E71A2B /* ErrorCollectionReusableView.swift in Sources */,
 				8EA9B9A82964E048005E6080 /* BoosterSetController.swift in Sources */,
+				8EB567E5298C82BA0004746B /* DeckController.swift in Sources */,
 				8E0A6D202967808200F79B35 /* UIView+Helpers.swift in Sources */,
 				8E2C0D59297483E90079329F /* LoadMoreCellController.swift in Sources */,
 				8EA9B9A02964D9E2005E6080 /* ListViewController.swift in Sources */,
 				8E4F6A532967A2180022403A /* CardController.swift in Sources */,
 				8EA9B9A52964DAF1005E6080 /* CellController.swift in Sources */,
 				8EFE7BD5296CDA41003AF320 /* UIColor+Helpers.swift in Sources */,
+				8EB567E2298C819F0004746B /* TabBarController.swift in Sources */,
 				8EA9B9B22964E8FC005E6080 /* UITableView+Dequeueing.swift in Sources */,
 				8E0A6D12296636D600F79B35 /* CollectionController.swift in Sources */,
 				8EFE7BC2296C22DB003AF320 /* UITableView+HeaderSizing.swift in Sources */,
