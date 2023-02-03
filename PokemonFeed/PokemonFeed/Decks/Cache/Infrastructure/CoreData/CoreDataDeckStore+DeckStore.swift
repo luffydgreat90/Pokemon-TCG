@@ -23,8 +23,18 @@ extension CoreDataStore: DeckStore {
         
     }
     
-    public func retrieve() throws -> CachedDeck? {
-        return nil
+    public func retrieve() throws -> [LocalDeck] {
+        try performSync { context in
+            Result {
+                try ManagedDeck.find(in: context).map { deck in
+                    LocalDeck(name: deck.name,
+                              update: deck.update,
+                              cards: deck.saveCards.compactMap({
+                            ($0 as? ManagedSaveCard)?.local
+                    }))
+                }
+            }
+        }
     }
         
 }
