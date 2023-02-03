@@ -10,6 +10,11 @@ import PokemonFeed
 
 class DeckPresenterTests: XCTestCase {
     func test_map_createsViewModel() {
+        let deck = uniqueDeck()
+        let dateFormat = DateFormatter.monthDayYear
+        let viewModel = DeckPresenter.map(deck, dateFormatter: dateFormat)
         
+        XCTAssertEqual(deck.name, viewModel.name)
+        XCTAssertEqual(dateFormat.string(from: Date()), viewModel.update)
     }
 }

@@ -130,6 +130,7 @@
 		8EB567FC298C8DD50004746B /* LocalSaveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB567FB298C8DD50004746B /* LocalSaveCard.swift */; };
 		8EB567FF298CFF480004746B /* DeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB567FE298CFF480004746B /* DeckCell.swift */; };
 		8EB56807298D36090004746B /* DeckPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB56806298D36090004746B /* DeckPresenterTests.swift */; };
+		8EB5680B298D3A4C0004746B /* DecksTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB5680A298D3A4C0004746B /* DecksTestHelpers.swift */; };
 		8EE3DDA9298186D100DBF2C0 /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDA8298186D100DBF2C0 /* CardDetailViewModel.swift */; };
 		8EE3DDAB2981894500DBF2C0 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDAA2981894500DBF2C0 /* CardDetailViewController.swift */; };
 		8EE3DDAD2981894D00DBF2C0 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDAC2981894D00DBF2C0 /* CardDetailView.swift */; };
@@ -311,6 +312,7 @@
 		8EB567FB298C8DD50004746B /* LocalSaveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSaveCard.swift; sourceTree = "<group>"; };
 		8EB567FE298CFF480004746B /* DeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCell.swift; sourceTree = "<group>"; };
 		8EB56806298D36090004746B /* DeckPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckPresenterTests.swift; sourceTree = "<group>"; };
+		8EB5680A298D3A4C0004746B /* DecksTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksTestHelpers.swift; sourceTree = "<group>"; };
 		8EE3DDA8298186D100DBF2C0 /* CardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
 		8EE3DDAA2981894500DBF2C0 /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		8EE3DDAC2981894D00DBF2C0 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
@@ -1065,6 +1067,7 @@
 		8EB567F6298C8C040004746B /* Decks */ = {
 			isa = PBXGroup;
 			children = (
+				8EB56809298D3A320004746B /* Helpers */,
 				8EB56805298D35F50004746B /* Presentation */,
 			);
 			path = Decks;
@@ -1116,6 +1119,14 @@
 				8EB567E7298C87570004746B /* Deck.swift */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		8EB56809298D3A320004746B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8EB5680A298D3A4C0004746B /* DecksTestHelpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		8EBEA69F296585FB000F1FC8 /* Cache */ = {
@@ -1649,6 +1660,7 @@
 				8E0A6CE32965CE9200F79B35 /* BoosterSetCache+TestHelpers.swift in Sources */,
 				8E0A6CE52965D21000F79B35 /* ValidateBoosterSetCacheUseCaseTests.swift in Sources */,
 				8E0A6CDD2965C79600F79B35 /* BoosterSetStoreSpy.swift in Sources */,
+				8EB5680B298D3A4C0004746B /* DecksTestHelpers.swift in Sources */,
 				8EFE7BA3296B70E8003AF320 /* CardPresenterTests.swift in Sources */,
 				8EFE7BAD296B811D003AF320 /* CoreDataBoosterSetImageDataStoreTests.swift in Sources */,
 				8EB56807298D36090004746B /* DeckPresenterTests.swift in Sources */,
