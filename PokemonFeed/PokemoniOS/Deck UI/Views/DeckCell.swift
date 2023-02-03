@@ -9,7 +9,6 @@ import UIKit
 import PokemonFeed
 
 public class DeckCell: UITableViewCell {
-
     public private(set) var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textColor = .label

@@ -10,11 +10,11 @@ import Foundation
 public struct LocalDeck {
     public let name: String
     public let update: Date
-    public let saveCards: NSOrderedSet
+    public let cards: [LocalSaveCard]
     
-    public init(name: String, update: Date, saveCards: NSOrderedSet) {
+    public init(name: String, update: Date, cards: [LocalSaveCard]) {
         self.name = name
         self.update = update
-        self.saveCards = saveCards
+        self.cards = cards
     }
 }

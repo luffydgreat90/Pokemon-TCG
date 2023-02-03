@@ -10,7 +10,7 @@ import Foundation
 public typealias CachedDeck = (decks: [LocalDeck], timestamp: Date)
 
 public protocol DeckStore {
-    func insert(_ deck: LocalDeck, timestamp: Date) throws
-    func update(_ deck: LocalDeck, timestamp: Date) throws
+    func insert(_ deck: LocalDeck) throws
+    func update(_ deck: LocalDeck) throws
     func retrieve() throws -> CachedDeck?
 }

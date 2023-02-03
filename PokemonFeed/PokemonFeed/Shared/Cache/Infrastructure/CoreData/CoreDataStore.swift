@@ -14,7 +14,6 @@ public protocol DataStore {
 
 public protocol DataStoreImage: DataStore {
     static func resultImageRetrieve(dataForURL url: URL, context: NSManagedObjectContext) -> Result<Data?, Error>
-    
     static func resultSaveRetrieve(data: Data, for url: URL, context: NSManagedObjectContext) -> Result<Void, Error>
 }
 
