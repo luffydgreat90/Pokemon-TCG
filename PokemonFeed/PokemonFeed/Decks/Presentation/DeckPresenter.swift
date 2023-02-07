@@ -7,11 +7,13 @@
 
 import Foundation
 
-public enum DeckPresenter {
-    public static func map(_ deck: Deck, dateFormatter: DateFormatter) -> DeckViewModel {
-        DeckViewModel(
-            name: deck.name,
-            update: dateFormatter.string(from: deck.update))
+public struct DecksViewModel {
+    public let decks: [Deck]
+}
+
+public final class DeckPresenter {
+    public static func map(_ decks: [Deck]) -> DecksViewModel {
+        DecksViewModel(decks: decks)
     }
 }
 

@@ -7,12 +7,12 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
-    override func viewDidLoad() {
+public final class TabBarController: UITabBarController {
+    public override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    func displayTab(with viewControllers:[UIViewController]){
+    public func displayTab(with viewControllers:[UIViewController]){
         self.setViewControllers(viewControllers, animated: true)
     }
 }

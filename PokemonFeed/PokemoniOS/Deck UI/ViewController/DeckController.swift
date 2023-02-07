@@ -8,19 +8,21 @@
 import UIKit
 import PokemonFeed
 
-class DeckController: NSObject {
-    private let viewModel: DeckViewModel
+public class DeckController: NSObject {
+    public let viewModel: DeckViewModel
     private var cell: DeckCell?
     private let selection: () -> Void
     
-    public init(viewModel: DeckViewModel, selection: @escaping () -> Void) {
-        self.viewModel = viewModel
-        self.selection = selection
+    public init(
+        viewModel: DeckViewModel,
+        selection: @escaping () -> Void) {
+            self.viewModel = viewModel
+            self.selection = selection
     }
 }
 
 extension DeckController: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
