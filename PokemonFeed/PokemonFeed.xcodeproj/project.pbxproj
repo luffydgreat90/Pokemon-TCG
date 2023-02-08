@@ -58,6 +58,7 @@
 		8E0A6D222967837F00F79B35 /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D212967837F00F79B35 /* UIView+Shimmering.swift */; };
 		8E0D351329943D9E00A62AAA /* CARD_DETAIL_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0D351129943D9E00A62AAA /* CARD_DETAIL_dark.png */; };
 		8E0D351429943D9E00A62AAA /* CARD_DETAIL_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0D351229943D9E00A62AAA /* CARD_DETAIL_light.png */; };
+		8E0D35162994405400A62AAA /* DeckSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0D35152994405400A62AAA /* DeckSnapshotTests.swift */; };
 		8E11EC3E2984161600788F9F /* ManagedSaveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E11EC3D2984161600788F9F /* ManagedSaveCard.swift */; };
 		8E1AA7DC2968D07F001E05A9 /* CardStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7DA2968D07F001E05A9 /* CardStore.xcdatamodeld */; };
 		8E1AA7DE2968D40E001E05A9 /* SuperType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7DD2968D40E001E05A9 /* SuperType.swift */; };
@@ -240,6 +241,7 @@
 		8E0A6D212967837F00F79B35 /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmering.swift"; sourceTree = "<group>"; };
 		8E0D351129943D9E00A62AAA /* CARD_DETAIL_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CARD_DETAIL_dark.png; sourceTree = "<group>"; };
 		8E0D351229943D9E00A62AAA /* CARD_DETAIL_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CARD_DETAIL_light.png; sourceTree = "<group>"; };
+		8E0D35152994405400A62AAA /* DeckSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckSnapshotTests.swift; sourceTree = "<group>"; };
 		8E11EC3D2984161600788F9F /* ManagedSaveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedSaveCard.swift; sourceTree = "<group>"; };
 		8E1AA7DB2968D07F001E05A9 /* CardStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CardStore.xcdatamodel; sourceTree = "<group>"; };
 		8E1AA7DD2968D40E001E05A9 /* SuperType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperType.swift; sourceTree = "<group>"; };
@@ -645,8 +647,17 @@
 		8E0D351029943D8400A62AAA /* Deck UI */ = {
 			isa = PBXGroup;
 			children = (
+				8E0D35172994446400A62AAA /* snapshots */,
+				8E0D35152994405400A62AAA /* DeckSnapshotTests.swift */,
 			);
 			path = "Deck UI";
+			sourceTree = "<group>";
+		};
+		8E0D35172994446400A62AAA /* snapshots */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = snapshots;
 			sourceTree = "<group>";
 		};
 		8E1AA7D52968A016001E05A9 /* Cache */ = {
@@ -1756,6 +1767,7 @@
 				8EFE7BD3296CC178003AF320 /* BoosterSetSnapshotTests.swift in Sources */,
 				8EFE7BC5296CB019003AF320 /* ListSnapshotTests.swift in Sources */,
 				8EFE7BDF296D7EDF003AF320 /* CardSnapshotTests.swift in Sources */,
+				8E0D35162994405400A62AAA /* DeckSnapshotTests.swift in Sources */,
 				8EFE7BE3296D7FDE003AF320 /* CollectionListSnapshotTests.swift in Sources */,
 				8EFE7BB5296B8F99003AF320 /* XCTestCase+Snapshot.swift in Sources */,
 				8EFE7BB9296B9007003AF320 /* UIImage+TestHelpers.swift in Sources */,

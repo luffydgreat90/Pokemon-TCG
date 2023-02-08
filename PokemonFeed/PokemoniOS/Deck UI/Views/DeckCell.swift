@@ -44,14 +44,12 @@ public class DeckCell: UITableViewCell {
     
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8).withPriority(999),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16).withPriority(999),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).withPriority(999),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).withPriority(999),
-            
-            dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8).withPriority(999),
+            dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
             dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).withPriority(999),
             dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).withPriority(999),
-            
             dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 8).withPriority(999),
         ])
     }
