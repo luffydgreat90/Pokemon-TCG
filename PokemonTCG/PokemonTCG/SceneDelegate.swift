@@ -21,6 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     }()
     
+    private lazy var tabBarController = TabBarController()
+    
     private lazy var scheduler: AnyDispatchQueueScheduler = DispatchQueue(
         label: "com.pokemontcg.infra.queue",
         qos: .userInitiated,
@@ -56,8 +58,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }()
     
     private lazy var navigationController: UINavigationController = {
-        UINavigationController(rootViewController: makeBoosterSetsViewController())
+        tabBarController.displayTab(with: [makeBoosterSetsViewController()])
+        return UINavigationController(rootViewController: tabBarController)
     }()
+    
     
     convenience init(httpClient: HTTPClient, boosterSetStore: BoosterSetStore & ImageDataStore, scheduler: AnyDispatchQueueScheduler) {
         self.init()
@@ -102,6 +106,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .eraseToAnyPublisher()
     }
     
+   
     private func makeRemoteBoosterSetsLoader(totalItems:Int = 0) -> AnyPublisher<[BoosterSet], Error> {
         let url = BoosterSetsEndPoint.get(totalItems: totalItems).url(baseURL: baseURL)
         return httpClient
