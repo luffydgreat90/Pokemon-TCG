@@ -56,6 +56,8 @@
 		8E0A6D1E2966423C00F79B35 /* UICollectionView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D1D2966423C00F79B35 /* UICollectionView+Dequeueing.swift */; };
 		8E0A6D202967808200F79B35 /* UIView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D1F2967808200F79B35 /* UIView+Helpers.swift */; };
 		8E0A6D222967837F00F79B35 /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A6D212967837F00F79B35 /* UIView+Shimmering.swift */; };
+		8E0D351329943D9E00A62AAA /* CARD_DETAIL_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0D351129943D9E00A62AAA /* CARD_DETAIL_dark.png */; };
+		8E0D351429943D9E00A62AAA /* CARD_DETAIL_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0D351229943D9E00A62AAA /* CARD_DETAIL_light.png */; };
 		8E11EC3E2984161600788F9F /* ManagedSaveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E11EC3D2984161600788F9F /* ManagedSaveCard.swift */; };
 		8E1AA7DC2968D07F001E05A9 /* CardStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7DA2968D07F001E05A9 /* CardStore.xcdatamodeld */; };
 		8E1AA7DE2968D40E001E05A9 /* SuperType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA7DD2968D40E001E05A9 /* SuperType.swift */; };
@@ -236,6 +238,8 @@
 		8E0A6D1D2966423C00F79B35 /* UICollectionView+Dequeueing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Dequeueing.swift"; sourceTree = "<group>"; };
 		8E0A6D1F2967808200F79B35 /* UIView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Helpers.swift"; sourceTree = "<group>"; };
 		8E0A6D212967837F00F79B35 /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmering.swift"; sourceTree = "<group>"; };
+		8E0D351129943D9E00A62AAA /* CARD_DETAIL_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CARD_DETAIL_dark.png; sourceTree = "<group>"; };
+		8E0D351229943D9E00A62AAA /* CARD_DETAIL_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CARD_DETAIL_light.png; sourceTree = "<group>"; };
 		8E11EC3D2984161600788F9F /* ManagedSaveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedSaveCard.swift; sourceTree = "<group>"; };
 		8E1AA7DB2968D07F001E05A9 /* CardStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CardStore.xcdatamodel; sourceTree = "<group>"; };
 		8E1AA7DD2968D40E001E05A9 /* SuperType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperType.swift; sourceTree = "<group>"; };
@@ -638,6 +642,13 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
+		8E0D351029943D8400A62AAA /* Deck UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Deck UI";
+			sourceTree = "<group>";
+		};
 		8E1AA7D52968A016001E05A9 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
@@ -870,6 +881,7 @@
 		8EA9B95B2964B69A005E6080 /* PokemoniOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				8E0D351029943D8400A62AAA /* Deck UI */,
 				8EE3DDC829833B8000DBF2C0 /* Card Detail UI */,
 				8EFE7BDC296D7743003AF320 /* Card UI */,
 				8EFE7BD0296CC138003AF320 /* BoosterSet UI */,
@@ -1217,6 +1229,8 @@
 		8EE3DDC929833CFF00DBF2C0 /* snapshots */ = {
 			isa = PBXGroup;
 			children = (
+				8E0D351129943D9E00A62AAA /* CARD_DETAIL_dark.png */,
+				8E0D351229943D9E00A62AAA /* CARD_DETAIL_light.png */,
 			);
 			path = snapshots;
 			sourceTree = "<group>";
@@ -1568,9 +1582,11 @@
 				8E3053AD297C8E9A0046EFEC /* EMPTY_COLLECTION_LIST_light.png in Resources */,
 				8E3053AB297C8E9A0046EFEC /* EMPTY_COLLECTION_LIST_dark.png in Resources */,
 				8E0678AD2970C61A00E71A2B /* BOOSTER_SETS_WITH_IMAGE_light.png in Resources */,
+				8E0D351429943D9E00A62AAA /* CARD_DETAIL_light.png in Resources */,
 				8E0678B12970C61A00E71A2B /* BOOSTER_SETS_WITHOUT_IMAGE_dark.png in Resources */,
 				8E06785F296DE02F00E71A2B /* LIST_WITH_ERROR_MESSAGE_dark.png in Resources */,
 				8E0678B02970C61A00E71A2B /* BOOSTER_SETS_WITHOUT_IMAGE_light.png in Resources */,
+				8E0D351329943D9E00A62AAA /* CARD_DETAIL_dark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

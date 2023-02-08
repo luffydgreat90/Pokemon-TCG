@@ -19,6 +19,10 @@ public enum DeckUIComposer {
     ) -> ListViewController {
         let listViewController = ListViewController()
         
+        listViewController.configureTableView = { tableView in
+            tableView.register(DeckCell.self)
+        }
+        
         let adapter = DeckListPresentationAdapter(loader: decksLoader)
         
         adapter.presenter = LoadResourcePresenter(
@@ -46,8 +50,9 @@ final class DeckViewAdapter: ResourceView {
     
     func display(_ viewModel: DecksViewModel) {
         controller?.display(viewModel.decks.map { model in
-            let view = DeckController(viewModel: DeckViewModel(name: model.name, update: dateFormatter.string(from: model.update))) {
-                
+            let view = DeckController(
+                viewModel: DeckViewModel(name: model.name, update: dateFormatter.string(from: model.update))) { [selection] in
+                selection(model)
             }
             
             return CellController(id: model, view)

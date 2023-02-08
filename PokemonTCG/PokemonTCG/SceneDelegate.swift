@@ -57,11 +57,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         .priceFormatter
     }()
     
+    private lazy var dateFormatter: DateFormatter = {
+        .monthDayYear
+    }()
+    
     private lazy var navigationController: UINavigationController = {
         tabBarController.displayTab(with: [makeBoosterSetsViewController()])
         return UINavigationController(rootViewController: tabBarController)
     }()
     
+    private lazy var applicationShared = UIApplication.shared
     
     convenience init(httpClient: HTTPClient, boosterSetStore: BoosterSetStore & ImageDataStore, scheduler: AnyDispatchQueueScheduler) {
         self.init()
@@ -198,7 +203,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func openURL(url: URL?){
         guard let url =  url else{ return }
-        UIApplication.shared.open(url)
+        applicationShared.open(url)
     }
 }
 
