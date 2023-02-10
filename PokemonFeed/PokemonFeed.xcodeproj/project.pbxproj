@@ -170,6 +170,7 @@
 		8EFE7BD5296CDA41003AF320 /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BD4296CDA41003AF320 /* UIColor+Helpers.swift */; };
 		8EFE7BDF296D7EDF003AF320 /* CardSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BDE296D7EDF003AF320 /* CardSnapshotTests.swift */; };
 		8EFE7BE3296D7FDE003AF320 /* CollectionListSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BE2296D7FDE003AF320 /* CollectionListSnapshotTests.swift */; };
+		A94889C129955015008929E5 /* DeckNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94889C029955015008929E5 /* DeckNewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -357,6 +358,7 @@
 		8EFE7BD4296CDA41003AF320 /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
 		8EFE7BDE296D7EDF003AF320 /* CardSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSnapshotTests.swift; sourceTree = "<group>"; };
 		8EFE7BE2296D7FDE003AF320 /* CollectionListSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListSnapshotTests.swift; sourceTree = "<group>"; };
+		A94889C029955015008929E5 /* DeckNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckNewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -877,6 +879,7 @@
 		8EA9B9512964B699005E6080 /* PokemoniOS */ = {
 			isa = PBXGroup;
 			children = (
+				A94889BD29954FCA008929E5 /* Deck New UI */,
 				8EB56802298D25D50004746B /* Deck Detail UI */,
 				8EB567E3298C82950004746B /* Deck UI */,
 				8EE3DDCC2983F9F300DBF2C0 /* Cards Save UI */,
@@ -1412,6 +1415,30 @@
 			path = snapshots;
 			sourceTree = "<group>";
 		};
+		A94889BD29954FCA008929E5 /* Deck New UI */ = {
+			isa = PBXGroup;
+			children = (
+				A94889BF29954FF9008929E5 /* ViewController */,
+				A94889BE29954FF1008929E5 /* Views */,
+			);
+			path = "Deck New UI";
+			sourceTree = "<group>";
+		};
+		A94889BE29954FF1008929E5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A94889C029955015008929E5 /* DeckNewView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A94889BF29954FF9008929E5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1732,6 +1759,7 @@
 				8EA9B9A32964DA13005E6080 /* UIImage+TryMake.swift in Sources */,
 				8EFE7BA0296B1C13003AF320 /* UIRefreshControl+Helpers.swift in Sources */,
 				8E56CE8129679B1A00FFCD15 /* CollectionListViewController.swift in Sources */,
+				A94889C129955015008929E5 /* DeckNewView.swift in Sources */,
 				8EA9B99B2964D4BA005E6080 /* BoosterSetCell.swift in Sources */,
 				8EFE7BBD296B9571003AF320 /* ErrorView.swift in Sources */,
 				8E0A6CFB2965E68500F79B35 /* UIImageView+Animations.swift in Sources */,
