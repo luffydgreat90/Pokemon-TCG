@@ -27,8 +27,8 @@ public enum DeckUIComposer {
         
         adapter.presenter = LoadResourcePresenter(
             resourceView: DeckViewAdapter(controller: listViewController, dateFormatter: DateFormatter.monthDayYear, selection: selection),
-            loadingView: listViewController,
-            errorView: listViewController,
+            loadingView: WeakRefVirtualProxy(listViewController),
+            errorView: WeakRefVirtualProxy(listViewController),
             mapper:  DeckPresenter.map )
         
         return listViewController
