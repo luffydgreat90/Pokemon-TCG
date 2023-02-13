@@ -24,3 +24,32 @@ extension LocalDeckLoader: DeckCache {
         )
     }
 }
+
+extension LocalDeckLoader {
+    public func load() throws -> [Deck] {
+        if let cache = try? store.retrieve() {
+            return cache.toModels()
+        }
+        
+        return []
+    }
+}
+
+public extension Array where Element == LocalDeck {
+    func toModels() -> [Deck] {
+        return map {
+            Deck(name: $0.name,
+                 update: $0.update,
+                 cards: $0.cards.toModels())
+        }
+    }
+}
+
+public extension Array where Element == LocalSaveCard {
+    func toModels() -> [SaveCard] {
+        return map {
+            SaveCard(quantity: $0.quantity,
+                     card: $0.card.toCard())
+        }
+    }
+}

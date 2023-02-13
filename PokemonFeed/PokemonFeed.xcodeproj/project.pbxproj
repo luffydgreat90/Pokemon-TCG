@@ -172,6 +172,7 @@
 		8EFE7BE3296D7FDE003AF320 /* CollectionListSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BE2296D7FDE003AF320 /* CollectionListSnapshotTests.swift */; };
 		A94889C129955015008929E5 /* DeckNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94889C029955015008929E5 /* DeckNewView.swift */; };
 		A96194A8299A98CB0041A94D /* DeckNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96194A7299A98CB0041A94D /* DeckNewViewController.swift */; };
+		A96194AC299AA58A0041A94D /* LocalCard+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96194AB299AA58A0041A94D /* LocalCard+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -361,6 +362,7 @@
 		8EFE7BE2296D7FDE003AF320 /* CollectionListSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListSnapshotTests.swift; sourceTree = "<group>"; };
 		A94889C029955015008929E5 /* DeckNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckNewView.swift; sourceTree = "<group>"; };
 		A96194A7299A98CB0041A94D /* DeckNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckNewViewController.swift; sourceTree = "<group>"; };
+		A96194AB299AA58A0041A94D /* LocalCard+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalCard+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -679,6 +681,7 @@
 		8E1AA7D62968C6CD001E05A9 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				A96194AA299AA56F0041A94D /* Helpers */,
 				8E1AA7D72968C799001E05A9 /* CoreData */,
 			);
 			path = Infrastructure;
@@ -1442,6 +1445,14 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		A96194AA299AA56F0041A94D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A96194AB299AA58A0041A94D /* LocalCard+Helpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1687,6 +1698,7 @@
 				8ED5CF1F298DC9A900AD5FE6 /* CoreDataDeckStore+DeckStore.swift in Sources */,
 				8E1AA7DC2968D07F001E05A9 /* CardStore.xcdatamodeld in Sources */,
 				8EB567F5298C8BD90004746B /* LocalDeckLoader.swift in Sources */,
+				A96194AC299AA58A0041A94D /* LocalCard+Helpers.swift in Sources */,
 				8EA9B9402964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift in Sources */,
 				8EB567F8298C8C3D0004746B /* DeckStore.swift in Sources */,
 				8E0A6CD52965BAF300F79B35 /* ManagedBoosterSet.swift in Sources */,

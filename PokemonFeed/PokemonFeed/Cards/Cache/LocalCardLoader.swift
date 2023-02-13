@@ -94,20 +94,7 @@ public extension Array where Element == Card {
 public extension Array where Element == LocalCard {
     func toModels() -> [Card] {
         return map {
-            let images: CardImages? = $0.images != nil ? CardImages(small: $0.images!.small, large: $0.images!.large) : nil
-            
-            return Card(
-                id: $0.id,
-                name: $0.name,
-                supertype: $0.supertype,
-                number: $0.number,
-                rarity: $0.rarity,
-                flavorText: $0.flavorText,
-                legalities: Legalities(isUnlimited: $0.legalities.isUnlimited, isStandard: $0.legalities.isStandard, isExpanded: $0.legalities.isExpanded),
-                artist: $0.artist,
-                cardmarket: getCardMarket(cardmarket: $0.cardmarket),
-                images: images,
-                cardSet: CardSet(id: $0.cardSet.id, name: $0.cardSet.name, series: $0.cardSet.series))
+            $0.toCard()
         }
     }
     
