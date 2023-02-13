@@ -171,6 +171,7 @@
 		8EFE7BDF296D7EDF003AF320 /* CardSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BDE296D7EDF003AF320 /* CardSnapshotTests.swift */; };
 		8EFE7BE3296D7FDE003AF320 /* CollectionListSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BE2296D7FDE003AF320 /* CollectionListSnapshotTests.swift */; };
 		A94889C129955015008929E5 /* DeckNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94889C029955015008929E5 /* DeckNewView.swift */; };
+		A96194A8299A98CB0041A94D /* DeckNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96194A7299A98CB0041A94D /* DeckNewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -359,6 +360,7 @@
 		8EFE7BDE296D7EDF003AF320 /* CardSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSnapshotTests.swift; sourceTree = "<group>"; };
 		8EFE7BE2296D7FDE003AF320 /* CollectionListSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListSnapshotTests.swift; sourceTree = "<group>"; };
 		A94889C029955015008929E5 /* DeckNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckNewView.swift; sourceTree = "<group>"; };
+		A96194A7299A98CB0041A94D /* DeckNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckNewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1435,6 +1437,7 @@
 		A94889BF29954FF9008929E5 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A96194A7299A98CB0041A94D /* DeckNewViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1775,6 +1778,7 @@
 				8E2C0D59297483E90079329F /* LoadMoreCellController.swift in Sources */,
 				8EA9B9A02964D9E2005E6080 /* ListViewController.swift in Sources */,
 				8E4F6A532967A2180022403A /* CardController.swift in Sources */,
+				A96194A8299A98CB0041A94D /* DeckNewViewController.swift in Sources */,
 				8EA9B9A52964DAF1005E6080 /* CellController.swift in Sources */,
 				8EFE7BD5296CDA41003AF320 /* UIColor+Helpers.swift in Sources */,
 				8EB567E2298C819F0004746B /* TabBarController.swift in Sources */,
