@@ -8,7 +8,6 @@
 import Foundation
 
 public extension LocalCard {
-    
     func toCard() -> Card {
         let images: CardImages? = self.images != nil ? CardImages(small: self.images!.small, large: self.images!.large) : nil
         

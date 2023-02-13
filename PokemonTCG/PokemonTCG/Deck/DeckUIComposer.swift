@@ -15,6 +15,7 @@ public enum DeckUIComposer {
     
     public static func cardDeckComposedWith(
         decksLoader: @escaping () -> AnyPublisher<[Deck], Error>,
+        newDeck: @escaping () -> Void,
         selection: @escaping (Deck) -> Void
     ) -> ListViewController {
         let listViewController = ListViewController()
