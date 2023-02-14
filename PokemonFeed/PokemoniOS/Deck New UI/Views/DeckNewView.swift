@@ -29,7 +29,7 @@ public class DeckNewView: UIView {
         let submitButton = UIButton()
         submitButton.translatesAutoresizingMaskIntoConstraints = false
         submitButton.setTitle("New Deck", for: .normal)
-        submitButton.backgroundColor = .red
+        submitButton.backgroundColor = .green
         submitButton.titleLabel?.font = .systemFont(ofSize: 16.0, weight: .bold)
         return submitButton
     }()
