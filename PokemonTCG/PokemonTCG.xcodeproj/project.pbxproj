@@ -47,6 +47,7 @@
 		8EE3DDB72981F51A00DBF2C0 /* CardListViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDB62981F51A00DBF2C0 /* CardListViewAdapter.swift */; };
 		8EE3DDB929829B8900DBF2C0 /* Search+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3DDB829829B8900DBF2C0 /* Search+Helpers.swift */; };
 		8EFE7BAF296B8CB4003AF320 /* DispatchQueue+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BAE296B8CB4003AF320 /* DispatchQueue+Helpers.swift */; };
+		A91F0CA4299BEBDA0090FDAE /* DeckNewUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F0CA3299BEBDA0090FDAE /* DeckNewUIComposer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		8EE3DDB62981F51A00DBF2C0 /* CardListViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewAdapter.swift; sourceTree = "<group>"; };
 		8EE3DDB829829B8900DBF2C0 /* Search+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search+Helpers.swift"; sourceTree = "<group>"; };
 		8EFE7BAE296B8CB4003AF320 /* DispatchQueue+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helpers.swift"; sourceTree = "<group>"; };
+		A91F0CA3299BEBDA0090FDAE /* DeckNewUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckNewUIComposer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				8EE2F3812991B766009080EC /* DeckUIComposer.swift */,
+				A91F0CA3299BEBDA0090FDAE /* DeckNewUIComposer.swift */,
 			);
 			path = Deck;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				8EE3DDB72981F51A00DBF2C0 /* CardListViewAdapter.swift in Sources */,
 				8EBEA69C2964F1F9000F1FC8 /* LoadResourcePresentationAdapter.swift in Sources */,
 				8E2C0D612974CA560079329F /* Paginated+Helpers.swift in Sources */,
+				A91F0CA4299BEBDA0090FDAE /* DeckNewUIComposer.swift in Sources */,
 				8EE2F3822991B766009080EC /* DeckUIComposer.swift in Sources */,
 				8EFE7BAF296B8CB4003AF320 /* DispatchQueue+Helpers.swift in Sources */,
 				8E56CE8429679BD000FFCD15 /* CardListUIComposer.swift in Sources */,

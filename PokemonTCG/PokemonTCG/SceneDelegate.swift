@@ -65,9 +65,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         .monthDayYear
     }()
     
-    private lazy var navigationController: UINavigationController = {
-        tabBarController.displayTab(with: [makeBoosterSetsViewController(), makeDeckViewController()])
-        return UINavigationController(rootViewController: tabBarController)
+    private lazy var rootController: UIViewController = {
+        tabBarController.displayTab(with: [navigationBoosterSet, navigationDeck ])
+        return tabBarController
     }()
     
     private lazy var applicationShared = UIApplication.shared
@@ -95,25 +95,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func configureWindow() {
-        window?.rootViewController = navigationController
+        window?.rootViewController = rootController
         window?.makeKeyAndVisible()
     }
     
-    private func makeBoosterSetsViewController() -> ListViewController {
-        return BoosterSetsUIComposer.boosterSetsComposedWith(
-            boosterSetsLoader: makeRemoteBoosterSetsLoaderWithLocalFallback,
-            imageLoader: makeBoosterSetImageLoader,
-            selection: showCards)
-    }
+    private lazy var navigationBoosterSet: UINavigationController = {
+        UINavigationController(
+            rootViewController: BoosterSetsUIComposer.boosterSetsComposedWith(
+                boosterSetsLoader: makeRemoteBoosterSetsLoaderWithLocalFallback,
+                imageLoader: makeBoosterSetImageLoader,
+                selection: showCards))
+    }()
     
-    private func makeDeckViewController() -> ListViewController {
-        DeckUIComposer.cardDeckComposedWith(
+    private lazy var navigationDeck: UINavigationController = {
+        UINavigationController(
+        rootViewController: DeckUIComposer.cardDeckComposedWith(
             decksLoader: makeDeckLoader) {
                 
             } selection: { deck in
                 
             }
-    }
+        )
+    }()
     
     private func makeRemoteBoosterSetsLoaderWithLocalFallback() -> AnyPublisher<Paginated<BoosterSet>, Error> {
         return makeRemoteBoosterSetsLoader()
@@ -167,7 +170,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             priceFormatter: priceFormatter,
             selection: showCardDetail(for:))
         
-        navigationController.pushViewController(viewController, animated: true)
+        navigationBoosterSet.pushViewController(viewController, animated: true)
     }
     
     private func showCardDetail(for card: Card) {
@@ -177,7 +180,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             openURL: openURL(url:),
             priceFormatter: priceFormatter)
         
-        navigationController.present(viewController, animated: true)
+        navigationBoosterSet.present(viewController, animated: true)
     }
     
     private func makeBoosterSetImageLoader(url: URL) -> AnyPublisher<Data, Error> {

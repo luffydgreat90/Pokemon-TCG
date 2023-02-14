@@ -17,6 +17,7 @@ public final class ListViewController: UITableViewController {
     
     private(set) public var errorView = ErrorView()
     public var onRefresh: (() -> Void)?
+    public var rightButtonTapped: (() -> Void)?
     public var configureTableView: ((UITableView) -> Void)?
     
     public override func viewDidLoad() {
@@ -38,6 +39,14 @@ public final class ListViewController: UITableViewController {
         } else {
             dataSource.apply(snapshot)
         }
+    }
+    
+    public func addNavigationRightButton(title:String){
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(addTapped))
+    }
+    
+    @objc func addTapped(){
+        rightButtonTapped?()
     }
     
     public override func viewDidLayoutSubviews() {

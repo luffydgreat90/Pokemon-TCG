@@ -10,7 +10,7 @@ import Combine
 import PokemonFeed
 import PokemoniOS
 
-public enum DeckUIComposer {
+public final class DeckUIComposer {
     private typealias DeckListPresentationAdapter = LoadResourcePresentationAdapter<[Deck], DeckViewAdapter>
     
     public static func cardDeckComposedWith(
@@ -25,6 +25,9 @@ public enum DeckUIComposer {
         }
         
         listViewController.title = DeckPresenter.title
+        listViewController.addNavigationRightButton(title: "Add")
+        
+        listViewController.rightButtonTapped = newDeck
         
         let adapter = DeckListPresentationAdapter(loader: decksLoader)
         
@@ -34,11 +37,12 @@ public enum DeckUIComposer {
             errorView: WeakRefVirtualProxy(listViewController),
             mapper:  DeckPresenter.map )
         
+        
         return listViewController
     }
 }
 
-final class DeckViewAdapter: ResourceView {
+fileprivate final class DeckViewAdapter: ResourceView {
     private weak var controller: ListViewController?
     private let selection: (Deck) -> Void
     private let dateFormatter: DateFormatter
