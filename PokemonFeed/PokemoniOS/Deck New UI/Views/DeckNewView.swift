@@ -10,6 +10,7 @@ import UIKit
 public class DeckNewView: UIView {
     public private(set) var nameLabel: UILabel = {
         let nameLabel = UILabel()
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.numberOfLines = 0
         nameLabel.textAlignment = .left
         nameLabel.font = .systemFont(ofSize: 16.0, weight: .bold)
@@ -20,12 +21,15 @@ public class DeckNewView: UIView {
     
     public private(set) var nameText: UITextField = {
         let nameText = UITextField()
+        nameText.translatesAutoresizingMaskIntoConstraints = false
         return nameText
     }()
     
     public private(set) var submitButton: UIButton = {
         let submitButton = UIButton()
+        submitButton.translatesAutoresizingMaskIntoConstraints = false
         submitButton.setTitle("New Deck", for: .normal)
+        submitButton.backgroundColor = .red
         submitButton.titleLabel?.font = .systemFont(ofSize: 16.0, weight: .bold)
         return submitButton
     }()
@@ -49,7 +53,7 @@ public class DeckNewView: UIView {
         NSLayoutConstraint.activate([
             nameLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             nameLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            nameLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+            nameLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 16),
             
             nameText.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             nameText.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
@@ -58,6 +62,7 @@ public class DeckNewView: UIView {
             submitButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             submitButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             submitButton.topAnchor.constraint(equalTo: nameText.bottomAnchor, constant: 16),
+            submitButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 }

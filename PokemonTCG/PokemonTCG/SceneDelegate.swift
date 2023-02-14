@@ -110,9 +110,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var navigationDeck: UINavigationController = {
         UINavigationController(
         rootViewController: DeckUIComposer.cardDeckComposedWith(
-            decksLoader: makeDeckLoader) {
-                
-            } selection: { deck in
+            decksLoader: makeDeckLoader,
+            newDeck: showNewDeck) { deck in
                 
             }
         )
@@ -160,6 +159,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .caching(to: localBoosterSetLoader)
             .subscribe(on: scheduler)
             .eraseToAnyPublisher()
+    }
+    
+    private func showNewDeck() {
+        let viewController = DeckNewUIComposer.newDeckComposed()
+        navigationDeck.present(viewController, animated: true)
     }
     
     private func showCards(for boosterSet: BoosterSet) {

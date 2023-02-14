@@ -7,11 +7,11 @@
 
 import UIKit
 
-class DeckNewViewController: UIViewController {
+public final class DeckNewViewController: UIViewController {
     private let customView: DeckNewView = DeckNewView()
     public var newDeck: ((String) -> Void)?
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         view = customView
 
