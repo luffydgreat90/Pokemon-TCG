@@ -24,6 +24,8 @@ public enum DeckUIComposer {
             tableView.register(DeckCell.self)
         }
         
+        listViewController.title = DeckPresenter.title
+        
         let adapter = DeckListPresentationAdapter(loader: decksLoader)
         
         adapter.presenter = LoadResourcePresenter(

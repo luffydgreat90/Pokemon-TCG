@@ -12,7 +12,7 @@ import PokemonFeed
 import PokemoniOS
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
     
     private lazy var baseURL = URL(string: "https://api.pokemontcg.io")!
@@ -37,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             store: CoreDataBoosterSetStore.self)
     }()
     
-    private lazy var cardStore: CardStore & ImageDataStore = {
+    private lazy var cardStore: CardStore & ImageDataStore & DeckStore = {
         try! CoreDataStore(
             storeURL: NSPersistentContainer
                 .defaultDirectoryURL()
@@ -53,6 +53,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         LocalCardLoader(store: cardStore, currentDate: Date.init)
     }()
     
+    private lazy var localDeckLoader: LocalDeckLoader  = {
+        LocalDeckLoader(store: cardStore, currentDate: Date.init)
+    }()
+    
     private lazy var priceFormatter: NumberFormatter = {
         .priceFormatter
     }()
@@ -62,7 +66,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }()
     
     private lazy var navigationController: UINavigationController = {
-        tabBarController.displayTab(with: [makeBoosterSetsViewController()])
+        tabBarController.displayTab(with: [makeBoosterSetsViewController(), makeDeckViewController()])
         return UINavigationController(rootViewController: tabBarController)
     }()
     
@@ -77,7 +81,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
-    
+        
         window = UIWindow(windowScene: scene)
         configureWindow()
     }
@@ -89,17 +93,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             debugPrint("Failed to validate cache with error: \(error.localizedDescription)")
         }
     }
-
+    
     func configureWindow() {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
-        
+    
     private func makeBoosterSetsViewController() -> ListViewController {
         return BoosterSetsUIComposer.boosterSetsComposedWith(
             boosterSetsLoader: makeRemoteBoosterSetsLoaderWithLocalFallback,
             imageLoader: makeBoosterSetImageLoader,
             selection: showCards)
+    }
+    
+    private func makeDeckViewController() -> ListViewController {
+        DeckUIComposer.cardDeckComposedWith(
+            decksLoader: makeDeckLoader) {
+                
+            } selection: { deck in
+                
+            }
     }
     
     private func makeRemoteBoosterSetsLoaderWithLocalFallback() -> AnyPublisher<Paginated<BoosterSet>, Error> {
@@ -118,6 +131,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .getPublisher(url: url)
             .tryMap(BoosterSetsMapper.map)
             .eraseToAnyPublisher()
+    }
+    
+    private func makeDeckLoader() -> AnyPublisher<[Deck], Error> {
+        return localDeckLoader
+            .loadPublisher()
     }
     
     private func makeFirstPage(items: [BoosterSet]) -> Paginated<BoosterSet> {

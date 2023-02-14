@@ -170,6 +170,7 @@
 		8EFE7BD5296CDA41003AF320 /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BD4296CDA41003AF320 /* UIColor+Helpers.swift */; };
 		8EFE7BDF296D7EDF003AF320 /* CardSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BDE296D7EDF003AF320 /* CardSnapshotTests.swift */; };
 		8EFE7BE3296D7FDE003AF320 /* CollectionListSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BE2296D7FDE003AF320 /* CollectionListSnapshotTests.swift */; };
+		A91F0C9F299BEA760090FDAE /* Decks.strings in Resources */ = {isa = PBXBuildFile; fileRef = A91F0CA1299BEA760090FDAE /* Decks.strings */; };
 		A94889C129955015008929E5 /* DeckNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94889C029955015008929E5 /* DeckNewView.swift */; };
 		A96194A8299A98CB0041A94D /* DeckNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96194A7299A98CB0041A94D /* DeckNewViewController.swift */; };
 		A96194AC299AA58A0041A94D /* LocalCard+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96194AB299AA58A0041A94D /* LocalCard+Helpers.swift */; };
@@ -360,6 +361,8 @@
 		8EFE7BD4296CDA41003AF320 /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
 		8EFE7BDE296D7EDF003AF320 /* CardSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSnapshotTests.swift; sourceTree = "<group>"; };
 		8EFE7BE2296D7FDE003AF320 /* CollectionListSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListSnapshotTests.swift; sourceTree = "<group>"; };
+		A91F0CA0299BEA760090FDAE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Decks.strings; sourceTree = "<group>"; };
+		A91F0CA2299BEA7C0090FDAE /* fil */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fil; path = fil.lproj/Decks.strings; sourceTree = "<group>"; };
 		A94889C029955015008929E5 /* DeckNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckNewView.swift; sourceTree = "<group>"; };
 		A96194A7299A98CB0041A94D /* DeckNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckNewViewController.swift; sourceTree = "<group>"; };
 		A96194AB299AA58A0041A94D /* LocalCard+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalCard+Helpers.swift"; sourceTree = "<group>"; };
@@ -1096,6 +1099,7 @@
 			children = (
 				8EB567EB298C88660004746B /* DeckViewModel.swift */,
 				8EB567ED298C88960004746B /* DeckPresenter.swift */,
+				A91F0CA1299BEA760090FDAE /* Decks.strings */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -1600,6 +1604,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EA9B96A2964B843005E6080 /* BoosterSets.strings in Resources */,
+				A91F0C9F299BEA760090FDAE /* Decks.strings in Resources */,
 				8EA9B97B2964C7DB005E6080 /* Shared.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1850,6 +1855,15 @@
 				8EA9B97E2964C7E1005E6080 /* fil */,
 			);
 			name = Shared.strings;
+			sourceTree = "<group>";
+		};
+		A91F0CA1299BEA760090FDAE /* Decks.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A91F0CA0299BEA760090FDAE /* en */,
+				A91F0CA2299BEA7C0090FDAE /* fil */,
+			);
+			name = Decks.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

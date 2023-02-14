@@ -12,6 +12,14 @@ public struct DecksViewModel {
 }
 
 public final class DeckPresenter {
+    public static var title: String {
+        NSLocalizedString(
+            "DECK_TITLE",
+            tableName: "Decks",
+            bundle: Bundle(for: DeckPresenter.self),
+            comment: "Title for the decks")
+    }
+    
     public static func map(_ decks: [Deck]) -> DecksViewModel {
         DecksViewModel(decks: decks)
     }
