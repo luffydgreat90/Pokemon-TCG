@@ -44,8 +44,9 @@ class BoosterSetAcceptanceTests: XCTestCase {
         sut.window = UIWindow(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
         sut.configureWindow()
         
-        let nav = sut.window?.rootViewController as? UINavigationController
-        return nav?.topViewController as! ListViewController
+        let tabBarController = sut.window?.rootViewController as? TabBarController
+        let nav =  tabBarController!.viewControllers!.first as! UINavigationController
+        return nav.topViewController as! ListViewController
     }
     
     private func enterBackground(with boosterSetStore: InMemoryBoosterSetStore) throws {

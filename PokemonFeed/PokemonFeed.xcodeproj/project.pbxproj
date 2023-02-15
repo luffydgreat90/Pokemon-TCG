@@ -887,8 +887,8 @@
 		8EA9B9512964B699005E6080 /* PokemoniOS */ = {
 			isa = PBXGroup;
 			children = (
+				A9313C2D299D31410006602D /* Search Card UI */,
 				A94889BD29954FCA008929E5 /* Deck New UI */,
-				8EB56802298D25D50004746B /* Deck Detail UI */,
 				8EB567E3298C82950004746B /* Deck UI */,
 				8EE3DDCC2983F9F300DBF2C0 /* Cards Save UI */,
 				8EE3DDA32981868300DBF2C0 /* Card Details UI */,
@@ -1119,29 +1119,6 @@
 				8EB567FE298CFF480004746B /* DeckCell.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		8EB56802298D25D50004746B /* Deck Detail UI */ = {
-			isa = PBXGroup;
-			children = (
-				8EB56804298D25E40004746B /* ViewController */,
-				8EB56803298D25DF0004746B /* Views */,
-			);
-			path = "Deck Detail UI";
-			sourceTree = "<group>";
-		};
-		8EB56803298D25DF0004746B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		8EB56804298D25E40004746B /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		8EB56805298D35F50004746B /* Presentation */ = {
@@ -1422,6 +1399,13 @@
 				8E3053A8297C8E9A0046EFEC /* EMPTY_COLLECTION_LIST_light.png */,
 			);
 			path = snapshots;
+			sourceTree = "<group>";
+		};
+		A9313C2D299D31410006602D /* Search Card UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Search Card UI";
 			sourceTree = "<group>";
 		};
 		A94889BD29954FCA008929E5 /* Deck New UI */ = {
