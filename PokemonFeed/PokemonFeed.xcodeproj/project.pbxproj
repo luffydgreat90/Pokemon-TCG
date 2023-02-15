@@ -171,6 +171,9 @@
 		8EFE7BDF296D7EDF003AF320 /* CardSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BDE296D7EDF003AF320 /* CardSnapshotTests.swift */; };
 		8EFE7BE3296D7FDE003AF320 /* CollectionListSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BE2296D7FDE003AF320 /* CollectionListSnapshotTests.swift */; };
 		A91F0C9F299BEA760090FDAE /* Decks.strings in Resources */ = {isa = PBXBuildFile; fileRef = A91F0CA1299BEA760090FDAE /* Decks.strings */; };
+		A9313C36299D48660006602D /* SaveCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9313C35299D48660006602D /* SaveCardController.swift */; };
+		A9313C38299D4A7A0006602D /* SaveCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9313C37299D4A7A0006602D /* SaveCardViewModel.swift */; };
+		A9313C3A299D4CD80006602D /* DeckDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9313C39299D4CD80006602D /* DeckDetailPresenter.swift */; };
 		A94889C129955015008929E5 /* DeckNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94889C029955015008929E5 /* DeckNewView.swift */; };
 		A96194A8299A98CB0041A94D /* DeckNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96194A7299A98CB0041A94D /* DeckNewViewController.swift */; };
 		A96194AC299AA58A0041A94D /* LocalCard+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96194AB299AA58A0041A94D /* LocalCard+Helpers.swift */; };
@@ -363,6 +366,9 @@
 		8EFE7BE2296D7FDE003AF320 /* CollectionListSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListSnapshotTests.swift; sourceTree = "<group>"; };
 		A91F0CA0299BEA760090FDAE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Decks.strings; sourceTree = "<group>"; };
 		A91F0CA2299BEA7C0090FDAE /* fil */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fil; path = fil.lproj/Decks.strings; sourceTree = "<group>"; };
+		A9313C35299D48660006602D /* SaveCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCardController.swift; sourceTree = "<group>"; };
+		A9313C37299D4A7A0006602D /* SaveCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCardViewModel.swift; sourceTree = "<group>"; };
+		A9313C39299D4CD80006602D /* DeckDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckDetailPresenter.swift; sourceTree = "<group>"; };
 		A94889C029955015008929E5 /* DeckNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckNewView.swift; sourceTree = "<group>"; };
 		A96194A7299A98CB0041A94D /* DeckNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckNewViewController.swift; sourceTree = "<group>"; };
 		A96194AB299AA58A0041A94D /* LocalCard+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalCard+Helpers.swift"; sourceTree = "<group>"; };
@@ -887,10 +893,10 @@
 		8EA9B9512964B699005E6080 /* PokemoniOS */ = {
 			isa = PBXGroup;
 			children = (
+				A9313C2E299D3E630006602D /* Deck Detail UI */,
 				A9313C2D299D31410006602D /* Search Card UI */,
 				A94889BD29954FCA008929E5 /* Deck New UI */,
 				8EB567E3298C82950004746B /* Deck UI */,
-				8EE3DDCC2983F9F300DBF2C0 /* Cards Save UI */,
 				8EE3DDA32981868300DBF2C0 /* Card Details UI */,
 				8E0A6D1329663CAA00F79B35 /* Cards UI */,
 				8E0A6CF92965E67100F79B35 /* Helpers */,
@@ -1100,6 +1106,8 @@
 				8EB567EB298C88660004746B /* DeckViewModel.swift */,
 				8EB567ED298C88960004746B /* DeckPresenter.swift */,
 				A91F0CA1299BEA760090FDAE /* Decks.strings */,
+				A9313C37299D4A7A0006602D /* SaveCardViewModel.swift */,
+				A9313C39299D4CD80006602D /* DeckDetailPresenter.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -1233,13 +1241,6 @@
 				8E0D351229943D9E00A62AAA /* CARD_DETAIL_light.png */,
 			);
 			path = snapshots;
-			sourceTree = "<group>";
-		};
-		8EE3DDCC2983F9F300DBF2C0 /* Cards Save UI */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Cards Save UI";
 			sourceTree = "<group>";
 		};
 		8EFE7B96296A13E4003AF320 /* Domain */ = {
@@ -1406,6 +1407,30 @@
 			children = (
 			);
 			path = "Search Card UI";
+			sourceTree = "<group>";
+		};
+		A9313C2E299D3E630006602D /* Deck Detail UI */ = {
+			isa = PBXGroup;
+			children = (
+				A9313C30299D3E890006602D /* Views */,
+				A9313C2F299D3E750006602D /* ViewControllers */,
+			);
+			path = "Deck Detail UI";
+			sourceTree = "<group>";
+		};
+		A9313C2F299D3E750006602D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A9313C35299D48660006602D /* SaveCardController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A9313C30299D3E890006602D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		A94889BD29954FCA008929E5 /* Deck New UI */ = {
@@ -1655,6 +1680,7 @@
 				8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */,
 				8E0A6D0629662BE200F79B35 /* Card.swift in Sources */,
 				8EAD9C60298744FC003EACC3 /* ManagedDeck.swift in Sources */,
+				A9313C38299D4A7A0006602D /* SaveCardViewModel.swift in Sources */,
 				8E0A6CCF2965B54000F79B35 /* BoosterSetStore.swift in Sources */,
 				8E0A6CE12965CA6800F79B35 /* BoosterSetCachePolicy.swift in Sources */,
 				8EB567FA298C8C5A0004746B /* LocalDeck.swift in Sources */,
@@ -1690,6 +1716,7 @@
 				A96194AC299AA58A0041A94D /* LocalCard+Helpers.swift in Sources */,
 				8EA9B9402964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift in Sources */,
 				8EB567F8298C8C3D0004746B /* DeckStore.swift in Sources */,
+				A9313C3A299D4CD80006602D /* DeckDetailPresenter.swift in Sources */,
 				8E0A6CD52965BAF300F79B35 /* ManagedBoosterSet.swift in Sources */,
 				8E1AA7E529698ED7001E05A9 /* CoreDataBoosterSetStore+BoosterStore.swift in Sources */,
 				8EFE7B91296A0E17003AF320 /* LocalImageDataLoader.swift in Sources */,
@@ -1775,6 +1802,7 @@
 				8EB567FF298CFF480004746B /* DeckCell.swift in Sources */,
 				8EA9B9A82964E048005E6080 /* BoosterSetController.swift in Sources */,
 				8EB567E5298C82BA0004746B /* DeckController.swift in Sources */,
+				A9313C36299D48660006602D /* SaveCardController.swift in Sources */,
 				8E0A6D202967808200F79B35 /* UIView+Helpers.swift in Sources */,
 				8E2C0D59297483E90079329F /* LoadMoreCellController.swift in Sources */,
 				8EA9B9A02964D9E2005E6080 /* ListViewController.swift in Sources */,
