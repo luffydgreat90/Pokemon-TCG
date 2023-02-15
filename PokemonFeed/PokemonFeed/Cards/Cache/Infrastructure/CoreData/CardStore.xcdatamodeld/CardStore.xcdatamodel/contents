@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22A380" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ManagedCard" representedClassName="ManagedCard" syncable="YES">
         <attribute name="artist" optional="YES" attributeType="String"/>
         <attribute name="averageSellPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -32,7 +32,7 @@
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="cards" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ManagedCard" inverseName="cache" inverseEntity="ManagedCard"/>
     </entity>
-    <entity name="ManageDeck" representedClassName="ManageDeck" syncable="YES">
+    <entity name="ManagedDeck" representedClassName="ManagedDeck" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="update" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="saveCards" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ManagedSaveCard" inverseName="deck" inverseEntity="ManagedSaveCard"/>
@@ -40,6 +40,6 @@
     <entity name="ManagedSaveCard" representedClassName="ManagedSaveCard" syncable="YES">
         <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="card" maxCount="1" deletionRule="Cascade" ordered="YES" destinationEntity="ManagedCard" inverseName="save" inverseEntity="ManagedCard"/>
-        <relationship name="deck" maxCount="1" deletionRule="Nullify" destinationEntity="ManageDeck" inverseName="saveCards" inverseEntity="ManageDeck"/>
+        <relationship name="deck" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedDeck" inverseName="saveCards" inverseEntity="ManagedDeck"/>
     </entity>
 </model>

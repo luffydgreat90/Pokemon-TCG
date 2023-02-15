@@ -11,8 +11,11 @@ import PokemonFeed
 import PokemoniOS
 
 public final class DeckNewUIComposer {
-    
-    public static func newDeckComposed() -> DeckNewViewController {
-        DeckNewViewController()
+    public static func newDeckComposed(
+        newDeck:@escaping ((String) -> Void)
+    ) -> DeckNewViewController {
+        let viewController = DeckNewViewController()
+        viewController.newDeck = newDeck
+        return viewController
     }
 }

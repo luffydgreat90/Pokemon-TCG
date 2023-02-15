@@ -22,7 +22,7 @@ public class DeckCell: UITableViewCell {
         let dateLabel = UILabel()
         dateLabel.textColor = .label
         dateLabel.numberOfLines = 0
-        dateLabel.font = .systemFont(ofSize: 14.0, weight: .bold)
+        dateLabel.font = .systemFont(ofSize: 14.0, weight: .regular)
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         return dateLabel
     }()
@@ -50,7 +50,7 @@ public class DeckCell: UITableViewCell {
             dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
             dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).withPriority(999),
             dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).withPriority(999),
-            dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 8).withPriority(999),
+            dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8).withPriority(999),
         ])
     }
 }

@@ -120,7 +120,7 @@
 		8EA9B9AE2964E30A005E6080 /* BoosterSetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */; };
 		8EA9B9B02964E654005E6080 /* BoosterSetPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */; };
 		8EA9B9B22964E8FC005E6080 /* UITableView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */; };
-		8EAD9C60298744FC003EACC3 /* ManageDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAD9C5F298744FC003EACC3 /* ManageDeck.swift */; };
+		8EAD9C60298744FC003EACC3 /* ManagedDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAD9C5F298744FC003EACC3 /* ManagedDeck.swift */; };
 		8EB567E2298C819F0004746B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB567E1298C819F0004746B /* TabBarController.swift */; };
 		8EB567E5298C82BA0004746B /* DeckController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB567E4298C82BA0004746B /* DeckController.swift */; };
 		8EB567E8298C87570004746B /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB567E7298C87570004746B /* Deck.swift */; };
@@ -311,7 +311,7 @@
 		8EA9B9AD2964E30A005E6080 /* BoosterSetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenter.swift; sourceTree = "<group>"; };
 		8EA9B9AF2964E653005E6080 /* BoosterSetPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterSetPresenterTests.swift; sourceTree = "<group>"; };
 		8EA9B9B12964E8FC005E6080 /* UITableView+Dequeueing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeueing.swift"; sourceTree = "<group>"; };
-		8EAD9C5F298744FC003EACC3 /* ManageDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDeck.swift; sourceTree = "<group>"; };
+		8EAD9C5F298744FC003EACC3 /* ManagedDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedDeck.swift; sourceTree = "<group>"; };
 		8EB567E1298C819F0004746B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8EB567E4298C82BA0004746B /* DeckController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckController.swift; sourceTree = "<group>"; };
 		8EB567E7298C87570004746B /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
@@ -1088,7 +1088,7 @@
 			isa = PBXGroup;
 			children = (
 				8E11EC3D2984161600788F9F /* ManagedSaveCard.swift */,
-				8EAD9C5F298744FC003EACC3 /* ManageDeck.swift */,
+				8EAD9C5F298744FC003EACC3 /* ManagedDeck.swift */,
 				8ED5CF1E298DC9A900AD5FE6 /* CoreDataDeckStore+DeckStore.swift */,
 			);
 			path = CoreData;
@@ -1670,7 +1670,7 @@
 				8EB5680D298D42D30004746B /* DeckCache.swift in Sources */,
 				8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */,
 				8E0A6D0629662BE200F79B35 /* Card.swift in Sources */,
-				8EAD9C60298744FC003EACC3 /* ManageDeck.swift in Sources */,
+				8EAD9C60298744FC003EACC3 /* ManagedDeck.swift in Sources */,
 				8E0A6CCF2965B54000F79B35 /* BoosterSetStore.swift in Sources */,
 				8E0A6CE12965CA6800F79B35 /* BoosterSetCachePolicy.swift in Sources */,
 				8EB567FA298C8C5A0004746B /* LocalDeck.swift in Sources */,

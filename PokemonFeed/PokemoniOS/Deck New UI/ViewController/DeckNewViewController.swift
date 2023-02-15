@@ -22,7 +22,8 @@ public final class DeckNewViewController: UIViewController {
         guard let name = customView.nameText.text else {
             return
         }
-
+        
         newDeck?(name)
+        self.dismiss(animated: true)
     }
 }

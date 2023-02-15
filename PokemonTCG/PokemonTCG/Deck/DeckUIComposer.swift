@@ -28,7 +28,7 @@ public final class DeckUIComposer {
         listViewController.addNavigationRightButton(title: "Add")
         
         listViewController.rightButtonTapped = newDeck
-        
+    
         let adapter = DeckListPresentationAdapter(loader: decksLoader)
         
         adapter.presenter = LoadResourcePresenter(
@@ -37,6 +37,7 @@ public final class DeckUIComposer {
             errorView: WeakRefVirtualProxy(listViewController),
             mapper:  DeckPresenter.map )
         
+        listViewController.onRefresh = adapter.loadResource
         
         return listViewController
     }

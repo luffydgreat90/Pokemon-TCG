@@ -66,7 +66,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }()
     
     private lazy var rootController: UIViewController = {
-        tabBarController.displayTab(with: [navigationBoosterSet, navigationDeck ])
+        tabBarController.displayTab(with: [navigationBoosterSet, navigationDeck])
         return tabBarController
     }()
     
@@ -107,13 +107,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 selection: showCards))
     }()
     
+    
     private lazy var navigationDeck: UINavigationController = {
-        UINavigationController(
-        rootViewController: DeckUIComposer.cardDeckComposedWith(
+        
+        let viewController = DeckUIComposer.cardDeckComposedWith(
             decksLoader: makeDeckLoader,
-            newDeck: showNewDeck) { deck in
+            newDeck: showNewDeck,
+            selection: { _ in
                 
-            }
+            })
+        
+        return UINavigationController(
+        rootViewController: viewController
         )
     }()
     
@@ -150,6 +155,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         })
     }
 
+    private func makeDeck(name: String) throws {
+        try localDeckLoader.save(name)
+    }
+    
     private func makeRemoteLoadMoreLoader(totalItems:Int) -> AnyPublisher<Paginated<BoosterSet>, Error> {
         localBoosterSetLoader.loadPublisher()
             .zip(makeRemoteBoosterSetsLoader(totalItems: totalItems))
@@ -162,7 +171,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func showNewDeck() {
-        let viewController = DeckNewUIComposer.newDeckComposed()
+        let viewController = DeckNewUIComposer.newDeckComposed(
+            newDeck: { [navigationDeck, localDeckLoader] name in
+                do {
+                    try localDeckLoader.save(name)
+                    
+                    guard let listView = navigationDeck.viewControllers.first as? ListViewController else{
+                        return
+                    }
+                    
+                    listView.onRefresh?()
+                } catch {}
+        })
         navigationDeck.present(viewController, animated: true)
     }
     
