@@ -9,7 +9,6 @@ import XCTest
 import PokemonFeed
 
 final class BoosterSetsPresenterTests: XCTestCase {
-    
     func test_title_isLocalized() {
         XCTAssertEqual(BoosterSetsPresenter.title, localized("BOOSTER_SET_TITLE"))
     }
