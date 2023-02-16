@@ -170,6 +170,9 @@
 		8EFE7BD5296CDA41003AF320 /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BD4296CDA41003AF320 /* UIColor+Helpers.swift */; };
 		8EFE7BDF296D7EDF003AF320 /* CardSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BDE296D7EDF003AF320 /* CardSnapshotTests.swift */; };
 		8EFE7BE3296D7FDE003AF320 /* CollectionListSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFE7BE2296D7FDE003AF320 /* CollectionListSnapshotTests.swift */; };
+		A9005262299E8FBA00A47325 /* LocalSaveCardLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9005261299E8FBA00A47325 /* LocalSaveCardLoader.swift */; };
+		A9005264299E8FDA00A47325 /* SaveCardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9005263299E8FDA00A47325 /* SaveCardStore.swift */; };
+		A9005266299E97A100A47325 /* DeckDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9005265299E97A100A47325 /* DeckDetailPresenterTests.swift */; };
 		A91F0C9F299BEA760090FDAE /* Decks.strings in Resources */ = {isa = PBXBuildFile; fileRef = A91F0CA1299BEA760090FDAE /* Decks.strings */; };
 		A9313C36299D48660006602D /* SaveCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9313C35299D48660006602D /* SaveCardController.swift */; };
 		A9313C38299D4A7A0006602D /* SaveCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9313C37299D4A7A0006602D /* SaveCardViewModel.swift */; };
@@ -364,6 +367,9 @@
 		8EFE7BD4296CDA41003AF320 /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
 		8EFE7BDE296D7EDF003AF320 /* CardSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSnapshotTests.swift; sourceTree = "<group>"; };
 		8EFE7BE2296D7FDE003AF320 /* CollectionListSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListSnapshotTests.swift; sourceTree = "<group>"; };
+		A9005261299E8FBA00A47325 /* LocalSaveCardLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSaveCardLoader.swift; sourceTree = "<group>"; };
+		A9005263299E8FDA00A47325 /* SaveCardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCardStore.swift; sourceTree = "<group>"; };
+		A9005265299E97A100A47325 /* DeckDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckDetailPresenterTests.swift; sourceTree = "<group>"; };
 		A91F0CA0299BEA760090FDAE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Decks.strings; sourceTree = "<group>"; };
 		A91F0CA2299BEA7C0090FDAE /* fil */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fil; path = fil.lproj/Decks.strings; sourceTree = "<group>"; };
 		A9313C35299D48660006602D /* SaveCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCardController.swift; sourceTree = "<group>"; };
@@ -1086,6 +1092,8 @@
 				8EB567F7298C8C3D0004746B /* DeckStore.swift */,
 				8EB567F9298C8C5A0004746B /* LocalDeck.swift */,
 				8EB567FB298C8DD50004746B /* LocalSaveCard.swift */,
+				A9005261299E8FBA00A47325 /* LocalSaveCardLoader.swift */,
+				A9005263299E8FDA00A47325 /* SaveCardStore.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -1133,6 +1141,7 @@
 			isa = PBXGroup;
 			children = (
 				8EB56806298D36090004746B /* DeckPresenterTests.swift */,
+				A9005265299E97A100A47325 /* DeckDetailPresenterTests.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -1678,6 +1687,7 @@
 				8EA9B9672964B7E4005E6080 /* BoosterSetsPresenter.swift in Sources */,
 				8EB5680D298D42D30004746B /* DeckCache.swift in Sources */,
 				8EA9B927296492BC005E6080 /* HTTPClient.swift in Sources */,
+				A9005262299E8FBA00A47325 /* LocalSaveCardLoader.swift in Sources */,
 				8E0A6D0629662BE200F79B35 /* Card.swift in Sources */,
 				8EAD9C60298744FC003EACC3 /* ManagedDeck.swift in Sources */,
 				A9313C38299D4A7A0006602D /* SaveCardViewModel.swift in Sources */,
@@ -1715,6 +1725,7 @@
 				8EB567F5298C8BD90004746B /* LocalDeckLoader.swift in Sources */,
 				A96194AC299AA58A0041A94D /* LocalCard+Helpers.swift in Sources */,
 				8EA9B9402964A2FA005E6080 /* HTTPURLResponse+StatusCode.swift in Sources */,
+				A9005264299E8FDA00A47325 /* SaveCardStore.swift in Sources */,
 				8EB567F8298C8C3D0004746B /* DeckStore.swift in Sources */,
 				A9313C3A299D4CD80006602D /* DeckDetailPresenter.swift in Sources */,
 				8E0A6CD52965BAF300F79B35 /* ManagedBoosterSet.swift in Sources */,
@@ -1749,6 +1760,7 @@
 				8EA9B93029649372005E6080 /* URLSessionHTTPClientTests.swift in Sources */,
 				8E0A6CEF2965DB7B00F79B35 /* ImageDataStoreSpy.swift in Sources */,
 				8EA9B9942964D366005E6080 /* ImageDataMapperTests.swift in Sources */,
+				A9005266299E97A100A47325 /* DeckDetailPresenterTests.swift in Sources */,
 				8E0A6CC92965B1C300F79B35 /* BoosterSetStoreSpecs.swift in Sources */,
 				8E0A6CE32965CE9200F79B35 /* BoosterSetCache+TestHelpers.swift in Sources */,
 				8E0A6CE52965D21000F79B35 /* ValidateBoosterSetCacheUseCaseTests.swift in Sources */,

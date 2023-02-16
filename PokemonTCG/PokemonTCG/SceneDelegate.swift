@@ -109,7 +109,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
     private lazy var navigationDeck: UINavigationController = {
-        
         let viewController = DeckUIComposer.cardDeckComposedWith(
             decksLoader: makeDeckLoader,
             newDeck: showNewDeck,
@@ -154,10 +153,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             { self.makeRemoteLoadMoreLoader(totalItems:items.count) }
         })
     }
-
-    private func makeDeck(name: String) throws {
-        try localDeckLoader.save(name)
-    }
     
     private func makeRemoteLoadMoreLoader(totalItems:Int) -> AnyPublisher<Paginated<BoosterSet>, Error> {
         localBoosterSetLoader.loadPublisher()
@@ -169,23 +164,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .subscribe(on: scheduler)
             .eraseToAnyPublisher()
     }
-    
-    private func showNewDeck() {
-        let viewController = DeckNewUIComposer.newDeckComposed(
-            newDeck: { [navigationDeck, localDeckLoader] name in
-                do {
-                    try localDeckLoader.save(name)
-                    
-                    guard let listView = navigationDeck.viewControllers.first as? ListViewController else{
-                        return
-                    }
-                    
-                    listView.onRefresh?()
-                } catch {}
-        })
-        navigationDeck.present(viewController, animated: true)
-    }
-    
+        
     private func showCards(for boosterSet: BoosterSet) {
         let url = CardEndPoint.get(boosterSet.id).url(baseURL: baseURL)
         let viewController = CardListUIComposer.cardListComposedWith(
@@ -206,6 +185,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         navigationBoosterSet.present(viewController, animated: true)
     }
+    
+    private func showNewDeck() {
+        let viewController = DeckNewUIComposer.newDeckComposed(
+            newDeck: { [navigationDeck, localDeckLoader] name in
+                do {
+                    try localDeckLoader.save(name)
+                    
+                    guard let listView = navigationDeck.viewControllers.first as? ListViewController else{
+                        return
+                    }
+                    
+                    listView.onRefresh?()
+                } catch {}
+        })
+        navigationDeck.present(viewController, animated: true)
+    }
+    
+    private func showDeckDetail(for deck: Deck) {
+    
+    }
+    
     
     private func makeBoosterSetImageLoader(url: URL) -> AnyPublisher<Data, Error> {
         let localImageLoader = LocalImageDataLoader(store: boosterSetStore)
