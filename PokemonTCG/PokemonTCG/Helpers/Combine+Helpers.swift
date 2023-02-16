@@ -113,6 +113,19 @@ public extension LocalDeckLoader {
     }
 }
 
+public extension LocalSaveCardLoader {
+    typealias Publisher = AnyPublisher<[SaveCard], Error>
+    
+    func loadPublisher() -> Publisher {
+        Deferred {
+            Future { completion in
+                completion(Result{ try self.load() })
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+}
+
 private extension ImageDataCache {
     func saveIgnoringResult(_ data: Data, for url: URL?) {
         guard let url = url else { return }

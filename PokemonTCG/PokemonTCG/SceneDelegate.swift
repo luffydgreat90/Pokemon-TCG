@@ -57,6 +57,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         LocalDeckLoader(store: cardStore, currentDate: Date.init)
     }()
     
+//    private lazy var localSaveCardLoader: LocalSaveCardLoader = {
+//        LocalSaveCardLoader(store: cardStore, currentDate: Date.init)
+//    }()
+    
     private lazy var priceFormatter: NumberFormatter = {
         .priceFormatter
     }()
@@ -203,8 +207,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func showDeckDetail(for deck: Deck) {
-    
+        let viewController = DeckDetailUIComposer.deckDetailComposedWith(
+            deck: deck,
+            priceFormatter: priceFormatter,
+            saveCardsLoader: <#T##() -> AnyPublisher<[SaveCard], Error>#>, imageLoader: <#T##(URL?) -> AnyPublisher<Data, Error>#>, selection: <#T##(SaveCard) -> Void#>)
     }
+    
     
     
     private func makeBoosterSetImageLoader(url: URL) -> AnyPublisher<Data, Error> {

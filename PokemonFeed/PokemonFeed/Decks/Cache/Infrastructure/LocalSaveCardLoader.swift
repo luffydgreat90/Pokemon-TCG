@@ -8,25 +8,17 @@
 import Foundation
 
 public final class LocalSaveCardLoader {
-    private let store: DeckStore
+    private let store: SaveCardStore
     private let currentDate: () -> Date
     
-    public init(store: DeckStore, currentDate: @escaping () -> Date) {
+    public init(store: SaveCardStore, currentDate: @escaping () -> Date) {
         self.store = store
         self.currentDate = currentDate
     }
 }
 
-extension LocalSaveCardLoader: SaveCardStore {
-    public func insert(_ card: LocalCard) throws {
-        
-    }
-    
-    public func remove(_ saveCard: LocalSaveCard) throws {
-        
-    }
-    
-    public func retrieve() throws -> [LocalSaveCard] {
+extension LocalSaveCardLoader {
+    public func load() throws -> [SaveCard] {
         return []
     }
 }
