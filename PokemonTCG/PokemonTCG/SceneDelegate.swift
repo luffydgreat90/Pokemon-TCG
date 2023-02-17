@@ -131,7 +131,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .eraseToAnyPublisher()
     }
     
-   
     private func makeRemoteBoosterSetsLoader(totalItems:Int = 0) -> AnyPublisher<[BoosterSet], Error> {
         let url = BoosterSetsEndPoint.get(totalItems: totalItems).url(baseURL: baseURL)
         return httpClient

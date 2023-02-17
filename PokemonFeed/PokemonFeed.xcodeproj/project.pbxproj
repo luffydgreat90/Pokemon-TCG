@@ -768,6 +768,7 @@
 		8EA9B90929648B36005E6080 /* PokemonFeed */ = {
 			isa = PBXGroup;
 			children = (
+				A93E49D5299F9CAD00FC93EE /* New Group */,
 				8EB567EF298C88B10004746B /* Decks */,
 				8EE3DDB32981AE4600DBF2C0 /* Helpers */,
 				8EE3DDA6298186B800DBF2C0 /* CardDetail */,
@@ -1446,6 +1447,13 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A93E49D5299F9CAD00FC93EE /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		A94889BD29954FCA008929E5 /* Deck New UI */ = {
