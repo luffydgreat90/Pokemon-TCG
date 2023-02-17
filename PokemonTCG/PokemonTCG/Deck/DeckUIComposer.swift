@@ -14,6 +14,7 @@ public final class DeckUIComposer {
     private typealias DeckListPresentationAdapter = LoadResourcePresentationAdapter<[Deck], DeckViewAdapter>
     
     public static func cardDeckComposedWith(
+        dateFormatter: DateFormatter,
         decksLoader: @escaping () -> AnyPublisher<[Deck], Error>,
         newDeck: @escaping () -> Void,
         selection: @escaping (Deck) -> Void
@@ -32,7 +33,10 @@ public final class DeckUIComposer {
         let adapter = DeckListPresentationAdapter(loader: decksLoader)
         
         adapter.presenter = LoadResourcePresenter(
-            resourceView: DeckViewAdapter(controller: listViewController, dateFormatter: DateFormatter.monthDayYear, selection: selection),
+            resourceView: DeckViewAdapter(
+                controller: listViewController,
+                dateFormatter: dateFormatter,
+                selection: selection),
             loadingView: WeakRefVirtualProxy(listViewController),
             errorView: WeakRefVirtualProxy(listViewController),
             mapper:  DeckPresenter.map )

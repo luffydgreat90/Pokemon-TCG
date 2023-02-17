@@ -114,15 +114,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private lazy var navigationDeck: UINavigationController = {
         let viewController = DeckUIComposer.cardDeckComposedWith(
+            dateFormatter: dateFormatter,
             decksLoader: makeDeckLoader,
             newDeck: showNewDeck,
-            selection: { _ in
-                
-            })
+            selection: showDeckDetail(for:))
         
-        return UINavigationController(
-        rootViewController: viewController
-        )
+        return UINavigationController(rootViewController: viewController)
     }()
     
     private func makeRemoteBoosterSetsLoaderWithLocalFallback() -> AnyPublisher<Paginated<BoosterSet>, Error> {
