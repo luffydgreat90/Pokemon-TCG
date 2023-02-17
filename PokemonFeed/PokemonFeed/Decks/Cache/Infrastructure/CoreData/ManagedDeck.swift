@@ -9,6 +9,7 @@ import CoreData
 
 @objc(ManagedDeck)
 class ManagedDeck: NSManagedObject {
+    @NSManaged var id: String
     @NSManaged var name: String
     @NSManaged var update: Date
     @NSManaged var saveCards: NSOrderedSet
@@ -21,16 +22,7 @@ extension ManagedDeck {
         return try context.fetch(request)
     }
     
-    static func newDeckInstance(name: String, update: Date, in context: NSManagedObjectContext) throws -> ManagedDeck {
-        let managed = ManagedDeck(context: context)
-        managed.name = name
-        managed.update = update
-        managed.saveCards = NSOrderedSet()
-        return managed
-    }
-    
     var localCards: [LocalSaveCard] {
         return saveCards.compactMap { ($0 as? ManagedSaveCard)?.local }
     }
-    
 }

@@ -116,10 +116,10 @@ public extension LocalDeckLoader {
 public extension LocalSaveCardLoader {
     typealias Publisher = AnyPublisher<[SaveCard], Error>
     
-    func loadPublisher() -> Publisher {
+    func loadPublisher(withDeckID id:String) -> Publisher {
         Deferred {
             Future { completion in
-                completion(Result{ try self.load() })
+                completion(Result{ try self.load(withDeckID: id) })
             }
         }
         .eraseToAnyPublisher()

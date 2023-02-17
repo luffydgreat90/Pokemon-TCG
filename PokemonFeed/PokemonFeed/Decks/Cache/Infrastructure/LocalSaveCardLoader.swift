@@ -18,7 +18,7 @@ public final class LocalSaveCardLoader {
 }
 
 extension LocalSaveCardLoader {
-    public func load() throws -> [SaveCard] {
+    public func load(withDeckID id:String) throws -> [SaveCard] {
         return []
     }
 }

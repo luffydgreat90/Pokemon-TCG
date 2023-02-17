@@ -37,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             store: CoreDataBoosterSetStore.self)
     }()
     
-    private lazy var cardStore: CardStore & ImageDataStore & DeckStore = {
+    private lazy var cardStore: CardStore & ImageDataStore & DeckStore & SaveCardStore = {
         try! CoreDataStore(
             storeURL: NSPersistentContainer
                 .defaultDirectoryURL()
@@ -57,9 +57,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         LocalDeckLoader(store: cardStore, currentDate: Date.init)
     }()
     
-//    private lazy var localSaveCardLoader: LocalSaveCardLoader = {
-//        LocalSaveCardLoader(store: cardStore, currentDate: Date.init)
-//    }()
+    private lazy var localSaveCardLoader: LocalSaveCardLoader = {
+        LocalSaveCardLoader(store: cardStore, currentDate: Date.init)
+    }()
     
     private lazy var priceFormatter: NumberFormatter = {
         .priceFormatter
@@ -147,10 +147,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return localDeckLoader
             .loadPublisher()
     }
+    private func makeSaveCardLoader(deck: Deck) -> ()-> AnyPublisher<[SaveCard], Error> {
+        return { [localSaveCardLoader] in
+            localSaveCardLoader
+                .loadPublisher(withDeckID: deck.id)
+        }
+    }
     
     private func makeFirstPage(items: [BoosterSet]) -> Paginated<BoosterSet> {
         makePage(items: items, last: items.last)
     }
+    
     
     private func makePage(items: [BoosterSet], last: BoosterSet?) -> Paginated<BoosterSet> {
         return Paginated(items: items, loadMorePublisher: last.map { last in
@@ -210,10 +217,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewController = DeckDetailUIComposer.deckDetailComposedWith(
             deck: deck,
             priceFormatter: priceFormatter,
-            saveCardsLoader: <#T##() -> AnyPublisher<[SaveCard], Error>#>, imageLoader: <#T##(URL?) -> AnyPublisher<Data, Error>#>, selection: <#T##(SaveCard) -> Void#>)
+            saveCardsLoader: makeSaveCardLoader(deck: deck),
+            imageLoader: makeCardImageLoader(url:)) { saveCard in
+                
+            }
+        
+        navigationDeck.pushViewController(viewController, animated: true)
     }
-    
-    
     
     private func makeBoosterSetImageLoader(url: URL) -> AnyPublisher<Data, Error> {
         let localImageLoader = LocalImageDataLoader(store: boosterSetStore)

@@ -12,6 +12,7 @@ extension CoreDataStore: DeckStore {
         try performSync { context in
             Result {
                 let managedDeck = ManagedDeck(context: context)
+                managedDeck.id = deck.id
                 managedDeck.name = deck.name
                 managedDeck.update = deck.update
                 try context.save()
@@ -27,7 +28,8 @@ extension CoreDataStore: DeckStore {
         try performSync { context in
             Result {
                 try ManagedDeck.find(in: context).map { deck in
-                    LocalDeck(name: deck.name,
+                    LocalDeck(id: deck.id,
+                              name: deck.name,
                               update: deck.update,
                               cards: deck.saveCards.compactMap({
                             ($0 as? ManagedSaveCard)?.local

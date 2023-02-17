@@ -178,6 +178,7 @@
 		A9313C36299D48660006602D /* SaveCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9313C35299D48660006602D /* SaveCardController.swift */; };
 		A9313C38299D4A7A0006602D /* SaveCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9313C37299D4A7A0006602D /* SaveCardViewModel.swift */; };
 		A9313C3A299D4CD80006602D /* DeckDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9313C39299D4CD80006602D /* DeckDetailPresenter.swift */; };
+		A93E49D4299F78C100FC93EE /* CoreDataStore+SaveCardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93E49D3299F78C100FC93EE /* CoreDataStore+SaveCardStore.swift */; };
 		A94889C129955015008929E5 /* DeckNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94889C029955015008929E5 /* DeckNewView.swift */; };
 		A96194A8299A98CB0041A94D /* DeckNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96194A7299A98CB0041A94D /* DeckNewViewController.swift */; };
 		A96194AC299AA58A0041A94D /* LocalCard+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96194AB299AA58A0041A94D /* LocalCard+Helpers.swift */; };
@@ -377,6 +378,7 @@
 		A9313C35299D48660006602D /* SaveCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCardController.swift; sourceTree = "<group>"; };
 		A9313C37299D4A7A0006602D /* SaveCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCardViewModel.swift; sourceTree = "<group>"; };
 		A9313C39299D4CD80006602D /* DeckDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckDetailPresenter.swift; sourceTree = "<group>"; };
+		A93E49D3299F78C100FC93EE /* CoreDataStore+SaveCardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStore+SaveCardStore.swift"; sourceTree = "<group>"; };
 		A94889C029955015008929E5 /* DeckNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckNewView.swift; sourceTree = "<group>"; };
 		A96194A7299A98CB0041A94D /* DeckNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckNewViewController.swift; sourceTree = "<group>"; };
 		A96194AB299AA58A0041A94D /* LocalCard+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalCard+Helpers.swift"; sourceTree = "<group>"; };
@@ -1106,6 +1108,7 @@
 				8E11EC3D2984161600788F9F /* ManagedSaveCard.swift */,
 				8EAD9C5F298744FC003EACC3 /* ManagedDeck.swift */,
 				8ED5CF1E298DC9A900AD5FE6 /* CoreDataDeckStore+DeckStore.swift */,
+				A93E49D3299F78C100FC93EE /* CoreDataStore+SaveCardStore.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -1695,6 +1698,7 @@
 				8EAD9C60298744FC003EACC3 /* ManagedDeck.swift in Sources */,
 				A9313C38299D4A7A0006602D /* SaveCardViewModel.swift in Sources */,
 				8E0A6CCF2965B54000F79B35 /* BoosterSetStore.swift in Sources */,
+				A93E49D4299F78C100FC93EE /* CoreDataStore+SaveCardStore.swift in Sources */,
 				8E0A6CE12965CA6800F79B35 /* BoosterSetCachePolicy.swift in Sources */,
 				8EB567FA298C8C5A0004746B /* LocalDeck.swift in Sources */,
 				8E4F6A5129679EF30022403A /* CardsViewModel.swift in Sources */,

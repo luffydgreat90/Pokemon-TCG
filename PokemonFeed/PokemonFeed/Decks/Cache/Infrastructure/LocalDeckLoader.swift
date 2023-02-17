@@ -20,7 +20,11 @@ public final class LocalDeckLoader {
 extension LocalDeckLoader: DeckCache {
     public func save(_ name: String) throws {
         try store.insert(
-            LocalDeck(name: name, update: Date(), cards: [])
+            LocalDeck(
+                id: UUID().uuidString,
+                name: name,
+                update: Date(),
+                cards: [])
         )
     }
 }
@@ -37,8 +41,10 @@ extension LocalDeckLoader {
 
 public extension Array where Element == LocalDeck {
     func toModels() -> [Deck] {
-        return map {
-            Deck(name: $0.name,
+        map {
+            Deck(
+                id: $0.id,
+                name: $0.name,
                  update: $0.update,
                  cards: $0.cards.toModels())
         }

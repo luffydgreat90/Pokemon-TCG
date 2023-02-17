@@ -33,6 +33,7 @@
         <relationship name="cards" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ManagedCard" inverseName="cache" inverseEntity="ManagedCard"/>
     </entity>
     <entity name="ManagedDeck" representedClassName="ManagedDeck" syncable="YES">
+        <attribute name="id" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="update" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="saveCards" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ManagedSaveCard" inverseName="deck" inverseEntity="ManagedSaveCard"/>
