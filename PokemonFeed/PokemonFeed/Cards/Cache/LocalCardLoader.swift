@@ -18,28 +18,10 @@ public final class LocalCardLoader {
 }
 
 extension LocalCardLoader: CardCache {
-    public typealias SaveResult = CardCache.Result
     
-    public func save(_ cards: [Card],setId: String, completion: @escaping (SaveResult) -> Void) {
-        store.deleteCachedCards(setId: setId) { [weak self] deletionResult in
-            guard let self = self else { return }
-
-            switch deletionResult {
-            case .success:
-                self.cache(cards,setId: setId, with: completion)
-
-            case let .failure(error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    private func cache(_ cards: [Card], setId: String, with completion: @escaping (SaveResult) -> Void) {
-        store.insert(cards.toLocal(), setId: setId, timestamp: currentDate()) { [weak self] insertionResult in
-            guard self != nil else { return }
-
-            completion(insertionResult)
-        }
+    public func save(_ cards: [Card], setId: String) throws {
+        try store.deleteCachedCards(setId: setId)
+        try store.insert(cards.toLocal(), setId: setId, timestamp: currentDate())
     }
 }
 
@@ -49,40 +31,25 @@ extension LocalCardLoader {
         public init() {}
     }
     
-    public func load(setID: String, completion: @escaping (LoadResult) -> Void) {
-        store.retrieve(setID: setID) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case let .failure(error):
-                completion(.failure(error))
-
-            case let .success(.some(cache)) where CardCachePolicy.validate(cache.timestamp, against: self.currentDate()):
-                completion(.success(cache.cards.toModels()))
-
-            case .success:
-                completion(.failure(EmptyList()))
-            }
+    public func load(setID: String) throws -> [Card] {
+        if let cache = try store.retrieve(setID: setID), CardCachePolicy.validate(cache.timestamp, against: self.currentDate()) {
+            return cache.cards.toModels()
+        }else{
+            throw EmptyList()
         }
     }
 }
 
 extension LocalCardLoader {
-    public typealias ValidationResult = Result<Void, Error>
+    private struct InvalidCache: Error {}
 
-    public func validateCache(setId: String, completion: @escaping (ValidationResult) -> Void) {
-        store.retrieve(setID: setId) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .failure:
-                self.store.deleteCachedCards(setId: setId, completion: completion)
-                
-            case let .success(.some(cache)) where !CardCachePolicy.validate(cache.timestamp, against: self.currentDate()):
-                self.store.deleteCachedCards(setId: setId, completion: completion)
-
-            case .success:
-                completion(.failure(EmptyList()))
-            
+    public func validateCache(setId: String) throws {
+        do {
+            if let cache = try store.retrieve(setID: setId), !CardCachePolicy.validate(cache.timestamp, against: self.currentDate()) {
+                throw InvalidCache()
             }
+        } catch {
+            try store.deleteCachedCards(setId: setId)
         }
     }
 }
@@ -127,20 +94,7 @@ public extension Array where Element == Card {
 public extension Array where Element == LocalCard {
     func toModels() -> [Card] {
         return map {
-            let images: CardImages? = $0.images != nil ? CardImages(small: $0.images!.small, large: $0.images!.large) : nil
-            
-            return Card(
-                id: $0.id,
-                name: $0.name,
-                supertype: $0.supertype,
-                number: $0.number,
-                rarity: $0.rarity,
-                flavorText: $0.flavorText,
-                legalities: Legalities(isUnlimited: $0.legalities.isUnlimited, isStandard: $0.legalities.isStandard, isExpanded: $0.legalities.isExpanded),
-                artist: $0.artist,
-                cardmarket: getCardMarket(cardmarket: $0.cardmarket),
-                images: images,
-                cardSet: CardSet(id: $0.cardSet.id, name: $0.cardSet.name, series: $0.cardSet.series))
+            $0.toCard()
         }
     }
     

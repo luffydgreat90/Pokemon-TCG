@@ -12,7 +12,7 @@ import PokemonFeed
 import PokemoniOS
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
     
     private lazy var baseURL = URL(string: "https://api.pokemontcg.io")!
@@ -20,6 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var httpClient: HTTPClient = {
         URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     }()
+    
+    private lazy var tabBarController = TabBarController()
     
     private lazy var scheduler: AnyDispatchQueueScheduler = DispatchQueue(
         label: "com.pokemontcg.infra.queue",
@@ -35,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             store: CoreDataBoosterSetStore.self)
     }()
     
-    private lazy var cardStore: CardStore & ImageDataStore = {
+    private lazy var cardStore: CardStore & ImageDataStore & DeckStore & SaveCardStore = {
         try! CoreDataStore(
             storeURL: NSPersistentContainer
                 .defaultDirectoryURL()
@@ -51,13 +53,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         LocalCardLoader(store: cardStore, currentDate: Date.init)
     }()
     
+    private lazy var localDeckLoader: LocalDeckLoader  = {
+        LocalDeckLoader(store: cardStore, currentDate: Date.init)
+    }()
+    
+    private lazy var localSaveCardLoader: LocalSaveCardLoader = {
+        LocalSaveCardLoader(store: cardStore, currentDate: Date.init)
+    }()
+    
     private lazy var priceFormatter: NumberFormatter = {
         .priceFormatter
     }()
     
-    private lazy var navigationController: UINavigationController = {
-        UINavigationController(rootViewController: makeBoosterSetsViewController())
+    private lazy var dateFormatter: DateFormatter = {
+        .monthDayYear
     }()
+    
+    private lazy var rootController: UIViewController = {
+        tabBarController.displayTab(with: [navigationBoosterSet, navigationDeck])
+        return tabBarController
+    }()
+    
+    private lazy var applicationShared = UIApplication.shared
     
     convenience init(httpClient: HTTPClient, boosterSetStore: BoosterSetStore & ImageDataStore, scheduler: AnyDispatchQueueScheduler) {
         self.init()
@@ -68,7 +85,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
-    
+        
         window = UIWindow(windowScene: scene)
         configureWindow()
     }
@@ -80,18 +97,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             debugPrint("Failed to validate cache with error: \(error.localizedDescription)")
         }
     }
-
+    
     func configureWindow() {
-        window?.rootViewController = navigationController
+        window?.rootViewController = rootController
         window?.makeKeyAndVisible()
     }
+    
+    private lazy var navigationBoosterSet: UINavigationController = {
+        UINavigationController(
+            rootViewController: BoosterSetsUIComposer.boosterSetsComposedWith(
+                boosterSetsLoader: makeRemoteBoosterSetsLoaderWithLocalFallback,
+                imageLoader: makeBoosterSetImageLoader,
+                selection: showCards))
+    }()
+    
+    
+    private lazy var navigationDeck: UINavigationController = {
+        let viewController = DeckUIComposer.cardDeckComposedWith(
+            dateFormatter: dateFormatter,
+            decksLoader: makeDeckLoader,
+            newDeck: showNewDeck,
+            selection: showDeckDetail(for:))
         
-    private func makeBoosterSetsViewController() -> ListViewController {
-        return BoosterSetsUIComposer.boosterSetsComposedWith(
-            boosterSetsLoader: makeRemoteBoosterSetsLoaderWithLocalFallback,
-            imageLoader: makeBoosterSetImageLoader,
-            selection: showCards)
-    }
+        return UINavigationController(rootViewController: viewController)
+    }()
     
     private func makeRemoteBoosterSetsLoaderWithLocalFallback() -> AnyPublisher<Paginated<BoosterSet>, Error> {
         return makeRemoteBoosterSetsLoader()
@@ -110,16 +139,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .eraseToAnyPublisher()
     }
     
+    private func makeDeckLoader() -> AnyPublisher<[Deck], Error> {
+        return localDeckLoader
+            .loadPublisher()
+    }
+    private func makeSaveCardLoader(deck: Deck) -> ()-> AnyPublisher<[SaveCard], Error> {
+        return { [localSaveCardLoader] in
+            localSaveCardLoader
+                .loadPublisher(withDeckID: deck.id)
+        }
+    }
+    
     private func makeFirstPage(items: [BoosterSet]) -> Paginated<BoosterSet> {
         makePage(items: items, last: items.last)
     }
+    
     
     private func makePage(items: [BoosterSet], last: BoosterSet?) -> Paginated<BoosterSet> {
         return Paginated(items: items, loadMorePublisher: last.map { last in
             { self.makeRemoteLoadMoreLoader(totalItems:items.count) }
         })
     }
-
+    
     private func makeRemoteLoadMoreLoader(totalItems:Int) -> AnyPublisher<Paginated<BoosterSet>, Error> {
         localBoosterSetLoader.loadPublisher()
             .zip(makeRemoteBoosterSetsLoader(totalItems: totalItems))
@@ -130,7 +171,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .subscribe(on: scheduler)
             .eraseToAnyPublisher()
     }
-    
+        
     private func showCards(for boosterSet: BoosterSet) {
         let url = CardEndPoint.get(boosterSet.id).url(baseURL: baseURL)
         let viewController = CardListUIComposer.cardListComposedWith(
@@ -139,7 +180,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             priceFormatter: priceFormatter,
             selection: showCardDetail(for:))
         
-        navigationController.pushViewController(viewController, animated: true)
+        navigationBoosterSet.pushViewController(viewController, animated: true)
     }
     
     private func showCardDetail(for card: Card) {
@@ -149,7 +190,35 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             openURL: openURL(url:),
             priceFormatter: priceFormatter)
         
-        navigationController.present(viewController, animated: true)
+        navigationBoosterSet.present(viewController, animated: true)
+    }
+    
+    private func showNewDeck() {
+        let viewController = DeckNewUIComposer.newDeckComposed(
+            newDeck: { [navigationDeck, localDeckLoader] name in
+                do {
+                    try localDeckLoader.save(name)
+                    
+                    guard let listView = navigationDeck.viewControllers.first as? ListViewController else{
+                        return
+                    }
+                    
+                    listView.onRefresh?()
+                } catch {}
+        })
+        navigationDeck.present(viewController, animated: true)
+    }
+    
+    private func showDeckDetail(for deck: Deck) {
+        let viewController = DeckDetailUIComposer.deckDetailComposedWith(
+            deck: deck,
+            priceFormatter: priceFormatter,
+            saveCardsLoader: makeSaveCardLoader(deck: deck),
+            imageLoader: makeCardImageLoader(url:)) { saveCard in
+                
+            }
+        
+        navigationDeck.pushViewController(viewController, animated: true)
     }
     
     private func makeBoosterSetImageLoader(url: URL) -> AnyPublisher<Data, Error> {
@@ -193,7 +262,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func openURL(url: URL?){
         guard let url =  url else{ return }
-        UIApplication.shared.open(url)
+        applicationShared.open(url)
     }
 }
 

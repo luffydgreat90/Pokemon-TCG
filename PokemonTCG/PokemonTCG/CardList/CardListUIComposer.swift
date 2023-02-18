@@ -11,14 +11,13 @@ import PokemonFeed
 import PokemoniOS
 
 public enum CardListUIComposer {
-    
     private typealias CardListPresentationAdapter = LoadResourcePresentationAdapter<[Card], CardListViewAdapter>
     
     public static func cardListComposedWith(
         cardList: @escaping () -> AnyPublisher<[Card], Error>,
         imageLoader: @escaping (URL?) -> AnyPublisher<Data, Error>,
         priceFormatter: NumberFormatter,
-        selection: @escaping (Card) -> Void) -> CollectionListViewController{
+        selection: @escaping (Card) -> Void) -> CollectionListViewController {
             let adapter = CardListPresentationAdapter(loader: cardList)
             
             let priceFormatter: NumberFormatter = .priceFormatter
@@ -47,10 +46,7 @@ public enum CardListUIComposer {
                 loadingView: WeakRefVirtualProxy(collectionViewController),
                 errorView: WeakRefVirtualProxy(collectionViewController),
                 mapper: CardsPresenter.map)
-            
-            
-            
-            
+
             return collectionViewController
         }
 }

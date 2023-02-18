@@ -8,7 +8,5 @@
 import Foundation
 
 public protocol CardCache {
-    typealias Result = Swift.Result<Void, Error>
-
-    func save(_ cards: [Card], setId:String, completion: @escaping (Result) -> Void)
+    func save(_ cards: [Card], setId:String) throws
 }

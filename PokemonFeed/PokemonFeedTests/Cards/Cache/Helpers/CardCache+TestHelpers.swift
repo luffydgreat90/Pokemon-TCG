@@ -13,6 +13,6 @@ extension Date {
     }
     
     private var cardCacheMaxAgeInDays: Int {
-        return 14
+        return 100
     }
 }

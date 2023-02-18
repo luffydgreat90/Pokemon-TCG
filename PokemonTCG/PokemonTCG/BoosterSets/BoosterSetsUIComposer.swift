@@ -11,7 +11,6 @@ import PokemonFeed
 import PokemoniOS
 
 public enum BoosterSetsUIComposer {
-   
     private typealias BoosterSetsPresentationAdapter = LoadResourcePresentationAdapter<Paginated<BoosterSet>, BoosterSetsViewAdapter>
     
     public static func boosterSetsComposedWith(

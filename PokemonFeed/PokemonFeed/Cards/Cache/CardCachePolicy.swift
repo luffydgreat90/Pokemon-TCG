@@ -11,7 +11,7 @@ enum CardCachePolicy {
     private static let calendar = Calendar(identifier: .gregorian)
 
     private static var maxCacheAgeInDays: Int {
-        return 14
+        return 100
     }
 
     static func validate(_ timestamp: Date, against date: Date) -> Bool {
